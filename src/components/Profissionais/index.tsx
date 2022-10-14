@@ -51,7 +51,7 @@ export function Profissionais() {
             }}
           >
             <div className="navigation-wrapper">
-              <div className="keen-slider" ref={sliderRef}>
+              <div className="keen-slider" ref={sliderRef} style={{ width: '80vw', alignSelf: 'center' }}>
                 <div className="keen-slider__slide">
                   <S.ContainerInfoProfContent className="texto">
                     <h1>Conheça nossos Profissionais</h1>

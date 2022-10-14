@@ -51,15 +51,17 @@ export const Parceiros = () => {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const [itemsPerView, setitemsPerView] = useState(6);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef2, instanceRef2] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "free-snap",
     slides: {
       perView: 3,
       spacing: 15,
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
     },
     created() {
       setLoaded(true);
@@ -72,14 +74,8 @@ export const Parceiros = () => {
         <div className="navigation-wrapper">
           <div
             className="keen-slider"
+            style={{ width: '80vw', alignSelf: 'center' }}
             ref={sliderRef2}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "90vw",
-              overflow: "hidden",
-            }}
           >
             {parcerias.map((parceria) => {
               return (
@@ -98,6 +94,22 @@ export const Parceiros = () => {
               );
             })}
           </div>
+          <>
+            <Arrow
+              left
+              onClick={(e: any) =>
+                e.stopPropagation() || instanceRef2.current?.prev()
+              }
+              disabled={false}
+            />
+
+            <Arrow
+              onClick={(e: any) =>
+                e.stopPropagation() || instanceRef2.current?.next()
+              }
+              disabled={false}
+            />
+          </>
         </div>
       </S.Container>
     </S.PageContainer>

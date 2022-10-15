@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { SobreNos } from "../components/SobreNos";
 import { Mvv } from "../components/Mvv";
 import { Parceiros } from "../components/Parceiros";
+import { Footer } from "../components/Footer";
 export default function Home() {
   return (
     <S.PageContainer>
@@ -12,6 +13,7 @@ export default function Home() {
       <Profissionais />
       <SobreNos />
       <Parceiros/>
+      <Footer/>
     </S.PageContainer>
   );
 }

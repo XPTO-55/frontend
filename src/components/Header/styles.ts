@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Main = styled.div`
   width: 100vw;
   max-width: 1200px;
@@ -8,36 +7,46 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  margin-left: 300px;
 
-  img{
-    position: static;
+  img {
+    margin-top: 60px;
+    width: 850px;
+    height: 600px;
+    margin-left: -150px;
   }
 
+  @media (max-width: 1200px) {
+    margin-left: 500px;
+    justify-content: flex-start;
+
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const Svg = styled.svg`
-
-    margin-top: -100px;
-    max-width: 1600px;
-    z-index: 1;
+  margin-top: -100px;
+  max-width: 1600px;
+  z-index: 1;
 `;
 
 export const ContainerTextoBanner = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
-  align-items: center;
+  margin-left: -100px;
+  align-items: flex-end;
   justify-content: center;
   flex-direction: column;
-  overflow: hidden;
-
 `;
 
 export const TextoMain = styled.div`
   width: 550px;
   height: 200px;
   margin-left: 150px;
+  margin-top: 50px;
   z-index: 2;
 
   h1 {
@@ -50,26 +59,4 @@ export const TextoMain = styled.div`
     margin-bottom: 20px;
     font-size: 19px;
   }
-`;
-
-export const Circle = styled.div`
-  width: 50%;
-  height: 700px;
-  max-width: 700px;
-  border-radius: 100%;
-  background-color: rgba(144, 144, 144, 0.10);
-  margin-left: 40%;
-  margin-top: 240px;
-  position: absolute;
-  z-index: -2;
-
-  &.circle2 {
-    margin-left: -150px;
-    margin-top: 700px;
-    background-color: rgba(144, 144, 144, 0.10);
-  }
-
-  @media (min-width: 1200px){
-    margin-left: 550px;
-}
 `;

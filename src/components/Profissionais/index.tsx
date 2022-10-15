@@ -1,7 +1,9 @@
 import * as S from "./styles";
 import React from "react";
 import Image from "next/image";
-import fotoMedico from "../../../public/assets/img/fotoRafaelLeao.png";
+import imgRafaelLeão from "../../../public/assets/img/fotoRafaelLeao.png";
+import imgMarceloNeto from "../../../public/assets/img/marceloNeto.png"
+import imgPedroGuedes from "../../../public/assets/img/pedroGuedes.png"
 import { ButtonPrimary } from "../ButtonPrimary";
 import { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
@@ -52,7 +54,7 @@ export function Profissionais() {
           >
             <div className="navigation-wrapper">
               <div className="keen-slider" ref={sliderRef} style={{ width: '80vw', alignSelf: 'center' }}>
-                <div className="keen-slider__slide">
+                <div className="keen-slider__slide profissional">
                   <S.ContainerInfoProfContent className="texto">
                     <h1>Conheça nossos Profissionais</h1>
                     <h2>Rafael Leão</h2>
@@ -69,14 +71,14 @@ export function Profissionais() {
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">
-                    <Image src={fotoMedico} width={354} height={452} />
+                    <img src="/assets/img/fotoRafaelLeao.png" width="354px" height="452px" />
                   </S.ContainerInfoProfContent>
                   <S.bordaImgProf />
                 </div>
-                <div className="keen-slider__slide">
+                <div className="keen-slider__slide profissional">
                   <S.ContainerInfoProfContent className="texto">
                     <h1>Conheça nossos Profissionais</h1>
-                    <h2>Rafael Leão</h2>
+                    <h2>Marcelo Neto</h2>
                     <h3>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Nullam blandit magna rhoncus neque. Enim, amet, risus
@@ -90,14 +92,14 @@ export function Profissionais() {
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">
-                    <Image src={fotoMedico} width={354} height={452} />
+                    <img src="/assets/img/marceloNeto.png" width={354} height={452} />
                   </S.ContainerInfoProfContent>
                   <S.bordaImgProf />
                 </div>
-                <div className="keen-slider__slide">
+                <div className="keen-slider__slide profissional">
                   <S.ContainerInfoProfContent className="texto">
                     <h1>Conheça nossos Profissionais</h1>
-                    <h2>Rafael Leão</h2>
+                    <h2>Pedro Guedes</h2>
                     <h3>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Nullam blandit magna rhoncus neque. Enim, amet, risus
@@ -111,7 +113,7 @@ export function Profissionais() {
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">
-                    <Image src={fotoMedico} width={354} height={452} />
+                    <img src="/assets/img/pedroGuedes.png" width={354} height={452} />
                   </S.ContainerInfoProfContent>
                   <S.bordaImgProf />
                 </div>

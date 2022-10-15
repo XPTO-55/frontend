@@ -29,13 +29,25 @@
   }
   
   .arrow {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     fill: #fff;
+    cursor: pointer;
+  }
+
+
+  .arrow2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    fill: rgb(193, 193, 193);
     cursor: pointer;
   }
   
@@ -51,4 +63,23 @@
   .arrow--disabled {
     fill: rgba(255, 255, 255, 0.5);
   }
-  
+
+
+  .keen-slider__slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 550px;
+  }
+
+  .profissional{
+    margin-top: 100px;
+  }
+
+
+  .keen-slider{
+    min-width: 1000px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+  }

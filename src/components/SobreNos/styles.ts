@@ -19,17 +19,13 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -100px;
 `
 
 export const ContainerContent = styled.div`
     width: 50%;
     height: 100%;
     display: flex;
-
-    Image{
-        width: 100px;
-    }
-
     &.imgSobreNos{
         margin-top: 70px;
         margin-left: 30px;
@@ -39,8 +35,9 @@ export const ContainerContent = styled.div`
 
     &.textoSobreNos{
         flex-direction: column;
-        padding-top: 400px;
+        padding-top: 330px;
         padding-left: 100px;
+        margin-left: -50px;
 
         h1{
             font-size: 36px;
@@ -55,3 +52,16 @@ export const ContainerContent = styled.div`
         }
     }
 `
+
+
+export const Img = styled.img`
+    width: 800px;
+    height: 500px;
+    margin-left: -110px;
+
+`
+
+export const Svg = styled.svg`
+  margin-top: -160px;
+  max-width: 1600px;
+`;

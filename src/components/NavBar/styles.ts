@@ -8,6 +8,7 @@ width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 `;
 
 export const Container = styled.div`
@@ -22,11 +23,12 @@ export const Ul = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 500;
 `;
 
 export const Li = styled.li`
-  margin-left: 100px;
+  margin-left: 90px;
 
   &:hover {
     color: #2a8dd2;

@@ -7,47 +7,32 @@ export const Parceiros = () => {
     {
       id: 1,
       nome: "Apple",
-      url: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      url: "/assets/img/imgParceiro.png",
     },
     {
       id: 2,
       nome: "Apple",
-      url: "https://st2.depositphotos.com/6544740/9337/i/600/depositphotos_93376372-stock-photo-sunset-over-sea-pier.jpg",
+      url: "/assets/img/imgParceiro.png",
     },
     {
       id: 3,
       nome: "Apple",
-      url: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      url: "/assets/img/imgParceiro.png",
     },
     {
       id: 4,
       nome: "Apple",
-      url: "https://st2.depositphotos.com/6544740/9337/i/600/depositphotos_93376372-stock-photo-sunset-over-sea-pier.jpg",
+      url: "/assets/img/imgParceiro.png",
     },
     {
       id: 5,
       nome: "Apple",
-      url: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      url: "/assets/img/imgParceiro.png",
     },
     {
       id: 6,
       nome: "Apple",
-      url: "https://st2.depositphotos.com/6544740/9337/i/600/depositphotos_93376372-stock-photo-sunset-over-sea-pier.jpg",
-    },
-    {
-      id: 7,
-      nome: "Apple",
-      url: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-    },
-    {
-      id: 8,
-      nome: "Apple",
-      url: "https://st2.depositphotos.com/6544740/9337/i/600/depositphotos_93376372-stock-photo-sunset-over-sea-pier.jpg",
-    },
-    {
-      id: 9,
-      nome: "Apple",
-      url: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+      url: "/assets/img/imgParceiro.png",
     },
   ];
 
@@ -58,7 +43,6 @@ export const Parceiros = () => {
     mode: "free-snap",
     slides: {
       perView: 3,
-      spacing: 15,
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
@@ -70,8 +54,10 @@ export const Parceiros = () => {
 
   return (
     <S.PageContainer>
+        <h1>Parceiros</h1>
+
       <S.Container>
-        <div className="navigation-wrapper">
+        <S.ContainerNavigator>
           <div
             className="keen-slider"
             style={{ width: '80vw', alignSelf: 'center' }}
@@ -84,11 +70,9 @@ export const Parceiros = () => {
                   className="keen-slider__slide"
                   style={{ position: "relative", width: 300, minWidth: 300 }}
                 >
-                  <h3>{parceria.nome}</h3>
-                  <img
+                  <img 
                     src={parceria.url}
-                    alt=""
-                    style={{ objectFit: "cover", height: 300 }}
+                    style={{ objectFit: "cover", height: 200, borderRadius: 7 }}
                   />
                 </div>
               );
@@ -110,7 +94,7 @@ export const Parceiros = () => {
               disabled={false}
             />
           </>
-        </div>
+        </S.ContainerNavigator>
       </S.Container>
     </S.PageContainer>
   );
@@ -125,7 +109,7 @@ function Arrow(props: {
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow ${
+      className={`arrow2 ${
         props.left ? "arrow--left" : "arrow--right"
       } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"

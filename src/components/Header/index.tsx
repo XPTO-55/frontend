@@ -1,7 +1,6 @@
 import { ButtonPrimary } from "../ButtonPrimary";
 import { NavBar } from "../NavBar";
 import Image from "next/image";
-import imgMain from '../../../public/assets/img/imagemMain.webp'
 import * as S from "./styles"
 
 export function Header() {
@@ -22,9 +21,8 @@ export function Header() {
           </S.TextoMain>
         </S.ContainerTextoBanner>
 
-        <Image className="teste" src={imgMain} width="673px" height="479px" />
-        <S.Circle />
-        <S.Circle className="circle2" />
+        <img src="/assets/img/imagemMain.webp" />
+      
       </S.Main>
 
       <S.Svg

@@ -13,10 +13,9 @@ export const Button = styled.button`
   transition: all 0.3s;
   border-radius: 5px;
 
-  &:hover{
+  &:hover {
     background-color: #2a8dd2;
     color: white;
-
   }
 
   &.laranja {
@@ -24,8 +23,17 @@ export const Button = styled.button`
     border: 1px solid #ffa025;
     color: white;
   }
+
+  &.laranja:hover {
+    background-color: #ef8700;
+  }
+
   &.azul {
     background-color: #2a8dd2;
     color: white;
+  }
+
+  &.azul:hover {
+    background-color: #17649a;
   }
 `;

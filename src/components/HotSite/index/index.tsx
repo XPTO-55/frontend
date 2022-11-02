@@ -16,13 +16,10 @@ export function HotSite() {
         <S.ContainerContent className="textoHotSite">
           <h1>Sobre nós</h1>
           <h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.{" "}
+            Faça aqui mesmo o download e upload de seus arquivos sempre que precisar.{" "}
             <br />
             <br />
-            Vulputate ullamcorper augue praesent integer. Nunc volutpat laoreet
-            curabitur lacinia. aliquam sed lectus. Vulputate ullamcorper augue
-            praesent integer. Nunc volutpat laoreet curabitur lacinia
+            Faça o download logo abaixo:
           </h2>
           <ButtonPrimary className="laranja">Download</ButtonPrimary>
         </S.ContainerContent>

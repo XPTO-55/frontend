@@ -14,12 +14,12 @@ export function HotSite() {
         </S.ContainerContent>
 
         <S.ContainerContent className="textoHotSite">
-          <h1>Sobre nós</h1>
+          <h1>Como podemos te ajudar hoje?</h1>
           <h2>
-            Faça aqui mesmo o download e upload de seus arquivos sempre que precisar.{" "}
+            Faça aqui mesmo seus downloads e uploads sempre que precisar.{" "}
             <br />
             <br />
-            Faça o download logo abaixo:
+            Click abaixo para realizar seu Download
           </h2>
           <ButtonPrimary className="laranja">Download</ButtonPrimary>
         </S.ContainerContent>

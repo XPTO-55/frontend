@@ -33,7 +33,7 @@ export const ContainerContent = styled.div`
 
     }
 
-    &.textoHotsite{
+    &.textoHotSite{
         flex-direction: column;
         padding-top: 330px;
         padding-left: 100px;

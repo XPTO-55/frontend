@@ -1,6 +1,4 @@
-import imgSobre from "../../../public/assets/img/autis.png";
 import * as S from "./styles";
-import Image from "next/image";
 import { ButtonPrimary } from "../ButtonPrimary";
 
 export function HotSite() {

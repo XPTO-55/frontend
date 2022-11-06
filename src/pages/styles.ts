@@ -1,4 +1,4 @@
-import { Container } from './LoginCadastro/styles';
+import { Container } from './auth/styles';
 import styled from "styled-components";
 
 export const PageContainer = styled.div`

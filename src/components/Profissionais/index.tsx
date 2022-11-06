@@ -4,7 +4,7 @@ import Image from "next/image";
 import imgRafaelLeão from "../../../public/assets/img/fotoRafaelLeao.png";
 import imgMarceloNeto from "../../../public/assets/img/marceloNeto.png"
 import imgPedroGuedes from "../../../public/assets/img/pedroGuedes.png"
-import { ButtonPrimary } from "../ButtonPrimary";
+import { ButtonPrimary } from "../../@shared/ButtonPrimary";
 import { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -119,26 +119,26 @@ export function Profissionais() {
                 </div>
               </div>
               {loaded && instanceRef.current && (
-          <>
-            <Arrow
-              left
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.prev()
-              }
-              disabled={currentSlide === 0}
-            />
+                <>
+                  <Arrow
+                    left
+                    onClick={(e: any) =>
+                      e.stopPropagation() || instanceRef.current?.prev()
+                    }
+                    disabled={currentSlide === 0}
+                  />
 
-            <Arrow
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.next()
-              }
-              disabled={
-                currentSlide ===
-                instanceRef.current.track.details.slides.length - 1
-              }
-            />
-          </>
-        )}
+                  <Arrow
+                    onClick={(e: any) =>
+                      e.stopPropagation() || instanceRef.current?.next()
+                    }
+                    disabled={
+                      currentSlide ===
+                      instanceRef.current.track.details.slides.length - 1
+                    }
+                  />
+                </>
+              )}
 
             </div>
           </S.ContainerInfoProf>
@@ -164,10 +164,9 @@ function Arrow(props: {
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow ${
-        props.left ? "arrow--left" : "arrow--right"
-      } ${disabeld}`}
-      xmlns="http://www.w3.org/2000/svg" 
+      className={`arrow ${props.left ? "arrow--left" : "arrow--right"
+        } ${disabeld}`}
+      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
       {props.left && (

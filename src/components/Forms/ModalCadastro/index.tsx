@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import { Input } from "../Input";
+import { Input } from "../../Input";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import { ButtonPrimary } from "../ButtonPrimary";
+import { ButtonPrimary } from "../../../@shared/ButtonPrimary";
 import { SlLock } from "react-icons/sl";
 import { FiUser, FiSmartphone } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
@@ -53,35 +53,66 @@ export const ModalCadastro = ({ closeModal }: any) => {
     if (userSelect == 0) {
       return (
         <S.Form>
-          <Input children={<FiUser />} placeHolder="Nome Completo" />
-          <Input children={<TfiEmail />} placeHolder="Email" />
-          <Input children={<TiDocument />} placeHolder="RG" />
-          <Input children={<CgFileDocument />} placeHolder="CPF" />
-          <Input
-            children={<BsCalendarDate />}
-            placeHolder="Data de nascimento"
-          />
-          <Input children={<BsTelephonePlus />} placeHolder="Telefone fixo" />
-          <Input children={<FiSmartphone />} placeHolder="Telefone Celular" />
-          <Input children={<HiOutlineMapPin />} placeHolder="CEP" />
-          <Input children={<MdOutlineMapsHomeWork />} placeHolder="Endereço" />
+          <Input placeHolder="Nome Completo">
+            <FiUser />
+          </Input>
+          <Input placeHolder="Email">
+            <TfiEmail />
+          </Input>
+          <Input placeHolder="RG">
+            <TiDocument />
+          </Input>
+          <Input placeHolder="CPF">
+            <CgFileDocument />
+          </Input>
+          <Input placeHolder="Data de nascimento">
+            <BsCalendarDate />
+          </Input>
+          <Input placeHolder="Telefone fixo" >
+            <BsTelephonePlus />
+          </Input>
+          <Input placeHolder="Telefone Celular" >
+            <FiSmartphone />
+          </Input>
+          <Input placeHolder="CEP" >
+            <HiOutlineMapPin />
+          </Input>
+          <Input placeHolder="Endereço" >
+            <MdOutlineMapsHomeWork />
+          </Input>
         </S.Form>
       );
     } else {
       return (
         <S.Form>
-          <Input children={<FiUser />} placeHolder="Nome Completo" />
-          <Input children={<TfiEmail />} placeHolder="Email" />
-          <Input children={<TiDocument />} placeHolder="RG" />
-          <Input children={<CgFileDocument />} placeHolder="CPF" />
+          <Input placeHolder="Nome Completo">
+            <FiUser />
+          </Input>
+          <Input placeHolder="Email" >
+            <TfiEmail />
+          </Input>
+          <Input placeHolder="RG">
+            <TiDocument />
+          </Input>
+          <Input placeHolder="CPF">
+            <CgFileDocument /></Input>
           <Input
-            children={<BsCalendarDate />}
             placeHolder="Data de nascimento"
-          />
-          <Input children={<BsTelephonePlus />} placeHolder="Telefone fixo" />
-          <Input children={<FiSmartphone />} placeHolder="Telefone Celular" />
-          <Input children={<HiOutlineMapPin />} placeHolder="CEP" />
-          <Input children={<MdOutlineMapsHomeWork />} placeHolder="Endereço" />
+          >
+            <BsCalendarDate />
+          </Input>
+          <Input placeHolder="Telefone fixo">
+            <BsTelephonePlus />
+          </Input>
+          <Input placeHolder="Telefone Celular">
+            <FiSmartphone />
+          </Input>
+          <Input placeHolder="CEP">
+            <HiOutlineMapPin />
+          </Input>
+          <Input placeHolder="Endereço">
+            <MdOutlineMapsHomeWork />
+          </Input>
         </S.Form>
       );
     }
@@ -110,16 +141,18 @@ export const ModalCadastro = ({ closeModal }: any) => {
 
         <S.ContainerBtn className="bottom">
           <ButtonPrimary
-            children="Cadastrar"
             className="azul"
             tamanho="151px"
-          />
+          >
+            Cadastrar
+          </ButtonPrimary>
           <ButtonPrimary
-            children="Cancelar"
             className="laranja"
             tamanho="151px"
             onClick={closeModal}
-          />
+          >
+            Cancelar
+          </ButtonPrimary>
         </S.ContainerBtn>
       </S.Container>
     </S.PageContainer>

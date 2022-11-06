@@ -1,8 +1,7 @@
 import * as S from "./styles";
 import Image from "next/image";
-import logo from "../../../public/assets/img/logoCPA.png";
+import logo from "../../../../public/assets/img/logoCPA.png";
 import Link from "next/link";
-import { Login } from "../../pages/LoginCadastro/login";
 
 export function NavBar() {
   return (
@@ -16,7 +15,7 @@ export function NavBar() {
           <S.Li>Blog</S.Li>
           <S.Li>Contato</S.Li>
 
-          <Link href="../../pages/LoginCadastro/login.tsx">
+          <Link href="/auth">
             <S.Button>Entrar</S.Button>
           </Link>
         </S.Ul>

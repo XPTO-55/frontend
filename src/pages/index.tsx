@@ -1,16 +1,16 @@
 import * as S from "./styles";
 import { Profissionais } from "../components/Profissionais";
 import { Parceiros } from "../components/Parceiros";
-import { Login } from "./LoginCadastro/login";
-import Link from "next/link";
-import { NavBar } from "../components/NavBar";
-import { ButtonPrimary } from "../components/ButtonPrimary";
+import { NavBar } from "../components/Layout/NavBar";
+import { ButtonPrimary } from "../@shared/ButtonPrimary";
+import { UsuarioForm } from "../components/Forms/Usuario";
 export default function Home() {
   return (
 
     <S.PageContainer>
       <NavBar />
-      <S.Main>
+      <UsuarioForm />
+      {/* <S.Main>
         <S.ContainerTextoBanner>
           <S.TextoMain>
             <h1>Comunidade de parceiros autistas</h1>
@@ -193,7 +193,7 @@ export default function Home() {
             <h2>Copyright © 2022 | CPA</h2>
           </S.ContainerContentFooter>
         </S.ContainerFooter>
-      </S.PageContainerFooter>
+      </S.PageContainerFooter> */}
     </S.PageContainer>
   );
 }

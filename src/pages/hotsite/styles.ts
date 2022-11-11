@@ -38,7 +38,7 @@ export const ContainerLogin = styled.div`
   }
 
   p{
-    font-size: 14px;
+    font-size: 16px;
   }
   span{
     font-size: 13px;
@@ -47,7 +47,12 @@ export const ContainerLogin = styled.div`
   }
 `;
 
+
 export const Img = styled.img`
   width: 130px;
   cursor: pointer;
 `;
+
+
+
+

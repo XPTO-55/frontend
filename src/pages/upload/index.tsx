@@ -25,25 +25,16 @@ export default function Auth() {
             <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
-            <Input placeholder="Email">
-              <MdOutlineAlternateEmail /></Input>
-            <Input placeholder="Senha" >
-              <SlLock />
+            
+            <p>Faça aqui seu Upload</p>
+            <Input  type={"file"} >
+            
             </Input>
-            <span>Esqueceu a senha?</span>
-            <ButtonPrimary className="laranja" >
-              Entrar
-            </ButtonPrimary>
-            <p>
-              Não possui uma conta?
-              <a href="#" onClick={openModal}>
-                {" "}
-                Cadastra-se
-              </a>{" "}
-            </p>
           </S.ContainerLogin>
         </S.Container>
       </S.PageContainer>
+
+      
     </>
   );
 }

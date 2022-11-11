@@ -3,6 +3,7 @@ import { Input } from "../../components/Input";
 import * as S from "./styles";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
+
 import { ButtonPrimary } from "../../@shared/ButtonPrimary";
 import { ModalCadastro } from "../../components/Forms/ModalCadastro";
 import { useState } from "react";
@@ -17,6 +18,7 @@ export default function Auth() {
 
   return (
     <>
+      
       <S.PageContainer>
         {modal ? <ModalCadastro closeModal={openModal} /> : ""}
 
@@ -25,25 +27,32 @@ export default function Auth() {
             <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
-            <Input placeholder="Email">
-              <MdOutlineAlternateEmail /></Input>
-            <Input placeholder="Senha" >
-              <SlLock />
-            </Input>
-            <span>Esqueceu a senha?</span>
-            <ButtonPrimary className="laranja" >
-              Entrar
-            </ButtonPrimary>
             <p>
-              Não possui uma conta?
-              <a href="#" onClick={openModal}>
-                {" "}
-                Cadastra-se
-              </a>{" "}
+            Faça aqui mesmo seus downloads e uploads sempre que precisar. 
             </p>
+            
+            <ButtonPrimary className="laranja" >
+              DOWNLOAD CSV 
+            </ButtonPrimary>
+
+            <ButtonPrimary className="laranja" >
+              DOWNLOAD TXT 
+            </ButtonPrimary>
+           
+          <Link  href="/upload">
+          <ButtonPrimary className="laranja" >
+              UPLOADS
+            </ButtonPrimary>
+          </Link>
+           
+          
+         
+            
           </S.ContainerLogin>
         </S.Container>
       </S.PageContainer>
+
+      
     </>
   );
 }

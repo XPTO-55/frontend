@@ -10,10 +10,15 @@ export function NavBar() {
         <Image src={logo} width="130.43px" height="60px" />
 
         <S.Ul>
-          <S.Li>Home</S.Li>
+          <Link href="/">
+            <S.Li>Home</S.Li>
+          </Link>
           <S.Li>Sobre</S.Li>
-         <Link href="/blog">
+          <Link href="/blog">
             <S.Li>Blog</S.Li>
+          </Link>
+          <Link href="/faq">
+            <S.Li>FAQ</S.Li>
           </Link>
           <S.Li>Contato</S.Li>
 

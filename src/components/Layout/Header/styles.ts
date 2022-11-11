@@ -22,6 +22,7 @@ export const Navbar = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 4rem;
 `
 
 export const Ul = styled.ul`

@@ -12,7 +12,9 @@ export function NavBar() {
         <S.Ul>
           <S.Li>Home</S.Li>
           <S.Li>Sobre</S.Li>
-          <S.Li>Blog</S.Li>
+         <Link href="/blog">
+            <S.Li>Blog</S.Li>
+          </Link>
           <S.Li>Contato</S.Li>
 
           <Link href="/auth">

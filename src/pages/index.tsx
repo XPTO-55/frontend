@@ -6,7 +6,8 @@ import { ButtonPrimary } from "../@shared/ButtonPrimary";
 export default function Home() {
   return (
 
-    <S.PageContainer>
+
+      <S.PageContainer>
       <NavBar />
       <S.Main>
         <S.ContainerTextoBanner>
@@ -193,5 +194,5 @@ export default function Home() {
         </S.ContainerFooter>
       </S.PageContainerFooter>
     </S.PageContainer>
-  );
+   );
 }

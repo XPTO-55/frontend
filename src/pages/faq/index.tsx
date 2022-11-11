@@ -1,20 +1,20 @@
 import React from "react";
 import * as S from "./styles";
-import { NavBar } from "../../components/Layout/NavBar";
+import { NavBar } from "../../components/Layout/Header";
 import { Input } from "../../components/Input";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import SimpleAccordion from "../../components/SimpleAccordion";
 
 export default function Faq() {
-  
+
   return (
     <>
       <S.PageContainer>
         <S.Container>
           <NavBar />
-          
-            <SimpleAccordion />
+
+          <SimpleAccordion />
         </S.Container>
         <S.Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path

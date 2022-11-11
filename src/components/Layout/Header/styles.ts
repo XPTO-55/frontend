@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export const Nav = styled.nav`
+export const Header = styled.header`
 width: 100%;
-  max-width: 1200px;
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
   z-index: 10;
 `;
 
@@ -16,8 +14,15 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  padding: 0 32px;
   justify-content: space-between;
 `;
+
+export const Navbar = styled.nav`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
 
 export const Ul = styled.ul`
   display: flex;

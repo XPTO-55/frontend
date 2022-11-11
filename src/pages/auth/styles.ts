@@ -49,4 +49,5 @@ export const ContainerLogin = styled.div`
 
 export const Img = styled.img`
   width: 130px;
+  cursor: pointer;
 `;

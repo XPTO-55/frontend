@@ -53,31 +53,31 @@ export const ModalCadastro = ({ closeModal }: any) => {
     if (userSelect == 0) {
       return (
         <S.Form>
-          <Input placeHolder="Nome Completo">
+          <Input placeholder="Nome Completo">
             <FiUser />
           </Input>
-          <Input placeHolder="Email">
+          <Input placeholder="Email">
             <TfiEmail />
           </Input>
-          <Input placeHolder="RG">
+          <Input placeholder="RG">
             <TiDocument />
           </Input>
-          <Input placeHolder="CPF">
+          <Input placeholder="CPF">
             <CgFileDocument />
           </Input>
-          <Input placeHolder="Data de nascimento">
+          <Input placeholder="Data de nascimento">
             <BsCalendarDate />
           </Input>
-          <Input placeHolder="Telefone fixo" >
+          <Input placeholder="Telefone fixo" >
             <BsTelephonePlus />
           </Input>
-          <Input placeHolder="Telefone Celular" >
+          <Input placeholder="Telefone Celular" >
             <FiSmartphone />
           </Input>
-          <Input placeHolder="CEP" >
+          <Input placeholder="CEP" >
             <HiOutlineMapPin />
           </Input>
-          <Input placeHolder="Endereço" >
+          <Input placeholder="Endereço" >
             <MdOutlineMapsHomeWork />
           </Input>
         </S.Form>
@@ -85,32 +85,32 @@ export const ModalCadastro = ({ closeModal }: any) => {
     } else {
       return (
         <S.Form>
-          <Input placeHolder="Nome Completo">
+          <Input placeholder="Nome Completo">
             <FiUser />
           </Input>
-          <Input placeHolder="Email" >
+          <Input placeholder="Email" >
             <TfiEmail />
           </Input>
-          <Input placeHolder="RG">
+          <Input placeholder="RG">
             <TiDocument />
           </Input>
-          <Input placeHolder="CPF">
+          <Input placeholder="CPF">
             <CgFileDocument /></Input>
           <Input
-            placeHolder="Data de nascimento"
+            placeholder="Data de nascimento"
           >
             <BsCalendarDate />
           </Input>
-          <Input placeHolder="Telefone fixo">
+          <Input placeholder="Telefone fixo">
             <BsTelephonePlus />
           </Input>
-          <Input placeHolder="Telefone Celular">
+          <Input placeholder="Telefone Celular">
             <FiSmartphone />
           </Input>
-          <Input placeHolder="CEP">
+          <Input placeholder="CEP">
             <HiOutlineMapPin />
           </Input>
-          <Input placeHolder="Endereço">
+          <Input placeholder="Endereço">
             <MdOutlineMapsHomeWork />
           </Input>
         </S.Form>

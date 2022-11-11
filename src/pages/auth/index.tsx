@@ -6,6 +6,7 @@ import { SlLock } from "react-icons/sl";
 import { ButtonPrimary } from "../../@shared/ButtonPrimary";
 import { ModalCadastro } from "../../components/Forms/ModalCadastro";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Auth() {
   const [modal, setModal] = useState(false);
@@ -21,10 +22,12 @@ export default function Auth() {
 
         <S.Container>
           <S.ContainerLogin>
+            <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
-            <Input placeHolder="Email">
+            </Link>
+            <Input placeholder="Email">
               <MdOutlineAlternateEmail /></Input>
-            <Input placeHolder="Senha" >
+            <Input placeholder="Senha" >
               <SlLock />
             </Input>
             <span>Esqueceu a senha?</span>

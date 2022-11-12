@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import { NavBar } from "../../components/Layout/Header";
+import { Header} from "../../components/Layout/Header";
 import { Input } from "../../components/Input";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
@@ -12,7 +12,7 @@ export default function Faq() {
     <>
       <S.PageContainer>
         <S.Container>
-          <NavBar />
+          <Header />
 
           <SimpleAccordion />
         </S.Container>
@@ -27,3 +27,4 @@ export default function Faq() {
     </>
   );
 }
+

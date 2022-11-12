@@ -25,9 +25,9 @@ export default function Auth() {
             <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
-            <Input placeholder="Email">
+            <Input type="email" placeholder="Email">
               <MdOutlineAlternateEmail /></Input>
-            <Input placeholder="Senha" >
+            <Input type="password" placeholder="Senha" >
               <SlLock />
             </Input>
             <span>Esqueceu a senha?</span>

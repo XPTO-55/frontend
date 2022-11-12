@@ -25,6 +25,9 @@ export function Header() {
           <Link href="/auth">
             <S.Button>Entrar</S.Button>
           </Link>
+          <Link href="/hotsite">
+            <S.Button>Arquivos</S.Button>
+          </Link>
         </S.Navbar>
       </S.Container>
     </S.Header>

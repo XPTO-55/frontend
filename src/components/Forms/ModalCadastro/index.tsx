@@ -8,7 +8,7 @@ import { FiUser, FiSmartphone } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
 import { BsCalendarDate } from "react-icons/bs";
 import { TiDocument } from "react-icons/ti";
-import { CgFileDocument } from "react-icons/cg";
+import { CgFileDocument, CgPassword } from "react-icons/cg";
 import { BsTelephonePlus } from "react-icons/bs";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
@@ -59,13 +59,16 @@ export const ModalCadastro = ({ closeModal }: any) => {
           <Input placeholder="Email">
             <TfiEmail />
           </Input>
+          <Input type="password" placeholder="Senha">
+            <CgPassword/>
+          </Input>
           <Input placeholder="RG">
             <TiDocument />
           </Input>
           <Input placeholder="CPF">
             <CgFileDocument />
           </Input>
-          <Input placeholder="Data de nascimento">
+          <Input type="date" placeholder="Data de nascimento">
             <BsCalendarDate />
           </Input>
           <Input placeholder="Telefone fixo" >
@@ -91,12 +94,15 @@ export const ModalCadastro = ({ closeModal }: any) => {
           <Input placeholder="Email" >
             <TfiEmail />
           </Input>
+          <Input type="password" placeholder="Senha">
+            <CgPassword/>
+          </Input>
           <Input placeholder="RG">
             <TiDocument />
           </Input>
           <Input placeholder="CPF">
             <CgFileDocument /></Input>
-          <Input
+          <Input type="date"
             placeholder="Data de nascimento"
           >
             <BsCalendarDate />
@@ -113,6 +119,7 @@ export const ModalCadastro = ({ closeModal }: any) => {
           <Input placeholder="Endereço">
             <MdOutlineMapsHomeWork />
           </Input>
+           
         </S.Form>
       );
     }

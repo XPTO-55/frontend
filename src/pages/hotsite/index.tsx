@@ -3,13 +3,12 @@ import { Input } from "../../components/Input";
 import * as S from "./styles";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
-
 import { ButtonPrimary } from "../../@shared/ButtonPrimary";
 import { ModalCadastro } from "../../components/Forms/ModalCadastro";
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Auth() {
+export default function HotSite() {
   const [modal, setModal] = useState(false);
 
   const openModal = () => {
@@ -42,6 +41,12 @@ export default function Auth() {
           <Link  href="/upload">
           <ButtonPrimary className="laranja" >
               UPLOADS
+            </ButtonPrimary>
+          </Link>
+
+          <Link  href="/">
+          <ButtonPrimary className="laranja" >
+              VOLTAR
             </ButtonPrimary>
           </Link>
            

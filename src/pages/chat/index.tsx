@@ -1,9 +1,9 @@
-import { Header } from "../../components/Layout/Header";
+import { ProfileBar } from "../../components/Layout/ProfileBar";
 
 export default function Chat() {
   return (
     <>
-      <Header />
+      <ProfileBar />
     </>
   )
 } 

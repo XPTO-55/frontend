@@ -1,6 +1,22 @@
+import { useState } from 'react'
 import * as S from './styles'
 
 export function ProfileBar() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  // let show = true;
+
+  // const menuSection = document.querySelector(".menu-section")
+  // const menuToggle = menuSection.querySelector(".menu-toggle")
+
+  // menuToggle.addEventListener("click", () => {
+
+  //   document.body.style.overflow = show ? "hidden" : "initial"
+
+  //   menuSection.classList.toggle("on", show)
+  //   show = !show;
+  // })
+
   return (
     <S.Container>
       <S.LogoContainer>
@@ -9,13 +25,34 @@ export function ProfileBar() {
       <S.UserInfo>
         <S.Username>maria Belmonte</S.Username>
         <S.ImageProfileContainer>
-          <S.ImageProfile src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" />
+          <S.ImageProfile src="/assets/img/profile.png" alt="" />
         </S.ImageProfileContainer>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        {/* menu-section */}
+        <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+          {/* menu-toggle */}
+          <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+            <div className="one"></div>
+            <div className="two"></div>
+            <div className="three"></div>
+          </S.Hamburguer>
+          {/* nav */}
+          <S.HamburguerMenu open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+            <ul>
+              <li>
+                Feed
+              </li>
+              <li>
+                Profissionais
+              </li>
+              <li>
+                FAQ
+              </li>
+              <li>
+                Sair
+              </li>
+            </ul>
+          </S.HamburguerMenu>
+        </S.HamburguerMenuContainer>
       </S.UserInfo>
     </S.Container>
   )

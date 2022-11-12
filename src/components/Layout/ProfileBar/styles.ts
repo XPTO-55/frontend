@@ -42,6 +42,7 @@ export const ImageProfileContainer = styled.div`
   height: 56px;
   object-fit: cover;
   border-radius: 50%;
+  background-color: #f6f6f6;
 `
 
 export const ImageProfile = styled.img`
@@ -50,3 +51,111 @@ export const ImageProfile = styled.img`
   object-fit: cover;
   border-radius: 50%;
 `
+
+interface HamburguerMenuContainerrops {
+  open: boolean
+}
+
+export const HamburguerMenuContainer = styled.div<HamburguerMenuContainerrops>`
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+    /* top: 25px;
+    left: 15px; */
+
+  // width: 100vw;
+  // height: 100vh;
+  // display: flex;
+  // justify - content: center;
+  // align - items: center;
+
+
+    /* fullscreen */
+
+    /* .menu - section.on.menu - toggle {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
+
+    .menu - section.on.menu-toggle.one {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+    .menu - section.on.menu - toggle.two {
+  opacity: 0;
+}
+
+    .menu - section.on.menu - toggle.three {
+  transform: rotate(-45deg) translate(8px, -9px);
+}
+
+    .menu - section.on nav ul {
+  text - align: center;
+  display: block;
+}
+
+    .menu - section.on nav ul a{
+  transition - duration: 0.5s;
+  font - size: 3rem;
+  line - height: 4rem;
+  display: block; */
+`
+
+export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
+width: 40px;
+height: 4px;
+
+  .one,
+  .two,
+  .three {
+    background-color: #fff;
+    height: 5px;
+    width: 100%;
+    margin: 6px auto;
+
+    transition-duration: 0.3s;
+  }
+  .one {
+    transform: ${props => props.open ? 'rotate(45deg) translate(7px, 7px);' : null}; 
+  }
+
+  .two {
+    opacity: ${props => props.open ? 0 : 1};
+  }
+
+  .three {
+    transform: ${props => props.open ? 'rotate(-45deg) translate(8px, -9px);' : null}; 
+
+  }
+
+`
+
+export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
+  display: ${props => props.open ? 'block' : 'none'};
+  z-index: 10;
+  background-color: #2A8DD2;
+  position: ${props => props.open ? 'absolute' : 'static'};
+  right: 32px;
+  top: ${props => props.open ? '80px' : 0};
+  border-radius: 0 0 7px 7px;
+
+  ul {
+    width: 200px;
+    li {
+      padding: .75rem 1rem;
+      display: flex;
+      justify-content: center;
+      a {
+        transition-duration:0.5s;
+        font-size:3rem;
+        line-height:4rem;
+        display: block;
+      }
+    }
+  }
+`
+
+

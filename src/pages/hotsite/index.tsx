@@ -45,7 +45,7 @@ export default function HotSite() {
           </Link>
 
           <Link  href="/">
-          <ButtonPrimary className="laranja" >
+          <ButtonPrimary className="azul" >
               VOLTAR
             </ButtonPrimary>
           </Link>

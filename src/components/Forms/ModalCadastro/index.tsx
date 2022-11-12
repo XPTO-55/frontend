@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./styles";
 import { Input } from "../../Input";
-import { MdOutlineAlternateEmail } from "react-icons/md";
+import { MdEmail, MdOutlineAlternateEmail } from "react-icons/md";
 import { ButtonPrimary } from "../../../@shared/ButtonPrimary";
 import { SlLock } from "react-icons/sl";
 import { FiUser, FiSmartphone } from "react-icons/fi";
@@ -53,10 +53,10 @@ export const ModalCadastro = ({ closeModal }: any) => {
     if (userSelect == 0) {
       return (
         <S.Form>
-          <Input placeholder="Nome Completo">
+          <Input type="text" placeholder="Nome Completo">
             <FiUser />
           </Input>
-          <Input placeholder="Email">
+          <Input type="email" placeholder="Email">
             <TfiEmail />
           </Input>
           <Input type="password" placeholder="Senha">
@@ -88,10 +88,10 @@ export const ModalCadastro = ({ closeModal }: any) => {
     } else {
       return (
         <S.Form>
-          <Input placeholder="Nome Completo">
+          <Input type="text" placeholder="Nome Completo">
             <FiUser />
           </Input>
-          <Input placeholder="Email" >
+          <Input type="email" placeholder="Email" >
             <TfiEmail />
           </Input>
           <Input type="password" placeholder="Senha">
@@ -153,6 +153,7 @@ export const ModalCadastro = ({ closeModal }: any) => {
           >
             Cadastrar
           </ButtonPrimary>
+        
           <ButtonPrimary
             className="laranja"
             tamanho="151px"

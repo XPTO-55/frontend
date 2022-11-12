@@ -34,8 +34,8 @@ export default function Upload() {
               </div>
             </form>
 
-            <Link  href="/">
-          <ButtonPrimary className="laranja" >
+            <Link  href="/hotsite">
+          <ButtonPrimary className="azul" >
               VOLTAR
             </ButtonPrimary>
           </Link>

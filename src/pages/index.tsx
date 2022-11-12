@@ -1,14 +1,14 @@
 import * as S from "./styles";
 import { Profissionais } from "../components/Profissionais";
 import { Parceiros } from "../components/Parceiros";
-import { NavBar } from "../components/Layout/NavBar";
+import { Header } from "../components/Layout/Header";
 import { ButtonPrimary } from "../@shared/ButtonPrimary";
 export default function Home() {
   return (
 
 
-      <S.PageContainer>
-      <NavBar />
+    <S.PageContainer>
+      <Header />
       <S.Main>
         <S.ContainerTextoBanner>
           <S.TextoMain>
@@ -194,5 +194,5 @@ export default function Home() {
         </S.ContainerFooter>
       </S.PageContainerFooter>
     </S.PageContainer>
-   );
+  );
 }

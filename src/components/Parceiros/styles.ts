@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const PageContainer = styled.div`
   width: 100%;
-  max-width: 1600px;
   height: 400px;
   display: flex;
   justify-content: center;
@@ -20,7 +19,6 @@ export const PageContainer = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1200px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -30,6 +28,8 @@ export const Container = styled.div`
 
 export const ContainerNavigator = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 100vw;
 `;
 

@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export const Nav = styled.nav`
+export const Header = styled.header`
 width: 100%;
-  max-width: 1200px;
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
-  justify-content: center;
   z-index: 10;
 `;
 
@@ -16,20 +14,27 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  padding: 0 32px;
   justify-content: space-between;
 `;
+
+export const Navbar = styled.nav`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+`
 
 export const Ul = styled.ul`
   display: flex;
   align-items: center;
+  gap: 5rem;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 500;
 `;
 
 export const Li = styled.li`
-  margin-left: 90px;
-
   &:hover {
     color: #2a8dd2;
     cursor: pointer;
@@ -39,13 +44,12 @@ export const Li = styled.li`
 
 export const Button = styled.button`
   width: 120px;
-  height: 50px;
+  height: 46px;
   background: #2a8dd2;
   color: white;
   border: none;
   border-radius: 7px;
-  margin-left: 60px;
-  font-size: 17px;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
 

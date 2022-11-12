@@ -62,46 +62,6 @@ export const HamburguerMenuContainer = styled.div<HamburguerMenuContainerrops>`
     align-items: center;
     padding: 4px;
     cursor: pointer;
-    /* top: 25px;
-    left: 15px; */
-
-  // width: 100vw;
-  // height: 100vh;
-  // display: flex;
-  // justify - content: center;
-  // align - items: center;
-
-
-    /* fullscreen */
-
-    /* .menu - section.on.menu - toggle {
-  position: absolute;
-  right: 25px;
-  top: 15px;
-}
-
-    .menu - section.on.menu-toggle.one {
-  transform: rotate(45deg) translate(7px, 7px);
-}
-
-    .menu - section.on.menu - toggle.two {
-  opacity: 0;
-}
-
-    .menu - section.on.menu - toggle.three {
-  transform: rotate(-45deg) translate(8px, -9px);
-}
-
-    .menu - section.on nav ul {
-  text - align: center;
-  display: block;
-}
-
-    .menu - section.on nav ul a{
-  transition - duration: 0.5s;
-  font - size: 3rem;
-  line - height: 4rem;
-  display: block; */
 `
 
 export const Hamburguer = styled.div<HamburguerMenuContainerrops>`

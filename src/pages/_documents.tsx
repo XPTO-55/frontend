@@ -23,8 +23,10 @@ class MyDocument extends Document {
             name="keywords"
             content="autismo"
           />
-          <link rel="shortcut" href="/public/favicon.ico" />
+          <link rel="shortcut" href="/assets/img/logoSemTexto.png" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="icon" type="image/x-icon" href="/assets/img/logoSemTexto.png" />
+
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"

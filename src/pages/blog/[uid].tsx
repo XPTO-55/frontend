@@ -4,15 +4,13 @@ import * as prismicH from "@prismicio/helpers";
 
 import { createClient, linkResolver } from "../../../prismicio";
 import { components } from "../../../slices";
-import { Layout } from "../../components/blog/Layout";
 
-const Page = ({ page, navigation, settings }) => {
+const Page = ({ page }) => {
   return (
     <>
       <Head>
         <title>
           {prismicH.asText(page.data.title)} |{" "}
-          {prismicH.asText(settings.data.name)}
         </title>
       </Head>
       <SliceZone slices={page.data.slices} components={components} />
@@ -23,14 +21,12 @@ const Page = ({ page, navigation, settings }) => {
 export default Page;
 
 export async function getStaticProps({ params, previewData }) {
+  // @ts-ignore
   const client = createClient({ previewData });
 
   const page = await client.getByUID("page", params.uid);
 
-
-
   return {
-
     props: {
       page
     },

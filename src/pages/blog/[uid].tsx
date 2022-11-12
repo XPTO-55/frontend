@@ -8,7 +8,7 @@ import { Layout } from "../../components/blog/Layout";
 
 const Page = ({ page, navigation, settings }) => {
   return (
-   <>
+    <>
       <Head>
         <title>
           {prismicH.asText(page.data.title)} |{" "}
@@ -16,7 +16,7 @@ const Page = ({ page, navigation, settings }) => {
         </title>
       </Head>
       <SliceZone slices={page.data.slices} components={components} />
-      </>
+    </>
   );
 };
 
@@ -26,9 +26,11 @@ export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
   const page = await client.getByUID("page", params.uid);
- 
+
+
 
   return {
+
     props: {
       page
     },

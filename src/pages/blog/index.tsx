@@ -2,7 +2,7 @@ import Head from "next/head";
 import { PrismicLink, PrismicText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import * as prismicH from "@prismicio/helpers";
-
+import * as S from "./styles";
 import { createClient } from "../../../prismicio";
 import { Layout } from "../../components/blog/Layout";
 import { Bounded } from "../../components/blog/Bounded";
@@ -47,11 +47,10 @@ const Article = ({ article }) => {
   );
   const excerpt = getExcerpt(article.data.slices);
 
-  console.log(article);
   return (
-    <li className="grid grid-cols-1 items-start gap-6 md:grid-cols-3 md:gap-8">
+    <S.listItemStyled>
       <PrismicLink document={article} tabIndex="-1">
-        <div className="aspect-w-4 aspect-h-3 relative bg-gray-100">
+        <S.Div2>
           {prismicH.isFilled.image(featuredImage) && (
             <PrismicNextImage
               field={featuredImage}
@@ -59,40 +58,40 @@ const Article = ({ article }) => {
               className="object-cover"
             />
           )}
-        </div>
+        </S.Div2>
       </PrismicLink>
-      <div className="grid grid-cols-1 gap-3 md:col-span-2">
+      <S.Div1>
         <Heading as="h2">
           <PrismicLink document={article}>
             <PrismicText field={article.data.title} />
 
           </PrismicLink>
         </Heading>
-        
-        <p className="font-serif italic tracking-tighter text-slate-500">
+
+        <S.Paragrafo>
           {dateFormatter.format(date)}
-        </p>
+        </S.Paragrafo>
         {excerpt && (
-          <p className="font-serif leading-relaxed md:text-lg md:leading-relaxed">
+          <S.Paragrafo2>
             {excerpt}
-          </p>
+          </S.Paragrafo2>
         )}
-      </div>
-    </li>
+      </S.Div1>
+    </S.listItemStyled>
   );
 };
 
-const Index = ({ articles}) => {
+const Index = ({ articles }) => {
   return (
-  <>
+    <>
       <Bounded size="widest">
-        <ul className="grid grid-cols-1 gap-16">
+        <S.ListaNaoOrdenada>
           {articles.map((article) => (
             <Article key={article.id} article={article} />
           ))}
-        </ul>
+        </S.ListaNaoOrdenada>
       </Bounded>
-      </>
+    </>
   );
 };
 
@@ -107,7 +106,7 @@ export async function getStaticProps({ previewData }) {
       { field: "document.first_publication_date", direction: "desc" },
     ],
   });
-  
+
 
   return {
     props: {

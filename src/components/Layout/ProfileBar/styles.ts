@@ -99,7 +99,7 @@ export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
   background-color: #2A8DD2;
   position: ${props => props.open ? 'absolute' : 'static'};
   right: 32px;
-  top: ${props => props.open ? '80px' : 0};
+  top: ${props => props.open ? '12vh' : 0};
   border-radius: 0 0 7px 7px;
 
   ul {

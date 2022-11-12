@@ -10,7 +10,7 @@ export function ProfileBar() {
         <S.Logo src={"/assets/img/logoSemTexto.png"} alt="" />
       </S.LogoContainer>
       <S.UserInfo>
-        <S.Username>maria Belmonte</S.Username>
+        <S.Username>nazaré tedesco</S.Username>
         <S.ImageProfileContainer>
           <S.ImageProfile src="/assets/img/profile.png" alt="" />
         </S.ImageProfileContainer>

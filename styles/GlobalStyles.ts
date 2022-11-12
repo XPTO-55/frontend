@@ -24,6 +24,7 @@ export default createGlobalStyle`
 	body{
 		background-color: #F0F2F2;
 		font-family: 'Montserrat', sans-serif;
+		color: #121212;
 	}
 	/* HTML5 display-role reset for older browsers */
 	article, aside, details, figcaption, figure, 

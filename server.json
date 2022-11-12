@@ -1,0 +1,118 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Encontro de mães",
+      "startDate": "09:00 AM",
+      "endDate": "10:00 AM",
+      "status": "confirmed"
+    },
+    {
+      "id": 2,
+      "name": "Clube do livro",
+      "startDate": "09:00 AM",
+      "endDate": "10:00 AM",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "name": "Piquenique",
+      "startDate": "09:00 AM",
+      "endDate": "10:00 AM",
+      "status": "canceled"
+    }
+  ],
+  "users": [
+    {
+      "eventId": 1,
+      "id": 1,
+      "name": "Filena Mazolim",
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 2,
+      "eventId": 2,
+      "name": "Jeo Lonas",
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 3,
+      "eventId": 1,
+      "name": "Cristian",
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 1,
+      "eventId": 3,
+      "name": "Fukas Leitosa",
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    }
+  ],
+  "forums": [
+    {
+      "id": 1,
+      "eventId": 1,
+      "name": "Mães de SP",
+      "members": 15,
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 2,
+      "eventId": 1,
+      "name": "Terapia Animal",
+      "members": 30,
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 3,
+      "eventId": 2,
+      "name": "Psiquiatria",
+      "members": 10,
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 4,
+      "eventId": 3,
+      "name": "Testando",
+      "members": 50,
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    },
+    {
+      "id": 5,
+      "eventId": 3,
+      "name": "Testando",
+      "members": 52,
+      "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "text": "Oiiiiiii",
+      "senderName": "Lucas Alves",
+      "forumId": 1,
+      "replyes": [
+        {
+          "id": 2,
+          "text": "Oláaaaaa",
+          "senderName": "Karina Garcia",
+          "replyes": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "forumId": 2,
+      "text": "Bom diaaaaaaaa",
+      "senderName": "Milena Fazolim",
+      "replyes": [
+        {
+          "id": 4,
+          "text": "Bom diaaaaaaaaaaaaaaaa",
+          "senderName": "Leo Jonas",
+          "replyes": []
+        }
+      ]
+    }
+  ]
+}

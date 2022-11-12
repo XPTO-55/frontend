@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "npx json-server --port 3333 --watch server.json"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
@@ -27,7 +28,8 @@
     "@prismicio/helpers": "^2.3.5",
     "@prismicio/next": "^0.1.7",
     "@prismicio/react": "^2.5.0",
-    "@prismicio/slice-simulator-react": "^0.2.2"
+    "@prismicio/slice-simulator-react": "^0.2.2",
+    "react-query": "^3.39.2"
   },
   "devDependencies": {
     "@types/node": "^18.8.3",

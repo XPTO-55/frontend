@@ -5,16 +5,18 @@ import { linkResolver } from "../../prismicio";
 import GlobalStyles from "../../styles/GlobalStyles";
 import '../../styles/styles.css'
 import { Heading } from "../components/blog/Heading";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   const NextLinkShim = ({ href, children, locale, ...props }) => {
     return (
-      <Link  href={href} locale={locale}>
+      <Link href={href} locale={locale}>
         <a {...props}>{children}</a>
       </Link>
     );
   };
-  
+
   const richTextComponents = {
     heading1: ({ children }) => (
       <Heading as="h2" size="3xl" className="mb-7 mt-12 first:mt-0 last:mb-0">
@@ -62,15 +64,15 @@ function MyApp({ Component, pageProps }) {
     ),
   };
   return (
-    <>
-     <PrismicProvider
-      linkResolver={linkResolver}
-      internalLinkComponent={NextLinkShim}
-      richTextComponents={richTextComponents}>
-      <GlobalStyles />
-      <Component {...pageProps} />
+    <QueryClientProvider client={queryClient}>
+      <PrismicProvider
+        linkResolver={linkResolver}
+        internalLinkComponent={NextLinkShim}
+        richTextComponents={richTextComponents}>
+        <GlobalStyles />
+        <Component {...pageProps} />
       </PrismicProvider>
-    </>
+    </QueryClientProvider>
   );
 }
 

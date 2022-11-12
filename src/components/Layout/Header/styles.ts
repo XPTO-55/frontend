@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const Header = styled.header`
-width: 100%;
-  height: 80px;
+  width: 100%;
+  height: 12vh;
   display: flex;
   align-items: center;
   z-index: 10;

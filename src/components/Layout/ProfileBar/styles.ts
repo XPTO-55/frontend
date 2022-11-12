@@ -12,8 +12,8 @@ export const Container = styled.header`
 `
 
 export const LogoContainer = styled.div`
-  height: 56px;
-  width: 140;
+  height: 48px;
+  width: 48;
   border-radius: .5rem;
 `
 

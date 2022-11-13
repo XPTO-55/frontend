@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { PrismicLink, PrismicText, SliceZone } from "@prismicio/react";
+import { PrismicText, SliceZone } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
-import * as S from"./styles";
+import * as S from "./styles";
 import { createClient, linkResolver } from "../../../../prismicio";
 import { components } from "../../../../slices";
-import { Layout } from "../../../components/blog/Layout";
 import { Bounded } from "../../../components/blog/Bounded";
 import { Heading } from "../../../components/blog/Heading";
 import { HorizontalDivider } from "../../../components/blog/HorizontalDivider";
+import { Header } from "../../../components/Layout/Header";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -22,14 +22,12 @@ const LatestArticle = ({ article }) => {
 
   return (
     <li>
-      <S.ArticleTitle>
-        <S.PrismicLinkStyled document={article}>
+      <S.PrismicLinkStyled document={article}>
+        <S.ArticleTitle>
           <PrismicText field={article.data.title} />
-        </S.PrismicLinkStyled>
         </S.ArticleTitle>
+      </S.PrismicLinkStyled>
       <S.Paragrafo>{dateFormatter.format(date)}</S.Paragrafo>
-
-      
     </li>
   );
 };
@@ -40,22 +38,25 @@ const Article = ({ article, latestArticles }) => {
   );
 
   return (
-   <>
+    <>
+      <Header />
       <Head>
         <title>
-          {prismicH.asText(article.data.title)} 
+          {prismicH.asText(article.data.title)}
         </title>
       </Head>
-      <Bounded>
-        <S.PrismicLinkStyled href="/">
-          &larr; Back to articles
-        </S.PrismicLinkStyled>
+      <Bounded asChild>
+        <S.Backlink>
+          <S.PrismicLinkStyled href="/blog">
+            &larr; Back to articles
+          </S.PrismicLinkStyled>
+        </S.Backlink>
       </Bounded>
       <article>
-        <Bounded className="pb-0">
-         <S.ArticleTitle>
+        <Bounded asChild style={{ paddingBottom: 0 }}>
+          <S.ArticleTitle>
             <PrismicText field={article.data.title} />
-            </S.ArticleTitle>
+          </S.ArticleTitle>
           <S.Paragrafo>
             {dateFormatter.format(date)}
           </S.Paragrafo>
@@ -63,11 +64,11 @@ const Article = ({ article, latestArticles }) => {
         <SliceZone slices={article.data.slices} components={components} />
       </article>
       {latestArticles.length > 0 && (
-        <Bounded>
-           <S.Conteiner>
+        <Bounded asChild>
+          <S.Conteiner>
             <HorizontalDivider />
             <S.DivConteinerImg>
-              <Heading size="2xl" className="mb-10">
+              <Heading size="2xl" style={{ marginBottom: '5rem' }} >
                 Latest articles
               </Heading>
               <S.ListaNaoOrdenada>
@@ -75,18 +76,19 @@ const Article = ({ article, latestArticles }) => {
                   <LatestArticle key={article.id} article={article} />
                 ))}
               </S.ListaNaoOrdenada>
-              </S.DivConteinerImg>
-            </S.Conteiner>
-         
+            </S.DivConteinerImg>
+          </S.Conteiner>
+
         </Bounded>
       )}
-  </>
+    </>
   );
 };
 
 export default Article;
 
 export async function getStaticProps({ params, previewData }) {
+  // @ts-ignore
   const client = createClient({ previewData });
 
   const article = await client.getByUID("article", params.uid);
@@ -97,7 +99,7 @@ export async function getStaticProps({ params, previewData }) {
       { field: "document.first_publication_date", direction: "desc" },
     ],
   });
-  
+
 
   return {
     props: {

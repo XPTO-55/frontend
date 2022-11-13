@@ -16,6 +16,7 @@ export const Button = styled.button`
   z-index: 2;
   transition: all 0.3s;
   border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   &:hover {
     background-color: #2a8dd2;

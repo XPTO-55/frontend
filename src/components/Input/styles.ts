@@ -10,6 +10,10 @@ export const Input = styled.input`
   padding-left: 10px;
   background-color: #F9F9F9;
 
+  &.cadastro{
+    width: 330px;
+  }
+
 `;
 
 export const Icon = styled.div`

@@ -6,9 +6,10 @@ export function ButtonPrimary({
   className,
   tamanho,
   onClick,
+  ...props
 }: ButtonPrimaryProps) {
   return (
-    <Button className={className} width={tamanho} onClick={onClick}>
+    <Button {...props} className={className} width={tamanho} onClick={onClick}>
       {children}
     </Button>
   );

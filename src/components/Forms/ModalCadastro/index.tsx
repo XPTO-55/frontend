@@ -12,6 +12,7 @@ import { CgFileDocument, CgPassword } from "react-icons/cg";
 import { BsTelephonePlus } from "react-icons/bs";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 export const ModalCadastro = ({ closeModal }: any) => {
   const [userSelect, setUserSelect] = useState(0);
 
@@ -53,73 +54,67 @@ export const ModalCadastro = ({ closeModal }: any) => {
     if (userSelect == 0) {
       return (
         <S.Form>
-          <Input type="text" placeholder="Nome Completo">
+          <Input type="text" placeholder="Nome Completo" width="cadastro">
             <FiUser />
           </Input>
-          <Input type="email" placeholder="Email">
+          <Input type="email" placeholder="Email" width="cadastro">
             <TfiEmail />
           </Input>
-          <Input type="password" placeholder="Senha">
-            <CgPassword/>
-          </Input>
-          <Input placeholder="RG">
+
+          <Input placeholder="RG" width="cadastro">
             <TiDocument />
           </Input>
-          <Input placeholder="CPF">
+          <Input placeholder="CPF" width="cadastro">
             <CgFileDocument />
           </Input>
-          <Input type="date" placeholder="Data de nascimento">
+          <Input type="date" placeholder="Data de nascimento" width="cadastro">
             <BsCalendarDate />
           </Input>
-          <Input placeholder="Telefone fixo" >
+          <Input placeholder="Telefone fixo" width="cadastro">
             <BsTelephonePlus />
           </Input>
-          <Input placeholder="Telefone Celular" >
+          <Input placeholder="Telefone Celular" width="cadastro">
             <FiSmartphone />
           </Input>
-          <Input placeholder="CEP" >
-            <HiOutlineMapPin />
+          <Input type="password" placeholder="Senha" width="cadastro">
+            <RiLockPasswordLine />
           </Input>
-          <Input placeholder="Endereço" >
-            <MdOutlineMapsHomeWork />
+          <Input type="password" placeholder="Confirmar senha" width="cadastro">
+            <CgPassword />
           </Input>
         </S.Form>
       );
     } else {
       return (
         <S.Form>
-          <Input type="text" placeholder="Nome Completo">
+          <Input type="text" placeholder="Nome Completo" width="cadastro">
             <FiUser />
           </Input>
-          <Input type="email" placeholder="Email" >
+          <Input type="email" placeholder="Email" width="cadastro">
             <TfiEmail />
           </Input>
-          <Input type="password" placeholder="Senha">
-            <CgPassword/>
-          </Input>
-          <Input placeholder="RG">
+
+          <Input placeholder="RG" width="cadastro">
             <TiDocument />
           </Input>
-          <Input placeholder="CPF">
-            <CgFileDocument /></Input>
-          <Input type="date"
-            placeholder="Data de nascimento"
-          >
+          <Input placeholder="CPF" width="cadastro">
+            <CgFileDocument />
+          </Input>
+          <Input type="date" placeholder="Data de nascimento" width="cadastro">
             <BsCalendarDate />
           </Input>
-          <Input placeholder="Telefone fixo">
+          <Input placeholder="Telefone fixo" width="cadastro">
             <BsTelephonePlus />
           </Input>
-          <Input placeholder="Telefone Celular">
+          <Input placeholder="Telefone Celular" width="cadastro">
             <FiSmartphone />
           </Input>
-          <Input placeholder="CEP">
-            <HiOutlineMapPin />
+          <Input type="password" placeholder="Senha" width="cadastro">
+            <RiLockPasswordLine />
           </Input>
-          <Input placeholder="Endereço">
-            <MdOutlineMapsHomeWork />
+          <Input type="password" placeholder="Confirmar senha" width="cadastro">
+            <CgPassword />
           </Input>
-           
         </S.Form>
       );
     }
@@ -147,13 +142,10 @@ export const ModalCadastro = ({ closeModal }: any) => {
         {formSelected()}
 
         <S.ContainerBtn className="bottom">
-          <ButtonPrimary
-            className="azul"
-            tamanho="151px"
-          >
+          <ButtonPrimary className="azul" tamanho="151px">
             Cadastrar
           </ButtonPrimary>
-        
+
           <ButtonPrimary
             className="laranja"
             tamanho="151px"

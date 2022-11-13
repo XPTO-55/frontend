@@ -26,6 +26,8 @@ export const ModalCadastro = ({ closeModal }: any) => {
     setUserSelect(1);
   };
 
+  //leo
+
   const userSelected = () => {
     if (userSelect == 0) {
       return (

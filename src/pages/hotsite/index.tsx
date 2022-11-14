@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "../../components/Input";
 import * as S from "./styles";
+import { Header } from "../../components/Layout/Header";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
 import { ButtonPrimary } from "../../@shared/ButtonPrimary";
@@ -17,7 +18,7 @@ export default function HotSite() {
 
   return (
     <>
-      
+      <Header />
       <S.PageContainer>
         {modal ? <ModalCadastro closeModal={openModal} /> : ""}
 
@@ -30,26 +31,20 @@ export default function HotSite() {
             Faça aqui mesmo seus downloads e uploads sempre que precisar. 
             </p>
             
-            <ButtonPrimary className="laranja" >
+            <ButtonPrimary className="azul" >
               DOWNLOAD CSV 
             </ButtonPrimary>
 
-            <ButtonPrimary className="laranja" >
+            <ButtonPrimary className="azul" >
               DOWNLOAD TXT 
             </ButtonPrimary>
            
           <Link  href="/upload">
-          <ButtonPrimary className="laranja" >
+          <ButtonPrimary className="azul" >
               UPLOADS
             </ButtonPrimary>
           </Link>
 
-          <Link  href="/">
-          <ButtonPrimary className="azul" >
-              VOLTAR
-            </ButtonPrimary>
-          </Link>
-           
           
          
             

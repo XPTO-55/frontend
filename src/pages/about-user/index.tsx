@@ -8,7 +8,6 @@ export default function AboutUser() {
   return (
     <>
       <ProfileBar />
-
       <S.PageContainer>
         <S.Container>
           <S.ContentUp>
@@ -43,7 +42,7 @@ export default function AboutUser() {
               Posuere eget dignissim nec, efficitur sit amet risus. Aenean
               laoreet laoreet sagittis. Cras pharetra ante lectus, vel interdum
               felis ultrices sed. Aliquam sed metus nec eros porta mattis. Cras
-              euismod velit quis metus cursus accumsan. Nulla sit amet semper
+              euismod velit quis metus accumsan. Nulla sit amet semper
               orci. Phasellus eu cursus risus.
             </p>
           </S.ContentDown>

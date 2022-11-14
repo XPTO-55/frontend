@@ -37,6 +37,7 @@ export const ContentUp = styled.div`
   h1 {
     font-size: 32px;
     font-weight: bold;
+
   }
 
   h2 {
@@ -83,6 +84,7 @@ export const ContentDown = styled.div`
     padding-left: 20px;
     padding-top: 20px;
     font-size: 20px;
+    
     overflow: hidden;
   }
 `;

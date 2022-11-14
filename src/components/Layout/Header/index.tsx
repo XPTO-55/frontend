@@ -1,9 +1,10 @@
-import * as S from "./styles";
-import Image from "next/image";
-import logo from "../../../../public/assets/img/logoCPA.png";
-import Link from "next/link";
+import React from 'react'
+import * as S from './styles'
+import Image from 'next/image'
+import logo from '../../../../public/assets/img/logoCPA.png'
+import Link from 'next/link'
 
-export function Header() {
+export function Header () {
   return (
     <S.Header>
       <S.Container>
@@ -31,5 +32,5 @@ export function Header() {
         </S.Navbar>
       </S.Container>
     </S.Header>
-  );
+  )
 }

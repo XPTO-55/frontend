@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   overflow: hidden;
-`;
+`
 
 export const Container = styled.div`
   width: 100%;
@@ -17,7 +17,7 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-`;
+`
 
 export const ContainerContent = styled.div`
 width: 100%;

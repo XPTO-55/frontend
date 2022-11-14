@@ -1,12 +1,12 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import React from "react";
+import Document, { Html, Head } from 'next/document'
+import React from 'react'
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+  static async getInitialProps (ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
   }
 
-  render() {
+  render () {
     return (
       <Html lang="pt-br">
         <Head>
@@ -39,8 +39,8 @@ class MyDocument extends Document {
         </Head>
         <body></body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 interface ButtonProps {
-  width?: string;
+  width?: string
 }
 
 export const Button = styled.button`
-  width: ${(props: ButtonProps) => (props.width ? props.width : "254px")};
+  width: ${(props: ButtonProps) => (props.width ? props.width : '254px')};
   height: 50px;
   background-color: rgba(7, 7, 7, 0);
   border: 1px solid #2a8dd2;
@@ -40,4 +40,4 @@ export const Button = styled.button`
   &.azul:hover {
     background-color: #17649a;
   }
-`;
+`

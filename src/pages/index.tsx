@@ -1,11 +1,11 @@
-import * as S from "./styles";
-import { Profissionais } from "../components/Profissionais";
-import { Parceiros } from "../components/Parceiros";
-import { Header } from "../components/Layout/Header";
-import { ButtonPrimary } from "../@shared/ButtonPrimary";
-export default function Home() {
+import React from 'react'
+import * as S from './styles'
+import { Profissionais } from '../components/Profissionais'
+import { Parceiros } from '../components/Parceiros'
+import { Header } from '../components/Layout/Header'
+import { ButtonPrimary } from '../@shared/ButtonPrimary'
+export default function Home () {
   return (
-
 
     <S.PageContainer>
       <Header />
@@ -115,7 +115,7 @@ export default function Home() {
             <h1>Sobre nós</h1>
             <h2>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.{" "}
+              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.{' '}
               <br />
               <br />
               Vulputate ullamcorper augue praesent integer. Nunc volutpat
@@ -194,5 +194,5 @@ export default function Home() {
         </S.ContainerFooter>
       </S.PageContainerFooter>
     </S.PageContainer>
-  );
+  )
 }

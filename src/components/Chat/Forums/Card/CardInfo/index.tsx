@@ -6,7 +6,7 @@ interface InfoProps {
   data: IForum
 }
 
-function Info({ data }: InfoProps) {
+function Info ({ data }: InfoProps) {
   return (
     <S.Container>
       <S.ImageContainer >

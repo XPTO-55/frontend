@@ -1,17 +1,18 @@
-import styled from 'styled-components';
-import { Slot } from '@radix-ui/react-slot';
+import React from 'react'
+import styled from 'styled-components'
+import { Slot } from '@radix-ui/react-slot'
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  asChild?: boolean;
-  size?: "4xl" | "3xl" | "2xl" | "xl";
+  asChild?: boolean
+  size?: '4xl' | '3xl' | '2xl' | 'xl'
 }
 export const Heading = ({
-  size = "4xl",
+  size = '4xl',
   children,
   asChild = false,
   ...props
 }: HeadingProps) => {
-  const Comp = asChild ? Slot : 'h1';
+  const Comp = asChild ? Slot : 'h1'
 
   return (
     <HeadingStyled size={size} >
@@ -19,11 +20,11 @@ export const Heading = ({
         {children}
       </Comp>
     </HeadingStyled>
-  );
-};
+  )
+}
 
 interface HeadingStyledProps {
-  size: "4xl" | "3xl" | "2xl" | "xl";
+  size: '4xl' | '3xl' | '2xl' | 'xl'
 }
 
 const HeadingStyled = styled.div<HeadingStyledProps>`  
@@ -33,21 +34,21 @@ const HeadingStyled = styled.div<HeadingStyledProps>`
 
     font-size: ${({ size }) => {
     if (['4xl', '3xl'].includes(size)) {
-      return "1.875rem"
+      return '1.875rem'
     } else if (size === '2xl') {
-      return "1.5rem"
+      return '1.5rem'
     } else {
-      return "1.25rem"
+      return '1.25rem'
     }
   }};
 
     line-height: ${({ size }) => {
     if (['4xl', '3xl'].includes(size)) {
-      return "2.25rem"
+      return '2.25rem'
     } else if (size === '2xl') {
-      return "2rem"
+      return '2rem'
     } else {
-      return "1.75rem"
+      return '1.75rem'
     }
   }};
   

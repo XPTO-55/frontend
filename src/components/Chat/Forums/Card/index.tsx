@@ -7,7 +7,7 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   data: IForum
 }
 
-function Card({ data, ...props }: CardProps) {
+function Card ({ data, ...props }: CardProps) {
   return (
     <S.Container {...props}>
       <CardInfo data={data} />

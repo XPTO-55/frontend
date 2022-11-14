@@ -1,5 +1,4 @@
-import { Container } from './auth/styles';
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -9,7 +8,7 @@ export const PageContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-`;
+`
 
 export const Main = styled.div`
   width: 100vw;
@@ -35,13 +34,13 @@ export const Main = styled.div`
       display: none;
     }
   }
-`;
+`
 
 export const Svg = styled.svg`
   margin-top: -100px;
   max-width: 1600px;
   z-index: 1;
-`;
+`
 
 export const ContainerTextoBanner = styled.div`
   width: 50%;
@@ -51,7 +50,7 @@ export const ContainerTextoBanner = styled.div`
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 export const TextoMain = styled.div`
   width: 550px;
@@ -70,8 +69,7 @@ export const TextoMain = styled.div`
     margin-bottom: 20px;
     font-size: 19px;
   }
-`;
-
+`
 
 export const Section = styled.section`
   width: 100%;
@@ -83,7 +81,7 @@ export const Section = styled.section`
     background-color: #2a8dd2;
     height: 500px;
   }
-`;
+`
 
 export const ContainerMvv = styled.div`
   width: 100%;
@@ -92,7 +90,7 @@ export const ContainerMvv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 export const CardMvv = styled.div`
   width: 380px;
@@ -151,8 +149,7 @@ export const CardMvv = styled.div`
     justify-content: center;
     margin-top: -25px;
   }
-`;
-
+`
 
 export const ContainerSobreNos = styled.div`
 
@@ -164,7 +161,7 @@ export const ContainerSobreNos = styled.div`
     background-color: #F0F2F2;
     flex-direction: column;
 
-`;
+`
 
 export const ContSobreNos = styled.div`
     width: 100%;
@@ -175,7 +172,6 @@ export const ContSobreNos = styled.div`
     justify-content: center;
     margin-top: -100px;
 `
-
 
 export const ContainerContent = styled.div`
     width: 50%;
@@ -208,7 +204,6 @@ export const ContainerContent = styled.div`
     }
 `
 
-
 export const Img = styled.img`
     width: 800px;
     height: 500px;
@@ -219,7 +214,7 @@ export const Img = styled.img`
 export const Svg2 = styled.svg`
   margin-top: -160px;
   max-width: 1600px;
-`;
+`
 
 export const PageContainerFooter = styled.div`
 width: 100%;
@@ -304,7 +299,6 @@ display: flex;
     }
 }
 `
-
 
 export const SvgFooter = styled.svg`
 color: #F0F2F2;

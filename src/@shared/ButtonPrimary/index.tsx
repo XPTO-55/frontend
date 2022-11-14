@@ -1,5 +1,6 @@
-import { ButtonPrimaryProps } from "./types";
-import { Button } from "./styles";
+import React from 'react'
+import { ButtonPrimaryProps } from './types'
+import { Button } from './styles'
 
 export function ButtonPrimary({
   children,
@@ -12,5 +13,5 @@ export function ButtonPrimary({
     <Button {...props} className={className} width={tamanho} onClick={onClick}>
       {children}
     </Button>
-  );
+  )
 }

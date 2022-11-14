@@ -1,59 +1,56 @@
-import React, { useState } from "react";
-import * as S from "./styles";
-import { Input } from "../../Input";
-import { MdEmail, MdOutlineAlternateEmail } from "react-icons/md";
-import { ButtonPrimary } from "../../../@shared/ButtonPrimary";
-import { SlLock } from "react-icons/sl";
-import { FiUser, FiSmartphone } from "react-icons/fi";
-import { TfiEmail } from "react-icons/tfi";
-import { BsCalendarDate } from "react-icons/bs";
-import { TiDocument } from "react-icons/ti";
-import { CgFileDocument, CgPassword } from "react-icons/cg";
-import { BsTelephonePlus } from "react-icons/bs";
-import { HiOutlineMapPin } from "react-icons/hi2";
-import { MdOutlineMapsHomeWork } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
-export const ModalCadastro = ({ closeModal }: any) => {
-  const [userSelect, setUserSelect] = useState(0);
+import React, { useState } from 'react'
+import * as S from './styles'
+import { Input } from '../../Input'
+import { ButtonPrimary } from '../../../@shared/ButtonPrimary'
+import { FiUser, FiSmartphone } from 'react-icons/fi'
+import { TfiEmail } from 'react-icons/tfi'
+import { BsCalendarDate, BsTelephonePlus } from 'react-icons/bs'
+import { TiDocument } from 'react-icons/ti'
+import { CgFileDocument, CgPassword } from 'react-icons/cg'
+import { RiLockPasswordLine } from 'react-icons/ri'
 
-  const [color, setColor] = useState(false);
+interface ModalCadastroProps {
+  closeModal: () => void
+}
 
+export const ModalCadastro = ({ closeModal }: ModalCadastroProps) => {
+  const [userSelect, setUserSelect] = useState(0)
   const userComum = () => {
-    setUserSelect(0);
-  };
+    setUserSelect(0)
+  }
 
   const userProfissional = () => {
-    setUserSelect(1);
-  };
+    setUserSelect(1)
+  }
 
-  //leo
+  // leo
 
   const userSelected = () => {
-    if (userSelect == 0) {
+    if (userSelect === 0) {
       return (
         <S.ContainerBtn>
           <S.BtnComum onClick={userComum}>Comum</S.BtnComum>
-          <S.BtnProfissional onClick={userProfissional} color={"#b0b0b0"}>
+          <S.BtnProfissional onClick={userProfissional} color={'#b0b0b0'}>
             Profissional
           </S.BtnProfissional>
         </S.ContainerBtn>
-      );
+      )
     } else {
       return (
         <S.ContainerBtn>
-          <S.BtnComum onClick={userComum} color={"#b0b0b0"}>
+          <S.BtnComum onClick={userComum} color={'#b0b0b0'}>
             Comum
           </S.BtnComum>
           <S.BtnProfissional onClick={userProfissional}>
             Profissional
           </S.BtnProfissional>
         </S.ContainerBtn>
-      );
+      )
     }
-  };
+  }
 
   const formSelected = () => {
-    if (userSelect == 0) {
+    if (userSelect === 0) {
       return (
         <S.Form>
           <Input type="text" placeholder="Nome Completo" width="cadastro">
@@ -85,7 +82,7 @@ export const ModalCadastro = ({ closeModal }: any) => {
             <CgPassword />
           </Input>
         </S.Form>
-      );
+      )
     } else {
       return (
         <S.Form>
@@ -118,9 +115,9 @@ export const ModalCadastro = ({ closeModal }: any) => {
             <CgPassword />
           </Input>
         </S.Form>
-      );
+      )
     }
-  };
+  }
 
   return (
     <S.PageContainer>
@@ -158,5 +155,5 @@ export const ModalCadastro = ({ closeModal }: any) => {
         </S.ContainerBtn>
       </S.Container>
     </S.PageContainer>
-  );
-};
+  )
+}

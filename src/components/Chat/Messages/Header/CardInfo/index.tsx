@@ -6,7 +6,7 @@ interface InfoProps {
   data: Omit<IForum, 'id'>
 }
 
-function Info({ data }: InfoProps) {
+function Info ({ data }: InfoProps) {
   return (
     <S.Container>
       <S.ImageContainer >

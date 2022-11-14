@@ -1,21 +1,21 @@
-import { PrismicLink, PrismicProvider } from "@prismicio/react";
-import Link from "next/link";
-import React from "react";
-import { linkResolver } from "../../prismicio";
-import GlobalStyles from "../../styles/GlobalStyles";
+import { PrismicLink, PrismicProvider } from '@prismicio/react'
+import Link from 'next/link'
+import React from 'react'
+import { linkResolver } from '../../prismicio'
+import GlobalStyles from '../../styles/GlobalStyles'
 import '../../styles/styles.css'
-import { Heading } from "../components/blog/Heading";
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
+import { Heading } from '../components/blog/Heading'
+import { QueryClient, QueryClientProvider } from 'react-query'
+const queryClient = new QueryClient()
 
-function MyApp({ Component, pageProps }) {
+function MyApp ({ Component, pageProps }) {
   const NextLinkShim = ({ href, children, locale, ...props }) => {
     return (
       <Link href={href} locale={locale}>
         <a {...props}>{children}</a>
       </Link>
-    );
-  };
+    )
+  }
 
   const richTextComponents = {
     heading1: ({ children }) => (
@@ -61,8 +61,8 @@ function MyApp({ Component, pageProps }) {
       >
         {children}
       </PrismicLink>
-    ),
-  };
+    )
+  }
   return (
     <QueryClientProvider client={queryClient}>
       <PrismicProvider
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </PrismicProvider>
     </QueryClientProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

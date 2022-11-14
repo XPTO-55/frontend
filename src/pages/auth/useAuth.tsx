@@ -1,26 +1,25 @@
-import { useContext } from "react";
-import { AuthContext } from ".";
-import { IUser } from "./types";
+import { useContext } from 'react'
+import { AuthContext } from '.'
+import { IUser } from './types'
 
-export function setUserLocalStorage(user: IUser | null) {
-  localStorage.setItem("u", JSON.stringify(user));
+export function setUserLocalStorage (user: IUser | null) {
+  localStorage.setItem('u', JSON.stringify(user))
 }
 
-export function getUserLocalStorage() {
-  const json = localStorage.getItem("u");
+export function getUserLocalStorage () {
+  const json = localStorage.getItem('u')
 
   if (!json) {
-    return null;
+    return null
   }
 
-  const user = JSON.parse(json);
+  const user = JSON.parse(json)
 
-  return user ?? null;
-
+  return user ?? null
 }
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
+  const context = useContext(AuthContext)
 
-  return context;
-};
+  return context
+}

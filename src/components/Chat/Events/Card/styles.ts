@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { IStatus } from "../../../../services/events.service";
+import styled from 'styled-components'
+import { IStatus } from '../../../../services/events.service'
 
 interface ContainerProps {
   status: IStatus

@@ -6,11 +6,13 @@ export const Header = styled.header`
   height: 12vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   z-index: 10;
 `;
 
 export const Container = styled.div`
   width: 100%;
+  max-width: 1200px;
   height: 100%;
   display: flex;
   align-items: center;

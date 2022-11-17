@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Layout/Input";
 import * as S from "./styles";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
@@ -44,7 +44,7 @@ export default function HotSite() {
             </ButtonPrimary>
           </Link>
 
-          <Link  href="/">
+          <Link  href="/feed">
           <ButtonPrimary className="azul" >
               VOLTAR
             </ButtonPrimary>

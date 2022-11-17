@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import { Input } from "../../Input";
+import { Input } from "../../Layout/Input";
 import { MdEmail, MdOutlineAlternateEmail } from "react-icons/md";
 import { ButtonPrimary } from "../../../@shared/ButtonPrimary";
 import { SlLock } from "react-icons/sl";

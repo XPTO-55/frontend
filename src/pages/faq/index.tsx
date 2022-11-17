@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styles";
 import { Header } from "../../components/Layout/Header";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Layout/Input";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import SimpleAccordion from "../../components/SimpleAccordion";

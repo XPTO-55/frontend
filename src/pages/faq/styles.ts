@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PageContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 88vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -13,10 +13,13 @@ export const PageContainer = styled.div`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  max-width: 1200px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+
+    
 `;
 
 export const ContainerContent = styled.div`

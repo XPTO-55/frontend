@@ -17,7 +17,7 @@ export const Container = styled.div`
 `
 
 export const Form = styled.form`
-  height: 390px;
+  height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,4 +154,5 @@ export const TabContainer = styled(Tabs.Root)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 60%;
 `

@@ -17,8 +17,6 @@ export default function Auth() {
     resolver: yupResolver(authenticationSchema)
   })
 
-  const [open, setOpen] = React.useState(false)
-
   const onSubmit: SubmitHandler<IUserLoginRequest> = (data, event) => {
     event.preventDefault()
     console.log(data)
@@ -57,7 +55,7 @@ export default function Auth() {
 
           <p>
             Não possui uma conta?
-            <Dialog.Root open={open} onOpenChange={setOpen}>
+            <Dialog.Root>
               <Dialog.Trigger>
                 Cadastra-se
                 <UsuarioForm />

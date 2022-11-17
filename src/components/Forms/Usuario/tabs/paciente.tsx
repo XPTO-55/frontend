@@ -71,7 +71,6 @@ export function PacienteForm() {
             Cancelar
           </ButtonPrimary>
         </Dialog.Close>
-
       </S.Footer>
     </S.Form>
   )

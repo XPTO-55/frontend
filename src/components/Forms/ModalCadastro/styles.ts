@@ -133,3 +133,9 @@ export const Form = styled.form`
     margin-left: 60px;
   }
 `
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`

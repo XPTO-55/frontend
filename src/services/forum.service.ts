@@ -1,11 +1,5 @@
 import { api } from './api'
-
-export interface IForum {
-  id: string
-  name: string
-  imageUrl: string
-  members: number
-}
+import { IForum } from './types'
 
 export const getForums = async (): Promise<IForum[]> => {
   const { data } = await api('/forums')

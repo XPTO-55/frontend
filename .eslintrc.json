@@ -29,6 +29,7 @@
         "react"
     ],
     "rules": {
+      "@typescript-eslint/consistent-type-assertions": "off",
       "@typescript-eslint/space-before-function-paren": "off",
       "eqeqeq": "error",
       "no-console": "warn",

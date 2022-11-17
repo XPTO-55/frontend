@@ -12,7 +12,12 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> =
     <>
       <S.ContainerInput>
         <S.Icon>{children}</S.Icon>
-        <S.Input placeholder={placeholder} {...props} className={width} />
+          <S.Input
+            placeholder={placeholder}
+            ref={ref}
+            className={width}
+            {...props}
+          />
       </S.ContainerInput>
     </>
     )

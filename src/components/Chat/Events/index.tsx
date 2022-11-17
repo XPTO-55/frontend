@@ -19,7 +19,7 @@ function Forums () {
       </div>
 
       <S.CardContainer>
-        {events.map(event => <Card key={event.id} data={event} />)}
+        {events ? events.map(event => <Card key={event.id} data={event} />) : null}
       </S.CardContainer>
 
     </S.Container>

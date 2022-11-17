@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './styles'
-import { IForum } from '../../../services/forum.service'
+import { IForum } from '../../../services/types'
 import { Header } from './Header'
 import MessageList from './MessageList'
 

@@ -3,7 +3,7 @@ import Events from '../../components/Chat/Events'
 import Forums from '../../components/Chat/Forums'
 import Messages from '../../components/Chat/Messages'
 import { ProfileBar } from '../../components/Layout/ProfileBar'
-import { IForum } from '../../services/forum.service'
+import { IForum } from '../../services/types'
 import * as S from './_styles'
 
 export default function Chat () {

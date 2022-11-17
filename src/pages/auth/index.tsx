@@ -13,6 +13,8 @@ import { IUserLoginRequest } from '../../services/types'
 import * as Dialog from '@radix-ui/react-dialog'
 
 export default function Auth() {
+  const [open, setOpen] = useState(false)
+
   const { register, handleSubmit, formState: { errors } } = useForm<IUserLoginRequest>({
     resolver: yupResolver(authenticationSchema)
   })
@@ -55,11 +57,13 @@ export default function Auth() {
 
           <p>
             Não possui uma conta?
-            <Dialog.Root>
-              <Dialog.Trigger>
-                Cadastra-se
+            <Dialog.Root open={open} onOpenChange={setOpen}>
+              <S.ModalTrigger>
+                <u>
+                  Cadastra-se
+                </u>
                 <UsuarioForm />
-              </Dialog.Trigger>
+              </S.ModalTrigger>
             </Dialog.Root >
           </p>
         </S.ContainerLogin>

@@ -6,12 +6,14 @@ export const authenticationSchema = yup.object().shape({
 })
 
 export const registerSchema = yup.object().shape({
-  name: yup.string().email().required(),
-  cpf: yup.string().optional(),
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  rg: yup.string().optional(),
+  cpf: yup.string().required(),
   birthday: yup.date().optional(),
   addressLine: yup.string(),
   phone: yup.string(),
-  email: yup.string().email().required(),
   password: yup.string().min(8).max(20).required(),
-  confirm_password: yup.ref('password')
+  confirm_password: yup.string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
 })

@@ -3,8 +3,9 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as Tabs from '@radix-ui/react-tabs'
 import * as S from './styles'
 import { PacienteForm, ProfissionalForm } from './tabs/'
+import { UsuarioFormProps } from './types'
 
-export function UsuarioForm() {
+export function UsuarioForm({ setOpen }: UsuarioFormProps) {
   return (
     <Dialog.Portal>
       <S.Overlay />
@@ -27,10 +28,10 @@ export function UsuarioForm() {
             </S.Tab>
           </S.TabList>
           <Tabs.Content value="comum">
-            <PacienteForm />
+            <PacienteForm setOpen={setOpen} />
           </Tabs.Content>
           <Tabs.Content value="profissional">
-            <ProfissionalForm />
+            <ProfissionalForm setOpen={setOpen} />
           </Tabs.Content>
         </S.TabContainer>
       </S.Content>

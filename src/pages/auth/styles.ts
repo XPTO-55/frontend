@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import * as Dialog from '@radix-ui/react-dialog'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -63,4 +64,11 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+`
+
+export const ModalTrigger = styled(Dialog.Trigger)`
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
 `

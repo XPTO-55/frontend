@@ -10,11 +10,14 @@ export const Button = styled.button`
   background-color: rgba(7, 7, 7, 0);
   border: 1px solid #2a8dd2;
   color: #2a8dd2;
-  margin-top: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
   border-radius: 5px;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: #2a8dd2;

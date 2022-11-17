@@ -1,5 +1,5 @@
 import React from 'react'
-import { IForum } from '../../../../services/forum.service'
+import { IForum } from '../../../../services/types'
 import CardInfo from './CardInfo'
 import * as S from './styles'
 

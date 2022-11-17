@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Layout/Input";
 import * as S from "./styles";
 import { ModalCadastro } from "../../components/Forms/ModalCadastro";
 import { ButtonPrimary } from "../../@shared/ButtonPrimary";

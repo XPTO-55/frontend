@@ -5,7 +5,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import { BsChevronDown } from "react-icons/bs";
 import { makeStyles } from "@material-ui/styles";
-import { Input } from "../Input";
+import { Input } from "../Layout/Input";
 import { BiSearch } from "react-icons/bi";
 import * as S from "./styles";
 import { useState } from "react";
@@ -98,7 +98,6 @@ export default function SimpleAccordion() {
 
   const filteredAccordionList = search.length > 0 ? faqList.filter(accordion => accordion.Title.includes(search)) : faqList;
 
-  console.log('rendered', filteredAccordionList)
 
   return (
     <div>

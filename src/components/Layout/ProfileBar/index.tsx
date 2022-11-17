@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import * as S from './styles'
+import Link from "next/link";
+import { useState } from "react";
+import * as S from "./styles";
 
 export function ProfileBar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -14,30 +15,46 @@ export function ProfileBar() {
         <S.ImageProfileContainer>
           <S.ImageProfile src="/assets/img/profile.png" alt="" />
         </S.ImageProfileContainer>
-        <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
-          <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+        <S.HamburguerMenuContainer
+          open={openMenu}
+          onClick={() => setOpenMenu((prev) => !prev)}
+        >
+          <S.Hamburguer
+            open={openMenu}
+            onClick={() => setOpenMenu((prev) => !prev)}
+          >
             <div className="one"></div>
             <div className="two"></div>
             <div className="three"></div>
           </S.Hamburguer>
-          <S.HamburguerMenu open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+          <S.HamburguerMenu
+            open={openMenu}
+            onClick={() => setOpenMenu((prev) => !prev)}
+          >
             <ul>
-              <li>
-                Feed
-              </li>
-              <li>
-                Profissionais
-              </li>
-              <li>
-                FAQ
-              </li>
-              <li>
-                Sair
-              </li>
+              <Link href="/feed">
+                <li>Feed</li>
+              </Link>
+
+              <Link href="/professional-list">
+                <li>Profissionais</li>
+              </Link>
+
+              <Link href="/chat">
+                <li>Chat</li>
+              </Link>
+
+              <Link href="/edit-profile">
+                <li>Configurações do perfil</li>
+              </Link>
+
+              <Link href="/">
+                <li>Sair</li>
+              </Link>
             </ul>
           </S.HamburguerMenu>
         </S.HamburguerMenuContainer>
       </S.UserInfo>
     </S.Container>
-  )
+  );
 }

@@ -7,5 +7,5 @@ export const Header = styled.header`
   align-items: center;
   background-color: #F6F6F6;
   padding: 0 16px;
-  height: 15%;
+  height: 10%;
 `

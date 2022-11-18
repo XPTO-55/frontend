@@ -1,5 +1,5 @@
 import React from 'react'
-import { IEventUsers } from '../../../../services/events.service'
+import { IEventUsers } from '../../../../services/types'
 import CardInfo from './CardInfo'
 import * as S from './styles'
 

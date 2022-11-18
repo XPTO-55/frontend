@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Input } from '../../../Input'
 import { FiUser, FiSmartphone } from 'react-icons/fi'
 import { TfiEmail } from 'react-icons/tfi'
@@ -14,48 +14,26 @@ import { registerSchema } from '../../../../validations/user.validation'
 import { IUserRequest } from '../../../../services/types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { createPatient } from '../../../../services/users.service'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
 import { Loader } from '../../../../@shared/Loader'
 import { Toast } from '../../../../@shared/Toast'
 import { Form } from './types'
 
 export function PacienteForm({ setOpen }: Form) {
-  const [error, setError] = useState('')
-  const queryClient = useQueryClient()
-  const { mutateAsync, isLoading } = useMutation(createPatient, {
-    onSuccess: data => {
-      const message = 'success'
-      alert(message)
-      setOpen(false)
-    },
-    // err, variables, context
-    onError: (err, variables, context) => {
-      if (err instanceof Error) {
-        setError(err.message)
-        alert(err.message)
-        return
-      }
-      setError('there was an error')
-    },
-    onSettled: async () => {
-      await queryClient.invalidateQueries('create')
-    }
-  })
+  const { mutate, isLoading, isError, error } = useMutation(createPatient)
   const { register, handleSubmit, formState: { errors } } = useForm<IUserRequest>({
     resolver: yupResolver(registerSchema)
   })
 
-  const onSubmit: SubmitHandler<IUserRequest> = async (data, event) => {
+  const onSubmit: SubmitHandler<IUserRequest> = (data, event) => {
     event.preventDefault()
-    await mutateAsync(data)
-  }
-
-  const onError = (errors) => {
+    mutate(data)
+    setOpen(false)
   }
 
   return (
     <>
-      <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
       <S.Fieldset>
           <Input type="text" placeholder="Nome Completo" width="cadastro" {...register('name')}>
           <FiUser />
@@ -67,7 +45,6 @@ export function PacienteForm({ setOpen }: Form) {
           <TfiEmail />
         </Input>
           <p>{errors?.email?.message}</p>
-
       </S.Fieldset >
       <S.Fieldset>
           <Input placeholder="RG" width="cadastro" {...register('rg')}>
@@ -80,28 +57,24 @@ export function PacienteForm({ setOpen }: Form) {
           <CgFileDocument />
         </Input>
           <p>{errors?.cpf?.message}</p>
-
       </S.Fieldset >
       <S.Fieldset>
           <Input type="date" placeholder="Data de nascimento" width="cadastro" {...register('birthday')}>
           <BsCalendarDate />
         </Input>
           <p>{errors?.birthday?.message}</p>
-
       </S.Fieldset >
       <S.Fieldset>
           <Input placeholder="Telefone fixo" width="cadastro" {...register('landline')}>
           <BsTelephonePlus />
         </Input>
           <p>{errors?.landline?.message}</p>
-
       </S.Fieldset >
       <S.Fieldset>
           <Input placeholder="Telefone Celular" width="cadastro" {...register('phone')}>
           <FiSmartphone />
         </Input>
           <p>{errors?.phone?.message}</p>
-
       </S.Fieldset>
       <S.Fieldset>
           <Input type="password" placeholder="Senha" width="cadastro" {...register('password')}>
@@ -132,7 +105,7 @@ export function PacienteForm({ setOpen }: Form) {
         </Dialog.Close>
       </S.Footer>
       </S.Form>
-      {error ? <Toast title={error} /> : null}
+      {isError ? <Toast type={'error'} title={'Error'} description={error?.message?.message || error?.message || 'Erro ao realizar o cadastro'} /> : null}
     </>
   )
 }

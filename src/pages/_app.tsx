@@ -7,6 +7,7 @@ import '../../styles/styles.css'
 import { Heading } from '../components/blog/Heading'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import * as Toast from '@radix-ui/react-toast'
+import { AuthProvider } from '../context/auth'
 const queryClient = new QueryClient()
 
 function MyApp ({ Component, pageProps }) {
@@ -70,17 +71,19 @@ function MyApp ({ Component, pageProps }) {
     )
   }
   return (
-    <Toast.Provider>
-      <QueryClientProvider client={queryClient}>
-        <PrismicProvider
-          linkResolver={linkResolver}
-          internalLinkComponent={NextLinkShim}
-          richTextComponents={richTextComponents}>
-          <GlobalStyles />
-          <Component {...pageProps} />
-        </PrismicProvider>
-      </QueryClientProvider>
-    </Toast.Provider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Toast.Provider>
+          <PrismicProvider
+            linkResolver={linkResolver}
+            internalLinkComponent={NextLinkShim}
+            richTextComponents={richTextComponents}>
+            <GlobalStyles />
+            <Component {...pageProps} />
+          </PrismicProvider>
+        </Toast.Provider>
+      </AuthProvider>
+    </QueryClientProvider>
   )
 }
 

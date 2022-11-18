@@ -16,9 +16,9 @@ export function ProfileBar () {
         </S.ImageProfileContainer>
         <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
           <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
-            <div className="one"></div>
-            <div className="two"></div>
-            <div className="three"></div>
+            <div onClick={() => setOpenMenu(prev => !prev)} className="one"></div>
+            <div onClick={() => setOpenMenu(prev => !prev)} className="two"></div>
+            <div onClick={() => setOpenMenu(prev => !prev)} className="three"></div>
           </S.Hamburguer>
           <S.HamburguerMenu open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
             <ul>

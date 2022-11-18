@@ -1,12 +1,15 @@
 import React from 'react'
-import { ToastProps } from './types'
+import { ToastProps, IToastTypes } from './types'
 
 import * as S from './styles'
 
-export function Toast(props: ToastProps) {
+export function Toast({
+  type = 'light',
+  ...props
+}: ToastProps) {
   return (
     <>
-      <S.ToastRoot duration={300}>
+      <S.ToastRoot data-type={type} duration={1000}>
         <S.ToastTitle>
           {props.title}
         </S.ToastTitle>
@@ -14,9 +17,7 @@ export function Toast(props: ToastProps) {
           ? <S.ToastDescription >
             {props.description}
           </S.ToastDescription>
-
           : null}
-
         {/* <S.ToastAction /> */}
         {props.close ? <S.ToastClose altText='anyone'>{props.close}</S.ToastClose> : null}
       </S.ToastRoot>

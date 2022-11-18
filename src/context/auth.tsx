@@ -1,6 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
 import * as Auth from '../services/auth.service'
 import { api } from '../services/api'
+import { IUserLoginRequest } from '../services/types'
+import { useMutation, useQuery } from 'react-query'
 
 interface User {
   username: string
@@ -10,7 +12,7 @@ interface AuthContextData {
   signed: boolean
   user: User | null
   loading: boolean
-  signIn: () => Promise<void>
+  signIn: (userData: IUserLoginRequest) => Promise<void>
   signOut: () => void
 }
 
@@ -20,9 +22,24 @@ interface AuthProviderProps {
   children: React.ReactNode
 }
 
-export const AuthProvider: React.FC = ({ children }: AuthProviderProps) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
+  const { mutate } = useMutation(Auth.authenticate, {
+    onMutate: () => {
+      setLoading(true)
+    },
+    onSuccess(data) {
+      setUser(data)
+      api.defaults.headers.common.Authorization = `Bearer ${data.jwtToken}`
+      localStorage.setItem('user', data.username)
+      localStorage.setItem('token', data.jwtToken)
+      localStorage.setItem('refreshToken', data.refreshToken)
+    },
+    onSettled() {
+      setLoading(false)
+    }
+  })
 
   useEffect(() => {
     function loadStoragedData() {
@@ -40,14 +57,8 @@ export const AuthProvider: React.FC = ({ children }: AuthProviderProps) => {
     loadStoragedData()
   }, [])
 
-  async function signIn() {
-    const response = await Auth.authenticate()
-    setUser(response)
-
-    api.defaults.headers.common.Authorization = `Bearer ${response.jwtToken}`
-
-    localStorage.setItem('user', JSON.stringify(response))
-    localStorage.setItem('token', response.jwtToken)
+  async function signIn(userData: IUserLoginRequest) {
+    mutate(userData)
   }
 
   function signOut() {

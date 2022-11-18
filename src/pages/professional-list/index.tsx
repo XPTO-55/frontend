@@ -21,7 +21,7 @@ export default function ProfessionalList({
   setSelectProfessional,
 }: ProfessionalProps) {
   const {
-    data: professionals,
+    data: professionals = [],
     isError,
     isLoading,
   } = useQuery<IProfessional[]>(["professionals"], getProfessionals);
@@ -30,10 +30,11 @@ export default function ProfessionalList({
 
   const filteredProfessionalList =
     search.length > 0
-      ? professionals.filter((professionals) =>
+      ? professionals.length > 0 ?  professionals.filter((professionals) =>
           professionals.name.includes(search)
         )
-      : professionals;
+      : professionals
+      : null
 
   if (isLoading) {
     return <LoaderAllPage />;

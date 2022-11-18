@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   padding: 1rem;
@@ -45,4 +45,3 @@ export const EventTime = styled.p`
   font-weight: 600;
   color: #A7A7A7;
 `
-

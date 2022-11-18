@@ -1,24 +1,25 @@
-import Head from "next/head";
-import { PrismicText, SliceZone } from "@prismicio/react";
-import * as prismicH from "@prismicio/helpers";
-import * as S from "./styles";
-import { createClient, linkResolver } from "../../../../prismicio";
-import { components } from "../../../../slices";
-import { Bounded } from "../../../components/blog/Bounded";
-import { Heading } from "../../../components/blog/Heading";
-import { HorizontalDivider } from "../../../components/blog/HorizontalDivider";
-import { Header } from "../../../components/Layout/Header";
+import React from 'react'
+import Head from 'next/head'
+import { PrismicText, SliceZone } from '@prismicio/react'
+import * as prismicH from '@prismicio/helpers'
+import * as S from './styles'
+import { createClient, linkResolver } from '../../../../prismicio'
+import { components } from '../../../../slices'
+import { Bounded } from '../../../components/blog/Bounded'
+import { Heading } from '../../../components/blog/Heading'
+import { HorizontalDivider } from '../../../components/blog/HorizontalDivider'
+import { Header } from '../../../components/Layout/Header'
 
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-});
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric'
+})
 
 const LatestArticle = ({ article }) => {
   const date = prismicH.asDate(
-    article.data.publishDate || article.first_publication_date
-  );
+    article?.data?.publishDate || article?.first_publication_date
+  )
 
   return (
     <li>
@@ -29,13 +30,13 @@ const LatestArticle = ({ article }) => {
       </S.PrismicLinkStyled>
       <S.Paragrafo>{dateFormatter.format(date)}</S.Paragrafo>
     </li>
-  );
-};
+  )
+}
 
 const Article = ({ article, latestArticles }) => {
   const date = prismicH.asDate(
     article.data.publishDate || article.first_publication_date
-  );
+  )
 
   return (
     <>
@@ -82,40 +83,39 @@ const Article = ({ article, latestArticles }) => {
         </Bounded>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Article;
+export default Article
 
-export async function getStaticProps({ params, previewData }) {
-  // @ts-ignore
-  const client = createClient({ previewData });
+export async function getStaticProps ({ params, previewData }) {
+  // @ts-expect-error
+  const client = createClient({ previewData })
 
-  const article = await client.getByUID("article", params.uid);
-  const latestArticles = await client.getAllByType("article", {
+  const article = await client.getByUID('article', params.uid)
+  const latestArticles = await client.getAllByType('article', {
     limit: 3,
     orderings: [
-      { field: "my.article.publishDate", direction: "desc" },
-      { field: "document.first_publication_date", direction: "desc" },
-    ],
-  });
-
+      { field: 'my.article.publishDate', direction: 'desc' },
+      { field: 'document.first_publication_date', direction: 'desc' }
+    ]
+  })
 
   return {
     props: {
       article,
       latestArticles
-    },
-  };
+    }
+  }
 }
 
-export async function getStaticPaths() {
-  const client = createClient();
+export async function getStaticPaths () {
+  const client = createClient()
 
-  const articles = await client.getAllByType("article");
+  const articles = await client.getAllByType('article')
 
   return {
     paths: articles.map((article) => prismicH.asLink(article, linkResolver)),
-    fallback: false,
-  };
+    fallback: false
+  }
 }

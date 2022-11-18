@@ -1,56 +1,56 @@
-import { useState } from "react";
-import * as S from "./styles";
-import { useKeenSlider } from "keen-slider/react";
+import React, { useState } from 'react'
+import * as S from './styles'
+import { useKeenSlider } from 'keen-slider/react'
 
 export const Parceiros = () => {
   const parcerias = [
     {
       id: 1,
-      nome: "Apple",
-      url: "/assets/img/imgParceiro.png",
+      nome: 'Apple',
+      url: '/assets/img/imgParceiro.png'
     },
     {
       id: 2,
-      nome: "Apple",
-      url: "/assets/img/imgParceiro.png",
+      nome: 'Apple',
+      url: '/assets/img/imgParceiro.png'
     },
     {
       id: 3,
-      nome: "Apple",
-      url: "/assets/img/imgParceiro.png",
+      nome: 'Apple',
+      url: '/assets/img/imgParceiro.png'
     },
     {
       id: 4,
-      nome: "Apple",
-      url: "/assets/img/imgParceiro.png",
+      nome: 'Apple',
+      url: '/assets/img/imgParceiro.png'
     },
     {
       id: 5,
-      nome: "Apple",
-      url: "/assets/img/imgParceiro.png",
+      nome: 'Apple',
+      url: '/assets/img/imgParceiro.png'
     },
     {
       id: 6,
-      nome: "Apple",
-      url: "/assets/img/imgParceiro.png",
-    },
-  ];
+      nome: 'Apple',
+      url: '/assets/img/imgParceiro.png'
+    }
+  ]
 
-  const [loaded, setLoaded] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [, setLoaded] = useState(false)
+  const [, setCurrentSlide] = useState(0)
   const [sliderRef2, instanceRef2] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    mode: "free-snap",
+    mode: 'free-snap',
     slides: {
-      perView: 3,
+      perView: 3
     },
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
+      setCurrentSlide(slider.track.details.rel)
     },
     created() {
-      setLoaded(true);
-    },
-  });
+      setLoaded(true)
+    }
+  })
 
   return (
     <S.PageContainer>
@@ -68,28 +68,32 @@ export const Parceiros = () => {
                 <div
                   key={parceria.id}
                   className="keen-slider__slide"
-                  style={{ position: "relative", width: 300, minWidth: 300 }}
+                  style={{ position: 'relative', width: 300, minWidth: 300 }}
                 >
                   <img
                     src={parceria.url}
-                    style={{ objectFit: "cover", height: 200, borderRadius: 7 }}
+                    style={{ objectFit: 'cover', height: 200, borderRadius: 7 }}
                   />
                 </div>
-              );
+              )
             })}
           </div>
           <>
             <Arrow
               left
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef2.current?.prev()
+              onClick={(e) => {
+                e.stopPropagation()
+                instanceRef2.current?.prev()
+              }
               }
               disabled={false}
             />
 
             <Arrow
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef2.current?.next()
+              onClick={(e) => {
+                e.stopPropagation()
+                instanceRef2.current?.next()
+              }
               }
               disabled={false}
             />
@@ -97,19 +101,19 @@ export const Parceiros = () => {
         </S.ContainerNavigator>
       </S.Container>
     </S.PageContainer>
-  );
-};
+  )
+}
 
 function Arrow(props: {
-  disabled: boolean;
-  left?: boolean;
-  onClick: (e: any) => void;
+  disabled: boolean
+  left?: boolean
+  onClick: React.MouseEventHandler<SVGSVGElement>
 }) {
-  const disabeld = props.disabled ? " arrow--disabled" : "";
+  const disabeld = props.disabled ? ' arrow--disabled' : ''
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow2 ${props.left ? "arrow--left" : "arrow--right"
+      className={`arrow2 ${props.left ? 'arrow--left' : 'arrow--right'
         } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -121,5 +125,5 @@ function Arrow(props: {
         <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
       )}
     </svg>
-  );
+  )
 }

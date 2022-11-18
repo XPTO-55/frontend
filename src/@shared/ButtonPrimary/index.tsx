@@ -1,16 +1,19 @@
-import { ButtonPrimaryProps } from "./types";
-import { Button } from "./styles";
+import React, { forwardRef, ForwardRefRenderFunction } from 'react'
+import { ButtonPrimaryProps } from './types'
+import { Button } from './styles'
 
-export function ButtonPrimary({
+const ButtonPrimaryBase: ForwardRefRenderFunction<HTMLButtonElement, ButtonPrimaryProps> = ({
   children,
   className,
   tamanho,
   onClick,
   ...props
-}: ButtonPrimaryProps) {
+}: ButtonPrimaryProps) => {
   return (
     <Button {...props} className={className} width={tamanho} onClick={onClick}>
       {children}
     </Button>
-  );
+  )
 }
+
+export const ButtonPrimary = forwardRef(ButtonPrimaryBase)

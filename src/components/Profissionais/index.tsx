@@ -1,27 +1,22 @@
-import * as S from "./styles";
-import React from "react";
-import Image from "next/image";
-import imgRafaelLeão from "../../../public/assets/img/fotoRafaelLeao.png";
-import imgMarceloNeto from "../../../public/assets/img/marceloNeto.png"
-import imgPedroGuedes from "../../../public/assets/img/pedroGuedes.png"
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { useState } from "react";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+import * as S from './styles'
+import React, { useState } from 'react'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import { useKeenSlider } from 'keen-slider/react'
+import 'keen-slider/keen-slider.min.css'
 
 export function Profissionais() {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     loop: true,
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
+      setCurrentSlide(slider.track.details.rel)
     },
     created() {
-      setLoaded(true);
-    },
-  });
+      setLoaded(true)
+    }
+  })
 
   return (
     <>
@@ -32,24 +27,24 @@ export function Profissionais() {
               {[
                 ...Array(
                   instanceRef.current.track.details.slides.length
-                ).keys(),
+                ).keys()
               ].map((idx) => {
                 return (
                   <button
                     key={idx}
                     onClick={() => {
-                      instanceRef.current?.moveToIdx(idx);
+                      instanceRef.current?.moveToIdx(idx)
                     }}
-                    className={"dot" + (currentSlide === idx ? " active" : "")}
+                    className={'dot' + (currentSlide === idx ? ' active' : '')}
                   ></button>
-                );
+                )
               })}
             </div>
           )}
 
           <S.ContainerInfoProf
             style={{
-              backgroundImage: `url(../../../public/assets/img/fundoProfissinais.png)`,
+              backgroundImage: 'url(../../../public/assets/img/fundoProfissinais.png)'
             }}
           >
             <div className="navigation-wrapper">
@@ -122,16 +117,19 @@ export function Profissionais() {
                 <>
                   <Arrow
                     left
-                    onClick={(e: any) =>
-                      e.stopPropagation() || instanceRef.current?.prev()
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      instanceRef.current?.prev()
+                    }
                     }
                     disabled={currentSlide === 0}
                   />
 
                   <Arrow
-                    onClick={(e: any) =>
-                      e.stopPropagation() || instanceRef.current?.next()
-                    }
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      instanceRef.current?.next()
+                    }}
                     disabled={
                       currentSlide ===
                       instanceRef.current.track.details.slides.length - 1
@@ -152,19 +150,19 @@ export function Profissionais() {
         ></path>
       </S.Svg>
     </>
-  );
+  )
 }
 
 function Arrow(props: {
-  disabled: boolean;
-  left?: boolean;
-  onClick: (e: any) => void;
+  disabled: boolean
+  left?: boolean
+  onClick: React.MouseEventHandler<SVGSVGElement>
 }) {
-  const disabeld = props.disabled ? " arrow--disabled" : "";
+  const disabeld = props.disabled ? ' arrow--disabled' : ''
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow ${props.left ? "arrow--left" : "arrow--right"
+      className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'
         } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -176,5 +174,5 @@ function Arrow(props: {
         <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
       )}
     </svg>
-  );
+  )
 }

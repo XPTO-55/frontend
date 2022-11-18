@@ -1,126 +1,199 @@
-import React, { useState } from "react";
-import * as S from "./styles";
-import { Input } from "../../Input";
-import { MdEmail, MdOutlineAlternateEmail } from "react-icons/md";
-import { ButtonPrimary } from "../../../@shared/ButtonPrimary";
-import { SlLock } from "react-icons/sl";
-import { FiUser, FiSmartphone } from "react-icons/fi";
-import { TfiEmail } from "react-icons/tfi";
-import { BsCalendarDate } from "react-icons/bs";
-import { TiDocument } from "react-icons/ti";
-import { CgFileDocument, CgPassword } from "react-icons/cg";
-import { BsTelephonePlus } from "react-icons/bs";
-import { HiOutlineMapPin } from "react-icons/hi2";
-import { MdOutlineMapsHomeWork } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
-export const ModalCadastro = ({ closeModal }: any) => {
-  const [userSelect, setUserSelect] = useState(0);
+import React, { useState } from 'react'
+import * as S from './styles'
+import { Input } from '../../Input'
+import { ButtonPrimary } from '../../../@shared/ButtonPrimary'
+import { FiUser, FiSmartphone } from 'react-icons/fi'
+import { TfiEmail } from 'react-icons/tfi'
+import { BsCalendarDate, BsTelephonePlus } from 'react-icons/bs'
+import { TiDocument } from 'react-icons/ti'
+import { CgFileDocument, CgPassword } from 'react-icons/cg'
+import { RiLockPasswordLine } from 'react-icons/ri'
+import { IUserRequest } from '../../../services/types'
+import { registerSchema } from '../../../validations/user.validation'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-  const [color, setColor] = useState(false);
+interface ModalCadastroProps {
+  closeModal: () => void
+}
 
+export const ModalCadastro = ({ closeModal }: ModalCadastroProps) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<IUserRequest>({
+    resolver: yupResolver(registerSchema)
+  })
+
+  const onPatientSubmit: SubmitHandler<IUserRequest> = (data, event) => {
+    event.preventDefault()
+    console.log(data)
+    return false
+  }
+
+  const onProfessionalSubmit: SubmitHandler<IUserRequest> = (data, event) => {
+    event.preventDefault()
+    console.log(data)
+    return false
+  }
+
+  const onError = (errors) => {
+    console.log(errors)
+  }
+
+  const [userSelect, setUserSelect] = useState(0)
   const userComum = () => {
-    setUserSelect(0);
-  };
+    setUserSelect(0)
+  }
 
   const userProfissional = () => {
-    setUserSelect(1);
-  };
+    setUserSelect(1)
+  }
 
-  //leo
+  // leo
 
   const userSelected = () => {
-    if (userSelect == 0) {
+    if (userSelect === 0) {
       return (
         <S.ContainerBtn>
           <S.BtnComum onClick={userComum}>Comum</S.BtnComum>
-          <S.BtnProfissional onClick={userProfissional} color={"#b0b0b0"}>
+          <S.BtnProfissional onClick={userProfissional} color={'#b0b0b0'}>
             Profissional
           </S.BtnProfissional>
         </S.ContainerBtn>
-      );
+      )
     } else {
       return (
         <S.ContainerBtn>
-          <S.BtnComum onClick={userComum} color={"#b0b0b0"}>
+          <S.BtnComum onClick={userComum} color={'#b0b0b0'}>
             Comum
           </S.BtnComum>
           <S.BtnProfissional onClick={userProfissional}>
             Profissional
           </S.BtnProfissional>
         </S.ContainerBtn>
-      );
+      )
     }
-  };
+  }
 
-  const formSelected = () => {
-    if (userSelect == 0) {
+  const formSelected: JSX.Element = ({ children }) => {
+    if (userSelect === 0) {
       return (
-        <S.Form>
-          <Input type="text" placeholder="Nome Completo" width="cadastro">
+        <S.Form onSubmit={handleSubmit(onProfessionalSubmit, onError)}>
+          <S.InputContainer>
+
+            <Input type="text" placeholder="Nome Completo" width="cadastro" {...register('name')}>
             <FiUser />
           </Input>
-          <Input type="email" placeholder="Email" width="cadastro">
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input type="email" placeholder="Email" width="cadastro" {...register('email')}>
             <TfiEmail />
           </Input>
+          </S.InputContainer>
+          <S.InputContainer>
 
-          <Input placeholder="RG" width="cadastro">
+            <Input placeholder="RG" width="cadastro" {...register('rg')}>
             <TiDocument />
           </Input>
-          <Input placeholder="CPF" width="cadastro">
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="CPF" width="cadastro" {...register('cpf')}>
             <CgFileDocument />
           </Input>
-          <Input type="date" placeholder="Data de nascimento" width="cadastro">
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input type="date" placeholder="Data de nascimento" width="cadastro" {...register('birthday')}>
             <BsCalendarDate />
           </Input>
-          <Input placeholder="Telefone fixo" width="cadastro">
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="Telefone fixo" width="cadastro" {...register('landline')}>
             <BsTelephonePlus />
           </Input>
-          <Input placeholder="Telefone Celular" width="cadastro">
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="Telefone Celular" width="cadastro" {...register('phone')}>
             <FiSmartphone />
           </Input>
-          <Input type="password" placeholder="Senha" width="cadastro">
+            <S.InputContainer>
+            </S.InputContainer>
+
+            <Input type="password" placeholder="Senha" width="cadastro" {...register('password')}>
             <RiLockPasswordLine />
           </Input>
-          <Input type="password" placeholder="Confirmar senha" width="cadastro">
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input type="password" placeholder="Confirmar senha" width="cadastro" {...register('confirm_password')}>
             <CgPassword />
           </Input>
+          </S.InputContainer>
         </S.Form>
-      );
+      )
     } else {
       return (
-        <S.Form>
-          <Input type="text" placeholder="Nome Completo" width="cadastro">
-            <FiUser />
-          </Input>
-          <Input type="email" placeholder="Email" width="cadastro">
-            <TfiEmail />
-          </Input>
+        <S.Form onSubmit={handleSubmit(onPatientSubmit, onError)}>
+          <S.InputContainer>
 
-          <Input placeholder="RG" width="cadastro">
-            <TiDocument />
-          </Input>
-          <Input placeholder="CPF" width="cadastro">
-            <CgFileDocument />
-          </Input>
-          <Input type="date" placeholder="Data de nascimento" width="cadastro">
-            <BsCalendarDate />
-          </Input>
-          <Input placeholder="Telefone fixo" width="cadastro">
-            <BsTelephonePlus />
-          </Input>
-          <Input placeholder="Telefone Celular" width="cadastro">
-            <FiSmartphone />
-          </Input>
-          <Input type="password" placeholder="Senha" width="cadastro">
-            <RiLockPasswordLine />
-          </Input>
-          <Input type="password" placeholder="Confirmar senha" width="cadastro">
-            <CgPassword />
-          </Input>
+            <Input type="text" placeholder="Nome Completo" width="cadastro" {...register('name')}>
+              <FiUser />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input type="email" placeholder="Email" width="cadastro" {...register('email')}>
+              <TfiEmail />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="RG" width="cadastro" {...register('rg')}>
+              <TiDocument />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="CPF" width="cadastro" {...register('cpf')}>
+              <CgFileDocument />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input type="date" placeholder="Data de nascimento" width="cadastro" {...register('birthday')}>
+              <BsCalendarDate />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="Telefone fixo" width="cadastro" {...register('landline')}>
+              <BsTelephonePlus />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input placeholder="Telefone Celular" width="cadastro" {...register('phone')}>
+              <FiSmartphone />
+            </Input>
+            <S.InputContainer>
+            </S.InputContainer>
+
+            <Input type="password" placeholder="Senha" width="cadastro" {...register('password')}>
+              <RiLockPasswordLine />
+            </Input>
+          </S.InputContainer>
+          <S.InputContainer>
+
+            <Input type="password" placeholder="Confirmar senha" width="cadastro" {...register('confirm_password')}>
+              <CgPassword />
+            </Input>
+          </S.InputContainer>
         </S.Form>
-      );
+      )
     }
-  };
+  }
 
   return (
     <S.PageContainer>
@@ -158,5 +231,5 @@ export const ModalCadastro = ({ closeModal }: any) => {
         </S.ContainerBtn>
       </S.Container>
     </S.PageContainer>
-  );
-};
+  )
+}

@@ -1,13 +1,9 @@
-import React from "react";
-import * as S from "./styles";
-import { Header } from "../../components/Layout/Header";
-import { Input } from "../../components/Input";
-import { MdOutlineAlternateEmail } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
-import SimpleAccordion from "../../components/SimpleAccordion";
+import React from 'react'
+import * as S from './styles'
+import { Header } from '../../components/Layout/Header'
+import SimpleAccordion from '../../components/SimpleAccordion'
 
-export default function Faq() {
-
+export default function Faq () {
   return (
     <>
       <Header />
@@ -25,6 +21,5 @@ export default function Faq() {
         </S.Svg>
       </S.PageContainer>
     </>
-  );
+  )
 }
-

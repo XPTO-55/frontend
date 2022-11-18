@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ export const PageContainer = styled.div`
     font-size: 36px;
     color: white;
   }
-`;
+`
 
 export const Container = styled.div`
   width: 100%;
@@ -24,12 +24,11 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: -140px;
-`;
+`
 
 export const ContainerNavigator = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
-`;
-
+`

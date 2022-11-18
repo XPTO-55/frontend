@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import Image from "next/image";
+import styled from 'styled-components'
 
 export const Header = styled.header`
   width: 100%;
@@ -7,7 +6,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   z-index: 10;
-`;
+`
 
 export const Container = styled.div`
   width: 100%;
@@ -16,7 +15,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 0 32px;
   justify-content: space-between;
-`;
+`
 
 export const Navbar = styled.nav`
   display: flex;
@@ -32,7 +31,7 @@ export const Ul = styled.ul`
   justify-content: center;
   font-size: 1rem;
   font-weight: 500;
-`;
+`
 
 export const Li = styled.li`
   &:hover {
@@ -40,7 +39,7 @@ export const Li = styled.li`
     cursor: pointer;
     transition: all 0.3s;
   }
-`;
+`
 
 export const Button = styled.button`
   width: 120px;
@@ -56,4 +55,4 @@ export const Button = styled.button`
   &:hover {
     background-color: #1f6392;
   }
-`;
+`

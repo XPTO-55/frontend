@@ -1,40 +1,39 @@
-import React from "react";
-import { Input } from "../../components/Input";
-import * as S from "./styles";
-import { ModalCadastro } from "../../components/Forms/ModalCadastro";
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { useState } from "react";
-import Link from "next/link";
+import React, { useState } from 'react'
+import { Input } from '../../components/Input'
+import * as S from './styles'
+import { ModalCadastro } from '../../components/Forms/ModalCadastro'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import Link from 'next/link'
 
-export default function Upload() {
-  const [modal, setModal] = useState(false);
+export default function Upload (): JSX.Element {
+  const [modal, setModal] = useState(false)
 
-  const openModal = () => {
-    setModal(!modal);
-  };
+  const openModal = (): void => {
+    setModal(!modal)
+  }
 
   return (
     <>
       <S.PageContainer>
-        {modal ? <ModalCadastro closeModal={openModal} /> : ""}
+        {modal ? <ModalCadastro closeModal={openModal} /> : ''}
 
         <S.Container>
           <S.ContainerLogin>
             <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
-            
+
             <p> Faça aqui os seus upload</p>
             <form action="">
               <div>
                 <label htmlFor="arquivo"></label>
-                 <Input  type={"file"} name={"arquivo"} id={"arquivo"}>
-            
+                <Input type={'file'} name={'arquivo'} id={'arquivo'}>
+
                  </Input>
               </div>
             </form>
 
-            <Link  href="/hotsite">
+            <Link href="/hotsite">
           <ButtonPrimary className="azul" >
               VOLTAR
             </ButtonPrimary>
@@ -43,7 +42,6 @@ export default function Upload() {
         </S.Container>
       </S.PageContainer>
 
-      
     </>
-  );
+  )
 }

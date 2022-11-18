@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 3;
-`;
+`
 
 export const Container = styled.div`
   width: 550px;
@@ -23,7 +23,7 @@ export const Container = styled.div`
     height: 50px;
     background-color: red;
   }
-`;
+`
 
 export const TopWave = styled.div`
   width: 100%;
@@ -62,10 +62,10 @@ export const TopWave = styled.div`
     z-index: 10;
     margin-right: 10px;
   }
-`;
+`
 
 interface btnProps {
-  color?: string;
+  color?: string
 }
 
 export const ContainerBtn = styled.div`
@@ -84,7 +84,7 @@ export const ContainerBtn = styled.div`
       margin: 15px;
     }
   }
-`;
+`
 
 export const BtnComum = styled.button`
   width: 140px;
@@ -92,13 +92,13 @@ export const BtnComum = styled.button`
   border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
   background-color: ${(props: btnProps) =>
-    props.color ? props.color : "#2a8dd2"};
+    props.color ? props.color : '#2a8dd2'};
   border: none;
   color: white;
   font-size: 17px;
   cursor: pointer;
   transition: all 0.3s;
-`;
+`
 
 export const BtnProfissional = styled.button`
   width: 140px;
@@ -106,13 +106,13 @@ export const BtnProfissional = styled.button`
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
   background-color: ${(props: btnProps) =>
-    props.color ? props.color : "#2a8dd2"};
+    props.color ? props.color : '#2a8dd2'};
   border: none;
   color: white;
   font-size: 17px;
   cursor: pointer;
   transition: all 0.3s;
-`;
+`
 
 export const Form = styled.form`
   width: 90%;
@@ -132,4 +132,10 @@ export const Form = styled.form`
     margin-bottom: -0px;
     margin-left: 60px;
   }
-`;
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`

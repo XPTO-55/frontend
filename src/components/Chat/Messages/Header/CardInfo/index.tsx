@@ -1,12 +1,12 @@
 import React from 'react'
-import { IForum } from '../../../../../services/forum.service'
+import { IForum } from '../../../../../services/types'
 import * as S from './styles'
 
 interface InfoProps {
   data: Omit<IForum, 'id'>
 }
 
-function Info({ data }: InfoProps) {
+function Info ({ data }: InfoProps) {
   return (
     <S.Container>
       <S.ImageContainer >

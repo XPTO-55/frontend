@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import * as S from './styles'
 
-export function ProfileBar() {
-  const [openMenu, setOpenMenu] = useState(false);
+export function ProfileBar () {
+  const [openMenu, setOpenMenu] = useState(false)
 
   return (
     <S.Container>
       <S.LogoContainer>
-        <S.Logo src={"/assets/img/logoSemTexto.png"} alt="" />
+        <S.Logo src={'/assets/img/logoSemTexto.png'} alt="" />
       </S.LogoContainer>
       <S.UserInfo>
         <S.Username>nazaré tedesco</S.Username>

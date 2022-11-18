@@ -1,20 +1,20 @@
-import { Slot } from "@radix-ui/react-slot";
-import clsx from "clsx";
-import styled from "styled-components";
+import React from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import styled from 'styled-components'
 
 interface BoundedProps extends React.HTMLAttributes<HTMLDivElement> {
-  asChild: boolean;
-  size?: "small" | "base" | "wide" | "widest";
+  asChild: boolean
+  size?: 'small' | 'base' | 'wide' | 'widest'
 }
 
 export const Bounded = ({
-  size = "base",
+  size = 'base',
   className,
   children,
   asChild,
   ...props
 }: BoundedProps) => {
-  const Comp = asChild ? Slot : 'div';
+  const Comp = asChild ? Slot : 'div'
   return (
     <BoundedContainer>
       <Comp {...props}>
@@ -23,8 +23,8 @@ export const Bounded = ({
         </BoundedStyled>
       </Comp>
     </BoundedContainer>
-  );
-};
+  )
+}
 
 const BoundedContainer = styled.span`
   & > * {
@@ -48,21 +48,21 @@ const BoundedContainer = styled.span`
 `
 
 interface BoundedStyledProps {
-  size: "small" | "base" | "wide" | "widest";
+  size: 'small' | 'base' | 'wide' | 'widest'
 }
 
 const BoundedStyled = styled.div<BoundedStyledProps>`
   width: 100%; 
   margin: 0 auto;
   max-width: ${({ size }) => {
-    if (size === "small") {
-      return "36rem"
-    } else if (size === "base") {
-      return "48rem"
-    } else if (size === "wide") {
-      return "56rem"
+  if (size === 'small') {
+    return '36rem'
+  } else if (size === 'base') {
+    return '48rem'
+  } else if (size === 'wide') {
+    return '56rem'
     } else {
-      return "72rem"
+    return '72rem'
     }
   }};
 `

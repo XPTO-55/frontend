@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Input = styled.input`
   width: 250px;
@@ -15,11 +15,8 @@ export const Input = styled.input`
     width: 330px;
   }
 
-  &.editProfile{
-    width: 350px;
-  }
+`
 
-`;
 
 export const Icon = styled.div`
   width: 55px;
@@ -32,18 +29,17 @@ export const Icon = styled.div`
   justify-content: center;
   color: white;
   font-size: 30px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+`
 
-`;
 
 export const ContainerInput = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const Svg = styled.svg`
   color: white;
   width: 30px;
   height: 30px;
-`;
+`

@@ -7,7 +7,7 @@ interface CardProps {
   data: IEventUsers
 }
 
-function Card({ data }: CardProps) {
+function Card ({ data }: CardProps) {
   return (
     <S.Container status={data.status}>
       <CardInfo data={data} />

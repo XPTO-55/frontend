@@ -1,35 +1,12 @@
-import api from './api';
-import { IUser } from './users.service';
+import { api } from './api'
+import { IEvent, IEventUsers } from './types'
 
-export enum IStatus {
-  confirmed = '#80be80',
-  pending = '#FF7900',
-  canceled = '#C8372D',
+export const getEvents = async (): Promise<IEvent[]> => {
+  const { data } = await api.get('/events')
+  return data as IEvent[]
 }
 
-export type IEvent = {
-  id: string;
-  name: string;
-  startDate: string,
-  endDate: string,
-  status: 'confirmed' | 'pending' | 'canceled'
+export const getParticipantsEvents = async (): Promise<IEventUsers[]> => {
+  const { data } = await api.get('/events?_embed=users')
+  return data as IEventUsers[]
 }
-
-export type IEventUsers = {
-  id: string;
-  name: string;
-  startDate: string,
-  endDate: string,
-  status: IStatus
-  users: IUser[]
-}
-
-export const getEvents = async () => {
-  const { data } = await api("/events");
-  return data as IEvent[];
-};
-
-export const getParticipantsEvents = async () => {
-  const { data } = await api("/events?_embed=users");
-  return data as IEventUsers[];
-};

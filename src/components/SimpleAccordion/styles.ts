@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Header = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ export const Header = styled.div`
     margin-right: 20px;
     font-weight: 500;
   }
-`;
+`
 
 export const ContainerContent = styled.div`
   width: 100%;
@@ -22,4 +22,4 @@ export const ContainerContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`;
+`

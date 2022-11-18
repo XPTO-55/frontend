@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import * as S from './styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
@@ -13,10 +14,9 @@ export default function HotSite (): JSX.Element {
 
   return (
     <>
-
+      <Header />
       <S.PageContainer>
         {modal ? <ModalCadastro closeModal={openModal} /> : ''}
-
         <S.Container>
           <S.ContainerLogin>
             <Link href="/">
@@ -25,27 +25,20 @@ export default function HotSite (): JSX.Element {
             <p>
               Faça aqui mesmo seus downloads e uploads sempre que precisar.
             </p>
-
-            <ButtonPrimary className="laranja" >
-              DOWNLOAD CSV
+            <ButtonPrimary className="azul" >
+              DOWNLOAD CSV 
             </ButtonPrimary>
 
-            <ButtonPrimary className="laranja" >
-              DOWNLOAD TXT
+            <ButtonPrimary className="azul" >
+              DOWNLOAD TXT 
             </ButtonPrimary>
+           
+          <Link  href="/upload">
+          <ButtonPrimary className="azul" >
 
-            <Link href="/upload">
-          <ButtonPrimary className="laranja" >
               UPLOADS
             </ButtonPrimary>
           </Link>
-
-            <Link href="/">
-          <ButtonPrimary className="azul" >
-              VOLTAR
-            </ButtonPrimary>
-          </Link>
-
           </S.ContainerLogin>
         </S.Container>
       </S.PageContainer>

@@ -9,12 +9,14 @@ export const Input = styled.input`
   font-size: 17px;
   padding-left: 10px;
   background-color: #F9F9F9;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   &.cadastro{
     width: 330px;
   }
 
 `
+
 
 export const Icon = styled.div`
   width: 55px;
@@ -28,6 +30,7 @@ export const Icon = styled.div`
   color: white;
   font-size: 30px;
 `
+
 
 export const ContainerInput = styled.div`
   display: flex;

@@ -19,6 +19,15 @@ export interface IForum {
   members: number
 }
 
+export interface IForumMessages {
+  id: number
+  eventId: number
+  name: string
+  members: number
+  imageUrl: string
+  messages: IMessage[]
+}
+
 export interface IEvent {
   id: string
   name: string
@@ -40,4 +49,13 @@ export interface IEventUsers {
   endDate: string
   status: IStatus
   users: IUserResponse[]
+}
+
+export interface IMessage {
+  id: number
+  text: string
+  senderName: string
+  userId: number
+  forumId?: number
+  replyes: IMessage[]
 }

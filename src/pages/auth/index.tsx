@@ -11,9 +11,21 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { authenticationSchema } from '../../validations/user.validation'
 import { IUserLoginRequest } from '../../services/types'
 import * as Dialog from '@radix-ui/react-dialog'
+import { useAuth } from '../../context/auth'
+import { useMutation } from 'react-query'
+import { Loader } from '../../@shared/Loader'
+import { Toast } from '../../@shared/Toast'
+import { useRouter } from 'next/router'
 
 export default function Auth() {
+  const router = useRouter()
   const [open, setOpen] = useState(false)
+  const { signIn } = useAuth()
+  const { mutate, isLoading, isError, error } = useMutation(signIn, {
+    onSuccess: async () => {
+      await router.push('/feed')
+    }
+  })
 
   const { register, handleSubmit, formState: { errors } } = useForm<IUserLoginRequest>({
     resolver: yupResolver(authenticationSchema)
@@ -21,24 +33,17 @@ export default function Auth() {
 
   const onSubmit: SubmitHandler<IUserLoginRequest> = (data, event) => {
     event.preventDefault()
-    console.log(data)
+    mutate(data)
     return false
   }
-
-  const onError = (errors) => {
-    console.log(errors)
-  }
-
   return (
     <S.PageContainer>
-      {/* {modal ? <ModalCadastro closeModal={openModal} /> : null} */}
-
       <S.Container>
         <S.ContainerLogin>
           <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
           </Link>
-          <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
             <S.InputContainer>
               <Input placeholder="Email" {...register('email')} >
                 <MdOutlineAlternateEmail />
@@ -46,15 +51,22 @@ export default function Auth() {
               <p>{errors?.email?.message}</p>
             </S.InputContainer>
             <S.InputContainer>
-              <Input placeholder="Senha" {...register('password')} >
+              <Input placeholder="Senha" type="password" {...register('password')} >
                 <SlLock />
               </Input>
               <p>{errors?.password?.message}</p>
             </S.InputContainer>
-            <span>Esqueceu a senha?</span>
-            <ButtonPrimary type="submit" className="laranja">Entrar</ButtonPrimary>
+            <span aria-disabled={isError}>
+              {isError ? (error?.message?.message || error?.message) : null}
+              <u>
+                Esqueceu a senha?
+              </u>
+            </span>
+            <ButtonPrimary type="submit" className="laranja">
+              {isLoading ? <Loader width={16} /> : null}
+              Entrar
+            </ButtonPrimary>
           </S.Form>
-
           <p>
             Não possui uma conta?
             <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -62,12 +74,13 @@ export default function Auth() {
                 <u>
                   Cadastra-se
                 </u>
-                <UsuarioForm />
+                <UsuarioForm setOpen={setOpen} />
               </S.ModalTrigger>
             </Dialog.Root >
           </p>
         </S.ContainerLogin>
       </S.Container>
+      {/* {isError ? <Toast type={'error'} title={'Error'} description={error?.message?.message || error?.message || 'Erro ao realizar o login'} /> : null} */}
     </S.PageContainer>
   )
 }

@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query'
 import * as S from './styles'
 import Card from './Card'
-import { getParticipantsEvents, IEventUsers } from '../../../services/events.service'
+import { getParticipantsEvents } from '../../../services/events.service'
+import { IEventUsers } from '../../../services/types'
 import React from 'react'
 
 function Forums () {
@@ -19,7 +20,7 @@ function Forums () {
       </div>
 
       <S.CardContainer>
-        {events ? events.map(event => <Card key={event.id} data={event} />) : null}
+        {events?.length > 0 ? events.map(event => <Card key={event.id} data={event} />) : null}
       </S.CardContainer>
 
     </S.Container>

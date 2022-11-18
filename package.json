@@ -8,16 +8,18 @@
     "start": "next start",
     "lint": "next lint --cache ",
     "lint:fix": "next lint --cache --fix",
-    "server": "npx json-server --port 3333 --watch server.json"
+    "server": "npx json-server --port 3333 --watch server.json",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@material-ui/core": "^4.12.4",
     "@prismicio/client": "^6.7.1",
-    "@prismicio/helpers": "^2.3.5",
+    "@prismicio/helpers": "^2.3.6",
     "@prismicio/next": "^0.1.7",
     "@prismicio/react": "^2.5.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
+    "@radix-ui/react-collapsible": "^1.0.1",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-slot": "^1.0.1",
     "@radix-ui/react-tabs": "^1.0.1",
@@ -36,7 +38,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@prismicio/types": "^0.2.3",
+    "@prismicio/types": "^0.2.4",
     "@types/node": "^18.8.3",
     "@types/react": "^18.0.21",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
@@ -51,7 +53,7 @@
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "prismic-ts-codegen": "^0.1.5",
-    "slice-machine-ui": "^0.5.1",
+    "slice-machine-ui": "^0.5.2",
     "typescript": "^4.8.4"
   }
 }

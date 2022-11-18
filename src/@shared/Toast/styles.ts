@@ -1,5 +1,12 @@
 import styled, { keyframes } from 'styled-components'
 import * as Toast from '@radix-ui/react-toast'
+import { IToastTypesProps } from './types'
+
+export const Container = styled.span<IToastTypesProps>`
+  & > * {
+    background-color: #ff7900;
+  }
+`
 
 const hide = keyframes`  
   from {
@@ -30,9 +37,9 @@ const swipeOut = keyframes`
 
 export const ToastRoot = styled(Toast.Root)`
   position: fixed;
+  min-width: 200px;
   bottom: 32px;
   right: 32px;
-  background-color: #f6f6f6;
   border-radius: 6px;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   padding: 15px;
@@ -41,8 +48,29 @@ export const ToastRoot = styled(Toast.Root)`
   grid-template-columns: auto max-content;
   column-gap: 15px;
   align-items: center;
+  &[data-type='success'] {
+    background-color: #80be80;
+    color: '#f6f6f6';
+  }
+  &[data-type='pending'] {
+    background-color: #fd7e14;
+    color: '#f6f6f6';
+  }
+  &[data-type='info'] {
+    background-color: #0d6efd;
+    color: '#f6f6f6';
+  }
+  &[data-type='light'] {
+    background-color: #f6f6f6;
+    color: '#212121';
+  }
+  &[data-type='error'] {
+    background-color: #C8372D;
+    color: '#f6f6f6';
+  }
+
   &[data-state='open'] {
-  animation: ${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: ${slideIn} 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   &[data-state='closed'] {
   animation: ${hide} 100ms ease-in;

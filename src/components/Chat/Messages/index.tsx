@@ -3,6 +3,7 @@ import * as S from './styles'
 import { IForum } from '../../../services/types'
 import { Header } from './Header'
 import MessageList from './MessageList'
+import { Footer } from './Footer'
 
 interface MessagesProps {
   forum: IForum
@@ -11,9 +12,9 @@ interface MessagesProps {
 function Messages (props: MessagesProps) {
   return (
     <S.Container>
-      <Header data={props.forum} />
-      <MessageList />
-      <Header data={props.forum} />
+      {props.forum ? <Header data={props.forum} /> : null}
+      <MessageList data={props.forum} />
+      {props.forum ? <Footer /> : null}
     </S.Container>
   )
 }

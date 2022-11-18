@@ -26,7 +26,7 @@ function Forums({ setSelectForum }: ForumProps) {
       <S.Title>Chats</S.Title>
       <S.CardContainer>
         {
-          forums ? forums.map(forum => <Card onClick={() => handleClickForum(forum)} key={forum.id} data={forum} />) : null
+          forums?.length > 0 ? forums.map(forum => <Card onClick={() => handleClickForum(forum)} key={forum.id} data={forum} />) : null
         }
       </S.CardContainer>
 

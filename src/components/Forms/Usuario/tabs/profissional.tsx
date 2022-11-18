@@ -13,41 +13,27 @@ import { registerSchema } from '../../../../validations/user.validation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { IUserRequest } from '../../../../services/types'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
 import { createProfessional } from '../../../../services/users.service'
 import { Form } from './types'
 import { Loader } from '../../../../@shared/Loader'
+import { Toast } from '../../../../@shared/Toast'
 
 export function ProfissionalForm({ setOpen }: Form) {
-  const queryClient = useQueryClient()
-  const { mutateAsync, isLoading } = useMutation(createProfessional, {
-    onSuccess: data => {
-      const message = 'success'
-      alert(message)
-      setOpen(false)
-    },
-    onError: () => {
-      alert('there was an error')
-    },
-    onSettled: async () => {
-      await queryClient.invalidateQueries('create')
-    }
-  })
+  const { mutate, isLoading, isError, error } = useMutation(createProfessional)
   const { register, handleSubmit, formState: { errors } } = useForm<IUserRequest>({
     resolver: yupResolver(registerSchema)
   })
 
   const onSubmit: SubmitHandler<IUserRequest> = (data, event) => {
     event.preventDefault()
-    console.log(data)
-    mutateAsync(data)
+    mutate(data)
+    setOpen(false)
   }
 
-  const onError = (errors) => {
-    console.log(errors)
-  }
   return (
-    <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
       <S.Fieldset>
         <Input type="text" placeholder="Nome Completo" width="cadastro" {...register('name')}>
           <FiUser />
@@ -125,5 +111,8 @@ export function ProfissionalForm({ setOpen }: Form) {
         </Dialog.Close>
       </S.Footer>
     </S.Form>
+      {isError ? <Toast type={'error'} title={'Error'} description={error?.message?.message || error?.message || 'Erro ao realizar o cadastro'} /> : null}
+
+    </>
   )
 }

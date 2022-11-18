@@ -42,8 +42,12 @@ export const ContainerLogin = styled.div`
   }
   span{
     font-size: 13px;
-    margin-top: -2px;
-    margin-left: 200px;
+    display: flex;
+    gap: 4px;
+    align-self: flex-end;
+    &[aria-disabled=true]{
+      color: red;
+    }
   }
 `
 

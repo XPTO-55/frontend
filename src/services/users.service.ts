@@ -1,4 +1,4 @@
-import api from './api';
+import {api} from './api';
 
 export type IUser = {
   id: string;
@@ -7,6 +7,6 @@ export type IUser = {
 }
 
 export const getForums = async () => {
-  const { data } = await api("/users");
+  const { data } = await api.get("/users");
   return data as IUser[];
 };

@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface ForumProps {
   setSelectForum: Dispatch<SetStateAction<IForum>>
-}
+} 
 
 function Forums({ setSelectForum }: ForumProps) {
   const { data: forums, isError, isLoading } = useQuery<IForum[]>(["forums"], getForums);

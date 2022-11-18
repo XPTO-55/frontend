@@ -1,4 +1,4 @@
-import api from './api';
+import {api} from './api';
 import { IUser } from './users.service';
 
 export enum IStatus {

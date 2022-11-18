@@ -9,11 +9,10 @@ export const ContainerCard = styled.div`
   background-color: #ebebeb;
   border-radius: 7px;
   flex-direction: column;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   margin-bottom: 20px;
 `;
-
-
 
 export const ContainerInside = styled.div`
   width: 100%;
@@ -71,22 +70,19 @@ export const ContainerInside = styled.div`
   }
 `;
 
-interface imgProps{
-  img: string
+interface imgProps {
+  img: string;
 }
 
-
-
 export const Img = styled.img<imgProps>`
-    width: 208px;
-    height: 208px;
-    border-radius: 100%;
-    border: 5px solid #2a8dd2;
-    margin-top: 15px;
-    background-image: url(${(props => props.img)});
+  width: 208px;
+  height: 208px;
+  border-radius: 100%;
+  border: 5px solid #2a8dd2;
+  margin-top: 15px;
+  background-image: url("https://img.freepik.com/fotos-gratis/retrato-do-jovem-medico-segurando-o-estetoscopio_23-2148352015.jpg?w=2000");
+  /* background-image: url(${(props) => props.img}); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
-
-`
+`;

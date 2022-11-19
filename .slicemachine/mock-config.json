@@ -58,7 +58,8 @@
         }
       }
     },
-    "post": {}
+    "post": {},
+    "comments": {}
   },
   "slices": {
     "Text": {

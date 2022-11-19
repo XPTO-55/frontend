@@ -98,7 +98,7 @@ export default function SimpleAccordion() {
   const filteredAccordionList = search.length > 0 ? faqList.filter(accordion => accordion.Title.includes(search)) : faqList
 
   return (
-    <div>
+    <>
       <S.Header>
         <span>FAQ</span>
         <Input onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Pesquise aqui...">
@@ -141,7 +141,7 @@ export default function SimpleAccordion() {
               </Accordion>
           )
         })}
-        <Accordion disabled>
+        {/* <Accordion disabled>
           <AccordionSummary
             expandIcon={<BsChevronDown />}
             aria-controls="panel3a-content"
@@ -149,8 +149,8 @@ export default function SimpleAccordion() {
           >
             <Typography>Disabled Accordion</Typography>
           </AccordionSummary>
-        </Accordion>
+        </Accordion> */}
       </S.ContainerContent>
-    </div>
+    </>
   )
 }

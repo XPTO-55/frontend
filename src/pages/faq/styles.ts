@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -11,24 +10,24 @@ export const PageContainer = styled.div`
 `
 
 export const Container = styled.div`
-  width: 100%;
   height: 100%;
+  width: calc(100% - 4rem);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  padding: 0 2rem;
 `
 
 export const ContainerContent = styled.div`
-width: 100%;
-height: 480px;
-overflow: auto;
+  width: 100%;
+  height: 480px;
+  overflow: auto;
+  padding: 0 4rem;
 `
 
 export const Svg = styled.svg`
-z-index: -1;
-position: fixed;
-margin-top: 300px;
-width: 100%;
-height: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
 `

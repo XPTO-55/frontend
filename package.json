@@ -9,7 +9,8 @@
     "lint": "next lint --cache ",
     "lint:fix": "next lint --cache --fix",
     "server": "npx json-server --port 3333 --watch server.json",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "prismic:types": "npx prismic-ts-codegen"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",

@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     onSuccess(data) {
       setUser(data)
       api.defaults.headers.common.Authorization = `Bearer ${data.jwtToken}`
-      localStorage.setItem('user', data.username)
+      localStorage.setItem('user', JSON.stringify(data))
       localStorage.setItem('token', data.jwtToken)
       localStorage.setItem('refreshToken', data.refreshToken)
     },

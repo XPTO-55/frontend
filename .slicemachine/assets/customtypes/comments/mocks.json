@@ -1,0 +1,50 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "comments",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "post": {
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "mock",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    },
+    "userprofile": {
+      "link_type": "Web",
+      "url": "https://slicemachine.dev"
+    },
+    "username": [
+      {
+        "type": "paragraph",
+        "text": "Eu veniam dolor id dolor id do excepteur duis ex aliquip nostrud duis ea nulla duis. Amet non adipisicing amet officia id incididunt ullamco ut dolor anim culpa sint. Eiusmod occaecat mollit veniam eiusmod pariatur ea quis.",
+        "spans": []
+      }
+    ],
+    "speciality": [
+      {
+        "type": "paragraph",
+        "text": "Cupidatat commodo proident Lorem consectetur elit fugiat ex consectetur esse mollit ex minim ipsum ipsum. Incididunt minim veniam est sit sit enim nulla esse non ad sunt exercitation. Lorem pariatur aliqua fugiat laboris.",
+        "spans": []
+      }
+    ],
+    "comment": [
+      {
+        "type": "paragraph",
+        "text": "Pariatur velit qui exercitation Lorem excepteur pariatur voluptate elit id incididunt do Lorem duis nostrud.",
+        "spans": []
+      }
+    ]
+  }
+}

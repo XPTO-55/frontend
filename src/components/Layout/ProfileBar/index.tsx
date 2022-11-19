@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 import * as S from './styles'
 
@@ -23,13 +24,17 @@ export function ProfileBar () {
           <S.HamburguerMenu open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
             <ul>
               <li>
-                Feed
+                Configurações
               </li>
               <li>
-                Profissionais
+                Ajuda e suporte
               </li>
               <li>
-                FAQ
+                <Link href={'/faq'}>
+                  <a href="">
+                    FAQ
+                  </a>
+                </Link>
               </li>
               <li>
                 Sair

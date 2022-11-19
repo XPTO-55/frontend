@@ -13,7 +13,7 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 32px;
+  padding: 0 2rem;
   justify-content: space-between;
 `
 

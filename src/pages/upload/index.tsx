@@ -1,21 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { Input } from '../../components/Input'
 import * as S from './styles'
-import { ModalCadastro } from '../../components/Forms/ModalCadastro'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useAuth } from '../../context/auth'
+import { Header } from '../../components/Layout/Header'
 
 export default function Upload (): JSX.Element {
-  const [modal, setModal] = useState(false)
+  const router = useRouter()
+  const { user, loading } = useAuth()
 
-  const openModal = (): void => {
-    setModal(!modal)
-  }
+  useEffect(() => {
+    if (!(user) && !loading) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/auth')
+    }
+  }, [user, loading])
 
   return (
     <>
+      <Header />
       <S.PageContainer>
-        {modal ? <ModalCadastro closeModal={openModal} /> : ''}
 
         <S.Container>
           <S.ContainerLogin>

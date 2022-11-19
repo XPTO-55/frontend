@@ -1,6 +1,6 @@
 import * as S from './styles'
 import React, { useState } from 'react'
-import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import { ButtonPrimary } from '../../../@shared/ButtonPrimary'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 

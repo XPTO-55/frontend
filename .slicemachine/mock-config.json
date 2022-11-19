@@ -1,59 +1,9 @@
 {
   "_cts": {
-    "navigation": {
-      "links": {
-        "label": {
-          "config": {
-            "patternType": "HEADING",
-            "blocks": 1
-          }
-        }
-      },
-      "homepageLabel": {
-        "config": {
-          "patternType": "HEADING",
-          "blocks": 1
-        }
-      }
-    },
-    "page": {
-      "title": {
-        "config": {
-          "patternType": "HEADING",
-          "blocks": 1
-        }
-      }
-    },
     "article": {
       "title": {
         "config": {
           "patternType": "HEADING",
-          "blocks": 1
-        }
-      }
-    },
-    "settings": {
-      "name": {
-        "config": {
-          "patternType": "HEADING",
-          "blocks": 1
-        }
-      },
-      "description": {
-        "config": {
-          "patternType": "PARAGRAPH",
-          "blocks": 1
-        }
-      },
-      "newsletterDescription": {
-        "config": {
-          "patternType": "PARAGRAPH",
-          "blocks": 1
-        }
-      },
-      "newsletterDisclaimer": {
-        "config": {
-          "patternType": "PARAGRAPH",
           "blocks": 1
         }
       }

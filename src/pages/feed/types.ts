@@ -1,14 +1,18 @@
 import { Document } from 'prismic-javascript/types/documents'
-import { PostDocument } from '../../@types/prismic'
+import { CommentsDocument, PostDocument } from '../../@types/prismic'
+
+interface PostCommentsDocument extends PostDocument {
+  comments: CommentsDocument[]
+}
+
+export interface PostDocumentStatic extends Document {
+  comments: CommentsDocument[]
+}
 
 export interface StaticProps {
-  posts: Document[]
+  posts: PostDocumentStatic[]
 }
 
 export interface FeedProps {
-  posts: PostDocument[]
-}
-
-export interface PostProps {
-  post: PostDocument
+  posts: PostCommentsDocument[]
 }

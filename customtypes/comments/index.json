@@ -1,50 +1,39 @@
 {
   "id": "comments",
   "label": "Comments",
-  "repeatable": false,
+  "repeatable": true,
   "status": true,
   "json": {
     "Main": {
+      "username": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Username",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "profileimageurl": {
+        "type": "Link",
+        "config": {
+          "label": "profileImageUrl",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "comment": {
+        "type": "Text",
+        "config": {
+          "label": "comment",
+          "placeholder": ""
+        }
+      },
       "post": {
         "type": "Link",
         "config": {
           "label": "post",
           "select": "document"
-        }
-      },
-      "userprofile": {
-        "type": "Link",
-        "config": {
-          "label": "userProfile",
-          "placeholder": "",
-          "select": null
-        }
-      },
-      "username": {
-        "type": "StructuredText",
-        "config": {
-          "label": "username",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
-      "speciality": {
-        "type": "StructuredText",
-        "config": {
-          "label": "speciality",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
-      "comment": {
-        "type": "StructuredText",
-        "config": {
-          "label": "comment",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
     }

@@ -5,7 +5,7 @@ export const Container = styled.aside`
   flex-direction: column;
   height: 86vh;
   justify-content: flex-start;
-  padding-top: 2rem;
+  padding-top: 1.75rem;
   align-items: center;
   gap: 3rem;
   width: 20vw;
@@ -56,8 +56,8 @@ export const Navigation = styled.nav`
     li {
       display: block;
       text-align: left;
-      height: 32px;
-      padding: .75rem 2rem;
+      height: 2rempx;
+      padding: .5rem 2rem;
       &:hover {
         background-color: #0A6CB2;
       }

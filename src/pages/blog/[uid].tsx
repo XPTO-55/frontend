@@ -21,8 +21,7 @@ const Page = ({ page }) => {
 
 export default Page
 
-export async function getStaticProps ({ params, previewData }) {
-  // @ts-expect-error
+export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData })
 
   const page = await client.getByUID('page', params.uid)

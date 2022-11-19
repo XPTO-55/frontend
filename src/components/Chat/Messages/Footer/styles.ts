@@ -112,4 +112,5 @@ export const ActionButton = styled.button`
   &:hover {
     transform: translateY(-1px);
   } */
+}
 `

@@ -11,6 +11,7 @@ import { Header } from '../../components/Layout/Header'
 import { ArticleProps, BlogProps, StaticProps } from './types'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -89,8 +90,6 @@ const Article = ({ article }: ArticleProps) => {
 }
 
 export default function Index({ articles }: BlogProps) {
-  console.log('articles', articles)
-
   const router = useRouter()
 
   if (router.isFallback) {
@@ -99,6 +98,9 @@ export default function Index({ articles }: BlogProps) {
 
   return (
     <>
+      <Head>
+        <title> Blog | CPA </title>
+      </Head>
       <Header />
       <Bounded asChild size="widest">
         <S.ListaNaoOrdenada>

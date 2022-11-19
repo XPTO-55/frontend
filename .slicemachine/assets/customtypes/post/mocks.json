@@ -11,14 +11,20 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
+    "username": "affect",
+    "profileurl": {
+      "link_type": "Web",
+      "url": "https://slicemachine.dev"
+    },
+    "speciality": "fish",
+    "email": "straw",
     "title": [
       {
-        "type": "heading1",
-        "text": "Forest",
+        "type": "paragraph",
+        "text": "Velit nostrud est cupidatat mollit esse ex irure proident dolore dolore aliqua anim consequat incididunt.",
         "spans": []
       }
     ],
-    "publish_date": "2019-01-09",
     "slices": []
   }
 }

@@ -9,6 +9,8 @@ import { Bounded } from '../../../components/blog/Bounded'
 import { Heading } from '../../../components/blog/Heading'
 import { HorizontalDivider } from '../../../components/blog/HorizontalDivider'
 import { Header } from '../../../components/Layout/Header'
+import { ArticleProps, StaticProps, LatestArticleProps } from './types'
+import { GetStaticProps } from 'next'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -16,7 +18,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric'
 })
 
-const LatestArticle = ({ article }) => {
+const LatestArticle = ({ article }: LatestArticleProps) => {
   const date = prismicH.asDate(
     article?.data?.publishDate || article?.first_publication_date
   )
@@ -33,13 +35,16 @@ const LatestArticle = ({ article }) => {
   )
 }
 
-const Article = ({ article, latestArticles }) => {
+const Article = ({ article, latestArticles }: ArticleProps) => {
   const date = prismicH.asDate(
     article.data.publishDate || article.first_publication_date
   )
 
   return (
     <>
+      <Head>
+        <title> Blog | CPA </title>
+      </Head>
       <Header />
       <Head>
         <title>
@@ -88,8 +93,7 @@ const Article = ({ article, latestArticles }) => {
 
 export default Article
 
-export async function getStaticProps ({ params, previewData }) {
-  // @ts-expect-error
+export const getStaticProps: GetStaticProps<StaticProps> = async ({ params, previewData }) => {
   const client = createClient({ previewData })
 
   const article = await client.getByUID('article', params.uid)

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
 import { Header } from '../../components/Layout/Header'
+import Head from 'next/head'
 
 export default function Upload (): JSX.Element {
   const router = useRouter()
@@ -21,6 +22,9 @@ export default function Upload (): JSX.Element {
   return (
     <>
       <Header />
+      <Head>
+        <title> Upload | CPA </title>
+      </Head>
       <S.PageContainer>
 
         <S.Container>

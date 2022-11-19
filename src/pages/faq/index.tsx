@@ -2,10 +2,14 @@ import React from 'react'
 import * as S from './styles'
 import { Header } from '../../components/Layout/Header'
 import SimpleAccordion from '../../components/SimpleAccordion'
+import Head from 'next/head'
 
 export default function Faq () {
   return (
     <>
+      <Head>
+        <title> Faq | CPA </title>
+      </Head>
       <Header />
       <S.PageContainer>
         <S.Container>

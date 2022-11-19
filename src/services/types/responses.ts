@@ -6,6 +6,7 @@ export interface IUserLoginResponse {
   type: string
   refreshToken: string
   username: string
+  email: string
 }
 
 export interface IUserResponse extends IUserBase {

@@ -7,6 +7,7 @@ import { Header } from '../../components/Layout/Header'
 import { Loader } from '../../@shared/Loader'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
+import Head from 'next/head'
 
 export default function HotSite (): JSX.Element {
   const router = useRouter()
@@ -26,6 +27,9 @@ export default function HotSite (): JSX.Element {
   return (
     <>
       <Header />
+      <Head>
+        <title> Hotsite | CPA </title>
+      </Head>
       <S.PageContainer>
         <S.Container>
           <S.ContainerLogin>

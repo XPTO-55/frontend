@@ -10,11 +10,13 @@
     "lint:fix": "next lint --cache --fix",
     "server": "npx json-server --port 3333 --watch server.json",
     "slicemachine": "start-slicemachine",
-    "prismic:types": "npx prismic-ts-codegen"
+    "prismic:types": "npx prismic-ts-codegen",
+    "prismic:sync": "npx @slicemachine/init"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@material-ui/core": "^4.12.4",
+    "@next/font": "^13.0.4",
     "@prismicio/client": "^6.7.1",
     "@prismicio/helpers": "^2.3.6",
     "@prismicio/next": "^0.1.7",
@@ -29,6 +31,7 @@
     "@types/styled-components": "^5.1.26",
     "keen-slider": "^6.8.2",
     "next": "12.3.1",
+    "prismic-dom": "^2.2.7",
     "prismic-javascript": "^3.0.2",
     "prismic-reactjs": "^1.3.4",
     "react": "18.2.0",
@@ -41,6 +44,7 @@
   "devDependencies": {
     "@prismicio/types": "^0.2.4",
     "@types/node": "^18.8.3",
+    "@types/prismic-dom": "^2.1.1",
     "@types/react": "^18.0.21",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "babel-plugin-styled-components": "^2.0.7",

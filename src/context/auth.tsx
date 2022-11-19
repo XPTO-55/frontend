@@ -1,16 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
 import * as Auth from '../services/auth.service'
 import { api } from '../services/api'
-import { IUserLoginRequest } from '../services/types'
-import { useMutation, useQuery } from 'react-query'
-
-interface User {
-  username: string
-}
+import { IUserLoginRequest, IUserLoginResponse } from '../services/types'
+import { useMutation } from 'react-query'
 
 interface AuthContextData {
   signed: boolean
-  user: User | null
+  user: IUserLoginResponse | null
   loading: boolean
   signIn: (userData: IUserLoginRequest) => Promise<void>
   signOut: () => void
@@ -23,7 +19,7 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<IUserLoginResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const { mutate } = useMutation(Auth.authenticate, {
     onMutate: () => {

@@ -16,6 +16,7 @@ import { useMutation } from 'react-query'
 import { Loader } from '../../@shared/Loader'
 import { Toast } from '../../@shared/Toast'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Auth() {
   const router = useRouter()
@@ -38,6 +39,9 @@ export default function Auth() {
   }
   return (
     <S.PageContainer>
+      <Head>
+        <title> Login | CPA</title>
+      </Head>
       <S.Container>
         <S.ContainerLogin>
           <Link href="/">

@@ -71,29 +71,7 @@ export type ArticleDocument<Lang extends string = string> = prismicT.PrismicDocu
 /** Content for Comments documents */
 interface CommentsDocumentData {
   /**
-     * post field in *Comments*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: comments.post
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-  post: prismicT.RelationField
-  /**
-     * userProfile field in *Comments*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: comments.userprofile
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-  userprofile: prismicT.LinkField
-  /**
-     * username field in *Comments*
+     * Username field in *Comments*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -104,163 +82,106 @@ interface CommentsDocumentData {
      */
   username: prismicT.RichTextField
   /**
-     * speciality field in *Comments*
+     * profileImageUrl field in *Comments*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Link
      * - **Placeholder**: *None*
-     * - **API ID Path**: comments.speciality
+     * - **API ID Path**: comments.profileimageurl
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-  speciality: prismicT.RichTextField
+  profileimageurl: prismicT.LinkField
   /**
      * comment field in *Comments*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
      * - **API ID Path**: comments.comment
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-  comment: prismicT.RichTextField
+  comment: prismicT.KeyTextField
+  /**
+     * post field in *Comments*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: comments.post
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+  post: prismicT.RelationField
 }
 /**
  * Comments document from Prismic
  *
  * - **API ID**: `comments`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type CommentsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CommentsDocumentData>, 'comments', Lang>
-/** Content for Navigation documents */
-interface NavigationDocumentData {
-  /**
-     * Homepage Label field in *Navigation*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: Label for the homepage link
-     * - **API ID Path**: navigation.homepageLabel
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  homepageLabel: prismicT.TitleField
-  /**
-     * Links field in *Navigation*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: navigation.links[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/group
-     *
-     */
-  links: prismicT.GroupField<Simplify<NavigationDocumentDataLinksItem>>
-}
-/**
- * Item in Navigation → Links
- *
- */
-export interface NavigationDocumentDataLinksItem {
-  /**
-     * Label field in *Navigation → Links*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: Optional - Label for the link
-     * - **API ID Path**: navigation.links[].label
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  label: prismicT.TitleField
-  /**
-     * Link field in *Navigation → Links*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: Link for navigation item
-     * - **API ID Path**: navigation.links[].link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-  link: prismicT.LinkField
-}
-/**
- * Navigation document from Prismic
- *
- * - **API ID**: `navigation`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<NavigationDocumentData>, 'navigation', Lang>
-/** Content for Page documents */
-interface PageDocumentData {
-  /**
-     * Title field in *Page*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: Title for the page
-     * - **API ID Path**: page.title
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  title: prismicT.TitleField
-  /**
-     * Slice Zone field in *Page*
-     *
-     * - **Field Type**: Slice Zone
-     * - **Placeholder**: *None*
-     * - **API ID Path**: page.slices[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-     *
-     */
-  slices: prismicT.SliceZone<PageDocumentDataSlicesSlice>
-}
-/**
- * Slice for *Page → Slice Zone*
- *
- */
-type PageDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice | ContactFormSlice
-/**
- * Page document from Prismic
- *
- * - **API ID**: `page`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
+export type CommentsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<CommentsDocumentData>, 'comments', Lang>
 /** Content for Post documents */
 interface PostDocumentData {
   /**
+     * username field in *Post*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.username
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+  username: prismicT.KeyTextField
+  /**
+     * profileUrl field in *Post*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.profileurl
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+  profileurl: prismicT.LinkField
+  /**
+     * speciality field in *Post*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.speciality
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+  speciality: prismicT.KeyTextField
+  /**
+     * email field in *Post*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.email
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+  email: prismicT.KeyTextField
+  /**
      * Title field in *Post*
      *
-     * - **Field Type**: Title
-     * - **Placeholder**: Title for the post
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
      * - **API ID Path**: post.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-  title: prismicT.TitleField
-  /**
-     * Publish Date field in *Post*
-     *
-     * - **Field Type**: Date
-     * - **Placeholder**: *None*
-     * - **API ID Path**: post.publish_date
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/date
-     *
-     */
-  publish_date: prismicT.DateField
+  title: prismicT.RichTextField
   /**
      * Slice Zone field in *Post*
      *
@@ -277,86 +198,18 @@ interface PostDocumentData {
  * Slice for *Post → Slice Zone*
  *
  */
-type PostDocumentDataSlicesSlice = TextSlice | QuoteSlice | ImageSlice
+type PostDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice
 /**
  * Post document from Prismic
  *
  * - **API ID**: `post`
- * - **Repeatable**: `false`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PostDocumentData>, 'post', Lang>
-/** Content for Settings documents */
-interface SettingsDocumentData {
-  /**
-     * Name field in *Settings*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: Name of your blog (e.g. your name)
-     * - **API ID Path**: settings.name
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  name: prismicT.TitleField
-  /**
-     * Description field in *Settings*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: Short description of your blog
-     * - **API ID Path**: settings.description
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  description: prismicT.RichTextField
-  /**
-     * Profile Picture field in *Settings*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: settings.profilePicture
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-  profilePicture: prismicT.ImageField<never>
-  /**
-     * Newsletter Description field in *Settings*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: Text above the sign up form
-     * - **API ID Path**: settings.newsletterDescription
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  newsletterDescription: prismicT.RichTextField
-  /**
-     * Newsletter Disclaimer field in *Settings*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: Small text below sign up form
-     * - **API ID Path**: settings.newsletterDisclaimer
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-  newsletterDisclaimer: prismicT.RichTextField
-}
-/**
- * Settings document from Prismic
- *
- * - **API ID**: `settings`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, 'settings', Lang>
-export type AllDocumentTypes = ArticleDocument | CommentsDocument | NavigationDocument | PageDocument | PostDocument | SettingsDocument
+export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PostDocumentData>, 'post', Lang>
+export type AllDocumentTypes = ArticleDocument | CommentsDocument | PostDocument
 /**
  * Default variation for ContactForm Slice
  *
@@ -555,6 +408,6 @@ export type TextSlice = prismicT.SharedSlice<'text', TextSliceVariation>
 declare module '@prismicio/client' {
   type CreateClient = (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig) => prismic.Client<AllDocumentTypes>
   namespace Content {
-    export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, CommentsDocumentData, CommentsDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, PostDocumentData, PostDocumentDataSlicesSlice, PostDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice }
+    export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, CommentsDocumentData, CommentsDocument, PostDocumentData, PostDocumentDataSlicesSlice, PostDocument, AllDocumentTypes, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice }
   }
 }

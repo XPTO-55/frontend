@@ -2,11 +2,15 @@ import React from 'react'
 import { PrismicLink, PrismicText } from '@prismicio/react'
 import { PrismicNextImage } from '@prismicio/next'
 import * as prismicH from '@prismicio/helpers'
+import * as prismicNext from '@prismicio/next'
 import * as S from './styles'
 import { createClient } from '../../../prismicio'
 import { Bounded } from '../../components/blog/Bounded'
 import { Heading } from '../../components/blog/Heading'
 import { Header } from '../../components/Layout/Header'
+import { ArticleProps, BlogProps, StaticProps } from './types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -23,7 +27,7 @@ const findFirstImage = (slices) => {
 }
 
 const getExcerpt = (slices) => {
-  const text = slices
+  const text: string = slices
     .filter((slice) => slice.slice_type === 'text')
     .map((slice) => prismicH.asText(slice.primary.text))
     .join(' ')
@@ -37,7 +41,7 @@ const getExcerpt = (slices) => {
   }
 }
 
-const Article = ({ article }) => {
+const Article = ({ article }: ArticleProps) => {
   const featuredImage =
     (prismicH.isFilled.image(article.data.featuredImage) &&
       article.data.featuredImage) ||
@@ -84,7 +88,15 @@ const Article = ({ article }) => {
   )
 }
 
-export default function Index ({ articles }) {
+export default function Index({ articles }: BlogProps) {
+  console.log('articles', articles)
+
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <p>Carregando...</p>
+  }
+
   return (
     <>
       <Header />
@@ -99,9 +111,23 @@ export default function Index ({ articles }) {
   )
 };
 
-export async function getStaticProps ({ previewData }) {
-  // @ts-expect-error
-  const client = createClient({ previewData })
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   return {
+//     paths: [],
+//     fallback: true
+//   }
+// }
+
+export const getStaticProps: GetStaticProps<StaticProps> = async ({
+  previewData,
+  req,
+  ...config
+}: prismicNext.CreateClientConfig) => {
+  const client = createClient({
+    previewData,
+    req,
+    ...config
+  })
 
   const articles = await client.getAllByType('article', {
     orderings: [

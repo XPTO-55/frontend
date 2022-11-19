@@ -1,22 +1,32 @@
 
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import * as S from './styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
-import { ModalCadastro } from '../../components/Forms/ModalCadastro'
 import Link from 'next/link'
+import { Header } from '../../components/Layout/Header'
+import { Loader } from '../../@shared/Loader'
+import { useRouter } from 'next/router'
+import { useAuth } from '../../context/auth'
 
 export default function HotSite (): JSX.Element {
-  const [modal, setModal] = useState(false)
+  const router = useRouter()
+  const { user, loading } = useAuth()
 
-  const openModal = () => {
-    setModal(!modal)
+  useEffect(() => {
+    if (!(user) && !loading) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/auth')
+    }
+  }, [user, loading])
+
+  if (loading) {
+    return <Loader width={34} />
   }
 
   return (
     <>
       <Header />
       <S.PageContainer>
-        {modal ? <ModalCadastro closeModal={openModal} /> : ''}
         <S.Container>
           <S.ContainerLogin>
             <Link href="/">
@@ -26,15 +36,15 @@ export default function HotSite (): JSX.Element {
               Faça aqui mesmo seus downloads e uploads sempre que precisar.
             </p>
             <ButtonPrimary className="azul" >
-              DOWNLOAD CSV 
+              DOWNLOAD CSV
             </ButtonPrimary>
 
             <ButtonPrimary className="azul" >
-              DOWNLOAD TXT 
+              DOWNLOAD TXT
             </ButtonPrimary>
-           
-          <Link  href="/upload">
-          <ButtonPrimary className="azul" >
+
+            <Link href="/upload">
+              <ButtonPrimary className="azul" >
 
               UPLOADS
             </ButtonPrimary>

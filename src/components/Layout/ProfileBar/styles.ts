@@ -104,15 +104,24 @@ export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
 
   ul {
     width: 200px;
+    overflow: hidden;
     li {
-      padding: .75rem 1rem;
+      padding:1rem;
       display: flex;
       justify-content: center;
+      &:hover {
+        background-color: #0A6CB2;
+        &:last-child {
+          border-radius: 0 0 7px 7px;
+        }
+      }
+
       a {
         transition-duration:0.5s;
-        font-size:3rem;
-        line-height:4rem;
+        font-size:1rem;
         display: block;
+        text-decoration: none;
+        color: #f6f6f6;
       }
     }
   }

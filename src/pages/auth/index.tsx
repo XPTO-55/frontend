@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { message } from "antd";
-import { Input } from "../../components/Input";
 import * as S from "./styles";
+
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
 import { ButtonPrimary } from "../../@shared/ButtonPrimary";
@@ -11,6 +11,7 @@ import { IAuthProvider, IContext, IUser } from "./types";
 import { LoginRequest } from "./util";
 import { getUserLocalStorage, setUserLocalStorage, useAuth } from "./useAuth";
 import { useForm } from "react-hook-form";
+import { Input } from "../../components/Layout/Input";
 
 export const AuthContext = createContext<IContext>({} as IContext);
 

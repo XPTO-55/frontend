@@ -104,7 +104,6 @@ export default function SimpleAccordion() {
       <S.Header>
         <span>FAQ</span>
         <Input onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Pesquise aqui...">
-          <BiSearch />
         </Input>
       </S.Header>
       <S.ContainerContent>

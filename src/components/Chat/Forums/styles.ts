@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: flex-start;
   gap: 2rem;
   width: 20vw;
+  min-width: 20vw;
 `
 
 export const CardContainer = styled.div`

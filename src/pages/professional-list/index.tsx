@@ -2,7 +2,7 @@ import { Footer } from "antd/lib/layout/layout";
 import { ProfileBar } from "../../components/Layout/ProfileBar";
 import { ProfessionalCard } from "../../components/Professional-list/ProfessionalCard";
 import * as S from "./styles";
-import { Input } from "../../components/Layout/Input";
+import { Input } from "../../@shared/Input";
 import { BiSearch } from "react-icons/bi";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import {

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useQuery } from "react-query";
 import { CardPlace } from "../../components/CardPlace";
 import { Header } from "../../components/Layout/Header";
-import { Input } from "../../components/Layout/Input";
+import { Input } from "../../@shared/Input";
 import { LoaderAllPage } from "../../components/Layout/LoaderAllPage";
 import { getPlaces, IPlaces } from "../../services/places.service";
 import {BiSearch} from 'react-icons/bi'

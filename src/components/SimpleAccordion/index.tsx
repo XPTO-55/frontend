@@ -1,13 +1,12 @@
 import * as React from 'react'
+import * as S from './styles'
+import { useState } from 'react'
 import { Accordion } from '@material-ui/core'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import Typography from '@material-ui/core/Typography'
 import { BsChevronDown } from 'react-icons/bs'
-import { BiSearch } from 'react-icons/bi'
-import * as S from './styles'
-import { useState } from 'react'
-import { Input } from '../Input'
+import { Input } from '../../@shared/Input'
 
 export default function SimpleAccordion() {
   const [faqList] = useState([
@@ -102,7 +101,6 @@ export default function SimpleAccordion() {
       <S.Header>
         <span>FAQ</span>
         <Input onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Pesquise aqui...">
-          <BiSearch />
         </Input>
       </S.Header>
       <S.ContainerContent>

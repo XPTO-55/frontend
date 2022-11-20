@@ -22,4 +22,13 @@ export const ContainerContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  ::-webkit-scrollbar {
+  width: 9px;          
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #2A8DD2;   
+    border-radius: 10px; 
+  }
 `

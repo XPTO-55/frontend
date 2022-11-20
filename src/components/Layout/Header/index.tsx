@@ -14,14 +14,12 @@ export function Header () {
             <Link href="/">
               <S.Li>Home</S.Li>
             </Link>
-            <S.Li>Sobre</S.Li>
             <Link href="/blog">
               <S.Li>Blog</S.Li>
             </Link>
             <Link href="/faq">
               <S.Li>FAQ</S.Li>
             </Link>
-            <S.Li>Contato</S.Li>
           </S.Ul>
           <Link href="/auth">
             <S.Button>Entrar</S.Button>

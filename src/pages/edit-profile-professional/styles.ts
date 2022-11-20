@@ -72,23 +72,44 @@ textArea{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
+`
+
+export const ContainerInput = styled.div`
+width: 100%;
+height: 220px;
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+flex-direction: column;
+overflow: auto;
+overflow-x: hidden;
+
+::-webkit-scrollbar {
+  width: 9px;          
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2A8DD2;   
+  border-radius: 10px;      
+}
 
 span{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 70px;
+  width: 100%;
+  padding: 20px;
+  margin-left: -20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: -20px;
+  
 
-    div{
-      margin-top: 10px;
-    }
-    input{
-      margin-top: 10px;
-    }
-    
+  input{
+    margin-right: 70px;
   }
+}
+
+
 `
 
 

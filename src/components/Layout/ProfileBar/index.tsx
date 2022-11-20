@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { useAuth } from '../../../context/auth'
 import * as S from './styles'
 
@@ -23,7 +23,10 @@ export function ProfileBar () {
             <div onClick={() => setOpenMenu(prev => !prev)} className="two"></div>
             <div onClick={() => setOpenMenu(prev => !prev)} className="three"></div>
           </S.Hamburguer>
-          <S.HamburguerMenu open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+          <S.HamburguerMenu
+            open={openMenu}
+            onClick={() => setOpenMenu((prev) => !prev)}
+          >
             <ul>
               <li>
                 Configurações

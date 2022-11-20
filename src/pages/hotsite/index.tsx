@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import * as S from './styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'

@@ -8,7 +8,7 @@ import { Loader } from '../../../@shared/Loader'
 
 interface ForumProps {
   setSelectForum: Dispatch<SetStateAction<IForum>>
-}
+} 
 
 function Forums({ setSelectForum }: ForumProps) {
   const { data: forums, isLoading } = useQuery<IForum[]>(['forums'], getForums)

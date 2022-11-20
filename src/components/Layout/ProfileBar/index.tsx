@@ -1,60 +1,57 @@
-import Link from "next/link";
-import { useState } from "react";
-import * as S from "./styles";
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { useAuth } from '../../../context/auth'
+import * as S from './styles'
 
-export function ProfileBar() {
-  const [openMenu, setOpenMenu] = useState(false);
+export function ProfileBar () {
+  const [openMenu, setOpenMenu] = useState(false)
+  const { signOut } = useAuth()
 
   return (
     <S.Container>
       <S.LogoContainer>
-        <S.Logo src={"/assets/img/logoSemTexto.png"} alt="" />
+        <S.Logo src={'/assets/img/logoSemTexto.png'} alt="" />
       </S.LogoContainer>
       <S.UserInfo>
         <S.Username>nazaré tedesco</S.Username>
         <S.ImageProfileContainer>
           <S.ImageProfile src="/assets/img/profile.png" alt="" />
         </S.ImageProfileContainer>
-        <S.HamburguerMenuContainer
-          open={openMenu}
-          onClick={() => setOpenMenu((prev) => !prev)}
-        >
-          <S.Hamburguer
-            open={openMenu}
-            onClick={() => setOpenMenu((prev) => !prev)}
-          >
-            <div className="one"></div>
-            <div className="two"></div>
-            <div className="three"></div>
+        <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+          <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
+            <div onClick={() => setOpenMenu(prev => !prev)} className="one"></div>
+            <div onClick={() => setOpenMenu(prev => !prev)} className="two"></div>
+            <div onClick={() => setOpenMenu(prev => !prev)} className="three"></div>
           </S.Hamburguer>
           <S.HamburguerMenu
             open={openMenu}
             onClick={() => setOpenMenu((prev) => !prev)}
           >
             <ul>
-              <Link href="/feed">
-                <li>Feed</li>
-              </Link>
-
-              <Link href="/professional-list">
-                <li>Profissionais</li>
-              </Link>
-
-              <Link href="/chat">
-                <li>Chat</li>
-              </Link>
-
-              <Link href="/edit-profile">
-                <li>Configurações do perfil</li>
-              </Link>
-
-              <Link href="/">
-                <li>Sair</li>
-              </Link>
+              <li>
+                Configurações
+              </li>
+              <li>
+                Ajuda e suporte
+              </li>
+              <li>
+                <Link href={'/faq'}>
+                  <a href="">
+                    FAQ
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href={'/'}>
+                  <a onClick={signOut}>
+                    Sair
+                  </a>
+                </Link>
+              </li>
             </ul>
           </S.HamburguerMenu>
         </S.HamburguerMenuContainer>
       </S.UserInfo>
     </S.Container>
-  );
+  )
 }

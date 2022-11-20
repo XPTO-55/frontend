@@ -1,106 +1,103 @@
-import * as React from "react";
-import { Accordion } from "@material-ui/core";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import { BsChevronDown } from "react-icons/bs";
-import { makeStyles } from "@material-ui/styles";
-import { Input } from "../Layout/Input";
-import { BiSearch } from "react-icons/bi";
-import * as S from "./styles";
-import { useState } from "react";
+import * as React from 'react'
+import * as S from './styles'
+import { useState } from 'react'
+import { Accordion } from '@material-ui/core'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import Typography from '@material-ui/core/Typography'
+import { BsChevronDown } from 'react-icons/bs'
+import { Input } from '../../@shared/Input'
 
 export default function SimpleAccordion() {
-  const [faqList, setFaqList] = useState([
+  const [faqList] = useState([
     {
       Title:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?'
     },
     {
       Title:
-        "Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?",
+        'Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?'
     },
     {
       Title:
-        "Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.",
+        'Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.'
     },
     {
       Title:
-        "In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?",
+        'In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?'
     },
     {
       Title:
-        "Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.",
+        'Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.'
     },
     {
       Title:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?'
     },
     {
       Title:
-        "Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?",
+        'Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?'
     },
     {
       Title:
-        "Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.",
+        'Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.'
     },
     {
       Title:
-        "In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?",
+        'In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?'
     },
     {
       Title:
-        "Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.",
+        'Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.'
     },
     {
       Title:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?'
     },
     {
       Title:
-        "Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?",
+        'Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?'
     },
     {
       Title:
-        "Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.",
+        'Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.'
     },
     {
       Title:
-        "In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?",
+        'In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?'
     },
     {
       Title:
-        "Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.",
+        'Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.'
     },
     {
       Title:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut porttitor libero?'
     },
     {
       Title:
-        "Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?",
+        'Cras eget mauris tincidunt, euismod ipsum nec, rhoncus velit. Nullam posuere justo nulla, quis aliquam massa finibus vel?'
     },
     {
       Title:
-        "Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.",
+        'Aenean quis tincidunt elit, quis rutrum odio. Fusce blandit quam at est faucibus, et ornare urna egestas.'
     },
     {
       Title:
-        "In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?",
+        'In arcu enim, vehicula non velit a, commodo sollicitudin nisi. Maecenas eros mauris, ultrices sed nibh eget bibendum?'
     },
     {
       Title:
-        "Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.",
-    },
+        'Sed ornare, enim a venenatis sollicitudin, neque massa tristique tellus, nec blandit justo odio eu urna. Sed in.'
+    }
   ])
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('')
 
-  const filteredAccordionList = search.length > 0 ? faqList.filter(accordion => accordion.Title.includes(search)) : faqList;
-
+  const filteredAccordionList = search.length > 0 ? faqList.filter(accordion => accordion.Title.includes(search)) : faqList
 
   return (
-    <div>
+    <>
       <S.Header>
         <span>FAQ</span>
         <Input onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Pesquise aqui...">
@@ -115,7 +112,7 @@ export default function SimpleAccordion() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography style={{ fontSize: "20px" }}>
+                <Typography style={{ fontSize: '20px' }}>
                     {res.Title}
                   </Typography>
                 </AccordionSummary>
@@ -140,9 +137,9 @@ export default function SimpleAccordion() {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-          );
+          )
         })}
-        <Accordion disabled>
+        {/* <Accordion disabled>
           <AccordionSummary
             expandIcon={<BsChevronDown />}
             aria-controls="panel3a-content"
@@ -150,8 +147,8 @@ export default function SimpleAccordion() {
           >
             <Typography>Disabled Accordion</Typography>
           </AccordionSummary>
-        </Accordion>
+        </Accordion> */}
       </S.ContainerContent>
-    </div>
-  );
+    </>
+  )
 }

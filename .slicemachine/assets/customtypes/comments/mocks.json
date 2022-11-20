@@ -1,0 +1,37 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "comments",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "username": [
+      {
+        "type": "paragraph",
+        "text": "Fugiat sint minim minim anim fugiat officia do excepteur ad duis in labore pariatur est eu.",
+        "spans": []
+      }
+    ],
+    "profileimageurl": {
+      "link_type": "Web",
+      "url": "http://google.com"
+    },
+    "comment": "goose",
+    "post": {
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "mock",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    }
+  }
+}

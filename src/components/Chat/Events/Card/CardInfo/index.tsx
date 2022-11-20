@@ -1,12 +1,12 @@
 import React from 'react'
-import { IEventUsers } from '../../../../../services/events.service'
+import { IEventUsers } from '../../../../../services/types'
 import * as S from './styles'
 
 interface InfoProps {
   data: IEventUsers
 }
 
-function Info({ data }: InfoProps) {
+function Info ({ data }: InfoProps) {
   return (
     <S.Container>
 
@@ -17,7 +17,7 @@ function Info({ data }: InfoProps) {
 
       <S.ParticipantsContainer>
         {data.users.map(user => (
-          <S.ImageContainer >
+          <S.ImageContainer key={user.id}>
             <S.ProfileImage src={user.imageUrl} alt="" />
           </S.ImageContainer>
         ))}

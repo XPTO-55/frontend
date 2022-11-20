@@ -35,11 +35,11 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\usuario\\OneDrive\\Área de Trabalho\\teste-prismic\\nextjs-starter-prismic-blog\\.slicemachine\\assets\\slices\\ContactForm\\default\\preview.png",
+            "path": "/home/lucas/Documents/Projects/faculdade/3sem/pi/frontend/.slicemachine/assets/slices/ContactForm/default/preview.png",
             "width": 800,
             "height": 517
           }
@@ -166,16 +166,16 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\usuario\\OneDrive\\Área de Trabalho\\teste-prismic\\nextjs-starter-prismic-blog\\.slicemachine\\assets\\slices\\Image\\default\\preview.png",
+            "path": "/home/lucas/Documents/Projects/faculdade/3sem/pi/frontend/.slicemachine/assets/slices/Image/default/preview.png",
             "width": 800,
             "height": 586
           },
           "wide": {
-            "path": "C:\\Users\\usuario\\OneDrive\\Área de Trabalho\\teste-prismic\\nextjs-starter-prismic-blog\\.slicemachine\\assets\\slices\\Image\\wide\\preview.png",
+            "path": "/home/lucas/Documents/Projects/faculdade/3sem/pi/frontend/.slicemachine/assets/slices/Image/wide/preview.png",
             "width": 800,
             "height": 538
           }
@@ -241,11 +241,11 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\usuario\\OneDrive\\Área de Trabalho\\teste-prismic\\nextjs-starter-prismic-blog\\.slicemachine\\assets\\slices\\Quote\\default\\preview.png",
+            "path": "/home/lucas/Documents/Projects/faculdade/3sem/pi/frontend/.slicemachine/assets/slices/Quote/default/preview.png",
             "width": 800,
             "height": 178
           }
@@ -318,11 +318,11 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\usuario\\OneDrive\\Área de Trabalho\\teste-prismic\\nextjs-starter-prismic-blog\\.slicemachine\\assets\\slices\\Text\\default\\preview.png",
+            "path": "/home/lucas/Documents/Projects/faculdade/3sem/pi/frontend/.slicemachine/assets/slices/Text/default/preview.png",
             "width": 800,
             "height": 489
           }

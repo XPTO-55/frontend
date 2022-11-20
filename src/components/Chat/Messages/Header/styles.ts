@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Header = styled.header`
   display: flex;
@@ -7,5 +7,5 @@ export const Header = styled.header`
   align-items: center;
   background-color: #F6F6F6;
   padding: 0 16px;
-  height: 15%;
+  height: 10%;
 `

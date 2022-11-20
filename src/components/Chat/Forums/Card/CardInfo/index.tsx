@@ -1,12 +1,12 @@
 import React from 'react'
-import { IForum } from '../../../../../services/forum.service'
+import { IForum } from '../../../../../services/types'
 import * as S from './styles'
 
 interface InfoProps {
   data: IForum
 }
 
-function Info({ data }: InfoProps) {
+function Info ({ data }: InfoProps) {
   return (
     <S.Container>
       <S.ImageContainer >
@@ -16,7 +16,6 @@ function Info({ data }: InfoProps) {
         <S.ForumName>{data.name}</S.ForumName>
         <S.LatestMessage>Latest message</S.LatestMessage>
       </S.TextContainer>
-
     </S.Container>
   )
 }

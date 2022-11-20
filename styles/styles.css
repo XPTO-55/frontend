@@ -1,85 +1,85 @@
 .navigation-wrapper {
-    position: relative;
-    width: 100vw;
-  }
+  position: relative;
+  width: 100vw;
+}
   
-  .dots {
-    display: flex;
-    padding: 10px 0;
-    justify-content: center;
-  }
-  
-  .dot {
-    border: none;
-    width: 200px;
-    height: 10px;
-    background: #9D9D9D;
-    border-radius: 10px;
-    margin: 0 5px;
-    padding: 5px;
-    cursor: pointer;
-  }
-  
-  .dot:focus {
-    outline: none;
-  }
-  
-  .dot.active {
-    background: #E9E9E9;
-  }
-  
-  .arrow {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    fill: #fff;
-    cursor: pointer;
-  }
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 200px;
+  height: 10px;
+  background: #9D9D9D;
+  border-radius: 10px;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #E9E9E9;
+}
+
+.arrow {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
 
 
-  .arrow2 {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    fill: rgb(193, 193, 193);
-    cursor: pointer;
-  }
-  
-  .arrow--left {
-    left: 10px;
-  }
-  
-  .arrow--right {
-    left: auto;
-    right: 10px;
-  }
-  
-  .arrow--disabled {
-    fill: rgba(255, 255, 255, 0.5);
-  }
+.arrow2 {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: rgb(193, 193, 193);
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 10px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 10px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
 
 
-  .keen-slider__slide{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 550px;
-  }
+.keen-slider__slide{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 550px;
+}
 
-  .profissional{
-    margin-top: 100px;
-  }
+.profissional{
+  margin-top: 100px;
+}
 
 
-  .keen-slider{
-    min-width: 1000px;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-  }
+.keen-slider{
+  min-width: 1000px;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+}

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ContainerLoading = styled.div`
   width: 100px;
@@ -87,4 +87,4 @@ export const ContainerLoading = styled.div`
       margin-top: 0;
     }
   }
-`;
+`

@@ -42,7 +42,7 @@
       "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
     },
     {
-      "id": 1,
+      "id": 4,
       "eventId": 3,
       "name": "Fukas Leitosa",
       "imageUrl": "https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000"
@@ -89,13 +89,22 @@
     {
       "id": 1,
       "text": "Oiiiiiii",
-      "senderName": "Lucas Alves",
+      "senderName": "Filena Mazolim",
+      "userId": 1,
       "forumId": 1,
       "replyes": [
         {
           "id": 2,
           "text": "Oláaaaaa",
-          "senderName": "Karina Garcia",
+          "senderName": "Jeo Lonas",
+          "userId": 2,
+          "replyes": []
+        },
+        {
+          "id": 3,
+          "text": "Oláaaaaa",
+          "senderName": "Jeo Lonas",
+          "userId": 2,
           "replyes": []
         }
       ]
@@ -104,12 +113,14 @@
       "id": 3,
       "forumId": 2,
       "text": "Bom diaaaaaaaa",
-      "senderName": "Milena Fazolim",
+      "senderName": "Cristian",
+      "userId": 3,
       "replyes": [
         {
           "id": 4,
           "text": "Bom diaaaaaaaaaaaaaaaa",
-          "senderName": "Leo Jonas",
+          "senderName": "Fukas Leitorsa",
+          "userId": 4,
           "replyes": []
         }
       ]

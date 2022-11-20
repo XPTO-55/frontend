@@ -28,10 +28,14 @@ const Text = ({ slice }: TextProps) => {
 const ContainerTextStyled = styled.div`
   line-height: 1.625; 
 
+  strong {
+    font-weight: 700;
+  }
+
   @media (min-width: 768px) { 
     font-size: 1.25rem;
-  line-height: 1.75rem; 
-  line-height: 1.625; 
+    line-height: 1.75rem; 
+    line-height: 1.625; 
   }
 `
 

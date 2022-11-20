@@ -1,35 +1,32 @@
-import {api} from './api';
-import { IUser } from './users.service';
+import { api } from './api'
+import { IEvent, IEventUsers } from './types'
 
-export enum IStatus {
-  confirmed = '#80be80',
-  pending = '#FF7900',
-  canceled = '#C8372D',
+export const getEvents = async (): Promise<IEvent[]> => {
+  try {
+    const { data } = await api.get('/events')
+    return data as IEvent[]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    // eslint-disable-next-line @typescript-eslint/no-throw-literal
+    throw {
+      code: error.code,
+      message: error.response.data,
+      responseStatus: error.response?.status
+    }
+  }
 }
 
-export type IEvent = {
-  id: string;
-  name: string;
-  startDate: string,
-  endDate: string,
-  status: 'confirmed' | 'pending' | 'canceled'
+export const getParticipantsEvents = async (): Promise<IEventUsers[]> => {
+  try {
+    const { data } = await api.get('/events?_embed=users')
+    return data as IEventUsers[]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    // eslint-disable-next-line @typescript-eslint/no-throw-literal
+    throw {
+      code: error.code,
+      message: error.response.data,
+      responseStatus: error.response?.status
+    }
+  }
 }
-
-export type IEventUsers = {
-  id: string;
-  name: string;
-  startDate: string,
-  endDate: string,
-  status: IStatus
-  users: IUser[]
-}
-
-export const getEvents = async () => {
-  const { data } = await api("/events");
-  return data as IEvent[];
-};
-
-export const getParticipantsEvents = async () => {
-  const { data } = await api("/events?_embed=users");
-  return data as IEventUsers[];
-};

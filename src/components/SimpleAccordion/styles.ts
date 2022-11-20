@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Header = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ export const Header = styled.div`
     margin-right: 20px;
     font-weight: 500;
   }
-`;
+`
 
 export const ContainerContent = styled.div`
   width: 100%;
@@ -25,10 +25,10 @@ export const ContainerContent = styled.div`
 
   ::-webkit-scrollbar {
   width: 9px;          
-}
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: #2A8DD2;   
-  border-radius: 10px; 
-}
-`;
+  ::-webkit-scrollbar-thumb {
+    background-color: #2A8DD2;   
+    border-radius: 10px; 
+  }
+`

@@ -1,34 +1,25 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
-width: 100%;
-height: 88vh;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
+  display: flex;
+  overflow: hidden;
+  height: 88vh;
+`
 
-div{
-    width: 100%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+export const Main = styled.main`
+  padding: 1rem 2rem;
+  width: 80vw;
+  height: 85vh;
+  overflow-y: scroll;
+`
 
-    img{
-        width: 300px;
-    }
-
-    h1{
-        font-size: 30px;
-        margin-top: 30px;
-    }
-}
-
-span{
-    margin-top: 50px;
-    display: flex;
-}
-
+export const ListaNaoOrdenada = styled.ul`
+  display: flex;
+  flex-direction: column;
+  background-color: #F0F0F0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 1rem 2rem;
+  gap: 4rem; /* 64px */
+  border-radius: 7px;
+  padding: 1rem 2rem;
 `

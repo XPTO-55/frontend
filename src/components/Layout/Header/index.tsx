@@ -1,13 +1,14 @@
-import * as S from "./styles";
-import Image from "next/image";
-import logo from "../../../../public/assets/img/logoCPA.png";
-import Link from "next/link";
+import React from 'react'
+import * as S from './styles'
+import Image from 'next/image'
+import logo from '../../../../public/assets/img/logoCPA.png'
+import Link from 'next/link'
 
-export function Header() {
+export function Header () {
   return (
     <S.Header>
       <S.Container>
-        <Image src={logo} width="130.43px" height="56px" />
+        <Image src={logo} width="130.43px" height="56px" alt='logo' />
         <S.Navbar>
           <S.Ul>
             <Link href="/">
@@ -23,9 +24,8 @@ export function Header() {
           <Link href="/auth">
             <S.Button>Entrar</S.Button>
           </Link>
-          
         </S.Navbar>
       </S.Container>
     </S.Header>
-  );
+  )
 }

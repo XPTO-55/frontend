@@ -1,36 +1,20 @@
-import TextArea from "antd/lib/input/TextArea";
-import { TfiPencil, TfiEmail, TfiLocationPin, TfiLocationArrow } from "react-icons/tfi";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import {MdOutlineOtherHouses} from 'react-icons/md'
-import {BiBuildingHouse, BiStreetView} from 'react-icons/bi'
-import {SiOpenstreetmap} from 'react-icons/si'
-import {FiSmartphone} from 'react-icons/fi'
-import { BsGenderAmbiguous, BsTelephone, BsHouse } from "react-icons/bs";
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { UploadImage } from "../../components/EditProfile/UploadImage";
-import { Input } from "../../components/Layout/Input";
-import { Select } from "../../components/Layout/Select";
+import React from 'react'
+import { TfiPencil, TfiEmail, TfiLocationPin, TfiLocationArrow } from 'react-icons/tfi'
+import { HiOutlineDocumentText } from 'react-icons/hi'
+import { MdOutlineOtherHouses } from 'react-icons/md'
+import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
+import { SiOpenstreetmap } from 'react-icons/si'
+import { FiSmartphone } from 'react-icons/fi'
+import { BsGenderAmbiguous, BsTelephone, BsHouse } from 'react-icons/bs'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import { UploadImage } from '../../components/EditProfile/UploadImage'
+import { Input } from '../../@shared/Input'
+import { Select } from '../../components/Layout/Select'
 
-import { ProfileBar } from "../../components/Layout/ProfileBar";
-import * as S from "./styles";
+import { ProfileBar } from '../../components/Layout/ProfileBar'
+import * as S from './styles'
 
 export default function EditProfile() {
-
-  const mockSelectList = [
-    {
-      opcao: "Feminino"
-    },
-    {
-      opcao: "Masculino"
-    },
-    {
-      opcao: "Meninx"
-    },
-    {
-      opcao: "Não binário"
-    },
-  ]
-
   return (
     <>
       <ProfileBar />
@@ -80,7 +64,7 @@ export default function EditProfile() {
                   <Input defaultValue="" width="editProfile" placeholder="Telefone fixo">
                     <BsTelephone />
                   </Input>
-                  
+
                 </span>
 
                 <span>
@@ -88,7 +72,7 @@ export default function EditProfile() {
                 <Input defaultValue="" width="editProfile" placeholder="CEP">
                     <TfiLocationPin />
                   </Input>
-                  
+
                   <Input defaultValue="" width="editProfile" placeholder="Logradouro">
                     <BiStreetView />
                   </Input>
@@ -123,5 +107,5 @@ export default function EditProfile() {
         </S.ContainerForm>
       </S.PageContainer>
     </>
-  );
+  )
 }

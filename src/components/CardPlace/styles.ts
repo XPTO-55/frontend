@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   width: 540px;
@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
   margin-bottom: 50px;
   display: flex;
   border-bottom: 20px solid #2a8dd2;
-`;
+`
 
 export const ContainerCardLeft = styled.div`
   width: 50%;
@@ -26,7 +26,7 @@ export const ContainerCardLeft = styled.div`
     width: 250px;
     border-radius: 7px;
   }
-`;
+`
 export const ContainerCardRight = styled.div`
   width: 50%;
   height: 100%;
@@ -45,4 +45,4 @@ export const ContainerCardRight = styled.div`
     font-weight: 500;
     margin-bottom: 10px;
   }
-`;
+`

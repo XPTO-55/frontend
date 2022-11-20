@@ -1,40 +1,49 @@
-import React from "react";
-import { Input } from "../../components/Layout/Input";
-import * as S from "./styles";
-import { ModalCadastro } from "../../components/Forms/ModalCadastro";
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { useState } from "react";
-import Link from "next/link";
+import React, { useEffect } from 'react'
+import { Input } from '../../@shared/Input'
+import * as S from './styles'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useAuth } from '../../context/auth'
+import { Header } from '../../components/Layout/Header'
+import Head from 'next/head'
 
-export default function Upload() {
-  const [modal, setModal] = useState(false);
+export default function Upload (): JSX.Element {
+  const router = useRouter()
+  const { user, loading } = useAuth()
 
-  const openModal = () => {
-    setModal(!modal);
-  };
+  useEffect(() => {
+    if (!(user) && !loading) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/auth')
+    }
+  }, [user, loading, router])
 
   return (
     <>
+      <Header />
+      <Head>
+        <title> Upload | CPA </title>
+      </Head>
       <S.PageContainer>
-        {modal ? <ModalCadastro closeModal={openModal} /> : ""}
 
         <S.Container>
           <S.ContainerLogin>
             <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
-            
+
             <p> Faça aqui os seus upload</p>
             <form action="">
               <div>
                 <label htmlFor="arquivo"></label>
-                 <Input  type={"file"} name={"arquivo"} id={"arquivo"}>
-            
+                <Input type={'file'} name={'arquivo'} id={'arquivo'}>
+
                  </Input>
               </div>
             </form>
 
-            <Link  href="/hotsite">
+            <Link href="/hotsite">
           <ButtonPrimary className="azul" >
               VOLTAR
             </ButtonPrimary>
@@ -43,7 +52,6 @@ export default function Upload() {
         </S.Container>
       </S.PageContainer>
 
-      
     </>
-  );
+  )
 }

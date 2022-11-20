@@ -1,8 +1,9 @@
-import { ProfileBar } from "../../components/Layout/ProfileBar";
-import * as S from "./styles";
-import { AiFillStar } from "react-icons/ai";
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { BsInstagram, BsLinkedin } from "react-icons/bs";
+import React from 'react'
+import { ProfileBar } from '../../components/Layout/ProfileBar'
+import * as S from './styles'
+import { AiFillStar } from 'react-icons/ai'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import { BsInstagram, BsLinkedin } from 'react-icons/bs'
 
 export default function AboutUser() {
   return (
@@ -63,5 +64,5 @@ export default function AboutUser() {
         </S.Container>
       </S.PageContainer>
     </>
-  );
+  )
 }

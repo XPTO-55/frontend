@@ -1,110 +1,90 @@
-import React, { createContext, useState, useEffect } from "react";
-import { message } from "antd";
-import * as S from "./styles";
-
-import { MdOutlineAlternateEmail } from "react-icons/md";
-import { SlLock } from "react-icons/sl";
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { ModalCadastro } from "../../components/Forms/ModalCadastro";
-import Link from "next/link";
-import { IAuthProvider, IContext, IUser } from "./types";
-import { LoginRequest } from "./util";
-import { getUserLocalStorage, setUserLocalStorage, useAuth } from "./useAuth";
-import { useForm } from "react-hook-form";
-import { Input } from "../../components/Layout/Input";
-
-export const AuthContext = createContext<IContext>({} as IContext);
-
-export const AuthProvider = ({ children }: IAuthProvider) => {
-  const [user, setUser] = useState<IUser | null>();
-
-  useEffect(() => {
-    const user = getUserLocalStorage();
-
-    return () => {
-      setUser(user);
-    };
-  }, []);
-
-  async function authenticate(email: string, password: string) {
-    const response = await LoginRequest(email, password);
-
-    const payload = { token: response.token, email };
-
-    setUser(payload);
-    setUserLocalStorage(payload);
-  }
-
-  function logout() {
-    setUser(null);
-  }
-
-  
-
-  return (
-    <AuthContext.Provider value={{ ...user, authenticate, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
+import React, { useState } from 'react'
+import { Input } from '../../@shared/Input'
+import * as S from './styles'
+import { MdOutlineAlternateEmail } from 'react-icons/md'
+import { SlLock } from 'react-icons/sl'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import { UsuarioForm } from '../../components/Forms/Usuario'
+import Link from 'next/link'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { authenticationSchema } from '../../validations/user.validation'
+import { IUserLoginRequest } from '../../services/types'
+import * as Dialog from '@radix-ui/react-dialog'
+import { useAuth } from '../../context/auth'
+import { useMutation } from 'react-query'
+import { Loader } from '../../@shared/Loader'
+// import { Toast } from '../../@shared/Toast'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Auth() {
-  
-const auth = useAuth();
+  const router = useRouter()
+  const [open, setOpen] = useState(false)
+  const { signIn } = useAuth()
+  const { mutate, isLoading, isError, error } = useMutation(signIn, {
+    onSuccess: async () => {
+      await router.push('/feed')
+    }
+  })
 
-async function onFinish(values: { email: string; password: string }) {
-  try {
-    await auth.authenticate(values.email, values.password);
+  const { register, handleSubmit, formState: { errors } } = useForm<IUserLoginRequest>({
+    resolver: yupResolver(authenticationSchema)
+  })
 
-    
-
-    alert("deu certo")
-  } catch (error) {
-    return alert("email ou senha invalidos");
+  const onSubmit: SubmitHandler<IUserLoginRequest> = (data, event) => {
+    event.preventDefault()
+    mutate(data)
+    return false
   }
-}
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
-
-  const [modal, setModal] = useState(false);
-
-  const openModal = () => {
-    setModal(!modal);
-  };
-
   return (
     <S.PageContainer>
-      {modal ? <ModalCadastro closeModal={openModal} /> : ""}
-
+      <Head>
+        <title> Login | CPA</title>
+      </Head>
       <S.Container>
         <S.ContainerLogin>
           <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />
           </Link>
-          <form onSubmit={handleSubmit(onSubmit)}>
-          <Input  placeholder="Email" ref={register} name="email">
-            <MdOutlineAlternateEmail />
-          </Input>
-          <Input placeholder="Senha" ref={register} name="password">
-            
-            <SlLock />
-          </Input>
-
-          <span>Esqueceu a senha?</span>
-          <ButtonPrimary type="submit" className="laranja">Entrar</ButtonPrimary>
-          </form>
-          
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
+            <S.InputContainer>
+              <Input placeholder="Email" {...register('email')} >
+                <MdOutlineAlternateEmail />
+              </Input>
+              <p>{errors?.email?.message}</p>
+            </S.InputContainer>
+            <S.InputContainer>
+              <Input placeholder="Senha" type="password" {...register('password')} >
+                <SlLock />
+              </Input>
+              <p>{errors?.password?.message}</p>
+            </S.InputContainer>
+            <span aria-disabled={isError}>
+              {isError ? (error?.message?.message || error?.message) : null}
+              <u>
+                Esqueceu a senha?
+              </u>
+            </span>
+            <ButtonPrimary type="submit" className="laranja">
+              {isLoading ? <Loader width={16} /> : null}
+              Entrar
+            </ButtonPrimary>
+          </S.Form>
           <p>
             Não possui uma conta?
-            <a href="#" onClick={openModal}>
-              {" "}
-              Cadastra-se
-            </a>{" "}
+            <Dialog.Root open={open} onOpenChange={setOpen}>
+              <S.ModalTrigger>
+                <u>
+                  Cadastra-se
+                </u>
+                <UsuarioForm setOpen={setOpen} />
+              </S.ModalTrigger>
+            </Dialog.Root >
           </p>
         </S.ContainerLogin>
       </S.Container>
+      {/* {isError ? <Toast type={'error'} title={'Error'} description={error?.message?.message || error?.message || 'Erro ao realizar o login'} /> : null} */}
     </S.PageContainer>
-  );
+  )
 }

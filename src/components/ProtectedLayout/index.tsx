@@ -1,12 +1,22 @@
-import { useAuth } from "../../pages/auth/useAuth"
-import React from "react";
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useAuth } from '../../context/auth'
+import { Loader } from '../../@shared/Loader'
 
-export const ProtectedLayout = ({children}: {children: JSX.Element}) => {
- const auth = useAuth();
+export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
+  const router = useRouter()
+  const { signed, loading } = useAuth()
 
- if (!auth.email) {
-    return <h1>Tou don't have acess</h1>
- }
+  useEffect(() => {
+    if (!(signed) && !loading) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/auth')
+    }
+  }, [signed, loading, router])
 
- return children
+  if (loading) {
+    return <Loader width={34} />
+  }
+
+  return children
 }

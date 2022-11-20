@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import img from "../../../public/assets/img/fundoLogin.jpg";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -8,7 +7,7 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: white;
-`;
+`
 
 export const Container = styled.div`
   width: 1028px;
@@ -23,7 +22,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`;
+`
 
 export const ContainerLogin = styled.div`
   width: 60%;
@@ -45,14 +44,12 @@ export const ContainerLogin = styled.div`
     margin-top: -2px;
     margin-left: 200px;
   }
-`;
-
+`
 
 export const Img = styled.img`
   width: 130px;
   cursor: pointer;
-`;
-
+`
 
 export const PageContainerFooter = styled.div`
 width: 100%;
@@ -63,5 +60,3 @@ align-items: center;
 justify-content: center;
 background-color: #0A6CB2;
 `
-
-

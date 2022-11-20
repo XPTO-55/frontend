@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -6,7 +6,8 @@ export const Container = styled.div`
   justify-content: start;
   align-items: flex-start;
   gap: 2rem;
-  width: 275px;
+  width: 20vw;
+  min-width: 20vw;
 `
 
 export const CardContainer = styled.div`

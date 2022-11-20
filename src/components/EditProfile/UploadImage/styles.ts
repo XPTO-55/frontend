@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Input = styled.input`
   display: none;
-`;
+`
 
 export const Label = styled.label`
   width: 310px;
@@ -28,4 +28,4 @@ export const Label = styled.label`
       url("/assets/img/fundoProfissionais.jpg");
     color: white;
   }
-`;
+`

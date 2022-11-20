@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.header`
   display: flex;
@@ -11,33 +11,33 @@ export const Container = styled.header`
   color: #fff;
   padding-left: 180px;
   padding-right: 180px;
-`;
+`
 
 export const LogoContainer = styled.div`
   height: 48px;
   width: 48;
   border-radius: 0.5rem;
-`;
+`
 
 export const Logo = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 0.5rem;
-`;
+`
 
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-`;
+`
 
 export const Username = styled.h6`
   font-size: 1rem;
   font-weight: 600;
   text-transform: capitalize;
-`;
+`
 
 export const ImageProfileContainer = styled.div`
   width: 56px;
@@ -45,17 +45,17 @@ export const ImageProfileContainer = styled.div`
   object-fit: cover;
   border-radius: 50%;
   background-color: #f6f6f6;
-`;
+`
 
 export const ImageProfile = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-`;
+`
 
 interface HamburguerMenuContainerrops {
-  open: boolean;
+  open: boolean
 }
 
 export const HamburguerMenuContainer = styled.div<HamburguerMenuContainerrops>`
@@ -64,7 +64,7 @@ export const HamburguerMenuContainer = styled.div<HamburguerMenuContainerrops>`
   align-items: center;
   padding: 4px;
   cursor: pointer;
-`;
+`
 
 export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
   width: 40px;
@@ -82,7 +82,7 @@ export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
   }
   .one {
     transform: ${(props) =>
-      props.open ? "rotate(45deg) translate(7px, 7px);" : null};
+      props.open ? 'rotate(45deg) translate(7px, 7px);' : null};
   }
 
   .two {
@@ -91,31 +91,40 @@ export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
 
   .three {
     transform: ${(props) =>
-      props.open ? "rotate(-45deg) translate(8px, -9px);" : null};
+      props.open ? 'rotate(-45deg) translate(8px, -9px);' : null};
   }
-`;
+`
 
 export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
-  display: ${(props) => (props.open ? "block" : "none")};
+  display: ${(props) => (props.open ? 'block' : 'none')};
   z-index: 10;
   background-color: #2a8dd2;
-  position: ${(props) => (props.open ? "absolute" : "static")};
+  position: ${(props) => (props.open ? 'absolute' : 'static')};
   right: 180px;
-  top: ${(props) => (props.open ? "12vh" : 0)};
+  top: ${(props) => (props.open ? '12vh' : 0)};
   border-radius: 0 0 7px 7px;
 
   ul {
     width: 200px;
+    overflow: hidden;
     li {
-      padding: 0.75rem 1rem;
+      padding:1rem;
       display: flex;
       justify-content: center;
+      &:hover {
+        background-color: #0A6CB2;
+        &:last-child {
+          border-radius: 0 0 7px 7px;
+        }
+      }
+
       a {
-        transition-duration: 0.5s;
-        font-size: 3rem;
-        line-height: 4rem;
+        transition-duration:0.5s;
+        font-size:1rem;
         display: block;
+        text-decoration: none;
+        color: #f6f6f6;
       }
     }
   }
-`;
+`

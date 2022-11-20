@@ -1,19 +1,22 @@
-import * as S from "./styles";
-import { Profissionais } from "../components/Profissionais";
-import { Parceiros } from "../components/Parceiros";
-import { Header } from "../components/Layout/Header";
-import { ButtonPrimary } from "../@shared/ButtonPrimary";
-export default function Home() {
+import React from 'react'
+import * as S from './styles'
+import { Profissionais } from '../components/home/Profissionais'
+import { Parceiros } from '../components/home/Parceiros'
+import { Header } from '../components/Layout/Header'
+import { ButtonPrimary } from '../@shared/ButtonPrimary'
+import Head from 'next/head'
+
+export default function Home () {
   return (
-
-
     <S.PageContainer>
+      <Head>
+        <title> Home | CPA </title>
+      </Head>
       <Header />
       <S.Main>
         <S.ContainerTextoBanner>
           <S.TextoMain>
             <h1>Comunidade de parceiros autistas</h1>
-
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
               blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
@@ -25,7 +28,6 @@ export default function Home() {
 
         <img src="/assets/img/imagemMain.webp" />
       </S.Main>
-
       <S.Svg
         className="wave"
         xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +39,6 @@ export default function Home() {
           d="M0,64L60,101.3C120,139,240,213,360,245.3C480,277,600,267,720,234.7C840,203,960,149,1080,133.3C1200,117,1320,139,1380,149.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
         ></path>
       </S.Svg>
-
       <S.Section className="mvv">
         <S.ContainerMvv>
           <S.CardMvv className="missao">
@@ -102,9 +103,7 @@ export default function Home() {
           </S.CardMvv>
         </S.ContainerMvv>
       </S.Section>
-
       <Profissionais />
-
       <S.ContainerSobreNos>
         <S.ContSobreNos>
           <S.ContainerContent className="imgSobreNos">
@@ -115,7 +114,7 @@ export default function Home() {
             <h1>Sobre nós</h1>
             <h2>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.{" "}
+              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.{' '}
               <br />
               <br />
               Vulputate ullamcorper augue praesent integer. Nunc volutpat
@@ -134,7 +133,6 @@ export default function Home() {
           d="M0,128L80,122.7C160,117,320,107,480,128C640,149,800,203,960,202.7C1120,203,1280,149,1360,122.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
         ></path>
       </S.Svg2>
-
       <Parceiros />
       <S.PageContainerFooter>
         <S.ContainerFooter>
@@ -194,5 +192,5 @@ export default function Home() {
         </S.ContainerFooter>
       </S.PageContainerFooter>
     </S.PageContainer>
-  );
+  )
 }

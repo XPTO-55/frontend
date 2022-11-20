@@ -125,5 +125,161 @@
         }
       ]
     }
+  ],
+  "professionals": [
+    {
+      "createdAt": "2022-11-20T18:59:46.282Z",
+      "updatedAt": "2022-11-20T18:59:46.282Z",
+      "deletedAt": "2022-11-20T18:59:46.282Z",
+      "id": 1,
+      "name": "Rafael",
+      "profileUrl": "string",
+      "email": "rafael@gmail.com",
+      "password": "string",
+      "cpf": "string",
+      "about": "Qualquer desc",
+      "dataDeNascimento": "2022-11-20",
+      "telefoneFixo": "string",
+      "telefoneCelular": "string",
+      "roles": [
+        {
+          "id": 0,
+          "name": "string"
+        }
+      ],
+      "ratings": 4.2,
+      "address": {
+        "id": 0,
+        "street": "string",
+        "district": "string",
+        "number": "string",
+        "complement": "string",
+        "zipcode": "string",
+        "city": "string",
+        "uf": "string",
+        "coordenates": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "identificacao": "string",
+      "verificado": true,
+      "especialidade": "Psiquiatra",
+      "graduacao": "FMU"
+    },
+    {
+      "createdAt": "2022-11-20T18:59:46.282Z",
+      "updatedAt": "2022-11-20T18:59:46.282Z",
+      "deletedAt": "2022-11-20T18:59:46.282Z",
+      "id": 2,
+      "name": "Filena Mazolim",
+      "profileUrl": "string",
+      "email": "milena@gmail.com",
+      "password": "string",
+      "cpf": "string",
+      "about": "string",
+      "dataDeNascimento": "2022-11-20",
+      "telefoneFixo": "string",
+      "telefoneCelular": "string",
+      "roles": [
+        {
+          "id": 0,
+          "name": "string"
+        }
+      ],
+      "ratings": 4.9,
+      "address": {
+        "id": 0,
+        "street": "string",
+        "district": "string",
+        "number": "string",
+        "complement": "string",
+        "zipcode": "string",
+        "city": "string",
+        "uf": "string",
+        "coordenates": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "identificacao": "string",
+      "verificado": true,
+      "especialidade": "Nutricionista",
+      "graduacao": "UNINOVE"
+    }
+  ],
+  "patients": [
+    {
+      "createdAt": "2022-11-20T18:59:46.282Z",
+      "updatedAt": "2022-11-20T18:59:46.282Z",
+      "deletedAt": "2022-11-20T18:59:46.282Z",
+      "id": 1,
+      "name": "Rafael",
+      "profileUrl": "string",
+      "email": "rafael@gmail.com",
+      "password": "string",
+      "cpf": "string",
+      "about": "Qualquer desc",
+      "dataDeNascimento": "2022-11-20",
+      "telefoneFixo": "string",
+      "telefoneCelular": "string",
+      "roles": [
+        {
+          "id": 0,
+          "name": "string"
+        }
+      ],
+      "ratings": 4.2,
+      "address": {
+        "id": 0,
+        "street": "string",
+        "district": "string",
+        "number": "string",
+        "complement": "string",
+        "zipcode": "string",
+        "city": "string",
+        "uf": "string",
+        "coordenates": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "createdAt": "2022-11-20T18:59:46.282Z",
+      "updatedAt": "2022-11-20T18:59:46.282Z",
+      "deletedAt": "2022-11-20T18:59:46.282Z",
+      "id": 2,
+      "name": "Filena Mazolim",
+      "profileUrl": "string",
+      "email": "milena@gmail.com",
+      "password": "string",
+      "cpf": "string",
+      "about": "string",
+      "dataDeNascimento": "2022-11-20",
+      "telefoneFixo": "string",
+      "telefoneCelular": "string",
+      "roles": [
+        {
+          "id": 0,
+          "name": "string"
+        }
+      ],
+      "ratings": 4.9,
+      "address": {
+        "id": 0,
+        "street": "string",
+        "district": "string",
+        "number": "string",
+        "complement": "string",
+        "zipcode": "string",
+        "city": "string",
+        "uf": "string",
+        "coordenates": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
   ]
 }

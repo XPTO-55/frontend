@@ -106,18 +106,18 @@ export default function SimpleAccordion() {
       <S.ContainerContent>
         {filteredAccordionList.map((res, index) => {
           return (
-              <Accordion key={index}>
-                <AccordionSummary
-                  expandIcon={<BsChevronDown />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
+            <Accordion key={index}>
+              <AccordionSummary
+                expandIcon={<BsChevronDown />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
                 <Typography style={{ fontSize: '20px' }}>
-                    {res.Title}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
+                  {res.Title}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
                     ut porttitor libero. Etiam pellentesque tempor sodales.
                     Integer ac tincidunt eros. Cras rhoncus, nisi non euismod
@@ -134,9 +134,9 @@ export default function SimpleAccordion() {
                     dictumst. Vivamus at ornare mi. Phasellus sollicitudin
                     ultrices porta. In consequat mauris a sem molestie, vel
                     luctus nisi euismod.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
           )
         })}
         {/* <Accordion disabled>

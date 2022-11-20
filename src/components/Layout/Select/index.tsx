@@ -13,9 +13,9 @@ export const Select = ({ icon }: SelectProps) => {
       <S.ContainerSelect>
         <S.Icon>{icon}</S.Icon>
         <S.Select>
-        <option value="masculino">Masculino</option>
-        <option value="feminino">Feminino</option>
-        <option value="naobinario">Não binário</option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="naobinario">Não binário</option>
         </S.Select>
       </S.ContainerSelect>
     </>

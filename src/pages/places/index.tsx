@@ -27,16 +27,16 @@ export default function Places({ setSelectPlace }: PlaceProps) {
   }
 
   return (
-      <>
-        <Header />
-        <S.PageContainer>
-          <S.MapsContainer>
-            <Input placeholder="Pesquise aqui..." >
-          <BiSearch />
-            </Input>
-          </S.MapsContainer>
-          <h1>Lugares acessíveis</h1>
-          <S.CardContainer>
+    <>
+      <Header />
+      <S.PageContainer>
+        <S.MapsContainer>
+          <Input placeholder="Pesquise aqui..." >
+            <BiSearch />
+          </Input>
+        </S.MapsContainer>
+        <h1>Lugares acessíveis</h1>
+        <S.CardContainer>
           {places.length > 0
             ? places.map((place) => {
               return <CardPlace onClick={() => handleClickPlace(place)} key={place.idLugar} place={place} />
@@ -47,10 +47,10 @@ export default function Places({ setSelectPlace }: PlaceProps) {
                   Nenhum lugar encontrado
                 </div>
               </S.NoPlace>
-              )
+            )
           }
-          </S.CardContainer>
-        </S.PageContainer>
-      </>
+        </S.CardContainer>
+      </S.PageContainer>
+    </>
   )
 }

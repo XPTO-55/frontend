@@ -1,20 +1,26 @@
 import React from 'react'
-import { TfiPencil, TfiEmail, TfiLocationPin, TfiLocationArrow } from 'react-icons/tfi'
+import {
+  TfiPencil,
+  TfiEmail,
+  TfiLocationPin,
+  TfiLocationArrow
+} from 'react-icons/tfi'
 import { HiOutlineDocumentText } from 'react-icons/hi'
 import { MdOutlineOtherHouses } from 'react-icons/md'
+import { FaRegAddressCard } from 'react-icons/fa'
 import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
 import { SiOpenstreetmap } from 'react-icons/si'
 import { FiSmartphone } from 'react-icons/fi'
 import { BsGenderAmbiguous, BsTelephone, BsHouse } from 'react-icons/bs'
-import { ButtonPrimary } from '../../@shared/ButtonPrimary'
-import { UploadImage } from '../../components/EditProfile/UploadImage'
-import { Input } from '../../@shared/Input'
-import { Select } from '../../components/Layout/Select'
+import { ButtonPrimary } from '../../../../../@shared/ButtonPrimary'
+import { UploadImage } from '../../../../../components/EditProfile/UploadImage'
+import { Input } from '../../../../../@shared/Input'
+import { Select } from '../../../../../components/Layout/Select'
 
-import { ProfileBar } from '../../components/Layout/ProfileBar'
+import { ProfileBar } from '../../../../../components/Layout/ProfileBar'
 import * as S from './styles'
 
-export default function EditProfile() {
+export default function About() {
   return (
     <>
       <ProfileBar />
@@ -29,7 +35,10 @@ export default function EditProfile() {
               <Input defaultValue="Maria Belmonte">
                 <TfiPencil />
               </Input>
-              <textarea placeholder="Sobre mim..." defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur vitae metus eget suscipit. Cras interdum, felis ac ornare mollis, erat turpis dictum purus, sed pretium dolor tellus non urna. Morbi elit arcu, ullamcorper et justo id, ornare egestas diam. Aenean nec turpis hendrerit, accumsan mauris a, fermentum odio" />
+              <textarea
+                placeholder="Sobre mim..."
+                defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur vitae metus eget suscipit. Cras interdum, felis ac ornare mollis, erat turpis dictum purus, sed pretium dolor tellus non urna. Morbi elit arcu, ullamcorper et justo id, ornare egestas diam. Aenean nec turpis hendrerit, accumsan mauris a, fermentum odio"
+              />
             </S.RightArea>
           </S.ContentArea>
           <S.ContentArea>
@@ -41,11 +50,13 @@ export default function EditProfile() {
             <S.RightArea className="baixo">
               <S.ContainerInput>
                 <span>
-                  <Input defaultValue="mariabelmonte@hotmail.com " width="editProfile">
+                  <Input
+                    defaultValue="mariabelmonte@hotmail.com "
+                    width="editProfile"
+                  >
                     <TfiEmail />
                   </Input>
-                  <Select icon={ <BsGenderAmbiguous />}>
-                  </Select>
+                  <Select icon={<BsGenderAmbiguous />}></Select>
                 </span>
 
                 <span>
@@ -61,37 +72,59 @@ export default function EditProfile() {
                   <Input defaultValue="11 96787-6787 " width="editProfile">
                     <FiSmartphone />
                   </Input>
-                  <Input defaultValue="" width="editProfile" placeholder="Telefone fixo">
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Telefone fixo"
+                  >
                     <BsTelephone />
                   </Input>
-
                 </span>
 
                 <span>
-
-                <Input defaultValue="" width="editProfile" placeholder="CEP">
+                  <Input defaultValue="" width="editProfile" placeholder="CEP">
                     <TfiLocationPin />
                   </Input>
 
-                  <Input defaultValue="" width="editProfile" placeholder="Logradouro">
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Logradouro"
+                  >
                     <BiStreetView />
                   </Input>
                 </span>
 
                 <span>
-                  <Input defaultValue="" width="editProfile" placeholder="Bairro">
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Bairro"
+                  >
                     <SiOpenstreetmap />
                   </Input>
-                  <Input defaultValue="" width="editProfile" placeholder="Número">
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Número"
+                  >
                     <BsHouse />
                   </Input>
                 </span>
 
                 <span>
-                  <Input defaultValue="" width="editProfile" placeholder="Complemento">
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Complemento"
+                  >
                     <MdOutlineOtherHouses />
                   </Input>
-                  <Input defaultValue="" width="editProfile" placeholder="Cidade">
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Cidade"
+                  >
                     <BiBuildingHouse />
                   </Input>
                 </span>
@@ -99,6 +132,14 @@ export default function EditProfile() {
                 <span>
                   <Input defaultValue="" width="editProfile" placeholder="UF">
                     <TfiLocationArrow />
+                  </Input>
+
+                  <Input
+                    defaultValue=""
+                    width="editProfile"
+                    placeholder="Documento Profissional"
+                  >
+                    <FaRegAddressCard />
                   </Input>
                 </span>
               </S.ContainerInput>

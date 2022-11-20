@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
 import { Loader } from '../../@shared/Loader'
 
-export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
+export const ProtectedLayout = ({ children }: { children: React.ReactFragment | React.FC }) => {
   const router = useRouter()
   const { signed, loading } = useAuth()
 

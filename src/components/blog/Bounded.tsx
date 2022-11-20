@@ -55,14 +55,14 @@ const BoundedStyled = styled.div<BoundedStyledProps>`
   width: 100%; 
   margin: 0 auto;
   max-width: ${({ size }) => {
-  if (size === 'small') {
-    return '36rem'
-  } else if (size === 'base') {
-    return '48rem'
-  } else if (size === 'wide') {
-    return '56rem'
+    if (size === 'small') {
+      return '36rem'
+    } else if (size === 'base') {
+      return '48rem'
+    } else if (size === 'wide') {
+      return '56rem'
     } else {
-    return '72rem'
+      return '72rem'
     }
   }};
 `

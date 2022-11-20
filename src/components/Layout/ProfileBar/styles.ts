@@ -82,7 +82,7 @@ export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
   }
   .one {
     transform: ${(props) =>
-      props.open ? 'rotate(45deg) translate(7px, 7px);' : null};
+    props.open ? 'rotate(45deg) translate(7px, 7px);' : null};
   }
 
   .two {
@@ -91,7 +91,7 @@ export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
 
   .three {
     transform: ${(props) =>
-      props.open ? 'rotate(-45deg) translate(8px, -9px);' : null};
+    props.open ? 'rotate(-45deg) translate(8px, -9px);' : null};
   }
 `
 

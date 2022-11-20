@@ -7,17 +7,21 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
 import { Header } from '../../components/Layout/Header'
 import Head from 'next/head'
+import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 
 export default function Upload (): JSX.Element {
+  const { signed, loading } = useAuth()
   const router = useRouter()
-  const { user, loading } = useAuth()
-
   useEffect(() => {
-    if (!(user) && !loading) {
+    if (!(signed) && !loading) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/auth')
     }
-  }, [user, loading, router])
+  }, [signed, loading, router])
+
+  if (loading || router.isFallback) {
+    return <LoaderAllPage />
+  }
 
   return (
     <>
@@ -30,7 +34,7 @@ export default function Upload (): JSX.Element {
         <S.Container>
           <S.ContainerLogin>
             <Link href="/">
-            <S.Img src="/assets/img/logoCPA.png" alt="" />
+              <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
 
             <p> Faça aqui os seus upload</p>
@@ -39,15 +43,15 @@ export default function Upload (): JSX.Element {
                 <label htmlFor="arquivo"></label>
                 <Input type={'file'} name={'arquivo'} id={'arquivo'}>
 
-                 </Input>
+                </Input>
               </div>
             </form>
 
             <Link href="/hotsite">
-          <ButtonPrimary className="azul" >
+              <ButtonPrimary className="azul" >
               VOLTAR
-            </ButtonPrimary>
-          </Link>
+              </ButtonPrimary>
+            </Link>
           </S.ContainerLogin>
         </S.Container>
       </S.PageContainer>

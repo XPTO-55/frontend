@@ -9,17 +9,17 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> =
   ({ children, placeholder, width, ...props }, ref) => {
     return (
-    <>
-      <S.ContainerInput>
-        <S.Icon>{children}</S.Icon>
+      <>
+        <S.ContainerInput>
+          <S.Icon>{children}</S.Icon>
           <S.Input
             placeholder={placeholder}
             ref={ref}
             className={width}
             {...props}
           />
-      </S.ContainerInput>
-    </>
+        </S.ContainerInput>
+      </>
     )
   }
 

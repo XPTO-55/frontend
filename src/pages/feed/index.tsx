@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FeedProps, StaticProps } from './types'
 import { GetStaticProps } from 'next'
 import * as prismicNext from '@prismicio/next'
@@ -9,29 +9,42 @@ import { Bounded } from '../../components/blog/Bounded'
 import Sidebar from '../../components/Layout/Sidebar'
 import { Post } from '../../components/Feed/Post'
 import Head from 'next/head'
-import { ProtectedLayout } from '../../components/ProtectedLayout'
 import { HeaderBase } from '../../components/Layout/HeaderBase'
 import { Heading } from '../../components/blog/Heading'
+import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
+import { useRouter } from 'next/router'
+import { useAuth } from '../../context/auth'
 
 export default function Feed({ posts }: FeedProps) {
+  const { signed, loading } = useAuth()
+  const router = useRouter()
+  useEffect(() => {
+    if (!(signed) && !loading) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/auth')
+    }
+  }, [signed, loading, router])
+
+  if (loading || router.isFallback) {
+    return <LoaderAllPage />
+  }
   return (
-    <ProtectedLayout>
-      <>
-        <Head>
-          <title> Feed | CPA </title>
-        </Head>
-        <HeaderBase />
+    <>
+      <Head>
+        <title> Feed | CPA </title>
+      </Head>
+      <HeaderBase />
       <S.Container>
         <Sidebar />
-          <S.Main>
-            <Bounded asChild size='wide'>
-              <Heading asChild size='2xl'>
-                <h2>
+        <S.Main>
+          <Bounded asChild size='wide'>
+            <Heading asChild size='2xl'>
+              <h2>
                   Feed
-                </h2>
-              </Heading>
-            </Bounded>
-            <Bounded asChild size="wide">
+              </h2>
+            </Heading>
+          </Bounded>
+          <Bounded asChild size="wide">
 
             <S.ListaNaoOrdenada>
               {posts.length > 0
@@ -44,7 +57,6 @@ export default function Feed({ posts }: FeedProps) {
         </S.Main>
       </S.Container>
     </>
-    </ProtectedLayout>
   )
 }
 

@@ -1,15 +1,15 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import { ProfileBar } from '../../components/Layout/ProfileBar'
-import { ProfessionalCard } from '../../components/Professional-list/ProfessionalCard'
+import { ProfileBar } from '../../../components/Layout/ProfileBar'
+import { ProfessionalCard } from '../../../components/Professional-list/ProfessionalCard'
 import * as S from './styles'
-import { Input } from '../../@shared/Input'
+import { Input } from '../../../@shared/Input'
 import { BiSearch } from 'react-icons/bi'
 import {
   getProfessionals,
   IProfessional
-} from '../../services/professional.service'
+} from '../../../services/professional.service'
 import { useQuery } from 'react-query'
-import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
+import { LoaderAllPage } from '../../../components/Layout/LoaderAllPage'
 
 interface ProfessionalProps {
   setSelectProfessional: Dispatch<SetStateAction<IProfessional>>
@@ -23,6 +23,8 @@ export default function ProfessionalList({
     isLoading
   } = useQuery<IProfessional[]>(['professionals'], getProfessionals)
 
+  console.log('professionals', professionals)
+
   const [search, setSearch] = useState('')
 
   const filteredProfessionalList =
@@ -32,7 +34,7 @@ export default function ProfessionalList({
           professionals.name.includes(search)
         )
         : professionals
-      : null
+      : professionals
 
   if (isLoading) {
     return (
@@ -41,7 +43,6 @@ export default function ProfessionalList({
   }
 
   // function handleClickprofessional(professional: IProfessional) {
-  //   console.log('professional', professional)
   //   setSelectProfessional(professional)
   // }
 
@@ -63,25 +64,25 @@ export default function ProfessionalList({
           <S.Container>
             {professionals.length > 0
               ? (
-                  filteredProfessionalList.map((res) => {
-                    return (
-                  <ProfessionalCard
-                    key={res.id}
-                    id={res.id}
-                    name={res.name}
-                    identificacao={res.role}
-                    telefoneCelular={res.telefoneCelular}
-                  />
-                    )
-                  })
-                )
+                filteredProfessionalList.map((professional) => {
+                  return (
+                    <ProfessionalCard
+                      key={professional.id}
+                      id={professional.id}
+                      name={professional.name}
+                      identificacao={professional.role}
+                      telefoneCelular={professional.telefoneCelular}
+                    />
+                  )
+                })
+              )
               : (
-              <S.NoProfessional>
-                <div>
-                  Nenhum profissional encontrado
-                </div>
-              </S.NoProfessional>
-                )}
+                <S.NoProfessional>
+                  <div>
+                    Nenhum profissional encontrado
+                  </div>
+                </S.NoProfessional>
+              )}
           </S.Container>
         </S.PageContainer>
       </div>

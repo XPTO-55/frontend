@@ -3,26 +3,24 @@ import * as S from './styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import Link from 'next/link'
 import { Header } from '../../components/Layout/Header'
-import { Loader } from '../../@shared/Loader'
+import Head from 'next/head'
+import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
-import Head from 'next/head'
 
-export default function HotSite (): JSX.Element {
+export default function HotSite(): JSX.Element {
+  const { signed, loading } = useAuth()
   const router = useRouter()
-  const { user, loading } = useAuth()
-
   useEffect(() => {
-    if (!(user) && !loading) {
+    if (!(signed) && !loading) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/auth')
     }
-  }, [user, loading, router])
+  }, [signed, loading, router])
 
-  if (loading) {
-    return <Loader width={34} />
+  if (loading || router.isFallback) {
+    return <LoaderAllPage />
   }
-
   return (
     <>
       <Header />
@@ -33,7 +31,7 @@ export default function HotSite (): JSX.Element {
         <S.Container>
           <S.ContainerLogin>
             <Link href="/">
-            <S.Img src="/assets/img/logoCPA.png" alt="" />
+              <S.Img src="/assets/img/logoCPA.png" alt="" />
             </Link>
             <p>
               Faça aqui mesmo seus downloads e uploads sempre que precisar.
@@ -50,8 +48,8 @@ export default function HotSite (): JSX.Element {
               <ButtonPrimary className="azul" >
 
               UPLOADS
-            </ButtonPrimary>
-          </Link>
+              </ButtonPrimary>
+            </Link>
           </S.ContainerLogin>
         </S.Container>
       </S.PageContainer>

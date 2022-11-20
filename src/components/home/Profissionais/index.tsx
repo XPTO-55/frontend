@@ -163,7 +163,7 @@ function Arrow(props: {
     <svg
       onClick={props.onClick}
       className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'
-        } ${disabeld}`}
+      } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

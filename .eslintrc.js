@@ -39,6 +39,7 @@ module.exports = {
     'react/prop-types': 'warn',
     'react/no-unescaped-entities': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    '@typescript-eslint/no-misused-promises': 'off'
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/indent': ['error', 2]
   }
 }

@@ -34,76 +34,76 @@ export function PacienteForm({ setOpen }: Form) {
   return (
     <>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-      <S.Fieldset>
+        <S.Fieldset>
           <Input type="text" placeholder="Nome Completo" width="cadastro" {...register('name')}>
-          <FiUser />
-        </Input>
+            <FiUser />
+          </Input>
           <p>{errors?.name?.message}</p>
-      </S.Fieldset>
-      <S.Fieldset>
+        </S.Fieldset>
+        <S.Fieldset>
           <Input type="email" placeholder="Email" width="cadastro" {...register('email')}>
-          <TfiEmail />
-        </Input>
+            <TfiEmail />
+          </Input>
           <p>{errors?.email?.message}</p>
-      </S.Fieldset >
-      <S.Fieldset>
+        </S.Fieldset >
+        <S.Fieldset>
           <Input placeholder="RG" width="cadastro" {...register('rg')}>
-          <TiDocument />
-        </Input>
+            <TiDocument />
+          </Input>
           <p>{errors?.rg?.message}</p>
-      </S.Fieldset >
-      <S.Fieldset>
+        </S.Fieldset >
+        <S.Fieldset>
           <Input placeholder="CPF" width="cadastro" {...register('cpf')}>
-          <CgFileDocument />
-        </Input>
+            <CgFileDocument />
+          </Input>
           <p>{errors?.cpf?.message}</p>
-      </S.Fieldset >
-      <S.Fieldset>
+        </S.Fieldset >
+        <S.Fieldset>
           <Input type="date" placeholder="Data de nascimento" width="cadastro" {...register('birthday')}>
-          <BsCalendarDate />
-        </Input>
+            <BsCalendarDate />
+          </Input>
           <p>{errors?.birthday?.message}</p>
-      </S.Fieldset >
-      <S.Fieldset>
+        </S.Fieldset >
+        <S.Fieldset>
           <Input placeholder="Telefone fixo" width="cadastro" {...register('landline')}>
-          <BsTelephonePlus />
-        </Input>
+            <BsTelephonePlus />
+          </Input>
           <p>{errors?.landline?.message}</p>
-      </S.Fieldset >
-      <S.Fieldset>
+        </S.Fieldset >
+        <S.Fieldset>
           <Input placeholder="Telefone Celular" width="cadastro" {...register('phone')}>
-          <FiSmartphone />
-        </Input>
+            <FiSmartphone />
+          </Input>
           <p>{errors?.phone?.message}</p>
-      </S.Fieldset>
-      <S.Fieldset>
+        </S.Fieldset>
+        <S.Fieldset>
           <Input type="password" placeholder="Senha" width="cadastro" {...register('password')}>
-          <RiLockPasswordLine />
+            <RiLockPasswordLine />
           </Input>
           <p>{errors?.password?.message}</p>
-      </S.Fieldset >
-      <S.Fieldset>
+        </S.Fieldset >
+        <S.Fieldset>
           <Input type="password" placeholder="Confirmar senha" width="cadastro" {...register('confirm_password')}>
-          <CgPassword />
-        </Input>
+            <CgPassword />
+          </Input>
           <p>{errors?.confirm_password?.message}</p>
 
-      </S.Fieldset >
-      <S.Footer className="bottom">
+        </S.Fieldset >
+        <S.Footer className="bottom">
           <ButtonPrimary className="azul" tamanho="151px" disabled={isLoading}>
             {isLoading ? <Loader width={16} /> : null}
           Cadastrar
-        </ButtonPrimary>
-
-        <Dialog.Close asChild aria-label="Close" type='button'>
-          <ButtonPrimary
-            className="laranja"
-            tamanho="151px"
-          >
-            Cancelar
           </ButtonPrimary>
-        </Dialog.Close>
-      </S.Footer>
+
+          <Dialog.Close asChild aria-label="Close" type='button'>
+            <ButtonPrimary
+              className="laranja"
+              tamanho="151px"
+            >
+            Cancelar
+            </ButtonPrimary>
+          </Dialog.Close>
+        </S.Footer>
       </S.Form>
       {isError ? <Toast type={'error'} title={'Error'} description={error?.message?.message || error?.message || 'Erro ao realizar o cadastro'} /> : null}
     </>

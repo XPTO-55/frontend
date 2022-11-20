@@ -8,8 +8,10 @@ import PrefessionalCardProps from './types'
 export const ProfessionalCard = ({
   id,
   name,
-  telefoneCelular
+  telefoneCelular,
+  ...props
 }: PrefessionalCardProps) => {
+  console.log('props', props)
   return (
     <S.ContainerCard>
       <S.ContainerInside>

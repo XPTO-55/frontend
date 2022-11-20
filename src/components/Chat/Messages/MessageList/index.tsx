@@ -11,7 +11,7 @@ interface InfoProps {
 }
 
 export default function MessageList({ data }: InfoProps) {
-  const { data: forumsMessages, isLoading } = useQuery<IForumMessages>(['forums', data.id], getForumMessages)
+  const { data: forumsMessages, isLoading } = useQuery<IForumMessages>(['forums', data?.id], getForumMessages)
 
   if (!data?.id) {
     return (

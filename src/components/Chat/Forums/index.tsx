@@ -4,7 +4,7 @@ import * as S from './styles'
 import Card from './Card'
 import React, { Dispatch, SetStateAction } from 'react'
 import { IForum } from '../../../services/types'
-import { Loader } from '../../../@shared/Loader'
+import Skeleton from 'react-loading-skeleton'
 
 interface ForumProps {
   setSelectForum: Dispatch<SetStateAction<IForum>>
@@ -12,10 +12,6 @@ interface ForumProps {
 
 function Forums({ setSelectForum }: ForumProps) {
   const { data: forums, isLoading } = useQuery<IForum[]>(['forums'], getForums)
-
-  if (isLoading) {
-    return <Loader width={32} />
-  }
 
   function handleClickForum(forum: IForum) {
     setSelectForum(forum)
@@ -28,6 +24,7 @@ function Forums({ setSelectForum }: ForumProps) {
         {
           forums?.length > 0 ? forums.map(forum => <Card onClick={() => handleClickForum(forum)} key={forum.id} data={forum} />) : null
         }
+        {isLoading ? <Skeleton height={60} count={3} /> : null}
       </S.CardContainer>
 
     </S.Container>

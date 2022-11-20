@@ -7,7 +7,7 @@ import React, { Suspense } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
 function Forums () {
-  const { data: events, isLoading } = useQuery<IEventUsers[]>(['events'], getParticipantsEvents)
+  const { data: events } = useQuery<IEventUsers[]>(['events'], getParticipantsEvents)
   return (
     <S.Container>
       <div>

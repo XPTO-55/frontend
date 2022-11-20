@@ -10,7 +10,7 @@ export interface PostDocumentStatic extends Document {
 }
 
 export interface StaticProps {
-  posts: PostDocumentStatic[]
+  posts: Array<PostDocument<string>>
 }
 
 export interface FeedProps {

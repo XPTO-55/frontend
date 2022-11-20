@@ -61,6 +61,7 @@ export default function Auth() {
               <p>{errors?.password?.message}</p>
             </S.InputContainer>
             <span aria-disabled={isError}>
+              {/* @ts-expect-error */}
               {isError ? (error?.message?.message || error?.message) : null}
               <u>
                 Esqueceu a senha?

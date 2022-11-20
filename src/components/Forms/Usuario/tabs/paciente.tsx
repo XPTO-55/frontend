@@ -105,6 +105,7 @@ export function PacienteForm({ setOpen }: Form) {
           </Dialog.Close>
         </S.Footer>
       </S.Form>
+      {/* @ts-expect-error */}
       {isError ? <Toast type={'error'} title={'Error'} description={error?.message?.message || error?.message || 'Erro ao realizar o cadastro'} /> : null}
     </>
   )

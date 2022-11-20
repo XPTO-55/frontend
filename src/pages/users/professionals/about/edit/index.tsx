@@ -15,7 +15,7 @@ import { BsGenderAmbiguous, BsTelephone, BsHouse } from 'react-icons/bs'
 import { ButtonPrimary } from '../../../../../@shared/ButtonPrimary'
 import { UploadImage } from '../../../../../components/EditProfile/UploadImage'
 import { Input } from '../../../../../@shared/Input'
-import { Select } from '../../../../../components/Layout/Select'
+import { Select } from '../../../../../@shared/Select'
 
 import { ProfileBar } from '../../../../../components/Layout/ProfileBar'
 import * as S from './styles'

@@ -11,7 +11,6 @@ export const ProfessionalCard = ({
   telefoneCelular,
   ...props
 }: PrefessionalCardProps) => {
-  console.log('props', props)
   return (
     <S.ContainerCard>
       <S.ContainerInside>

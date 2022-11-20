@@ -47,7 +47,9 @@ const Article = ({ article }: ArticleProps) => {
     (prismicH.isFilled.image(article.data.featuredImage) &&
       article.data.featuredImage) ||
     findFirstImage(article.data.slices)
+
   const date = prismicH.asDate(
+    // @ts-expect-error
     article.data.publishDate || article.first_publication_date
   )
   const excerpt = getExcerpt(article.data.slices)

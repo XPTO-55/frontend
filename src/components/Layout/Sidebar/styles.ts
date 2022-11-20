@@ -20,7 +20,7 @@ export const ProfileInfo = styled.div`
   gap: 4px;
 
   h3 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     line-height: 38.73px;
     color: #f6f6f6;
     font-weight: 400;
@@ -28,8 +28,8 @@ export const ProfileInfo = styled.div`
 `
 
 export const ImageProfileContainer = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 128px;
+  height: 128px;
   object-fit: cover;
   border-radius: 50%;
   background-color: #f6f6f6;
@@ -57,7 +57,7 @@ export const Navigation = styled.nav`
       display: block;
       text-align: left;
       height: 2rempx;
-      padding: .5rem 2rem;
+      padding: .75rem 2rem;
       &:hover {
         background-color: #0A6CB2;
       }

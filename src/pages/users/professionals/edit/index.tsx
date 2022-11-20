@@ -12,12 +12,12 @@ import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
 import { SiOpenstreetmap } from 'react-icons/si'
 import { FiSmartphone } from 'react-icons/fi'
 import { BsGenderAmbiguous, BsTelephone, BsHouse } from 'react-icons/bs'
-import { ButtonPrimary } from '../../../../../@shared/ButtonPrimary'
-import { UploadImage } from '../../../../../components/EditProfile/UploadImage'
-import { Input } from '../../../../../@shared/Input'
-import { Select } from '../../../../../components/Layout/Select'
+import { ButtonPrimary } from '../../../../@shared/ButtonPrimary'
+import { UploadImage } from '../../../../components/EditProfile/UploadImage'
+import { Input } from '../../../../@shared/Input'
+import { Select } from '../../../../components/Layout/Select'
 
-import { ProfileBar } from '../../../../../components/Layout/ProfileBar'
+import { ProfileBar } from '../../../../components/Layout/ProfileBar'
 import * as S from './styles'
 
 export default function About() {

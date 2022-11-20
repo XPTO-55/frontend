@@ -1,5 +1,5 @@
 import React from 'react'
-import { ToastProps, IToastTypes } from './types'
+import { ToastProps } from './types'
 
 import * as S from './styles'
 

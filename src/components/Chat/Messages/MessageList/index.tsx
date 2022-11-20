@@ -11,6 +11,8 @@ interface InfoProps {
 }
 
 export default function MessageList({ data }: InfoProps) {
+  const { data: forumsMessages, isLoading } = useQuery<IForumMessages>(['forums', data.id], getForumMessages)
+
   if (!data?.id) {
     return (
       <S.Container>
@@ -18,8 +20,6 @@ export default function MessageList({ data }: InfoProps) {
       </S.Container>
     )
   }
-
-  const { data: forumsMessages, isLoading } = useQuery<IForumMessages>(['forums', data.id], getForumMessages)
 
   if (isLoading) {
     return <Loader width={32} />

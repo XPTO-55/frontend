@@ -73,6 +73,7 @@ export const Parceiros = () => {
                   <img
                     src={parceria.url}
                     style={{ objectFit: 'cover', height: 200, borderRadius: 7 }}
+                    alt="fundo parceria"
                   />
                 </div>
               )

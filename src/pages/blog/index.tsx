@@ -9,7 +9,7 @@ import { Bounded } from '../../components/blog/Bounded'
 import { Heading } from '../../components/blog/Heading'
 import { Header } from '../../components/Layout/Header'
 import { ArticleProps, BlogProps, StaticProps } from './types'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 

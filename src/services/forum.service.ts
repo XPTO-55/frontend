@@ -18,7 +18,7 @@ export const getForums = async (): Promise<IForum[]> => {
 
 export const getForumMessages = async ({ queryKey }): Promise<IForumMessages> => {
   try {
-    const [_, id] = queryKey as [string, string]
+    const [, id] = queryKey as [string, string]
     const { data } = await api.get(`/forums/${id}?_embed=messages`)
     return data as IForumMessages
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

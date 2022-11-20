@@ -66,7 +66,7 @@ export function Profissionais() {
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">
-                    <img src="/assets/img/fotoRafaelLeao.png" width="354px" height="452px" />
+                    <img src="/assets/img/fotoRafaelLeao.png" width="354px" height="452px" alt='profissional' />
                   </S.ContainerInfoProfContent>
                   <S.bordaImgProf />
                 </div>
@@ -87,7 +87,7 @@ export function Profissionais() {
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">
-                    <img src="/assets/img/marceloNeto.png" width={354} height={452} />
+                    <img src="/assets/img/marceloNeto.png" width={354} height={452} alt='profissional' />
                   </S.ContainerInfoProfContent>
                   <S.bordaImgProf />
                 </div>
@@ -108,7 +108,7 @@ export function Profissionais() {
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">
-                    <img src="/assets/img/pedroGuedes.png" width={354} height={452} />
+                    <img src="/assets/img/pedroGuedes.png" width={354} height={452} alt='profissional' />
                   </S.ContainerInfoProfContent>
                   <S.bordaImgProf />
                 </div>

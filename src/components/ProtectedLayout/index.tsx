@@ -12,7 +12,7 @@ export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/auth')
     }
-  }, [signed, loading])
+  }, [signed, loading, router])
 
   if (loading) {
     return <Loader width={34} />

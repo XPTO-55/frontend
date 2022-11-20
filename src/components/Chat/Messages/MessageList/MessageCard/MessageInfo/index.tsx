@@ -1,7 +1,4 @@
 import React from 'react'
-import { AiOutlineClockCircle } from 'react-icons/ai'
-import { BsArrowReturnRight } from 'react-icons/bs'
-import { ButtonWithoutStyles } from '../../../../../../@shared/ButtonWithoutStyles'
 import * as S from './styles'
 import { IMessageInfoProps } from './types'
 

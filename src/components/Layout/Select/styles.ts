@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Select = styled.select`
   width: 360px;
@@ -19,7 +19,7 @@ export const Select = styled.select`
     width: 350px;
   }
 
-`;
+`
 
 export const Icon = styled.div`
   width: 55px;
@@ -34,11 +34,10 @@ export const Icon = styled.div`
   font-size: 30px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-`;
+`
 
 export const ContainerSelect = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
+`

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '../../../Input'
+import { Input } from '../../../../@shared/Input'
 import { FiUser, FiSmartphone } from 'react-icons/fi'
 import { TfiEmail } from 'react-icons/tfi'
 import { BsCalendarDate, BsTelephonePlus } from 'react-icons/bs'

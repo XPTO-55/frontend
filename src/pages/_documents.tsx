@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html lang="pt-br">
         <Head>
-          <title>CPA</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"

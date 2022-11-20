@@ -1,6 +1,6 @@
-import React from "react";
-import * as S from "./styles";
-import { TfiPencil } from "react-icons/tfi";
+import React from 'react'
+import * as S from './styles'
+import { TfiPencil } from 'react-icons/tfi'
 
 export const UploadImage = () => {
   return (
@@ -10,5 +10,5 @@ export const UploadImage = () => {
       </S.Label>
       <S.Input type="file" id="arquivo" />
     </>
-  );
-};
+  )
+}

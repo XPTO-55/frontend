@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ export const PageContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
   }
-`;
+`
 
 export const MapsContainer = styled.div`
   width: 100%;
@@ -28,7 +28,7 @@ export const MapsContainer = styled.div`
   padding-top: 50px;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.2);
-`;
+`
 
 export const CardContainer = styled.div`
   width: 100%;
@@ -51,9 +51,9 @@ export const CardContainer = styled.div`
     background-color: #2a8dd2;
     border-radius: 10px;
   }
-`;
+`
 
-export const NoProfessional = styled.div`
+export const NoPlace = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -73,4 +73,4 @@ export const NoProfessional = styled.div`
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     color: white;
   }
-`;
+`

@@ -1,9 +1,10 @@
-import * as S from "./styles";
-import CardPlaceProps from "./types";
+import React from 'react'
+import * as S from './styles'
+import { CardPlaceProps } from './types'
 
-export const CardPlace = ({ place }: CardPlaceProps) => {
+export const CardPlace = ({ place, ...props }: CardPlaceProps) => {
   return (
-    <S.CardContainer>
+    <S.CardContainer {...props}>
       <S.ContainerCardLeft>
         <img
           src="https://aguiarbuenosaires.com/wp-content/uploads/2019/03/teatro-colon-1.jpg"
@@ -22,5 +23,5 @@ export const CardPlace = ({ place }: CardPlaceProps) => {
         </h2>
       </S.ContainerCardRight>
     </S.CardContainer>
-  );
-};
+  )
+}

@@ -1,10 +1,10 @@
-import React, { SelectHTMLAttributes } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import * as S from "./styles";
+import React, { SelectHTMLAttributes } from 'react'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
+import * as S from './styles'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  icon: React.ReactNode;
-  ref?: UseFormRegister<FieldValues>;
+  icon: React.ReactNode
+  ref?: UseFormRegister<FieldValues>
 }
 
 export const Select = ({ icon }: SelectProps) => {
@@ -19,5 +19,5 @@ export const Select = ({ icon }: SelectProps) => {
         </S.Select>
       </S.ContainerSelect>
     </>
-  );
-};
+  )
+}

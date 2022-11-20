@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100vw;
@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 export const ContainerForm = styled.form`
   width: 90%;
@@ -18,8 +18,7 @@ export const ContainerForm = styled.form`
   flex-direction: column;
   margin-top: 50px;
 
-`;
-
+`
 
 export const ContentArea = styled.div`
 width: 100%;
@@ -111,5 +110,3 @@ span{
 
 
 `
-
-

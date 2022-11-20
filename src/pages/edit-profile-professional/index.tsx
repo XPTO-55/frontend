@@ -1,24 +1,24 @@
-import TextArea from "antd/lib/input/TextArea";
+import React from 'react'
 import {
   TfiPencil,
   TfiEmail,
   TfiLocationPin,
-  TfiLocationArrow,
-} from "react-icons/tfi";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { MdOutlineOtherHouses } from "react-icons/md";
-import { FaRegAddressCard } from "react-icons/fa";
-import { BiBuildingHouse, BiStreetView } from "react-icons/bi";
-import { SiOpenstreetmap } from "react-icons/si";
-import { FiSmartphone } from "react-icons/fi";
-import { BsGenderAmbiguous, BsTelephone, BsHouse } from "react-icons/bs";
-import { ButtonPrimary } from "../../@shared/ButtonPrimary";
-import { UploadImage } from "../../components/EditProfile/UploadImage";
-import { Input } from "../../@shared/Input";
-import { Select } from "../../components/Layout/Select";
+  TfiLocationArrow
+} from 'react-icons/tfi'
+import { HiOutlineDocumentText } from 'react-icons/hi'
+import { MdOutlineOtherHouses } from 'react-icons/md'
+import { FaRegAddressCard } from 'react-icons/fa'
+import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
+import { SiOpenstreetmap } from 'react-icons/si'
+import { FiSmartphone } from 'react-icons/fi'
+import { BsGenderAmbiguous, BsTelephone, BsHouse } from 'react-icons/bs'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import { UploadImage } from '../../components/EditProfile/UploadImage'
+import { Input } from '../../@shared/Input'
+import { Select } from '../../components/Layout/Select'
 
-import { ProfileBar } from "../../components/Layout/ProfileBar";
-import * as S from "./styles";
+import { ProfileBar } from '../../components/Layout/ProfileBar'
+import * as S from './styles'
 
 export default function EditProfileProfessional() {
   return (
@@ -148,5 +148,5 @@ export default function EditProfileProfessional() {
         </S.ContainerForm>
       </S.PageContainer>
     </>
-  );
+  )
 }

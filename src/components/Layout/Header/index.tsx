@@ -8,7 +8,7 @@ export function Header () {
   return (
     <S.Header>
       <S.Container>
-        <Image src={logo} width="130.43px" height="56px" />
+        <Image src={logo} width="130.43px" height="56px" alt='logo' />
         <S.Navbar>
           <S.Ul>
             <Link href="/">

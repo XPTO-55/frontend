@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app'
 import { PrismicLink, PrismicProvider } from '@prismicio/react'
 import Link from 'next/link'
 import React from 'react'
@@ -10,7 +11,7 @@ import * as Toast from '@radix-ui/react-toast'
 import { AuthProvider } from '../context/auth'
 const queryClient = new QueryClient()
 
-function MyApp ({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const NextLinkShim = ({ href, children, locale, ...props }) => {
     return (
       <Link href={href} locale={locale}>

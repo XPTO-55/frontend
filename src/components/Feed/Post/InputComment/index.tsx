@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineSend } from 'react-icons/ai'
-import { useAuth } from '../../../../context/auth'
+// import { useAuth } from '../../../../context/auth'
 // import { ImAttachment } from 'react-icons/im'
 import * as S from './styles'
 

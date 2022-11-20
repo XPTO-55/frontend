@@ -17,7 +17,6 @@ export const Input = styled.input`
 
 `
 
-
 export const Icon = styled.div`
   width: 55px;
   height: 50px;
@@ -30,7 +29,6 @@ export const Icon = styled.div`
   color: white;
   font-size: 30px;
 `
-
 
 export const ContainerInput = styled.div`
   display: flex;

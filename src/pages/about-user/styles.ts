@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 export const Container = styled.div`
   width: 85%;
@@ -17,7 +17,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-`;
+`
 
 export const ContentUp = styled.div`
   width: 100%;
@@ -54,7 +54,7 @@ export const ContentUp = styled.div`
     margin-bottom: -30px;
     font-size: 20px;
   }
-`;
+`
 
 export const ContentDown = styled.div`
   width: 100%;
@@ -85,7 +85,7 @@ export const ContentDown = styled.div`
     font-size: 20px;
     overflow: hidden;
   }
-`;
+`
 
 export const BoxImg = styled.div`
   width: 28%;
@@ -99,7 +99,7 @@ export const BoxImg = styled.div`
     border-radius: 100%;
     border: 5px solid #2a8dd2;
   }
-`;
+`
 
 export const Footer = styled.div`
   margin-top: 30px;
@@ -122,4 +122,4 @@ export const Footer = styled.div`
     margin-top: 5px;
     margin-left: 10px;
   }
-`;
+`

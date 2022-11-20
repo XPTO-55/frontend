@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Input } from '../../components/Input'
+import { Input } from '../../@shared/Input'
 import * as S from './styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import Link from 'next/link'
@@ -17,7 +17,7 @@ export default function Upload (): JSX.Element {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/auth')
     }
-  }, [user, loading])
+  }, [user, loading, router])
 
   return (
     <>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ export const PageContainer = styled.div`
   padding-right: 180px;
   box-sizing: border-box;
   z-index: 100;
-`;
+`
 
 export const Header = styled.div`
   width: 1200px;
@@ -22,7 +22,7 @@ export const Header = styled.div`
   justify-content: flex-start;
   box-sizing: border-box;
   margin-bottom: 30px;
-`;
+`
 
 export const Container = styled.div`
   width: 100%;
@@ -44,7 +44,7 @@ export const Container = styled.div`
     background-color: #2a8dd2;
     border-radius: 10px;
   }
-`;
+`
 
 export const NoProfessional = styled.div`
   width: 100%;
@@ -66,4 +66,4 @@ export const NoProfessional = styled.div`
 
     color: white;
   }
-`;
+`

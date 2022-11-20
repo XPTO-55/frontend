@@ -1,49 +1,49 @@
-import { Footer } from "antd/lib/layout/layout";
-import { ProfileBar } from "../../components/Layout/ProfileBar";
-import { ProfessionalCard } from "../../components/Professional-list/ProfessionalCard";
-import * as S from "./styles";
-import { Input } from "../../@shared/Input";
-import { BiSearch } from "react-icons/bi";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from 'react'
+import { ProfileBar } from '../../components/Layout/ProfileBar'
+import { ProfessionalCard } from '../../components/Professional-list/ProfessionalCard'
+import * as S from './styles'
+import { Input } from '../../@shared/Input'
+import { BiSearch } from 'react-icons/bi'
 import {
   getProfessionals,
-  IProfessional,
-} from "../../services/professional.service";
-import { useQuery } from "react-query";
-import { LoaderAllPage } from "../../components/Layout/LoaderAllPage";
-import { Loader } from "../../components/Layout/Loader";
+  IProfessional
+} from '../../services/professional.service'
+import { useQuery } from 'react-query'
+import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 
 interface ProfessionalProps {
-  setSelectProfessional: Dispatch<SetStateAction<IProfessional>>;
+  setSelectProfessional: Dispatch<SetStateAction<IProfessional>>
 }
 
 export default function ProfessionalList({
-  setSelectProfessional,
+  setSelectProfessional
 }: ProfessionalProps) {
   const {
     data: professionals = [],
-    isError,
-    isLoading,
-  } = useQuery<IProfessional[]>(["professionals"], getProfessionals);
+    isLoading
+  } = useQuery<IProfessional[]>(['professionals'], getProfessionals)
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('')
 
   const filteredProfessionalList =
     search.length > 0
-      ? professionals.length > 0 ?  professionals.filter((professionals) =>
+      ? professionals.length > 0
+        ? professionals.filter((professionals) =>
           professionals.name.includes(search)
         )
-      : professionals
+        : professionals
       : null
 
   if (isLoading) {
-    return <LoaderAllPage />;
+    return (
+      <LoaderAllPage />
+    )
   }
 
-  function handleClickprofessional(professional: IProfessional) {
-    console.log("professional", professional);
-    setSelectProfessional(professional);
-  }
+  // function handleClickprofessional(professional: IProfessional) {
+  //   console.log('professional', professional)
+  //   setSelectProfessional(professional)
+  // }
 
   return (
     <>
@@ -61,9 +61,10 @@ export default function ProfessionalList({
             </Input>
           </S.Header>
           <S.Container>
-            {professionals.length > 0 ? (
-              filteredProfessionalList.map((res) => {
-                return (
+            {professionals.length > 0
+              ? (
+                  filteredProfessionalList.map((res) => {
+                    return (
                   <ProfessionalCard
                     key={res.id}
                     id={res.id}
@@ -71,18 +72,19 @@ export default function ProfessionalList({
                     identificacao={res.role}
                     telefoneCelular={res.telefoneCelular}
                   />
-                );
-              })
-            ) : (
+                    )
+                  })
+                )
+              : (
               <S.NoProfessional>
                 <div>
                   Nenhum profissional encontrado
                 </div>
               </S.NoProfessional>
-            )}
+                )}
           </S.Container>
         </S.PageContainer>
       </div>
     </>
-  );
+  )
 }

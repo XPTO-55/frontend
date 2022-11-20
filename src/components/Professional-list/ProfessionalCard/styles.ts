@@ -1,5 +1,4 @@
-import { Conteiner } from "./../../../pages/blog/articles/styles";
-import styled from "styled-components";
+import styled from 'styled-components'
 export const ContainerCard = styled.div`
   width: 373px;
   height: 538px;
@@ -12,7 +11,7 @@ export const ContainerCard = styled.div`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   margin-bottom: 20px;
-`;
+`
 
 export const ContainerInside = styled.div`
   width: 100%;
@@ -68,10 +67,10 @@ export const ContainerInside = styled.div`
     align-items: center;
     justify-content: center;
   }
-`;
+`
 
 interface imgProps {
-  img: string;
+  img: string
 }
 
 export const Img = styled.img<imgProps>`
@@ -85,4 +84,4 @@ export const Img = styled.img<imgProps>`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-`;
+`

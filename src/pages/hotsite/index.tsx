@@ -17,7 +17,7 @@ export default function HotSite (): JSX.Element {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/auth')
     }
-  }, [user, loading])
+  }, [user, loading, router])
 
   if (loading) {
     return <Loader width={34} />

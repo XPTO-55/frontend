@@ -1,9 +1,10 @@
-import * as S from "./styles";
+import React from 'react'
+import * as S from './styles'
 
 export const Loader = () => {
   return (
     <S.ContainerLoading>
       <div />
     </S.ContainerLoading>
-  );
-};
+  )
+}

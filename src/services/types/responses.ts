@@ -60,3 +60,11 @@ export interface IMessage {
   forumId?: number
   replyes: IMessage[]
 }
+
+export interface IProfessional {
+  id: string
+  name: string
+  telefoneCelular: string
+  role: string
+  identificacao: string
+}

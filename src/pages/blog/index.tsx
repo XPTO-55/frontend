@@ -77,14 +77,8 @@ const Article = ({ article }: ArticleProps) => {
             </h2>
           </Heading>
 
-          <S.Paragrafo>
-            {dateFormatter.format(date)}
-          </S.Paragrafo>
-          {excerpt && (
-            <S.Paragrafo2>
-              {excerpt}
-            </S.Paragrafo2>
-          )}
+          <S.Paragrafo>{dateFormatter.format(date)}</S.Paragrafo>
+          {excerpt && <S.Paragrafo2>{excerpt}</S.Paragrafo2>}
         </S.Div1>
       </S.listItemStyled>
     </>
@@ -113,7 +107,7 @@ export default function Index({ articles }: BlogProps) {
       </Bounded>
     </>
   )
-};
+}
 
 // export const getStaticPaths: GetStaticPaths = async () => {
 //   return {

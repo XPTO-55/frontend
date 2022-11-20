@@ -34,10 +34,10 @@ export const ProfessionalCard = ({
           </p>
         </div>
         <i>
-          <Link href="about-user">
-            <ButtonPrimary className="laranja">
-              Saiba mais
-            </ButtonPrimary>
+          <Link
+            href={`professionals/about/${id}`}
+          >
+            <ButtonPrimary className="laranja">Saiba mais</ButtonPrimary>
           </Link>
         </i>
       </S.ContainerInside>

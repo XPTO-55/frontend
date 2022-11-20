@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useAuth } from '../../context/auth'
-import { Loader } from '../../@shared/Loader'
+import { useAuth } from '../../../context/auth'
+import { LoaderAllPage } from '../LoaderAllPage'
 
 export const ProtectedLayout = ({ children }: { children: React.ReactFragment | React.FC }) => {
   const router = useRouter()
@@ -15,7 +15,7 @@ export const ProtectedLayout = ({ children }: { children: React.ReactFragment | 
   }, [signed, loading, router])
 
   if (loading) {
-    return <Loader width={34} />
+    return <LoaderAllPage />
   }
 
   return children

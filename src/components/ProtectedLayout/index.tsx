@@ -5,16 +5,16 @@ import { Loader } from '../../@shared/Loader'
 
 export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
   const router = useRouter()
-  const { user, loading } = useAuth()
+  const { signed, loading } = useAuth()
 
   useEffect(() => {
-    if (!(user) && !loading) {
+    if (!(signed) && !loading) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/auth')
     }
-  }, [user, loading])
+  }, [signed, loading])
 
-  if (loading || router.isFallback) {
+  if (loading) {
     return <Loader width={34} />
   }
 

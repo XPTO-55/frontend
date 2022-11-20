@@ -18,7 +18,7 @@ export const ContainerInfo = styled.div`
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem 2rem;
-  width: 100%;
+  flex: 1;
   background-color: #EAEAEA;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 

@@ -6,7 +6,7 @@ interface PostCommentsDocument extends PostDocument {
 }
 
 export interface PostDocumentStatic extends Document {
-  comments: CommentsDocument[]
+  comments: Document[]
 }
 
 export interface StaticProps {

@@ -14,9 +14,15 @@ function Sidebar() {
       <S.Navigation>
         <ul>
           <li>Profissionais</li>
-          <li>Chat</li>
-          <li>Agenda</li>
-          <li>Amigos</li>
+          <li>
+            <Link href={'/chat'}>
+              <a>
+                Chat
+              </a>
+            </Link>
+          </li>
+          {/* <li>Agenda</li> */}
+          {/* <li>Amigos</li> */}
           <li>
             <Link href={'/hotsite'}>
               <a>

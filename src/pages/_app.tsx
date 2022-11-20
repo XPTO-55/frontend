@@ -78,8 +78,8 @@ function MyApp ({ Component, pageProps }) {
             linkResolver={linkResolver}
             internalLinkComponent={NextLinkShim}
             richTextComponents={richTextComponents}>
-            <GlobalStyles />
             <Component {...pageProps} />
+            <GlobalStyles />
           </PrismicProvider>
         </Toast.Provider>
       </AuthProvider>

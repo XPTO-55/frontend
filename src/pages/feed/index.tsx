@@ -11,19 +11,28 @@ import { Post } from '../../components/Feed/Post'
 import Head from 'next/head'
 import { ProtectedLayout } from '../../components/ProtectedLayout'
 import { HeaderBase } from '../../components/Layout/HeaderBase'
+import { Heading } from '../../components/blog/Heading'
 
 export default function Feed({ posts }: FeedProps) {
   return (
     <ProtectedLayout>
-    <>
+      <>
         <Head>
           <title> Feed | CPA </title>
         </Head>
         <HeaderBase />
       <S.Container>
         <Sidebar />
-        <S.Main>
-          <Bounded asChild size="wide">
+          <S.Main>
+            <Bounded asChild size='wide'>
+              <Heading asChild size='2xl'>
+                <h2>
+                  Feed
+                </h2>
+              </Heading>
+            </Bounded>
+            <Bounded asChild size="wide">
+
             <S.ListaNaoOrdenada>
               {posts.length > 0
                 ? posts.map(post => (
@@ -64,6 +73,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
       Prismic.Predicates.at('my.comments.post', post.id)
     )
 
+    // @ts-expect-error
     post.comments = comments.results
 
     return post

@@ -49,6 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setUser(JSON.parse(storagedUser))
         setLoading(false)
       }
+      setLoading(false)
     }
     loadStoragedData()
   }, [])

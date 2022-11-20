@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { useAuth } from '../../../context/auth'
 import * as S from './styles'
 
 export function ProfileBar () {
   const [openMenu, setOpenMenu] = useState(false)
+  const { signOut } = useAuth()
 
   return (
     <S.Container>
@@ -37,7 +39,11 @@ export function ProfileBar () {
                 </Link>
               </li>
               <li>
-                Sair
+                <Link href={'/'}>
+                  <a onClick={signOut}>
+                    Sair
+                  </a>
+                </Link>
               </li>
             </ul>
           </S.HamburguerMenu>

@@ -3,8 +3,11 @@ import * as S from './styles'
 import Image from 'next/image'
 import logo from '../../../../public/assets/img/logoCPA.png'
 import Link from 'next/link'
+import { useAuth } from '../../../context/auth'
 
 export function Header () {
+  const { signed } = useAuth()
+
   return (
     <S.Header>
       <S.Container>
@@ -21,9 +24,19 @@ export function Header () {
               <S.Li>FAQ</S.Li>
             </Link>
           </S.Ul>
-          <Link href="/auth">
-            <S.Button>Entrar</S.Button>
-          </Link>
+          {
+            signed
+              ? (
+                <Link href="/feed">
+                  <S.Button>Feed</S.Button>
+                </Link>
+              )
+              : (
+                <Link href="/auth">
+                  <S.Button>Entrar</S.Button>
+                </Link>
+              )
+          }
         </S.Navbar>
       </S.Container>
     </S.Header>

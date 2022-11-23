@@ -45,7 +45,7 @@ export default function HotSite(): JSX.Element {
             </ButtonPrimary>
 
             <Link href="/upload">
-              <ButtonPrimary className="azul" >
+              <ButtonPrimary className="verde" >
 
               UPLOADS
               </ButtonPrimary>

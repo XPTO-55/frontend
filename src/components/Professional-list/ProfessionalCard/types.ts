@@ -1,6 +1,8 @@
 export default interface PrefessionalCardProps {
   id: number
   name: string
-  telefoneCelular?: string
+  graduacao?: string
   identificacao?: string
+  ratings?: number
+  especialidade?: string
 }

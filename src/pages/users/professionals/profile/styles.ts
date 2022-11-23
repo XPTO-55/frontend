@@ -57,8 +57,6 @@ justify-content: center;
 flex-direction: column;
 
 
-
-
 textArea{
   width: 880px;
   height: 190px;

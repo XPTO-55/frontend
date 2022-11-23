@@ -5,26 +5,28 @@ import { useQuery } from 'react-query'
 import { ButtonPrimary } from '../../../../@shared/ButtonPrimary'
 import { LoaderAllPage } from '../../../../components/Layout/LoaderAllPage'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
-import {
-  getProfessionalId
-} from '../../../../services/professional.service'
+import { getProfessionalId } from '../../../../services/professional.service'
 import { IProfessional } from '../../../../services/types'
 import * as S from './styles'
 
 export default function About({ idProfessional }) {
   console.log(idProfessional)
 
-  const {
-    data: professional,
-    isLoading
-  } = useQuery<IProfessional>(
+  const { data: professional, isLoading } = useQuery<IProfessional>(
     ['professionals', idProfessional],
     getProfessionalId
   )
 
-  // if (isLoading) {
-  //   return <LoaderAllPage />
-  // }
+  if (isLoading) {
+    return <LoaderAllPage />
+  }
+
+  const contador = []
+
+  for (let index = 1; index < professional.ratings; index++) {
+    contador.push(index)
+  }
+
   return (
     <>
       <ProfileBar />
@@ -36,22 +38,21 @@ export default function About({ idProfessional }) {
               <img />
             </S.BoxImg>
             <span>
-              <h1>{professional.name}</h1>
-              <h2>Psiquiatra</h2>
-              <h3>Universidade de São Paulo</h3>
+              <h1>{professional?.name}</h1>
+              <h2>{professional?.especialidade}</h2>
+              <h3>Graduação: {professional.graduacao}</h3>
 
               <h4>
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
+                {contador.map((index) => {
+                  return <AiFillStar key={index} />
+                })}
               </h4>
               <h5>Sobre</h5>
             </span>
           </S.ContentUp>
           <S.ContentDown>
             <div />
+            <p>{professional.about}</p>
           </S.ContentDown>
           <S.Footer>
             <div>
@@ -59,8 +60,8 @@ export default function About({ idProfessional }) {
 
               <BsInstagram />
               <span>
-                <h1>Endereço: Rua Hadock Lobo, 1987 - SP</h1>
-                <h1>Contato: 11 98765-0987</h1>
+                <h1>Email: {professional.email}</h1>
+                <h1>Celular: {professional.telefoneCelular}</h1>
               </span>
             </div>
 

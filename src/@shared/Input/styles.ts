@@ -8,13 +8,16 @@ export const Input = styled.input`
   border-bottom-right-radius: 7px;
   font-size: 17px;
   padding-left: 10px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-  &.cadastro{
+  &.cadastro {
     width: 330px;
   }
 
+  &.editProfile {
+    width: 350px;
+  }
 `
 
 export const Icon = styled.div`

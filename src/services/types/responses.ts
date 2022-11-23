@@ -62,9 +62,25 @@ export interface IMessage {
 }
 
 export interface IProfessional {
-  id: string
+  id: number
   name: string
+  email: string
+  cpf: string
+  about: string
+  dataNascimento: string
+  telefoneFixo: string
   telefoneCelular: string
+  roles: [
+    {
+      id: 0
+      name: string
+    }
+  ]
+  ratings: number
+
   role: string
   identificacao: string
+  verificacao: string
+  especialidade: string
+  graduacao: string
 }

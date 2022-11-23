@@ -10,8 +10,8 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import { ButtonPrimary } from '../../../../@shared/ButtonPrimary'
 import * as Dialog from '@radix-ui/react-dialog'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { registerSchema } from '../../../../validations/user.validation'
-import { IUserRequest } from '../../../../services/types'
+import { registerPatientSchema } from '../../../../validations/user.validation'
+import { ICreatePatientRequest } from '../../../../services/types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { createPatient } from '../../../../services/users.service'
 import { useMutation } from 'react-query'
@@ -21,11 +21,11 @@ import { Form } from './types'
 
 export function PacienteForm({ setOpen }: Form) {
   const { mutate, isLoading, isError, error } = useMutation(createPatient)
-  const { register, handleSubmit, formState: { errors } } = useForm<IUserRequest>({
-    resolver: yupResolver(registerSchema)
+  const { register, handleSubmit, formState: { errors } } = useForm<ICreatePatientRequest>({
+    resolver: yupResolver(registerPatientSchema)
   })
 
-  const onSubmit: SubmitHandler<IUserRequest> = (data, event) => {
+  const onSubmit: SubmitHandler<ICreatePatientRequest> = (data, event) => {
     event.preventDefault()
     mutate(data)
     setOpen(false)

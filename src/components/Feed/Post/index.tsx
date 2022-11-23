@@ -40,7 +40,7 @@ export const Post = ({ post }: PostProps) => {
             ? post.comments.map(comment => <Comment key={comment.id} comment={comment} />)
             : null}
         </S.ContainerComments>
-        <InputComment />
+        <InputComment comments={post.comments} />
       </S.listItemStyled>
     </>
   )

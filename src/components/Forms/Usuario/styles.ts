@@ -123,6 +123,7 @@ export const ActionButton = styled.button<ButtonProps>`
   cursor: pointer;
   transition: all 0.3s;
 `
+
 export const Tab = styled(Tabs.TabsTrigger)`
   all: unset;
   padding: 0 1.75rem;
@@ -136,7 +137,7 @@ export const Tab = styled(Tabs.TabsTrigger)`
   user-select: none;
   color: #f6f6f6;
   background-color: #B0B0B0;
-  transition: all .3s;
+  transition: all .5s;
   &:first-child { 
     border-radius: 4px 0 0 4px;
   };

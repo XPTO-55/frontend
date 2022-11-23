@@ -9,9 +9,9 @@ import * as S from '../styles'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { ButtonPrimary } from '../../../../@shared/ButtonPrimary'
 import * as Dialog from '@radix-ui/react-dialog'
-import { registerSchema } from '../../../../validations/user.validation'
+import { registerProfessionalSchema } from '../../../../validations/user.validation'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IUserRequest } from '../../../../services/types'
+import { ICreateProfessionalRequest } from '../../../../services/types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from 'react-query'
 import { createProfessional } from '../../../../services/users.service'
@@ -21,11 +21,11 @@ import { Toast } from '../../../../@shared/Toast'
 
 export function ProfissionalForm({ setOpen }: Form) {
   const { mutate, isLoading, isError, error } = useMutation(createProfessional)
-  const { register, handleSubmit, formState: { errors } } = useForm<IUserRequest>({
-    resolver: yupResolver(registerSchema)
+  const { register, handleSubmit, formState: { errors } } = useForm<ICreateProfessionalRequest>({
+    resolver: yupResolver(registerProfessionalSchema)
   })
 
-  const onSubmit: SubmitHandler<IUserRequest> = (data, event) => {
+  const onSubmit: SubmitHandler<ICreateProfessionalRequest> = (data, event) => {
     event.preventDefault()
     mutate(data)
     setOpen(false)

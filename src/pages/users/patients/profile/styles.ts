@@ -1,125 +1,110 @@
 import styled from 'styled-components'
 
 export const PageContainer = styled.div`
-  width: 100%;
-  height: 88vh;
+  width: 100vw;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 `
 
-export const Container = styled.div`
-  width: 85%;
-  height: 90%;
+export const ContainerForm = styled.form`
+  width: 90%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  overflow: hidden;
+  margin-top: 50px;
+
 `
 
-export const ContentUp = styled.div`
-  width: 100%;
-  height: 40%;
-  display: flex;
-
-  span {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  h1 {
-    font-size: 32px;
-    font-weight: bold;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  h4 {
-    font-size: 50px;
-    color: #ffb800;
-    margin-left: -10px;
-  }
-
-  h5 {
-    margin-top: 40px;
-    margin-bottom: -30px;
-    font-size: 20px;
-  }
+export const ContentArea = styled.div`
+width: 100%;
+height: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
 `
 
-export const ContentDown = styled.div`
+export const LeftArea = styled.div`
+width: 30%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+button{
+  margin-top: 20px;
+}
+
+&.baixo{
+  height: 210px;
+  justify-content: flex-end;
+}
+
+`
+
+export const RightArea = styled.div`
+width: 70%;
+height: 100%;
+font-size: 26px;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+flex-direction: column;
+
+
+textArea{
+  width: 880px;
+  height: 190px;
+  font-size: 19px;
+  margin-top: 20px;
+  border: none;
+  resize: none;
+  padding-left: 20px;
+  padding-top: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+`
+
+export const ContainerInput = styled.div`
+width: 100%;
+height: 220px;
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+flex-direction: column;
+overflow: auto;
+overflow-x: hidden;
+
+::-webkit-scrollbar {
+  width: 9px;          
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2A8DD2;   
+  border-radius: 10px;      
+}
+
+span{
   width: 100%;
-  height: 40%;
+  padding: 20px;
+  margin-left: -20px;
+  box-sizing: border-box;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
+  margin-bottom: -20px;
+  
 
-  div {
-    width: 19%;
-    height: 100%;
-    margin-top: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-radius: 7px;
-    background-color: #f5f5f5;
+  input{
+    margin-right: 70px;
   }
-  p {
-    width: 78%;
-    height: 91.5%;
-    background-color: #f5f5f5;
-    resize: none;
-    border: none;
-    margin-top: 20px;
-    border-radius: 7px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding-left: 20px;
-    padding-top: 20px;
-    font-size: 20px;
-    overflow: hidden;
-  }
-`
+}
 
-export const BoxImg = styled.div`
-  width: 28%;
-  height: 100%;
 
-  img {
-    width: 84%;
-    height: 99%;
-    background-image: url("/assets/img/fotoRafaelLeao.png");
-    background-size: cover;
-    border-radius: 100%;
-    border: 5px solid #2a8dd2;
-  }
-`
-
-export const Footer = styled.div`
-  margin-top: 30px;
-  width: 100%;
-  height: 15%;
-  display: flex;
-  justify-content: space-between;
-  color: #979797;
-
-  div {
-    font-size: 45px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: -25px;
-  }
-
-  div span {
-    font-size: 16px;
-    margin-top: 5px;
-    margin-left: 10px;
-  }
 `

@@ -8,9 +8,16 @@ import PrefessionalCardProps from './types'
 export const ProfessionalCard = ({
   id,
   name,
-  telefoneCelular,
-  ...props
+  graduacao,
+  ratings,
+  especialidade
 }: PrefessionalCardProps) => {
+  const contador = []
+
+  for (let index = 1; index < ratings; index++) {
+    contador.push(index)
+  }
+
   return (
     <S.ContainerCard>
       <S.ContainerInside>
@@ -19,24 +26,20 @@ export const ProfessionalCard = ({
       </S.ContainerInside>
       <S.ContainerInside className="edit">
         <span>
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
+          {contador.map((index) => {
+            return <AiFillStar key={index} />
+          })}
         </span>
         <div>
           <p>
-            <b>Especialidade</b>: {id}
+            <b>Especialidade</b>: {especialidade}
           </p>
           <p>
-            <b>Telefone</b>: {telefoneCelular}
+            <b>Graduação</b>: {graduacao}
           </p>
         </div>
         <i>
-          <Link
-            href={`professionals/about/${id}`}
-          >
+          <Link href={`professionals/about/${id}`}>
             <ButtonPrimary className="laranja">Saiba mais</ButtonPrimary>
           </Link>
         </i>

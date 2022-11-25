@@ -6,12 +6,14 @@ import Link from 'next/link'
 import { useAuth } from '../../../context/auth'
 
 export function Header () {
-  const { signed } = useAuth()
+  const { signed, signOut } = useAuth()
 
   return (
     <S.Header>
       <S.Container>
-        <Image src={logo} width="130.43px" height="56px" alt='logo' />
+        <Link href={'/'}>
+          <Image src={logo} width="130.43px" height="56px" alt='logo' />
+        </Link>
         <S.Navbar>
           <S.Ul>
             <Link href="/">
@@ -23,13 +25,22 @@ export function Header () {
             <Link href="/faq">
               <S.Li>FAQ</S.Li>
             </Link>
+            {
+              signed
+                ? (
+                  <Link href="/feed">
+                    <S.Li>
+                      Feed
+                    </S.Li>
+                  </Link>
+                )
+                : null
+            }
           </S.Ul>
           {
             signed
               ? (
-                <Link href="/feed">
-                  <S.Button>Feed</S.Button>
-                </Link>
+                <S.Button onClick={signOut}>Sair</S.Button>
               )
               : (
                 <Link href="/auth">

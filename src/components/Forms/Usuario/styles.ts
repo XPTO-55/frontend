@@ -8,7 +8,8 @@ export const Container = styled.div`
   background-color: #d9d9d9;
   border-radius: 7px;
   overflow: hidden;
-  cl
+  width: 100%;
+
   span {
     width: 100%;
     height: 50px;
@@ -18,12 +19,12 @@ export const Container = styled.div`
 
 export const Form = styled.form`
   height: 100%;
-  width: 100%;
+  width: calc(100%);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-bottom: 70px;
+  padding: 0 0 70px;
   gap: 16px;
 `
 
@@ -63,9 +64,16 @@ export const TopWave = styled.div`
 
 export const Fieldset = styled.fieldset`
   display: flex;
+  width: 100%;
+  flex: 1;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 0 .5rem;
+  padding: 0 1rem;
+
+  input {
+    flex: 1;
+    height: 50px;
+  }
 
   p {
     color: #303030;
@@ -168,6 +176,6 @@ export const TabContainer = styled(Tabs.Root)`
   flex-direction: column;
   height: 60%;
   gap: 1rem;
-  overflow-y: scroll;
+  overflow-y: overlay;
   padding-top: 300px;
 `

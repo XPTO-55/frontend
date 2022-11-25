@@ -5,43 +5,58 @@ export const PageContainer = styled.div`
   height: 88vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 `
 
 export const Container = styled.div`
-  width: 85%;
-  height: 90%;
+  width: calc(100% - 8rem);
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  margin: 2rem;
+  padding: 1rem 2rem;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   overflow: hidden;
+  gap: 1rem;
 `
 
 export const ContentUp = styled.div`
   width: 100%;
-  height: 40%;
   display: flex;
-
-  span {
-    width: 100%;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+ 
+  div {
+    padding-top: 1rem;
     height: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     gap: 5px;
   }
 
   h1 {
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 600;
+    text-transform: capitalize;
   }
 
   h2 {
     font-size: 24px;
+    font-weight: 500;
   }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
 
   h4 {
     font-size: 50px;
@@ -58,63 +73,54 @@ export const ContentUp = styled.div`
 
 export const ContentDown = styled.div`
   width: 100%;
-  height: 40%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-direction: column;
+  height: 40vh;
+  gap: .25rem;
 
   div {
-    width: 19%;
-    height: 100%;
-    margin-top: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-radius: 7px;
+    flex: 1;
+    width: calc(100% - 40px);
     background-color: #f5f5f5;
-  }
-  p {
-    width: 78%;
-    height: 91.5%;
-    background-color: #f5f5f5;
-    resize: none;
-    border: none;
-    margin-top: 20px;
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding-left: 20px;
-    padding-top: 20px;
+    padding: 1rem;
     font-size: 20px;
     overflow: hidden;
   }
 `
 
-export const BoxImg = styled.div`
-  width: 28%;
-  height: 100%;
+export const BoxImg = styled.figure`
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #2a8dd2;
+  background-color: #f6f6f6;
 
   img {
-    width: 84%;
-    height: 99%;
-    background-image: url("/assets/img/fotoRafaelLeao.png");
-    background-size: cover;
-    border-radius: 100%;
-    border: 5px solid #2a8dd2;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
   }
 `
 
 export const Footer = styled.div`
-  margin-top: 30px;
   width: 100%;
-  height: 15%;
   display: flex;
+  height: 18vh;
   justify-content: space-between;
   color: #979797;
+  align-items: center;
 
   div {
     font-size: 45px;
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-top: -25px;
   }
 
   div span {

@@ -50,23 +50,34 @@ export const ToastRoot = styled(Toast.Root)`
   align-items: center;
   &[data-type='success'] {
     background-color: #80be80;
-    color: '#f6f6f6';
+    color: #f6f6f6;
+    & > * {
+      color: #f6f6f6;
+    }
   }
   &[data-type='pending'] {
     background-color: #fd7e14;
-    color: '#f6f6f6';
+    & > * {
+      color: #f6f6f6;
+    }
   }
   &[data-type='info'] {
     background-color: #0d6efd;
-    color: '#f6f6f6';
+    & > * {
+      color: #f6f6f6;
+    }
   }
   &[data-type='light'] {
     background-color: #f6f6f6;
-    color: '#212121';
+    & > * {
+      color: #212121;
+    }
   }
   &[data-type='error'] {
     background-color: #C8372D;
-    color: '#f6f6f6';
+    & > * {
+      color: '#f6f6f6';
+    }
   }
 
   &[data-state='open'] {
@@ -94,7 +105,6 @@ export const ToastViewport = styled(Toast.Viewport)`
   right: 0;
   display: flex;
   flex-direction: column;
-  padding: var(--viewport-padding);
   gap: 10px;
   width: 390px;
   max-width: 100vw;
@@ -108,14 +118,12 @@ export const ToastTitle = styled(Toast.Title)`
   grid-area: title;
   margin-bottom: 5px;
   font-weight: 500;
-  color: var(--slate12);
   font-size: 15px;
 `
 
 export const ToastDescription = styled(Toast.Description)`
   grid-area: description;
   margin: 0;
-  color: var(--slate11);
   font-size: 13px;
   line-height: 1.3;
 `

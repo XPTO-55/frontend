@@ -5,6 +5,7 @@ import { Parceiros } from '../components/home/Parceiros'
 import { Header } from '../components/Layout/Header'
 import { ButtonPrimary } from '../@shared/ButtonPrimary'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home () {
   return (
@@ -22,7 +23,9 @@ export default function Home () {
               blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
               Vulputate sit amet, consectetur adipiscing elit.
             </p>
-            <ButtonPrimary>Cadastra-se</ButtonPrimary>
+            <Link href={'/auth'}>
+              <ButtonPrimary>Cadastra-se</ButtonPrimary>
+            </Link>
           </S.TextoMain>
         </S.ContainerTextoBanner>
 

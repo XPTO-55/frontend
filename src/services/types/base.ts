@@ -7,5 +7,19 @@ export interface IUserBase {
   landline: string
   phone: string
   email: string
-  password: string
+  address?: IAddress
+}
+
+export interface IAddress {
+  street: string
+  district: string
+  number: string
+  complement: string
+  zipcode: string
+  city: string
+  uf: string
+  coordenates: {
+    x: number
+    y: number
+  }
 }

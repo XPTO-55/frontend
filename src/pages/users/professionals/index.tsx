@@ -8,6 +8,7 @@ import { getProfessionals } from '../../../services/professional.service'
 import { useQuery } from 'react-query'
 import { IProfessional } from '../../../services/types'
 import { LoaderAllPage } from '../../../components/Layout/LoaderAllPage'
+import Head from 'next/head'
 
 interface ProfessionalProps {
   setSelectProfessional: Dispatch<SetStateAction<IProfessional>>
@@ -41,7 +42,9 @@ export default function ProfessionalList({
   return (
     <>
       <ProfileBar />
-
+      <Head>
+        <title> Profissionais | CPA </title>
+      </Head>
       <div>
         <S.PageContainer>
           <S.Header>
@@ -64,7 +67,7 @@ export default function ProfessionalList({
                       name={professional.name}
                       graduacao={professional.graduacao}
                       especialidade={professional.especialidade}
-                      ratings={professional.ratings}
+                      // ratings={professional.ratings}
                     />
                   )
                 })

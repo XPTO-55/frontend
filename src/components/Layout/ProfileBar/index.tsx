@@ -2,20 +2,27 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useAuth } from '../../../context/auth'
 import * as S from './styles'
+import { makeProfileImageurlS3 } from '../../../util/profile-image-s3'
 
 export function ProfileBar () {
   const [openMenu, setOpenMenu] = useState(false)
-  const { signOut } = useAuth()
+  const { signOut, user } = useAuth()
+  // const {} = useQuery<Blob>(['profileImage', user.id], getProfi)
 
   return (
     <S.Container>
-      <S.LogoContainer>
-        <S.Logo src={'/assets/img/logoSemTexto.png'} alt="" />
-      </S.LogoContainer>
+      <Link href={'/'}>
+        <S.LogoContainer>
+          <S.Logo src={'/assets/img/logoSemTexto.png'} alt="" />
+        </S.LogoContainer>
+      </Link>
       <S.UserInfo>
-        <S.Username>nazaré tedesco</S.Username>
+        <S.Username>{user?.username}</S.Username>
         <S.ImageProfileContainer>
-          <S.ImageProfile src="/assets/img/profile.png" alt="" />
+          <S.ImageProfile
+            src={makeProfileImageurlS3(user?.profileUrl)}
+            alt="user profile image"
+          />
         </S.ImageProfileContainer>
         <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
           <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>

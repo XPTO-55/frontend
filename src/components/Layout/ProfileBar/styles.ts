@@ -3,14 +3,12 @@ import styled from 'styled-components'
 export const Container = styled.header`
   display: flex;
   flex-direction: row;
-  padding: 0 32px;
+  padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
   height: 12vh;
   background-color: #2a8dd2;
   color: #fff;
-  padding-left: 180px;
-  padding-right: 180px;
 `
 
 export const LogoContainer = styled.div`
@@ -100,7 +98,7 @@ export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
   z-index: 10;
   background-color: #2a8dd2;
   position: ${(props) => (props.open ? 'absolute' : 'static')};
-  right: 180px;
+  right: 2rem;
   top: ${(props) => (props.open ? '12vh' : 0)};
   border-radius: 0 0 7px 7px;
 

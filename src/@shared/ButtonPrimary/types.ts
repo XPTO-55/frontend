@@ -3,5 +3,5 @@ export interface ButtonPrimaryProps extends React.ButtonHTMLAttributes<HTMLButto
   children: React.ReactNode
   className?: string
   tamanho?: string
-  onClick?: () => void
+  onClick?: (e?: unknown) => void
 }

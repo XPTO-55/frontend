@@ -1,4 +1,4 @@
-import { IUserBase } from './base'
+import { IAddress, IUserBase } from './base'
 
 export interface IUserLoginResponse {
   id: string
@@ -6,6 +6,8 @@ export interface IUserLoginResponse {
   type: string
   refreshToken: string
   username: string
+  profileUrl: string
+  userType: 'patient' | 'professional'
   email: string
 }
 
@@ -66,21 +68,45 @@ export interface IProfessional {
   name: string
   email: string
   cpf: string
+  rg: string
   about: string
-  dataNascimento: string
-  telefoneFixo: string
-  telefoneCelular: string
-  roles: [
-    {
-      id: 0
-      name: string
-    }
-  ]
-  ratings: number
-
-  role: string
+  profileUrl: string
+  birthday: string
+  landline: string
+  phone: string
+  roles: IRole[]
+  ratings: [{
+    rating: number
+    comment: string
+    profissional: string
+  }]
   identificacao: string
   verificacao: string
   especialidade: string
   graduacao: string
+  address?: IAddressGetResponse
+
+}
+
+export interface IPatient {
+  id: number
+  name: string
+  email: string
+  cpf: string
+  rg: string
+  about: string
+  profileUrl: string
+  birthday: string
+  landline: string
+  phone: string
+  roles: IRole[]
+  address?: IAddressGetResponse
+}
+
+interface IRole {
+  name: string
+}
+
+export interface IAddressGetResponse extends IAddress {
+  id: string
 }

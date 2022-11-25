@@ -20,6 +20,11 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
 
+  a {
+    text-decoration: none;
+    color: currentColor;
+  }
+
 
   &:hover {
     background-color: #2a8dd2;

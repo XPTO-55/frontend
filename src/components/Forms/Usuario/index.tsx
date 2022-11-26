@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
-import * as Tabs from '@radix-ui/react-tabs'
 import * as S from './styles'
 import { PacienteForm, ProfissionalForm } from './tabs/'
 import { UsuarioFormProps } from './types'

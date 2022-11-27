@@ -12,14 +12,14 @@ export const CardPlace = ({ place, ...props }: CardPlaceProps) => {
         />
       </S.ContainerCardLeft>
       <S.ContainerCardRight>
-        <h1>{place.nomeLugar}</h1>
+        <p>{place?.nomeLugar}</p>
 
         <h2>
           {place?.address?.street}, {place?.address?.number}
         </h2>
         <h2>CEP: {place?.address?.zipcode}</h2>
         <h2>
-          {place?.address?.city} = {place?.address?.uf}
+          {place?.address?.city} - {place?.address?.uf}
         </h2>
       </S.ContainerCardRight>
     </S.CardContainer>

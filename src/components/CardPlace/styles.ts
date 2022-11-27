@@ -33,12 +33,14 @@ export const ContainerCardRight = styled.div`
 
   padding-left: 40px;
   box-sizing: border-box;
+  padding-top: 50px;
+  gap: 40px;
 
-  h1 {
+  p {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: -30px;
-    margin-top: 20px;
+    margin-bottom: 5px;
+
   }
 
   h2 {

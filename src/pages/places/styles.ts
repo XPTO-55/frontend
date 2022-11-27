@@ -23,11 +23,20 @@ export const MapsContainer = styled.div`
   height: 450px;
   max-width: 1200px;
   display: flex;
-  align-items: center;
   align-items: flex-start;
-  padding-top: 50px;
   box-sizing: border-box;
+  position: relative;
   background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  span {
+    margin-top: 70px;
+    margin-left: 10px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
 `
 
 export const CardContainer = styled.div`
@@ -60,7 +69,6 @@ export const NoPlace = styled.div`
   align-items: flex-start;
   box-sizing: border-box;
   justify-content: flex-start;
-  
 
   div {
     width: 330px;
@@ -73,4 +81,11 @@ export const NoPlace = styled.div`
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     color: white;
   }
+`
+
+export const SearchBar = styled.div`
+  position: absolute;
+  z-index: 2;
+  margin: 80px 0px 0px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `

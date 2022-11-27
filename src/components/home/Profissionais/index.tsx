@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { ButtonPrimary } from '../../../@shared/ButtonPrimary'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
+import Link from 'next/link'
 
 export function Profissionais() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
@@ -61,8 +62,11 @@ export function Profissionais() {
                       ullamcorper augue praesent integer. Nunc volutpat laoreet
                       curabitur lacinia.
                     </h3>
-
-                    <ButtonPrimary className="azul">Saiba mais!</ButtonPrimary>
+                    <Link href={'/users/professionals'}>
+                      <ButtonPrimary className="azul">
+                        Saiba mais!
+                      </ButtonPrimary>
+                    </Link>
                   </S.ContainerInfoProfContent>
 
                   <S.ContainerInfoProfContent className="imgProf">

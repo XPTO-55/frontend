@@ -7,7 +7,6 @@ import {
 } from 'react-icons/tfi'
 import { HiOutlineDocumentText } from 'react-icons/hi'
 import { MdOutlineOtherHouses } from 'react-icons/md'
-import { FaRegAddressCard } from 'react-icons/fa'
 import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
 import { SiOpenstreetmap } from 'react-icons/si'
 import { FiSmartphone } from 'react-icons/fi'
@@ -17,7 +16,7 @@ import { UploadImage } from '../../../../components/EditProfile/UploadImage'
 import { Input } from '../../../../@shared/Input'
 import { Select } from '../../../../@shared/Select'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
-import * as S from './styles'
+import * as S from './_styles'
 import { useMutation, useQuery } from 'react-query'
 import { IPatient, IUpdatePatientRequest } from '../../../../services/types'
 import { getPatient, updatePatient } from '../../../../services/patient.service'
@@ -45,7 +44,7 @@ export default function Profile() {
     }
   })
 
-  const { register, handleSubmit, formState: { errors } } = useForm<IPatient>({
+  const { register, handleSubmit } = useForm<IPatient>({
     defaultValues: patient,
     resolver: yupResolver(updatePatientSchema)
   })

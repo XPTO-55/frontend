@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Input } from '../../@shared/Input'
-import * as S from './styles'
+import * as S from './_styles'
 import { MdOutlineAlternateEmail } from 'react-icons/md'
 import { SlLock } from 'react-icons/sl'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'

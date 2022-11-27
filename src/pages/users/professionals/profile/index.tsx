@@ -17,7 +17,7 @@ import { UploadImage } from '../../../../components/EditProfile/UploadImage'
 import { Input } from '../../../../@shared/Input'
 import { Select } from '../../../../@shared/Select'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
-import * as S from './styles'
+import * as S from './_styles'
 import { useMutation, useQuery } from 'react-query'
 import { IProfessional, IUpdateProfessionalRequest } from '../../../../services/types'
 import { getProfessional, updateProfessional } from '../../../../services/professional.service'
@@ -39,8 +39,6 @@ export default function Profile() {
     setEdit(!edit)
   }
 
-  console.log('user.id', user?.id)
-
   const { data: professional, isLoading } = useQuery<IProfessional>(['professional'], async () => await getProfessional(user?.id))
 
   const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IProfessional, unknown, IUpdateProfessionalRequest>(['patient'], async (userData) => await updateProfessional(user?.id, userData), {
@@ -52,7 +50,7 @@ export default function Profile() {
     }
   })
 
-  const { register, handleSubmit, formState: { errors } } = useForm<IProfessional>({
+  const { register, handleSubmit } = useForm<IProfessional>({
     defaultValues: professional,
     resolver: yupResolver(updateProfessionalSchema)
   })

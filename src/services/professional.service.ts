@@ -7,7 +7,6 @@ export const getProfessionals = async () => {
 }
 
 export const getProfessional = async (id: string) => {
-  console.log('id', id)
   const { data } = await api.get(`/professionals/${id}`)
   return data as IProfessional
 }

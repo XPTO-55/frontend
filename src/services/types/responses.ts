@@ -7,7 +7,7 @@ export interface IUserLoginResponse {
   refreshToken: string
   username: string
   profileUrl: string
-  userType: 'patient' | 'professional'
+  userType: 'patients' | 'professionals'
   email: string
 }
 
@@ -24,7 +24,6 @@ export interface IForum {
 
 export interface IForumMessages {
   id: number
-  eventId: number
   name: string
   members: number
   imageUrl: string
@@ -56,11 +55,13 @@ export interface IEventUsers {
 
 export interface IMessage {
   id: number
-  text: string
+  message: string
   senderName: string
   userId: number
-  forumId?: number
+  forum: IForum[]
   replyes: IMessage[]
+  createdAt: Date
+  updatedAt: Date
 }
 
 export interface IProfessional {

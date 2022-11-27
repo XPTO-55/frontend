@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useAuth } from '../../../context/auth'
-import { makeProfileImageurlS3 } from '../../../util/profile-image-s3'
+import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
 import * as S from './styles'
 
 function Sidebar() {

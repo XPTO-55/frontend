@@ -1,5 +1,4 @@
-import { CommentsDocument } from '../../../../../types.generated'
-
+import { CommentsDocument } from '../../../../@types/prismic'
 export interface InputCommentProps {
   comments: CommentsDocument[]
 }

@@ -18,7 +18,7 @@ function Info ({ data }: InfoProps) {
       <S.ParticipantsContainer>
         {data.users.map(user => (
           <S.ImageContainer key={user.id}>
-            <S.ProfileImage src={user.imageUrl} alt="" />
+            <S.ProfileImage src={user?.profileUrl} alt="" />
           </S.ImageContainer>
         ))}
       </S.ParticipantsContainer>

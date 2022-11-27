@@ -9,7 +9,7 @@ import { LoaderAllPage } from '../../../../components/Layout/LoaderAllPage'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
 import { getProfessional } from '../../../../services/professional.service'
 import { IProfessional } from '../../../../services/types'
-import * as S from './styles'
+import * as S from './_styles'
 
 export default function About() {
   const router = useRouter()

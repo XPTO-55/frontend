@@ -87,6 +87,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Toast.Provider>
           <PrismicProvider
+          // @ts-expect-error
             linkResolver={linkResolver}
             internalLinkComponent={NextLinkShim}
             richTextComponents={richTextComponents}>

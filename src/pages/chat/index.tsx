@@ -8,7 +8,7 @@ import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { ProfileBar } from '../../components/Layout/ProfileBar'
 import { useAuth } from '../../context/auth'
 import { IForum } from '../../services/types'
-import * as S from './styles'
+import * as S from './_styles'
 
 export default function Chat () {
   const [selectedForum, setSelectedForum] = useState<IForum>()
@@ -28,7 +28,7 @@ export default function Chat () {
   return (
     <>
       <Head>
-        <title> Faq | CPA </title>
+        <title> Chat | CPA </title>
       </Head>
       <ProfileBar />
       <S.Container>

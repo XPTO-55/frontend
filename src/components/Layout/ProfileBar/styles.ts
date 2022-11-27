@@ -35,6 +35,7 @@ export const Username = styled.h6`
   font-size: 1rem;
   font-weight: 600;
   text-transform: capitalize;
+  cursor: pointer;
 `
 
 export const ImageProfileContainer = styled.div`
@@ -43,6 +44,7 @@ export const ImageProfileContainer = styled.div`
   object-fit: cover;
   border-radius: 50%;
   background-color: #f6f6f6;
+  cursor: pointer;
 `
 
 export const ImageProfile = styled.img`

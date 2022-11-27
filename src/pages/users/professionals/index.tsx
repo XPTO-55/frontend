@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { ProfileBar } from '../../../components/Layout/ProfileBar'
 import { ProfessionalCard } from '../../../components/Professional-list/ProfessionalCard'
-import * as S from './styles'
+import * as S from './_styles'
 import { Input } from '../../../@shared/Input'
 import { BiSearch } from 'react-icons/bi'
 import { getProfessionals } from '../../../services/professional.service'
@@ -21,8 +21,6 @@ export default function ProfessionalList({
     ['professionals'],
     getProfessionals
   )
-
-  console.log('professionals', professionals)
 
   const [search, setSearch] = useState('')
 

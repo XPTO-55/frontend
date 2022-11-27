@@ -6,7 +6,7 @@ import { Input } from '../../@shared/Input'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { getPlaces, IPlaces } from '../../services/places.service'
 import { BiSearch } from 'react-icons/bi'
-import * as S from './styles'
+import * as S from './_styles'
 
 interface PlaceProps {
   setSelectPlace: Dispatch<SetStateAction<IPlaces>>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Input } from '../../@shared/Input'
-import * as S from './styles'
+import * as S from './_styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

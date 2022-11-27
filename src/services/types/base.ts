@@ -7,6 +7,7 @@ export interface IUserBase {
   landline: string
   phone: string
   email: string
+  profileUrl: string
   address?: IAddress
 }
 

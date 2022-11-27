@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './styles'
 import { TfiPencil } from 'react-icons/tfi'
 import { IUploadImageProps } from './types'
-import { makeProfileImageurlS3 } from '../../../util/profile-image-s3'
+import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
 
 export const UploadImage = (props: IUploadImageProps) => {
   console.log('props.profileUrl', makeProfileImageurlS3(props.profileUrl))

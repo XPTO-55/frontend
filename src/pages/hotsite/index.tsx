@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import * as S from './styles'
+import * as S from './_styles'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import Link from 'next/link'
 import { Header } from '../../components/Layout/Header'
@@ -7,7 +7,6 @@ import Head from 'next/head'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
-import { useQuery } from 'react-query'
 import { downloadCsv, downloadTxt } from '../../services/hotsite.service'
 
 export default function HotSite(): JSX.Element {

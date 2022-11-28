@@ -84,7 +84,6 @@ export const Image = styled(PrismicNextImage)`
 `
 
 export const Div2 = styled.div`
-  background-color: #f3f4f6;
   width: 100%;
   display: flex;
   justify-content: center;

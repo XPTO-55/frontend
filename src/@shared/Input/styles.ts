@@ -1,20 +1,19 @@
 import styled from 'styled-components'
 
-export const Input = styled.input`
-  width: 250px;
+interface InputProps {
+  width: string
+}
+
+export const Input = styled.input<InputProps>`
+  width: ${({ width }) => width + 'px'};
   height: 45px;
   border: none;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
   font-size: 17px;
   padding-left: 10px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
-  &.cadastro{
-    width: 330px;
-  }
-
 `
 
 export const Icon = styled.div`

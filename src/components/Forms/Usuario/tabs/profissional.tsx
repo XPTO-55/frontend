@@ -9,23 +9,27 @@ import * as S from '../styles'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { ButtonPrimary } from '../../../../@shared/ButtonPrimary'
 import * as Dialog from '@radix-ui/react-dialog'
-import { registerSchema } from '../../../../validations/user.validation'
+import { registerProfessionalSchema } from '../../../../validations/user.validation'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IUserRequest } from '../../../../services/types'
+import { ICreateProfessionalRequest } from '../../../../services/types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from 'react-query'
-import { createProfessional } from '../../../../services/users.service'
-import { Form } from './types'
+import { createProfessional } from '../../../../services/professional.service'
+import { FormProps } from './types'
 import { Loader } from '../../../../@shared/Loader'
 import { Toast } from '../../../../@shared/Toast'
 
-export function ProfissionalForm({ setOpen }: Form) {
-  const { mutate, isLoading, isError, error } = useMutation(createProfessional)
-  const { register, handleSubmit, formState: { errors } } = useForm<IUserRequest>({
-    resolver: yupResolver(registerSchema)
+export function ProfissionalForm({ setOpen }: FormProps) {
+  const { mutate, isLoading, isError, error } = useMutation(createProfessional, {
+    onSuccess: () => {
+      setOpen(false)
+    }
+  })
+  const { register, handleSubmit, formState: { errors } } = useForm<ICreateProfessionalRequest>({
+    resolver: yupResolver(registerProfessionalSchema)
   })
 
-  const onSubmit: SubmitHandler<IUserRequest> = (data, event) => {
+  const onSubmit: SubmitHandler<ICreateProfessionalRequest> = (data, event) => {
     event.preventDefault()
     mutate(data)
     setOpen(false)
@@ -35,61 +39,61 @@ export function ProfissionalForm({ setOpen }: Form) {
     <>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Fieldset>
-          <Input type="text" placeholder="Nome Completo" width="cadastro" {...register('name')}>
+          <Input type="text" placeholder="Nome Completo" {...register('name')}>
             <FiUser />
           </Input>
           <p>{errors?.name?.message}</p>
         </S.Fieldset>
         <S.Fieldset>
-          <Input type="email" placeholder="Email" width="cadastro" {...register('email')}>
+          <Input type="email" placeholder="Email" {...register('email')}>
             <TfiEmail />
           </Input>
           <p>{errors?.email?.message}</p>
 
         </S.Fieldset >
         <S.Fieldset>
-          <Input placeholder="RG" width="cadastro" {...register('rg')}>
+          <Input placeholder="RG" {...register('rg')}>
             <TiDocument />
           </Input>
           <p>{errors?.rg?.message}</p>
 
         </S.Fieldset >
         <S.Fieldset>
-          <Input placeholder="CPF" width="cadastro" {...register('cpf')}>
+          <Input placeholder="CPF" {...register('cpf')}>
             <CgFileDocument />
           </Input>
           <p>{errors?.cpf?.message}</p>
 
         </S.Fieldset >
         <S.Fieldset>
-          <Input type="date" placeholder="Data de nascimento" width="cadastro" {...register('birthday')}>
+          <Input type="date" placeholder="Data de nascimento" {...register('birthday')}>
             <BsCalendarDate />
           </Input>
           <p>{errors?.birthday?.message}</p>
 
         </S.Fieldset >
         <S.Fieldset>
-          <Input placeholder="Telefone fixo" width="cadastro" {...register('landline')}>
+          <Input placeholder="Telefone fixo" {...register('landline')}>
             <BsTelephonePlus />
           </Input>
           <p>{errors?.landline?.message}</p>
 
         </S.Fieldset >
         <S.Fieldset>
-          <Input placeholder="Telefone Celular" width="cadastro" {...register('phone')}>
+          <Input placeholder="Telefone Celular" {...register('phone')}>
             <FiSmartphone />
           </Input>
           <p>{errors?.phone?.message}</p>
 
         </S.Fieldset>
         <S.Fieldset>
-          <Input type="password" placeholder="Senha" width="cadastro" {...register('password')}>
+          <Input type="password" placeholder="Senha" {...register('password')}>
             <RiLockPasswordLine />
           </Input>
           <p>{errors?.password?.message}</p>
         </S.Fieldset >
         <S.Fieldset>
-          <Input type="password" placeholder="Confirmar senha" width="cadastro" {...register('confirm_password')}>
+          <Input type="password" placeholder="Confirmar senha" {...register('confirm_password')}>
             <CgPassword />
           </Input>
           <p>{errors?.confirm_password?.message}</p>

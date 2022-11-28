@@ -1,5 +1,5 @@
 import React from 'react'
-import * as S from './styles'
+import * as S from './_styles'
 import { Header } from '../../components/Layout/Header'
 import SimpleAccordion from '../../components/SimpleAccordion'
 import Head from 'next/head'

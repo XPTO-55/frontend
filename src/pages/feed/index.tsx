@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import { FeedProps, StaticProps } from './types'
+import { FeedProps, StaticProps } from './_types'
 import { GetStaticProps } from 'next'
 import * as prismicNext from '@prismicio/next'
-import Prismic from 'prismic-javascript'
-import * as S from './styles'
+import * as S from './_styles'
 import { createClient } from '../../../prismicio'
 import { Bounded } from '../../components/blog/Bounded'
 import Sidebar from '../../components/Layout/Sidebar'
@@ -48,8 +47,8 @@ export default function Feed({ posts }: FeedProps) {
 
             <S.ListaNaoOrdenada>
               {posts.length > 0
-                ? posts.map(post => (
-                  <Post key={post.id} post={post} />
+                ? posts.map((post, index) => (
+                  <Post key={index} post={post} />
                 ))
                 : null}
             </S.ListaNaoOrdenada>
@@ -80,20 +79,20 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
     pageSize: 5
   })
 
-  const postsComments = await Promise.all(posts.map(async (post) => {
-    const comments = await client.query(
-      Prismic.Predicates.at('my.comments.post', post.id)
-    )
+  // const postsComments = await Promise.all(posts.map(async (post) => {
+  //   const comments = await client.query(
+  //     Prismic.Predicates.at('my.comments.post', post.id)
+  //   )
 
-    // @ts-expect-error
-    post.comments = comments.results
+  //   // @ts-expect-error
+  //   post.comments = comments.results
 
-    return post
-  }))
+  //   return post
+  // }))
 
   return {
     props: {
-      posts: postsComments
+      posts
     },
     revalidate: 5
   }

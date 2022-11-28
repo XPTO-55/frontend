@@ -1,9 +1,5 @@
-import { CommentsDocument, PostDocument } from '../../../@types/prismic'
-
-interface PostCommentsDocument extends PostDocument {
-  comments: CommentsDocument[]
-}
+import { PrismicDocument } from '@prismicio/types'
 
 export interface PostProps {
-  post: PostCommentsDocument
+  post: PrismicDocument
 }

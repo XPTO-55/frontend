@@ -281,5 +281,107 @@
         }
       }
     }
+  ],
+
+  "places": [
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    },
+    {
+      "nomeLugar": "Centro Autista",
+      "lat": -23.51115894898398,
+      "lng": -46.41538542894575,
+      "address": {  
+        "street": "Rua augusto fioderlice",
+        "number": "202",
+        "zipcode": "08143-560",
+        "city": "São Paulo",
+        "uf": "SP"
+      }
+    }
+
+    
   ]
 }

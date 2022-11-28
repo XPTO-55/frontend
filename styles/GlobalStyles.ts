@@ -47,4 +47,9 @@ export default createGlobalStyle`
       border-collapse: collapse;
       border-spacing: 0;
     }
+    a {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
 `

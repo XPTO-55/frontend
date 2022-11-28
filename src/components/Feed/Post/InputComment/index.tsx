@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { AiOutlineSend } from 'react-icons/ai'
 // import { useAuth } from '../../../../context/auth'
 // import { ImAttachment } from 'react-icons/im'
 import * as S from './styles'
+import { InputCommentProps } from './types'
 
-export function InputComment() {
+export function InputComment({ comments }: InputCommentProps) {
   const [message, setMessage] = useState<string>()
   // const { user } = useAuth()
 
@@ -14,6 +15,11 @@ export function InputComment() {
   //   profileImageUrl: 'https://github.com/cristianoliveira15.png',
   //   post: '15156'
   // }
+
+  function handleSendMessage(e: FormEvent) {
+    e.preventDefault()
+    comments.push()
+  }
 
   return (
     <S.InputContainer>
@@ -29,7 +35,7 @@ export function InputComment() {
         onChange={({ target: { value } }) => setMessage(value)}
       />
       {message
-        ? <S.ActionContainer>
+        ? <S.ActionContainer onClick={handleSendMessage}>
           <S.ActionButton>
             <AiOutlineSend size={16} />
           </S.ActionButton>

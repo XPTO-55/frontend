@@ -2,7 +2,8 @@ import React, { createContext, useState, useEffect, useContext } from 'react'
 import * as Auth from '../services/auth.service'
 import { api } from '../services/api'
 import { IUserLoginRequest, IUserLoginResponse } from '../services/types'
-import { useMutation } from 'react-query'
+import { useRouter } from 'next/router'
+import { LoaderAllPage } from '../components/Layout/LoaderAllPage'
 
 interface AuthContextData {
   signed: boolean
@@ -21,21 +22,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<IUserLoginResponse | null>(null)
   const [loading, setLoading] = useState(true)
-  const { mutate } = useMutation(Auth.authenticate, {
-    onMutate: () => {
-      setLoading(true)
-    },
-    onSuccess(data) {
-      setUser(data)
-      api.defaults.headers.common.Authorization = `Bearer ${data.jwtToken}`
-      localStorage.setItem('user', JSON.stringify(data))
-      localStorage.setItem('token', data.jwtToken)
-      localStorage.setItem('refreshToken', data.refreshToken)
-    },
-    onSettled() {
-      setLoading(false)
-    }
-  })
+  const router = useRouter()
 
   useEffect(() => {
     function loadStoragedData() {
@@ -55,17 +42,26 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, [])
 
   async function signIn(userData: IUserLoginRequest) {
-    mutate(userData)
+    const response = await Auth.authenticate(userData)
+    setUser(response)
+
+    api.defaults.headers.common.Authorization = `Bearer ${response.jwtToken}`
+
+    localStorage.setItem('user', JSON.stringify(response))
+    localStorage.setItem('token', response.jwtToken)
   }
 
-  function signOut() {
+  async function signOut() {
     localStorage.clear()
     setUser(null)
+    setLoading(true)
+    await router.push('/')
+    setLoading(false)
   }
 
   return (
     <AuthContext.Provider value={{ signed: !!user, user, loading, signIn, signOut }}>
-      {children}
+      {loading ? <LoaderAllPage /> : children}
     </AuthContext.Provider>
   )
 }

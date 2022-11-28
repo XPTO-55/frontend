@@ -28,21 +28,14 @@ export const Bounded = ({
 
 const BoundedContainer = styled.span`
   & > * {
-    padding-left: 1rem;
-    padding-right: 1rem; 
-    padding-top: 2rem;
-    padding-bottom: 2rem; 
+    padding:1rem; 
 
-    @media (min-width: 768px) { 
-      padding-left: 1.5rem;
-      padding-right: 1.5rem; 
-      padding-top: 2.5rem;
-      padding-bottom: 2.5rem; 
+    @media (max-width: 768px) { 
+      padding: 1.5rem
     }
     
-    @media (min-width: 1024px) { 
-      padding-top: 3rem;
-      padding-bottom: 3rem; 
+    @media (max-width: 1024px) { 
+      padding: 3rem 0;
     }
   }
 `
@@ -54,6 +47,7 @@ interface BoundedStyledProps {
 const BoundedStyled = styled.div<BoundedStyledProps>`
   width: 100%; 
   margin: 0 auto;
+  text-shadow: 1px #dcdcdc;
   max-width: ${({ size }) => {
     if (size === 'small') {
       return '36rem'

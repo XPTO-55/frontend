@@ -7,6 +7,7 @@ import {
 } from 'react-icons/tfi'
 import { HiOutlineDocumentText } from 'react-icons/hi'
 import { MdOutlineOtherHouses } from 'react-icons/md'
+import { FaRegAddressCard, FaRegAddressBook, FaGraduationCap } from 'react-icons/fa'
 import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
 import { SiOpenstreetmap } from 'react-icons/si'
 import { FiSmartphone } from 'react-icons/fi'
@@ -18,24 +19,29 @@ import { Select } from '../../../../@shared/Select'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
 import * as S from './_styles'
 import { useMutation, useQuery } from 'react-query'
-import { IPatient, IUpdatePatientRequest } from '../../../../services/types'
-import { getPatient, updatePatient } from '../../../../services/patient.service'
+import { IProfessional, IUpdateProfessionalRequest } from '../../../../services/types'
+import { getProfessional, updateProfessional } from '../../../../services/professional.service'
+import Head from 'next/head'
 import { useAuth } from '../../../../context/auth'
 import { LoaderAllPage } from '../../../../components/Layout/LoaderAllPage'
+import { updateProfessionalSchema } from '../../../../validations/user.validation'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Loader } from '../../../../@shared/Loader'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { updatePatientSchema } from '../../../../validations/user.validation'
-import Head from 'next/head'
 import { Toast } from '../../../../@shared/Toast'
+import { Loader } from '../../../../@shared/Loader'
 
 export default function Profile() {
   const [edit, setEdit] = useState<boolean>(false)
   const { user } = useAuth()
 
-  const { data: patient, isLoading } = useQuery<IPatient>(['patient'], async () => await getPatient(user?.id))
+  const editing = (e) => {
+    e.preventDefault()
+    setEdit(!edit)
+  }
 
-  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IPatient, unknown, IUpdatePatientRequest>(['patient'], async (userData) => await updatePatient(user?.id, userData), {
+  const { data: professional, isLoading } = useQuery<IProfessional>(['professional'], async () => await getProfessional(user?.id))
+
+  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IProfessional, unknown, IUpdateProfessionalRequest>(['patient'], async (userData) => await updateProfessional(user?.id, userData), {
     onError() {
       reset()
     },
@@ -44,62 +50,51 @@ export default function Profile() {
     }
   })
 
-  const { register, handleSubmit } = useForm<IPatient>({
-    defaultValues: patient,
-    resolver: yupResolver(updatePatientSchema)
+  const { register, handleSubmit } = useForm<IProfessional>({
+    defaultValues: professional,
+    resolver: yupResolver(updateProfessionalSchema)
   })
 
-  const onSubmit: SubmitHandler<IUpdatePatientRequest> = (data, event) => {
+  const onSubmit: SubmitHandler<IUpdateProfessionalRequest> = (data, event) => {
     event.preventDefault()
     mutate(data)
-  }
-
-  const buttons = () => {
-    return (
-      <>
-        <ButtonPrimary disabled={updateLoading} className="azul">
-          {updateLoading ? <Loader width={16} /> : null}
-          Salvar
-        </ButtonPrimary>
-        <ButtonPrimary className="laranja" onClick={cancelEditing}>
-          Cancelar
-        </ButtonPrimary>
-      </>
-    )
-  }
-
-  const editing = (e) => {
-    e.preventDefault()
-    setEdit(prev => !prev)
-  }
-
-  const cancelEditing = (e) => {
-    e.preventDefault()
-    setEdit(prev => !prev)
-    reset()
   }
 
   if (isLoading) {
     return <LoaderAllPage />
   }
 
+  const buttons = () => {
+    return (
+      <>
+        <ButtonPrimary className="azul">
+          {updateLoading ? <Loader width={16} /> : null}
+          Salvar
+        </ButtonPrimary>
+        <ButtonPrimary className="laranja" onClick={editing}>
+          Cancelar
+        </ButtonPrimary>
+      </>
+    )
+  }
+
   return (
     <>
-      <Head>
-        <title> Perfil | CPA </title>
-      </Head>
       <ProfileBar />
+      <Head>
+        <title> Profile | CPA </title>
+      </Head>
 
       <S.PageContainer>
         <S.ContainerForm onSubmit={handleSubmit(onSubmit)}>
           <S.ContentArea>
             <S.LeftArea>
-              <UploadImage profileUrl={patient?.profileUrl} edit={!edit} />
+              <UploadImage profileUrl={professional?.profileUrl} edit={!edit} />
             </S.LeftArea>
             <S.RightArea>
               <Input
+                value={professional?.name}
                 {...register('name')}
-                value={patient?.name}
                 disabled={!edit}
               >
                 <TfiPencil />
@@ -108,7 +103,7 @@ export default function Profile() {
               <textarea
                 placeholder="Sobre mim..."
                 {...register('about')}
-                value={patient?.about}
+                value={professional?.about}
                 disabled={!edit}
               />
             </S.RightArea>
@@ -130,7 +125,7 @@ export default function Profile() {
               <S.ContainerInput>
                 <Input
                   {...register('email')}
-                  value={patient?.email}
+                  value={professional?.email}
                   placeholder="email@email.com"
                   disabled={!edit}
                 >
@@ -143,67 +138,72 @@ export default function Profile() {
 
                 <Input
                   {...register('cpf')}
-                  placeholder="000.000.000-00"
-                  value={patient?.cpf}
+                  value={professional?.cpf}
+                  width="50"
                   disabled={!edit}
                 >
                   <HiOutlineDocumentText />
                 </Input>
                 <Input
+                  width="50"
                   {...register('birthday')}
-                  value={patient?.birthday}
+                  value={professional?.birthday}
                   type="date"
-                  disabled={!edit}
-                >
+                  disabled={!edit}>
                   <TfiPencil />
                 </Input>
 
                 <Input
                   {...register('phone')}
-                  placeholder="(00)00000-0000"
-                  value={patient?.phone}
+                  value={professional?.phone}
+                  width="50"
                   disabled={!edit}
                 >
                   <FiSmartphone />
                 </Input>
                 <Input
                   {...register('landline')}
-                  placeholder="(00)0000-0000"
-                  value={patient?.landline}
+                  value={professional?.landline}
+                  width="50"
+                  placeholder="Telefone fixo"
                   disabled={!edit}
                 >
                   <BsTelephone />
                 </Input>
 
                 <Input
+                  value={professional?.address?.zipcode}
                   {...register('address.zipcode')}
+                  width="50"
                   placeholder="CEP"
-                  value={patient?.address?.zipcode}
                   disabled={!edit}
                 >
                   <TfiLocationPin />
                 </Input>
 
                 <Input
+                  value={professional?.address?.street}
                   {...register('address.street')}
-                  value={patient?.address?.street}
-                  placeholder="Rua"
+                  width="50"
+                  placeholder="Logradouro"
                   disabled={!edit}
                 >
                   <BiStreetView />
                 </Input>
 
                 <Input
+                  value={professional?.address?.district}
                   {...register('address.district')}
-                  value={patient?.address?.district}
+                  width="50"
                   placeholder="Bairro"
                   disabled={!edit}
                 >
                   <SiOpenstreetmap />
                 </Input>
                 <Input
+                  value={professional?.address?.number}
                   {...register('address.number')}
-                  value={patient?.address?.number}
+                  width="50"
                   placeholder="Número"
                   disabled={!edit}
                 >
@@ -211,16 +211,18 @@ export default function Profile() {
                 </Input>
 
                 <Input
+                  value={professional?.address?.complement}
                   {...register('address.complement')}
-                  value={patient?.address?.complement}
+                  width="50"
                   placeholder="Complemento"
                   disabled={!edit}
                 >
                   <MdOutlineOtherHouses />
                 </Input>
                 <Input
+                  value={professional?.address?.city}
                   {...register('address.city')}
-                  value={patient?.address?.city}
+                  width="50"
                   placeholder="Cidade"
                   disabled={!edit}
                 >
@@ -228,13 +230,44 @@ export default function Profile() {
                 </Input>
 
                 <Input
+                  value={professional?.address?.uf}
                   {...register('address.uf')}
-                  value={patient?.address?.uf}
+                  width="50"
                   placeholder="UF"
                   disabled={!edit}
                 >
                   <TfiLocationArrow />
                 </Input>
+
+                <Input
+                  value={professional?.identificacao}
+                  {...register('identificacao')}
+                  width="50"
+                  placeholder="Documento Profissional"
+                  disabled={!edit}
+                >
+                  <FaRegAddressCard />
+                </Input>
+
+                <Input
+                  value={professional?.especialidade}
+                  {...register('especialidade')}
+                  width="50"
+                  placeholder="Especialidade"
+                  disabled={!edit}
+                >
+                  <FaRegAddressBook />
+                </Input>
+                <Input
+                  value={professional?.graduacao}
+                  {...register('graduacao')}
+                  width="50"
+                  placeholder="Graduação"
+                  disabled={!edit}
+                >
+                  <FaGraduationCap />
+                </Input>
+
               </S.ContainerInput>
             </S.RightArea>
           </S.ContentArea>

@@ -1,10 +1,11 @@
 import React from 'react'
-import * as S from './styles'
+import * as S from './_styles'
 import { Profissionais } from '../components/home/Profissionais'
 import { Parceiros } from '../components/home/Parceiros'
 import { Header } from '../components/Layout/Header'
 import { ButtonPrimary } from '../@shared/ButtonPrimary'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home () {
   return (
@@ -22,7 +23,9 @@ export default function Home () {
               blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
               Vulputate sit amet, consectetur adipiscing elit.
             </p>
-            <ButtonPrimary>Cadastra-se</ButtonPrimary>
+            <Link href={'/auth'}>
+              <ButtonPrimary>Cadastra-se</ButtonPrimary>
+            </Link>
           </S.TextoMain>
         </S.ContainerTextoBanner>
 
@@ -122,7 +125,11 @@ export default function Home () {
               ullamcorper augue praesent integer. Nunc volutpat laoreet
               curabitur lacinia
             </h2>
-            <ButtonPrimary className="laranja">Cadastre-se</ButtonPrimary>
+            <Link href={'/auth'}>
+              <ButtonPrimary className="laranja">
+                Cadastre-se
+              </ButtonPrimary>
+            </Link>
           </S.ContainerContent>
         </S.ContSobreNos>
       </S.ContainerSobreNos>
@@ -183,7 +190,11 @@ export default function Home () {
             <h1>Suporte</h1>
             <h2>FAQ</h2>
             <h3>Email: grupocpasuporte@gmail.com</h3>
-            <ButtonPrimary className="laranja">Acesse sua conta</ButtonPrimary>
+            <Link href={'/auth'}>
+              <ButtonPrimary className="laranja">
+                Acesse sua conta
+              </ButtonPrimary>
+            </Link>
           </S.ContainerContentFooter>
           <S.ContainerContentFooter className="imgCpa">
             <img src="/assets/img/logoCPA.png" width={239.13} height={110} />

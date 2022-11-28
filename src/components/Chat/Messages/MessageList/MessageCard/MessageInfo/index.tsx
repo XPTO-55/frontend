@@ -10,10 +10,14 @@ export function MessageInfo({ data }: IMessageInfoProps) {
           <img src={'https://img.freepik.com/vetores-gratis/avatar-de-personagem-de-empresario-isolado_24877-60111.jpg?w=2000'} alt="" />
         </S.ContainerProfileImage>
         <S.MessageInfo>
-          <S.SenderName>Nazaré Tedesco</S.SenderName>
+          <S.SenderName>
+            <h6>
+              {data.senderName}
+            </h6>
+          </S.SenderName>
           <S.MessageText>
-            {data.text}
-          </S.MessageText>belesma
+            {data.message}
+          </S.MessageText>
         </S.MessageInfo>
       </S.MessageInfoContainer>
 

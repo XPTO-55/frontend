@@ -5,8 +5,8 @@ import { components } from '../../../../slices'
 import { Heading } from '../../blog/Heading'
 import { PostProps } from './types'
 import * as S from './styles'
-import Comment from './Comment'
-import { InputComment } from './InputComment'
+// import Comment from './Comment'
+// import { InputComment } from './InputComment'
 
 export const Post = ({ post }: PostProps) => {
   return (
@@ -36,11 +36,11 @@ export const Post = ({ post }: PostProps) => {
           Comentários
         </Heading>
         <S.ContainerComments>
-          {post.comments.length > 0
+          {/* {post.comments.length > 0
             ? post.comments.map(comment => <Comment key={comment.id} comment={comment} />)
-            : null}
+            : null} */}
         </S.ContainerComments>
-        <InputComment />
+        {/* <InputComment comments={post.comments} /> */}
       </S.listItemStyled>
     </>
   )

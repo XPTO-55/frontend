@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
-import Events from '../../components/Chat/Events'
+// import Events from '../../components/Chat/Events'
 import Forums from '../../components/Chat/Forums'
 import Messages from '../../components/Chat/Messages'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'

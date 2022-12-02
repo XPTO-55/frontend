@@ -15,7 +15,6 @@ import {
   Marker,
   StandaloneSearchBox
 } from '@react-google-maps/api'
-import Link from 'next/link'
 interface PlaceProps {
   setSelectPlace: Dispatch<SetStateAction<IPlaces>>
 }

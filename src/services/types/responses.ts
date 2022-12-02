@@ -1,7 +1,7 @@
 import { IAddress, IUserBase } from './base'
 
 export interface IUserLoginResponse {
-  id: string
+  id: number
   jwtToken: string
   type: string
   refreshToken: string
@@ -12,7 +12,7 @@ export interface IUserLoginResponse {
 }
 
 export interface IUserResponse extends IUserBase {
-  id: string
+  id: number
 }
 
 export interface IForum {

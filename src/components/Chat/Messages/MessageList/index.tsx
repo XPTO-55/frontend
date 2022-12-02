@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useAuth } from '../../../../context/auth'
-import { getForumMessages } from '../../../../services/forum.service'
+import { getMessages } from '../../../../services/messages.service'
 import { IForum, IMessage } from '../../../../services/types'
 import { LoaderAllPage } from '../../../Layout/LoaderAllPage'
 import { MessageCard } from './MessageCard'
@@ -13,7 +13,7 @@ interface InfoProps {
 
 export default function MessageList({ data }: InfoProps) {
   const { user, loading } = useAuth()
-  const { data: messages = [], isLoading } = useQuery<IMessage[]>(['messages', data?.id], async () => await getForumMessages(data?.id))
+  const { data: messages = [], isLoading } = useQuery<IMessage[]>(['messages', data?.id], async () => await getMessages(data?.id))
 
   if (!data?.id) {
     return (

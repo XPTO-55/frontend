@@ -26,3 +26,9 @@ export interface IUserLoginRequest {
   email: string
   password: string
 }
+
+export interface ICreateMessageRequest {
+  message: string
+  senderName: string
+  userId: number
+}

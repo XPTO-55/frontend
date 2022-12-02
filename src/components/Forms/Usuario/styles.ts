@@ -191,6 +191,6 @@ export const TabContainer = styled(Tabs.Root)`
   flex-direction: column;
   height: 60%;
   gap: 1rem;
-  overflow-y: overlay;
+  overflow-y: scroll;
   padding-top: 300px;
 `

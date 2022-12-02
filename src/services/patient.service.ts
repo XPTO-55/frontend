@@ -6,17 +6,17 @@ export const createPatient = async (userData: ICreatePatientRequest): Promise<IU
   return data as IUserResponse[]
 }
 
-export const getPatient = async (id: string) => {
+export const getPatient = async (id: number) => {
   const { data } = await api.get(`/patients/${id}`)
   return data as IPatient
 }
 
-export const updatePatient = async (id: string, userData: IUpdatePatientRequest) => {
+export const updatePatient = async (id: number, userData: IUpdatePatientRequest) => {
   const { data } = await api.put(`/patients/${id}`, userData)
   return data as IPatient
 }
 
-export const getPatientProfileImage = async (id: string) => {
+export const getPatientProfileImage = async (id: number) => {
   const { data } = await api.get(`/patients/${id}/profileImage`)
   return data as unknown
 }

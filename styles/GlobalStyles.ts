@@ -49,7 +49,5 @@ export default createGlobalStyle`
     }
     a {
       cursor: pointer;
-      display: flex;
-      align-items: center;
     }
 `

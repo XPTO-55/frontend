@@ -12,12 +12,11 @@ import { authenticationSchema } from '../../validations/user.validation'
 import { IUserLoginRequest } from '../../services/types'
 import * as Dialog from '@radix-ui/react-dialog'
 import { useAuth } from '../../context/auth'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
 import { Loader } from '../../@shared/Loader'
 // import { Toast } from '../../@shared/Toast'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { Toast } from '../../@shared/Toast'
 
 export default function Auth() {
   const router = useRouter()

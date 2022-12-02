@@ -1,6 +1,6 @@
 import { PrismicDocument } from '@prismicio/types'
 import { Document } from 'prismic-javascript/types/documents'
-import { PostDocument } from '../../@types/prismic'
+// import { PostDocument } from '../../@types/prismic'
 
 // interface PostCommentsDocument extends PostDocument {
 //   comments: CommentsDocument[]

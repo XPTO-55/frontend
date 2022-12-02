@@ -25,7 +25,7 @@ export const MessageReply = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-gap: 1rem;
+gap: 1.5rem;
 align-items: flex-start;
 `
 

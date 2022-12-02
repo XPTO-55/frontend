@@ -14,7 +14,7 @@ function Messages (props: MessagesProps) {
     <S.Container>
       {props.forum ? <Header data={props.forum} /> : null}
       <MessageList data={props.forum} />
-      {props.forum ? <Footer /> : null}
+      {props.forum ? <Footer forumId={props?.forum?.id} /> : null}
     </S.Container>
   )
 }

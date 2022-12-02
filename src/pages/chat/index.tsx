@@ -34,7 +34,7 @@ export default function Chat () {
       <S.Container>
         <Forums setSelectForum={setSelectedForum} />
         <Messages forum={selectedForum} />
-        <Events />
+        {/* <Events /> */}
       </S.Container>
     </>
   )

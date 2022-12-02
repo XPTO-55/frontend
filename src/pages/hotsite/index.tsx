@@ -41,13 +41,6 @@ export default function HotSite(): JSX.Element {
       const { data } = await downloadCsv()
       const encodedURI = encodeURI('data:text/csv;charset=utf-8,' + data.toString())
       window.open(encodedURI)
-      // const link = document.createElement('a')
-      // link.download = 'download'
-      // link.href = href
-      // document.body.appendChild(link)
-      // link.click()
-      // document.body.removeChild(link)
-      // URL.revokeObjectURL(href)
     } catch (e) {
       console.error(e)
     }

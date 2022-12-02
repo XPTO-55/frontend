@@ -16,7 +16,7 @@ export default function About() {
   const idProfissional = typeof router.query?.id === 'string' ? router.query.id : ''
   const { data: professional, isLoading } = useQuery<IProfessional>(
     ['professionals', idProfissional],
-    async () => await getProfessional(idProfissional)
+    async () => await getProfessional(Number(idProfissional))
   )
   if (isLoading || router.isFallback) {
     return <LoaderAllPage />

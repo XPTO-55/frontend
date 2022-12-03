@@ -10,7 +10,8 @@ export const PageContainer = styled.div`
 
   h1 {
     font-size: 23px;
-    width: 1200px;
+    width: 100%;
+    max-width: 1200px;
     height: 100px;
     display: flex;
     align-items: center;

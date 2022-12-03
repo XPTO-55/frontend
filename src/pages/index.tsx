@@ -6,7 +6,7 @@ import { Header } from '../components/Layout/Header'
 import { ButtonPrimary } from '../@shared/ButtonPrimary'
 import Head from 'next/head'
 
-export default function Home () {
+export default function Home() {
   return (
     <S.PageContainer>
       <Head>
@@ -106,23 +106,35 @@ export default function Home () {
       <Profissionais />
       <S.ContainerSobreNos>
         <S.ContSobreNos>
-          <S.ContainerContent className="imgSobreNos">
-            <S.Img src="/assets/img/autis.png" />
-          </S.ContainerContent>
+          <S.ContainerContent className="sobreNos">
 
-          <S.ContainerContent className="textoSobreNos">
-            <h1>Sobre nós</h1>
-            <h2>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.{' '}
-              <br />
-              <br />
-              Vulputate ullamcorper augue praesent integer. Nunc volutpat
-              laoreet curabitur lacinia. aliquam sed lectus. Vulputate
-              ullamcorper augue praesent integer. Nunc volutpat laoreet
-              curabitur lacinia
-            </h2>
-            <ButtonPrimary className="laranja">Cadastre-se</ButtonPrimary>
+            <S.BorderImg>
+
+              <S.ImgSobre/>
+
+            </S.BorderImg>
+
+            <div>
+              <h1>Sobre nós</h1>
+              <h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam blandit magna rhoncus neque. Enim, amet, risus aliquam
+                  sed lectus. Vulputate ullamcorper augue praesent integer. Nunc
+                  volutpat laoreet curabitur lacinia. aliquam sed lectus.
+                  Vulputate ullamcorper augue praesent integer. Nunc volutpat
+                  laoreet curabitur lacinia
+                </p>
+
+                <p>
+                  Vulputate ullamcorper augue praesent integer. Nunc volutpat
+                  laoreet curabitur lacinia. aliquam sed lectus. Vulputate
+                  ullamcorper augue praesent integer. Nunc volutpat laoreet
+                  curabitur lacinia
+                </p>
+              </h2>
+              <ButtonPrimary className="laranja">Cadastre-se</ButtonPrimary>
+            </div>
           </S.ContainerContent>
         </S.ContSobreNos>
       </S.ContainerSobreNos>

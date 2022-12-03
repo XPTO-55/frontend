@@ -8,6 +8,7 @@ export const PageContainer = styled.div`
   align-items: center;
   background-color: #2A8DD2;
   flex-direction: column;
+  padding-top: 100px;
 
   h1{
     position: absolute;

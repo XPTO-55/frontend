@@ -2,16 +2,17 @@ import React from 'react'
 import PrismicDOM from 'prismic-dom'
 import { CommentProps } from './types'
 import * as S from './styles'
+import { makeProfileImageurlS3 } from '../../../../util/make-image-url-s3'
 
 export default function Comment({ comment }: CommentProps) {
   return (
     <S.Container>
       <S.ContainerProfileImage>
-        <img src={PrismicDOM.Link.url(comment.data.profileimageurl) || '/assets/img/user-avatar.png'} alt="" />
+        <img src={makeProfileImageurlS3(comment?.patient?.profileUrl)} />
       </S.ContainerProfileImage>
       <S.ContainerInfo>
-        <S.Username>{PrismicDOM.RichText.asText(comment.data.username)}</S.Username>
-        <S.Comment>{comment.data.comment}</S.Comment>
+        <S.Username>{comment?.patient?.name}</S.Username>
+        <S.Comment>{comment?.comment}</S.Comment>
       </S.ContainerInfo>
     </S.Container>
   )

@@ -1,5 +1,5 @@
-import { CommentsDocument } from '../../../../@types/prismic'
+import { ICommentsResponse } from '../../../../services/types'
 
 export interface CommentProps {
-  comment: CommentsDocument
+  comment: ICommentsResponse
 }

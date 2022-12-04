@@ -301,6 +301,7 @@ export const ContainerContentFooter = styled.div`
   width: 32%;
   height: 95%;
   display: flex;
+  color: #f0f2f2;
 
   @media (max-width: 1000px) {
     width: 90%;

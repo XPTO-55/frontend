@@ -16,13 +16,13 @@ export function InputComment({ postId, setComments }: InputCommentProps) {
   const {
     mutate,
     isError,
-    isLoading,
     error
   } = useMutation<ICommentsResponse, unknown, ICreateCommentRequest>(
     async (commentData) => await createComment(postId, commentData),
     {
       onSuccess: (data) => {
         setComments(prev => [...prev, data])
+        setComment('')
       }
     }
   )

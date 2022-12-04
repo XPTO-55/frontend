@@ -20,3 +20,11 @@ export const getPatientProfileImage = async (id: number) => {
   const { data } = await api.get(`/patients/${id}/profileImage`)
   return data as unknown
 }
+
+export const updatePatientProfileImage = async (id: number, data: FormData) => {
+  await api.patch(`/patients/${id}/profileImage`, data, {
+    headers: {
+      'Content-Type': 'image/jpeg'
+    }
+  })
+}

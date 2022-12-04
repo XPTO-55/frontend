@@ -110,7 +110,9 @@ export default function Profile() {
                 {...register('about')}
                 value={patient?.about}
                 disabled={!edit}
-              />
+              >
+                {patient?.about}
+              </textarea>
             </S.RightArea>
           </S.ContentArea>
           <S.ContentArea>

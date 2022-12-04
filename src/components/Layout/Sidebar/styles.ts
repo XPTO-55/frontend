@@ -7,7 +7,7 @@ export const Container = styled.aside`
   justify-content: flex-start;
   padding-top: 1.75rem;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   width: 20vw;
   background-color: #2A8DD2;
 `

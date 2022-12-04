@@ -122,3 +122,10 @@ export interface ICommentsResponse {
     profileUrl: string
   }
 }
+
+export interface IAppointments {
+  dataConsulta: string
+  nomeProfissional: string
+  nomePaciente: string
+  especialidade: string
+}

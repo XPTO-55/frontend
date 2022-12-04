@@ -25,3 +25,11 @@ export const getProfessionalProfileImage = async (id: number) => {
   const { data } = await api.get(`/professionals/${id}/profileImage`)
   return data as unknown
 }
+
+export const updateProfessionalProfileImage = async (id: number, data: FormData) => {
+  await api.patch(`/professionals/${id}/profileImage`, data, {
+    headers: {
+      'Content-Type': 'image/jpeg'
+    }
+  })
+}

@@ -29,6 +29,7 @@ export const Main = styled.div`
   @media (max-width: 1200px) {
     margin-left: 500px;
     justify-content: flex-start;
+    height: 600px;
 
     img {
       display: none;
@@ -50,14 +51,23 @@ export const ContainerTextoBanner = styled.div`
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 1000px) {
+    margin-left: -130px;
+    align-items: center;
+    margin-top: -160px;
+  }
 `
 
 export const TextoMain = styled.div`
   width: 550px;
   height: 200px;
-  margin-left: 150px;
   margin-top: 50px;
   z-index: 2;
+
+  @media (max-width: 1000px) {
+    width: 400px;
+  }
 
   h1 {
     font-size: 45px;
@@ -80,6 +90,9 @@ export const Section = styled.section`
   &.mvv {
     background-color: #2a8dd2;
     height: 500px;
+    @media (max-width: 1000px) {
+      display: none;
+    }
   }
 `
 
@@ -102,36 +115,35 @@ export const CardMvv = styled.div`
   justify-content: center;
   flex-direction: column;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  &.missao{
-    svg{
-      color: #FFA025;
+  &.missao {
+    svg {
+      color: #ffa025;
     }
   }
-  &.visao{
-    svg{
-      color: #2A8DD2;
+  &.visao {
+    svg {
+      color: #2a8dd2;
     }
   }
-  &.valores{
-    svg{
-      color: #FF4725;
+  &.valores {
+    svg {
+      color: #ff4725;
     }
   }
-  svg{
+  svg {
     width: 140px;
     height: 140px;
-    
   }
-  div{
+  div {
     height: 48%;
     width: 50%;
-    background-color: #D0D3D4;
+    background-color: #d0d3d4;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  h1{
+  h1 {
     height: 10%;
     width: 100%;
     display: flex;
@@ -141,7 +153,7 @@ export const CardMvv = styled.div`
     margin-top: 10px;
     font-weight: 500;
   }
-  span{
+  span {
     height: 40%;
     width: 80%;
     display: flex;
@@ -152,63 +164,107 @@ export const CardMvv = styled.div`
 `
 
 export const ContainerSobreNos = styled.div`
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f2f2;
+  flex-direction: column;
 
-    width: 100%;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F0F2F2;
-    flex-direction: column;
-
+  @media (max-width: 1000px) {
+    height: 1100px;
+    margin-top: -50px;
+  }
 `
 
 export const ContSobreNos = styled.div`
-    width: 100%;
-    max-width: 1200px;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -100px;
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -100px;
+
+  @media (max-width: 1000px) {
+    height: 100%;
+  }
 `
 
 export const ContainerContent = styled.div`
-    width: 50%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  div {
+    width: 40%;
+    height: 10%;
     display: flex;
-    &.imgSobreNos{
-        margin-top: 70px;
-        margin-left: 30px;
-    height: 80%;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
 
+    h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
     }
 
-    &.textoSobreNos{
-        flex-direction: column;
-        padding-top: 330px;
-        padding-left: 100px;
-        margin-left: -50px;
-
-        h1{
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        h2{
-            font-size: 17px;
-            margin-bottom: 10px;
-            width: 500px;
-        }
+    h2 p {
+      margin-bottom: 20px;
     }
+  }
+
+  @media (max-width: 1000px) {
+    height: 700px;
+    justify-content: center;
+    flex-direction: column;
+
+    div {
+      width: 80%;
+      height: 400px;
+      align-items: center;
+      text-align: center;
+    }
+  }
+`
+
+export const ImgSobre = styled.p`
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/img/autismo.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 2%;
+  margin-top: -40px;
+  margin-left: 30px;
+
+  @media (max-width: 1000px) {
+    margin-top: -30px;
+    margin-left: 20px;
+  }
+`
+
+export const BorderImg = styled.span`
+  width: 450px;
+  height: 450px;
+  background-color: #ff4725;
+  border-radius: 2%;
+
+  @media (max-width: 1000px) {
+    width: 300px;
+    height: 300px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+  }
 `
 
 export const Img = styled.img`
-    width: 800px;
-    height: 500px;
-    margin-left: -110px;
-
+  width: 800px;
+  height: 500px;
+  margin-left: -110px;
 `
 
 export const Svg2 = styled.svg`
@@ -217,92 +273,110 @@ export const Svg2 = styled.svg`
 `
 
 export const PageContainerFooter = styled.div`
-width: 100%;
-max-width: 1600px;
-height: 300px;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #0A6CB2;
+  width: 100%;
+  max-width: 1600px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a6cb2;
+
+  @media (max-width: 1000px) {
+    height: 700px;
+  }
 `
 
 export const ContainerFooter = styled.div`
-width: 1200px;
-max-width: 1200px;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: space-between;
-color: #F0F2F2;
+  width: 1200px;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #f0f2f2;
+  flex-direction: column;
 `
 
 export const ContainerContentFooter = styled.div`
-width: 32%;
-height: 95%;
-display: flex;
-&.redesSociais{
+  width: 32%;
+  height: 95%;
+  display: flex;
+  color: #f0f2f2;
+
+  @media (max-width: 1000px) {
+    width: 90%;
+
+    &.redesSociais {
+      margin-left: 60px;
+    }
+
+    &.suporte {
+      margin-left: 60px;
+    }
+  }
+  &.redesSociais {
     width: 30%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-&.info{
+  }
+  &.info {
     width: 70%;
     height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    h1{
-        font-size: 24px;
-        margin-top: 20px;
-        font-weight: 500;
+    h1 {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: 500;
     }
-    h2{
-        font-size: 15px;
-        font-weight: normal;
-        margin-top: 3px;
+    h2 {
+      font-size: 15px;
+      font-weight: normal;
+      margin-top: 3px;
     }
-}
-&.suporte{
+  }
+  &.suporte {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     padding-left: 50px;
-    h1{
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 5px;
+    h1 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 5px;
     }
-    h2{
-        font-size: 15px;
-        font-weight: normal;
-        margin-bottom: 5px;
+    h2 {
+      font-size: 15px;
+      font-weight: normal;
+      margin-bottom: 5px;
     }
-    h3{
-        font-size: 15px;
-        font-weight: normal;
-        margin-bottom: 15px; 
+    h3 {
+      font-size: 15px;
+      font-weight: normal;
+      margin-bottom: 15px;
     }
-}
-&.imgCpa{
+  }
+  &.imgCpa {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    h2{
-        margin-top: 15px;
-        margin-left: 100px;
+    h2 {
+      margin-top: 15px;
+      margin-left: 100px;
     }
-}
+  }
 `
 
 export const SvgFooter = styled.svg`
-color: #F0F2F2;
-width: 50px;
-height: 50px;
-margin-top: 25px;
+  color: #f0f2f2;
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
 `

@@ -13,6 +13,12 @@ export const Header = styled.div`
     margin-right: 20px;
     font-weight: 500;
   }
+
+  @media (max-width: 1000px) {
+    input {
+      width: 200px;
+    }
+  }
 `
 
 export const ContainerContent = styled.div`
@@ -24,11 +30,11 @@ export const ContainerContent = styled.div`
   gap: 20px;
 
   ::-webkit-scrollbar {
-  width: 9px;          
+    width: 9px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #2A8DD2;   
-    border-radius: 10px; 
+    background-color: #2a8dd2;
+    border-radius: 10px;
   }
 `

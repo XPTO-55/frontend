@@ -380,8 +380,39 @@
         "city": "São Paulo",
         "uf": "SP"
       }
-    }
+    }    
+  ],
 
-    
+  "appointments": [
+    {
+      "nomeProfissional": "Rafael Leão",
+      "dataConsulta": "01-02-2022",
+      "especialidade": "Psiquiatra",
+      "nomePaciente": "Filena Mazolim"
+    },
+    {
+      "nomeProfissional": "Ruben Dias",
+      "dataConsulta": "05-05-2022",
+      "especialidade": "Psiquiatra",
+      "nomePaciente": "Lucas Lacerda"
+    },
+    {
+      "nomeProfissional": "Maria Souza",
+      "dataConsulta": "01-02-2022",
+      "especialidade": "Psiquiatra",
+      "nomePaciente": "Carlos Machoski"
+    },
+    {
+      "nomeProfissional": "Raquel Valeria",
+      "dataConsulta": "01-02-2022",
+      "especialidade": "Psiquiatra",
+      "nomePaciente": "Gel Lonas"
+    },
+    {
+      "nomeProfissional": "João Paulo",
+      "dataConsulta": "01-02-2022",
+      "especialidade": "Psiquiatra",
+      "nomePaciente": "Fucas Leitosa"
+    }
   ]
 }

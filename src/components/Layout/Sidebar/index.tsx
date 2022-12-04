@@ -32,7 +32,13 @@ function Sidebar() {
               </a>
             </Link>
           </li>
-          {/* <li>Agenda</li> */}
+          <li>
+            <Link href={'/appointments'}>
+              <a>
+                Consultas
+              </a>
+            </Link>
+          </li>
           {/* <li>Amigos</li> */}
           <li>
             <Link href={'/hotsite'}>

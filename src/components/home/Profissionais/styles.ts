@@ -12,6 +12,10 @@ export const PageContainer = styled.div`
   background-position: top right, center;
   background-size: cover;
   max-width: 1598px;
+
+  @media (max-width: 1000px) {
+    height: 700px;
+  }
 `
 
 export const Container = styled.div`
@@ -23,7 +27,7 @@ export const Container = styled.div`
 
 export const ContainerInfoProf = styled.div`
   width: 100%;
-  height: 80%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,6 +37,10 @@ export const ContainerInfoProfContent = styled.div`
   width: 50%;
   height: 100%;
 
+  @media (max-width: 1000px) {
+    margin-left: -550px;
+  }
+
   &.texto {
     display: flex;
     align-items: flex-start;
@@ -40,11 +48,21 @@ export const ContainerInfoProfContent = styled.div`
     flex-direction: column;
     padding-left: 150px;
 
+    @media (max-width: 1000px) {
+      padding-right: 180px;
+      width: 30%;
+      margin-top: -100px;
+    }
+
     h1 {
       font-size: 36px;
       font-weight: bold;
       width: 300px;
-      margin-bottom: 40px;
+
+      @media (max-width: 1000px) {
+        margin-bottom: 10px;
+        margin-top: -50px;
+      }
     }
 
     h2 {
@@ -56,6 +74,10 @@ export const ContainerInfoProfContent = styled.div`
       font-size: 17px;
       width: 500px;
       margin-bottom: 10px;
+
+      @media (max-width: 1000px) {
+        width: 300px;
+      }
     }
   }
 
@@ -63,6 +85,11 @@ export const ContainerInfoProfContent = styled.div`
     padding-top: 125px;
     padding-left: 80px;
     z-index: 2;
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
+
     img {
       border-radius: 7px;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -79,9 +106,17 @@ export const bordaImgProf = styled.div`
   border-radius: 7px;
   background-color: #2a8dd2;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `
 
 export const Svg = styled.svg`
   margin-top: -280px;
   max-width: 1600px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `

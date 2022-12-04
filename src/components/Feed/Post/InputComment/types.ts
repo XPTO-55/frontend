@@ -1,4 +1,5 @@
-import { CommentsDocument } from '../../../../@types/prismic'
+import { ICommentsResponse } from '../../../../services/types'
 export interface InputCommentProps {
-  comments: CommentsDocument[]
+  setComments: React.Dispatch<React.SetStateAction<ICommentsResponse[]>>
+  postId: string
 }

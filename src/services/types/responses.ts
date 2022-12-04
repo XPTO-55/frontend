@@ -111,3 +111,14 @@ interface IRole {
 export interface IAddressGetResponse extends IAddress {
   id: string
 }
+
+export interface ICommentsResponse {
+  id: number
+  comment: string
+  postId: string
+  patient: {
+    id: number
+    name: string
+    profileUrl: string
+  }
+}

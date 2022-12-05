@@ -124,8 +124,8 @@ export interface ICommentsResponse {
 }
 
 export interface IAppointments {
-  dataConsulta: string
-  nomeProfissional: string
-  nomePaciente: string
-  especialidade: string
+  date: string
+  professional: string
+  patient: string
+  especiality: string
 }

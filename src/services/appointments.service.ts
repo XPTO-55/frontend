@@ -1,9 +1,9 @@
 import { api } from './api'
 import { IAppointments } from './types/responses'
 
-export const getAppointments = async () => {
+export const getAppointments = async (userId: number) => {
   try {
-    const { data } = await api.get('/appointments')
+    const { data } = await api.get(`/appointments/${userId}`)
     return data as IAppointments[]
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {

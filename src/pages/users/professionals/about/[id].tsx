@@ -14,7 +14,7 @@ import * as S from './_styles'
 export default function About() {
   const router = useRouter()
   const idProfissional = typeof router.query?.id === 'string' ? router.query.id : ''
-  const { data: professional, isLoading } = useQuery<IProfessional>(
+  const { data: professional = {} as IProfessional, isLoading } = useQuery<IProfessional>(
     ['professionals', idProfissional],
     async () => await getProfessional(Number(idProfissional))
   )
@@ -22,7 +22,7 @@ export default function About() {
     return <LoaderAllPage />
   }
 
-  const rating = professional ? professional.ratings.reduce((media, rating) => media + rating.rating, 0) / professional.ratings.length : 0
+  const rating = Object.keys(professional).length > 0 ? professional.ratings.reduce((media, rating) => media + rating.rating, 0) / professional.ratings.length : 0
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function About() {
             <div>
               <h1>{professional?.name}</h1>
               <h2>{professional?.especialidade}</h2>
-              <h3>Graduação: {professional.graduacao}</h3>
+              <h3>Graduação: {professional?.graduacao}</h3>
 
               <h4>
                 {new Array(Math.floor(rating)).fill(null).map((index) => {

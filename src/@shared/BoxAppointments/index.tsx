@@ -1,3 +1,4 @@
+import { formatDate } from '../../util/publish.date'
 import * as S from './styles'
 import { BoxAppointmentsProps } from './types'
 
@@ -5,10 +6,10 @@ export const BoxAppointments = (appointment: BoxAppointmentsProps) => {
   return (
     <S.Container>
 
-      <p>{appointment?.appointments?.dataConsulta}</p>
-      <p>{appointment?.appointments?.nomeProfissional}</p>
-      <p>{appointment?.appointments?.especialidade}</p>
-      <p>{appointment?.appointments?.nomePaciente}</p>
+      <p>{formatDate.format(new Date((appointment?.appointments?.date)))}</p>
+      <p>{appointment?.appointments?.professional}</p>
+      <p>{appointment?.appointments?.especiality}</p>
+      <p>{appointment?.appointments?.patient}</p>
       <p>Agendado</p>
 
     </S.Container>

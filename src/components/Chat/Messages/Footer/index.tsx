@@ -8,9 +8,11 @@ import { FooterProps } from './types'
 import { ICreateMessageRequest, IMessage } from '../../../../services/types'
 import { useAuth } from '../../../../context/auth'
 import { Toast } from '../../../../@shared/Toast'
+import { useChat } from '../../../../context/chat'
 
 export function Footer({ forumId }: FooterProps) {
   const { user } = useAuth()
+  const { sendMessage } = useChat()
   const [message, setMessage] = useState<string>()
   const {
     mutate,
@@ -21,6 +23,7 @@ export function Footer({ forumId }: FooterProps) {
     async (messageData) => await createMessage(forumId, messageData),
     {
       onSuccess: () => {
+        sendMessage(message)
         setMessage('')
       }
     }

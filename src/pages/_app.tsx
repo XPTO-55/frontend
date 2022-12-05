@@ -9,6 +9,7 @@ import { Heading } from '../components/blog/Heading'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import * as Toast from '@radix-ui/react-toast'
 import { AuthProvider } from '../context/auth'
+import { ChatProvider } from '../context/chat'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -85,16 +86,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       {/* <Hydrate state={pageProps?.dehydratedState}> */}
       <AuthProvider>
-        <Toast.Provider>
-          <PrismicProvider
-          // @ts-expect-error
-            linkResolver={linkResolver}
-            internalLinkComponent={NextLinkShim}
-            richTextComponents={richTextComponents}>
-            <Component {...pageProps} />
-            <GlobalStyles />
-          </PrismicProvider>
-        </Toast.Provider>
+        <ChatProvider>
+          <Toast.Provider>
+            <PrismicProvider
+              // @ts-expect-error
+              linkResolver={linkResolver}
+              internalLinkComponent={NextLinkShim}
+              richTextComponents={richTextComponents}>
+              <Component {...pageProps} />
+              <GlobalStyles />
+            </PrismicProvider>
+          </Toast.Provider>
+        </ChatProvider>
       </AuthProvider>
       {/* </Hydrate> */}
     </QueryClientProvider>

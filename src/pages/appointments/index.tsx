@@ -2,14 +2,16 @@ import { useQuery } from 'react-query'
 import { BoxAppointments } from '../../@shared/BoxAppointments'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { ProfileBar } from '../../components/Layout/ProfileBar'
+import { useAuth } from '../../context/auth'
 import { getAppointments } from '../../services/appointments.service'
 import { IAppointments } from '../../services/types'
 import * as S from './styles'
 
 export default function Appointments() {
+  const { user } = useAuth()
   const { data: appointments = [], isLoading } = useQuery<IAppointments[]>(
-    ['appointments'],
-    getAppointments
+    ['appointments'], async () =>
+    await getAppointments(user?.id)
   )
 
   if (isLoading) {

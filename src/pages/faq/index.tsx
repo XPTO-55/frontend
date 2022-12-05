@@ -3,6 +3,7 @@ import * as S from './styles'
 import { Header } from '../../components/Layout/Header'
 import SimpleAccordion from '../../components/SimpleAccordion'
 import Head from 'next/head'
+import ModalPassword from '../../components/Layout/ModalPassword'
 
 export default function Faq () {
   return (
@@ -12,6 +13,7 @@ export default function Faq () {
       </Head>
       <Header />
       <S.PageContainer>
+
         <S.Container>
 
           <SimpleAccordion />

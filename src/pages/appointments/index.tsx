@@ -15,6 +15,7 @@ export default function Appointments() {
   if (isLoading) {
     return <LoaderAllPage />
   }
+
   return (
 
     <>
@@ -30,14 +31,14 @@ export default function Appointments() {
             <p>Profissional</p>
             <p>Especialidade</p>
             <p>Paciente</p>
-            <p>Status</p>
+            <p >Status</p>
           </S.HeaderAppointments>
 
           <S.ContainerContent>
 
             {appointments.map((appointment, index) => {
               return (
-                <BoxAppointments key={index} appointments={appointment}/>
+                <BoxAppointments onClick={() => {}} key={index} appointments={appointment} />
               )
             })}
 

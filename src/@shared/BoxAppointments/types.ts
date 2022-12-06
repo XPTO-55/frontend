@@ -1,6 +1,6 @@
+import React from 'react'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAppointments } from './../../services/types/responses'
-export interface BoxAppointmentsProps {
-  appointments: IAppointments
-  onClick: any
+export interface BoxAppointmentsProps extends React.HTMLAttributes<HTMLDivElement> {
+  appointment: IAppointments
 }

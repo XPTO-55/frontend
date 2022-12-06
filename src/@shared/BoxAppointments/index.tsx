@@ -1,7 +1,7 @@
 import * as S from './styles'
 import { BoxAppointmentsProps } from './types'
 
-export const BoxAppointments = (appointment: BoxAppointmentsProps, onClick) => {
+export const BoxAppointment = ({ appointment, onClick }: BoxAppointmentsProps) => {
   return (
     <S.Container onClick={onClick}>
 

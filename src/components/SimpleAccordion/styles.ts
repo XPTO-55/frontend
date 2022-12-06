@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Header = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ export const Header = styled.div`
       width: 200px;
     }
   }
-`
+`;
 
 export const ContainerContent = styled.div`
   width: 100%;
@@ -28,6 +28,7 @@ export const ContainerContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  line-height: 1.5rem;
 
   ::-webkit-scrollbar {
     width: 9px;
@@ -37,4 +38,4 @@ export const ContainerContent = styled.div`
     background-color: #2a8dd2;
     border-radius: 10px;
   }
-`
+`;

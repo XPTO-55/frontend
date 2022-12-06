@@ -55,12 +55,10 @@ export function Profissionais() {
                     <h1>Conheça nossos Profissionais</h1>
                     <h2>Rafael Leão</h2>
                     <h3>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nullam blandit magna rhoncus neque. Enim, amet, risus
-                      aliquam sed lectus. Vulputate ullamcorper augue praesent
-                      integer. Nunc volutpat laoreet curabitur lacinia.
-                      ullamcorper augue praesent integer. Nunc volutpat laoreet
-                      curabitur lacinia.
+                      Doutorado na Escola Paulista de Medicina - Universidade Federal de São Paulo (UNIFESP).
+                      Especialista em Psiquiatria infantil pela Federação Brasileira de autismo.
+                      Qualificação em TEA pela Associação Brasileira de Psiquiatria infantil.
+
                     </h3>
                     <Link href={'/users/professionals'}>
                       <ButtonPrimary className="azul">
@@ -79,14 +77,10 @@ export function Profissionais() {
                     <h1>Conheça nossos Profissionais</h1>
                     <h2>Marcelo Neto</h2>
                     <h3>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nullam blandit magna rhoncus neque. Enim, amet, risus
-                      aliquam sed lectus. Vulputate ullamcorper augue praesent
-                      integer. Nunc volutpat laoreet curabitur lacinia.
-                      ullamcorper augue praesent integer. Nunc volutpat laoreet
-                      curabitur lacinia.
+                      Formado em: Faculdade de Medicina de Jundiaí - FMJ.
+                      Mestre na FMU -
+                      mais de 10 anos de experiência
                     </h3>
-
                     <ButtonPrimary className="azul">Saiba mais!</ButtonPrimary>
                   </S.ContainerInfoProfContent>
 
@@ -100,12 +94,8 @@ export function Profissionais() {
                     <h1>Conheça nossos Profissionais</h1>
                     <h2>Pedro Guedes</h2>
                     <h3>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nullam blandit magna rhoncus neque. Enim, amet, risus
-                      aliquam sed lectus. Vulputate ullamcorper augue praesent
-                      integer. Nunc volutpat laoreet curabitur lacinia.
-                      ullamcorper augue praesent integer. Nunc volutpat laoreet
-                      curabitur lacinia.
+                      Formado em: Universidade Estadual Paulista Júlio de Mesquita Filho - Botucatu - UNESP
+                      MBA em Universidade Stanfords
                     </h3>
 
                     <ButtonPrimary className="azul">Saiba mais!</ButtonPrimary>
@@ -167,7 +157,7 @@ function Arrow(props: {
     <svg
       onClick={props.onClick}
       className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'
-      } ${disabeld}`}
+        } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

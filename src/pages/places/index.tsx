@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import { useQuery } from 'react-query'
 import { CardPlace } from '../../components/CardPlace'
 import { Header } from '../../components/Layout/Header'
@@ -7,7 +7,7 @@ import { Input } from '../../@shared/Input'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { getPlaces, IPlaces } from '../../services/places.service'
 import { BiSearch } from 'react-icons/bi'
-import * as S from './styles'
+import * as S from './_styles'
 import 'leaflet/dist/leaflet.css'
 import {
   GoogleMap,
@@ -15,7 +15,6 @@ import {
   Marker,
   StandaloneSearchBox
 } from '@react-google-maps/api'
-import Link from 'next/link'
 interface PlaceProps {
   setSelectPlace: Dispatch<SetStateAction<IPlaces>>
 }

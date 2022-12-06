@@ -7,7 +7,6 @@ import {
 } from 'react-icons/tfi'
 import { HiOutlineDocumentText } from 'react-icons/hi'
 import { MdOutlineOtherHouses } from 'react-icons/md'
-import { FaRegAddressCard } from 'react-icons/fa'
 import { BiBuildingHouse, BiStreetView } from 'react-icons/bi'
 import { SiOpenstreetmap } from 'react-icons/si'
 import { FiSmartphone } from 'react-icons/fi'
@@ -17,59 +16,98 @@ import { UploadImage } from '../../../../components/EditProfile/UploadImage'
 import { Input } from '../../../../@shared/Input'
 import { Select } from '../../../../@shared/Select'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
-import * as S from './styles'
-import { useQuery } from 'react-query'
-import { IProfessional } from '../../../../services/types'
-import { putProfessionalId } from '../../../../services/professional.service'
-import { api } from '../../../../services/api'
+import * as S from './_styles'
+import { useMutation, useQuery } from 'react-query'
+import { IPatient, IUpdatePatientRequest } from '../../../../services/types'
+import { getPatient, updatePatient } from '../../../../services/patient.service'
+import { useAuth } from '../../../../context/auth'
+import { LoaderAllPage } from '../../../../components/Layout/LoaderAllPage'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { Loader } from '../../../../@shared/Loader'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { updatePatientSchema } from '../../../../validations/user.validation'
+import Head from 'next/head'
+import { Toast } from '../../../../@shared/Toast'
 
 export default function Profile() {
   const [edit, setEdit] = useState<boolean>(false)
+  const { user } = useAuth()
 
-  const editing = (e) => {
-    setEdit(!edit)
-    e.preventDefault()
+  const { data: patient, isLoading } = useQuery<IPatient>(['patient'], async () => await getPatient(user?.id))
+
+  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IPatient, unknown, IUpdatePatientRequest>(['patient'], async (userData) => await updatePatient(user?.id, userData), {
+    onError() {
+      reset()
+    },
+    onSuccess() {
+      setEdit(false)
+    }
+  })
+
+  const { register, handleSubmit } = useForm<IPatient>({
+    defaultValues: patient,
+    resolver: yupResolver(updatePatientSchema)
+  })
+
+  const onSubmit: SubmitHandler<IUpdatePatientRequest> = (data, event) => {
+    event.preventDefault()
+    mutate(data)
   }
-
-  const { data: professional, isLoading } = useQuery<IProfessional>(['professional'], putProfessionalId)
-
-  console.log('professionals', professional?.name)
-
-  // function atualizarDados() {
-  //   const dadosAtuais = {
-  //     name: professional.name
-  //   }
-  // }
 
   const buttons = () => {
     return (
       <>
-        <ButtonPrimary className="azul">Salvar</ButtonPrimary>
-        <ButtonPrimary className="laranja" onClick={editing}>
+        <ButtonPrimary disabled={updateLoading} className="azul">
+          {updateLoading ? <Loader width={16} /> : null}
+          Salvar
+        </ButtonPrimary>
+        <ButtonPrimary className="laranja" onClick={cancelEditing}>
           Cancelar
         </ButtonPrimary>
       </>
     )
   }
 
+  const editing = (e) => {
+    e.preventDefault()
+    setEdit(prev => !prev)
+  }
+
+  const cancelEditing = (e) => {
+    e.preventDefault()
+    setEdit(prev => !prev)
+    reset()
+  }
+
+  if (isLoading) {
+    return <LoaderAllPage />
+  }
+
   return (
     <>
+      <Head>
+        <title> Perfil | CPA </title>
+      </Head>
       <ProfileBar />
 
       <S.PageContainer>
-        <S.ContainerForm>
+        <S.ContainerForm onSubmit={handleSubmit(onSubmit)}>
           <S.ContentArea>
             <S.LeftArea>
-              <UploadImage edit={!edit} />
+              <UploadImage profileUrl={patient?.profileUrl} edit={!edit} />
             </S.LeftArea>
             <S.RightArea>
-              <Input defaultValue='' disabled={!edit}>
+              <Input
+                {...register('name')}
+                value={patient?.name}
+                disabled={!edit}
+              >
                 <TfiPencil />
               </Input>
 
               <textarea
                 placeholder="Sobre mim..."
-                defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur vitae metus eget suscipit. Cras interdum, felis ac ornare mollis, erat turpis dictum purus, sed pretium dolor tellus non urna. Morbi elit arcu, ullamcorper et justo id, ornare egestas diam. Aenean nec turpis hendrerit, accumsan mauris a, fermentum odio"
+                {...register('about')}
                 disabled={!edit}
               />
             </S.RightArea>
@@ -89,124 +127,119 @@ export default function Profile() {
 
             <S.RightArea className="baixo">
               <S.ContainerInput>
-                <span>
-                  <Input
-                    defaultValue="mariabelmonte@hotmail.com "
-                    width="editProfile"
-                    disabled={!edit}
-                  >
-                    <TfiEmail />
-                  </Input>
-                  <Select
-                    icon={<BsGenderAmbiguous />}
-                    disabled={!edit}
-                  ></Select>
-                </span>
+                <Input
+                  {...register('email')}
+                  value={patient?.email}
+                  placeholder="email@email.com"
+                  disabled={!edit}
+                >
+                  <TfiEmail />
+                </Input>
+                <Select
+                  icon={<BsGenderAmbiguous />}
+                  disabled={!edit}
+                ></Select>
 
-                <span>
-                  <Input
-                    defaultValue="503.200.222-01 "
-                    width="editProfile"
-                    disabled={!edit}
-                  >
-                    <HiOutlineDocumentText />
-                  </Input>
-                  <Input width="editProfile" type="date" disabled={!edit}>
-                    <TfiPencil />
-                  </Input>
-                </span>
+                <Input
+                  {...register('cpf')}
+                  placeholder="000.000.000-00"
+                  value={patient?.cpf}
+                  disabled={!edit}
+                >
+                  <HiOutlineDocumentText />
+                </Input>
+                <Input
+                  {...register('birthday')}
+                  value={patient?.birthday}
+                  type="date"
+                  disabled={!edit}
+                >
+                  <TfiPencil />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue="11 96787-6787 "
-                    width="editProfile"
-                    disabled={!edit}
-                  >
-                    <FiSmartphone />
-                  </Input>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Telefone fixo"
-                    disabled={!edit}
-                  >
-                    <BsTelephone />
-                  </Input>
-                </span>
+                <Input
+                  {...register('phone')}
+                  placeholder="(00)00000-0000"
+                  value={patient?.phone}
+                  disabled={!edit}
+                >
+                  <FiSmartphone />
+                </Input>
+                <Input
+                  {...register('landline')}
+                  placeholder="(00)0000-0000"
+                  value={patient?.landline}
+                  disabled={!edit}
+                >
+                  <BsTelephone />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="CEP"
-                    disabled={!edit}
-                  >
-                    <TfiLocationPin />
-                  </Input>
+                <Input
+                  {...register('address.zipcode')}
+                  placeholder="CEP"
+                  value={patient?.address?.zipcode}
+                  disabled={!edit}
+                >
+                  <TfiLocationPin />
+                </Input>
 
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Logradouro"
-                    disabled={!edit}
-                  >
-                    <BiStreetView />
-                  </Input>
-                </span>
+                <Input
+                  {...register('address.street')}
+                  value={patient?.address?.street}
+                  placeholder="Rua"
+                  disabled={!edit}
+                >
+                  <BiStreetView />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Bairro"
-                    disabled={!edit}
-                  >
-                    <SiOpenstreetmap />
-                  </Input>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Número"
-                    disabled={!edit}
-                  >
-                    <BsHouse />
-                  </Input>
-                </span>
+                <Input
+                  {...register('address.district')}
+                  value={patient?.address?.district}
+                  placeholder="Bairro"
+                  disabled={!edit}
+                >
+                  <SiOpenstreetmap />
+                </Input>
+                <Input
+                  {...register('address.number')}
+                  value={patient?.address?.number}
+                  placeholder="Número"
+                  disabled={!edit}
+                >
+                  <BsHouse />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Complemento"
-                    disabled={!edit}
-                  >
-                    <MdOutlineOtherHouses />
-                  </Input>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Cidade"
-                    disabled={!edit}
-                  >
-                    <BiBuildingHouse />
-                  </Input>
-                </span>
+                <Input
+                  {...register('address.complement')}
+                  value={patient?.address?.complement}
+                  placeholder="Complemento"
+                  disabled={!edit}
+                >
+                  <MdOutlineOtherHouses />
+                </Input>
+                <Input
+                  {...register('address.city')}
+                  value={patient?.address?.city}
+                  placeholder="Cidade"
+                  disabled={!edit}
+                >
+                  <BiBuildingHouse />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="UF"
-                    disabled={!edit}
-                  >
-                    <TfiLocationArrow />
-                  </Input>
-                </span>
+                <Input
+                  {...register('address.uf')}
+                  value={patient?.address?.uf}
+                  placeholder="UF"
+                  disabled={!edit}
+                >
+                  <TfiLocationArrow />
+                </Input>
               </S.ContainerInput>
             </S.RightArea>
           </S.ContentArea>
         </S.ContainerForm>
       </S.PageContainer>
+      {isSuccess ? <Toast type='success' title='Dados atualizados com sucesso' /> : null}
     </>
   )
 }

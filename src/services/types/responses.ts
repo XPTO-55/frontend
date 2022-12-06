@@ -1,16 +1,18 @@
-import { IUserBase } from './base'
+import { IAddress, IUserBase } from './base'
 
 export interface IUserLoginResponse {
-  id: string
+  id: number
   jwtToken: string
   type: string
   refreshToken: string
   username: string
+  profileUrl: string
+  userType: 'patients' | 'professionals'
   email: string
 }
 
 export interface IUserResponse extends IUserBase {
-  id: string
+  id: number
 }
 
 export interface IForum {
@@ -22,7 +24,6 @@ export interface IForum {
 
 export interface IForumMessages {
   id: number
-  eventId: number
   name: string
   members: number
   imageUrl: string
@@ -54,11 +55,13 @@ export interface IEventUsers {
 
 export interface IMessage {
   id: number
-  text: string
+  message: string
   senderName: string
   userId: number
-  forumId?: number
+  forum: IForum[]
   replyes: IMessage[]
+  createdAt: Date
+  updatedAt: Date
 }
 
 export interface IProfessional {
@@ -66,28 +69,63 @@ export interface IProfessional {
   name: string
   email: string
   cpf: string
+  rg: string
   about: string
-  dataNascimento: string
-  telefoneFixo: string
-  telefoneCelular: string
-  roles: [
-    {
-      id: 0
-      name: string
-    }
-  ]
-  ratings: number
-
-  role: string
+  profileUrl: string
+  birthday: string
+  landline: string
+  phone: string
+  roles: IRole[]
+  ratings: [{
+    rating: number
+    comment: string
+    profissional: string
+  }]
   identificacao: string
   verificacao: string
   especialidade: string
   graduacao: string
+  address?: IAddressGetResponse
+
+}
+
+export interface IPatient {
+  id: number
+  name: string
+  email: string
+  cpf: string
+  rg: string
+  about: string
+  profileUrl: string
+  birthday: string
+  landline: string
+  phone: string
+  roles: IRole[]
+  address?: IAddressGetResponse
+}
+
+interface IRole {
+  name: string
+}
+
+export interface IAddressGetResponse extends IAddress {
+  id: string
+}
+
+export interface ICommentsResponse {
+  id: number
+  comment: string
+  postId: string
+  patient: {
+    id: number
+    name: string
+    profileUrl: string
+  }
 }
 
 export interface IAppointments {
-  dataConsulta: string
-  nomeProfissional: string
-  nomePaciente: string
-  especialidade: string
+  date: string
+  professional: string
+  patient: string
+  especiality: string
 }

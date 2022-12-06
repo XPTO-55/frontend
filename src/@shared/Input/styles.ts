@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 
-export const Input = styled.input`
-  width: 250px;
+interface InputProps {
+  width: string
+}
+
+export const Input = styled.input<InputProps>`
+  width: ${({ width }) => width + 'px'};
   height: 45px;
   border: none;
   border-top-right-radius: 7px;
@@ -10,14 +14,6 @@ export const Input = styled.input`
   padding-left: 10px;
   background-color: #f9f9f9;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
-  &.cadastro {
-    width: 330px;
-  }
-
-  &.editProfile {
-    width: 350px;
-  }
 `
 
 export const Icon = styled.div`

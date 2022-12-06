@@ -17,34 +17,60 @@ import { UploadImage } from '../../../../components/EditProfile/UploadImage'
 import { Input } from '../../../../@shared/Input'
 import { Select } from '../../../../@shared/Select'
 import { ProfileBar } from '../../../../components/Layout/ProfileBar'
-import * as S from './styles'
-import { useQuery } from 'react-query'
-import { IProfessional } from '../../../../services/types'
-import { putProfessionalId } from '../../../../services/professional.service'
-import { api } from '../../../../services/api'
+import * as S from './_styles'
+import { useMutation, useQuery } from 'react-query'
+import { IProfessional, IUpdateProfessionalRequest } from '../../../../services/types'
+import { getProfessional, updateProfessional } from '../../../../services/professional.service'
+import Head from 'next/head'
+import { useAuth } from '../../../../context/auth'
+import { LoaderAllPage } from '../../../../components/Layout/LoaderAllPage'
+import { updateProfessionalSchema } from '../../../../validations/user.validation'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Toast } from '../../../../@shared/Toast'
+import { Loader } from '../../../../@shared/Loader'
 
 export default function Profile() {
   const [edit, setEdit] = useState<boolean>(false)
+  const { user } = useAuth()
 
   const editing = (e) => {
-    setEdit(!edit)
     e.preventDefault()
+    setEdit(!edit)
   }
 
-  const { data: professional, isLoading } = useQuery<IProfessional>(['professional'], putProfessionalId)
+  const { data: professional, isLoading } = useQuery<IProfessional>(['professional'], async () => await getProfessional(user?.id))
 
-  console.log('professionals', professional?.name)
+  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IProfessional, unknown, IUpdateProfessionalRequest>(['patient'], async (userData) => await updateProfessional(user?.id, userData), {
+    onError() {
+      reset()
+    },
+    onSuccess() {
+      setEdit(false)
+    }
+  })
 
-  // function atualizarDados() {
-  //   const dadosAtuais = {
-  //     name: professional.name
-  //   }
-  // }
+  const { register, handleSubmit } = useForm<IProfessional>({
+    defaultValues: professional,
+    resolver: yupResolver(updateProfessionalSchema)
+  })
+
+  const onSubmit: SubmitHandler<IUpdateProfessionalRequest> = (data, event) => {
+    event.preventDefault()
+    mutate(data)
+  }
+
+  if (isLoading) {
+    return <LoaderAllPage />
+  }
 
   const buttons = () => {
     return (
       <>
-        <ButtonPrimary className="azul">Salvar</ButtonPrimary>
+        <ButtonPrimary className="azul">
+          {updateLoading ? <Loader width={16} /> : null}
+          Salvar
+        </ButtonPrimary>
         <ButtonPrimary className="laranja" onClick={editing}>
           Cancelar
         </ButtonPrimary>
@@ -55,21 +81,29 @@ export default function Profile() {
   return (
     <>
       <ProfileBar />
+      <Head>
+        <title> Profile | CPA </title>
+      </Head>
 
       <S.PageContainer>
-        <S.ContainerForm>
+        <S.ContainerForm onSubmit={handleSubmit(onSubmit)}>
           <S.ContentArea>
             <S.LeftArea>
-              <UploadImage edit={!edit} />
+              <UploadImage profileUrl={professional?.profileUrl} edit={!edit} />
             </S.LeftArea>
             <S.RightArea>
-              <Input defaultValue='' disabled={!edit}>
+              <Input
+                value={professional?.name}
+                {...register('name')}
+                disabled={!edit}
+              >
                 <TfiPencil />
               </Input>
 
               <textarea
                 placeholder="Sobre mim..."
-                defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur vitae metus eget suscipit. Cras interdum, felis ac ornare mollis, erat turpis dictum purus, sed pretium dolor tellus non urna. Morbi elit arcu, ullamcorper et justo id, ornare egestas diam. Aenean nec turpis hendrerit, accumsan mauris a, fermentum odio"
+                {...register('about')}
+                value={professional?.about}
                 disabled={!edit}
               />
             </S.RightArea>
@@ -89,154 +123,157 @@ export default function Profile() {
 
             <S.RightArea className="baixo">
               <S.ContainerInput>
-                <span>
-                  <Input
-                    defaultValue="mariabelmonte@hotmail.com "
-                    width="editProfile"
-                    disabled={!edit}
-                  >
-                    <TfiEmail />
-                  </Input>
-                  <Select
-                    icon={<BsGenderAmbiguous />}
-                    disabled={!edit}
-                  ></Select>
-                </span>
+                <Input
+                  {...register('email')}
+                  value={professional?.email}
+                  placeholder="email@email.com"
+                  disabled={!edit}
+                >
+                  <TfiEmail />
+                </Input>
+                <Select
+                  icon={<BsGenderAmbiguous />}
+                  disabled={!edit}
+                ></Select>
 
-                <span>
-                  <Input
-                    defaultValue="503.200.222-01 "
-                    width="editProfile"
-                    disabled={!edit}
-                  >
-                    <HiOutlineDocumentText />
-                  </Input>
-                  <Input width="editProfile" type="date" disabled={!edit}>
-                    <TfiPencil />
-                  </Input>
-                </span>
+                <Input
+                  {...register('cpf')}
+                  value={professional?.cpf}
+                  width="50"
+                  disabled={!edit}
+                >
+                  <HiOutlineDocumentText />
+                </Input>
+                <Input
+                  width="50"
+                  {...register('birthday')}
+                  value={professional?.birthday}
+                  type="date"
+                  disabled={!edit}>
+                  <TfiPencil />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue="11 96787-6787 "
-                    width="editProfile"
-                    disabled={!edit}
-                  >
-                    <FiSmartphone />
-                  </Input>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Telefone fixo"
-                    disabled={!edit}
-                  >
-                    <BsTelephone />
-                  </Input>
-                </span>
+                <Input
+                  {...register('phone')}
+                  value={professional?.phone}
+                  width="50"
+                  disabled={!edit}
+                >
+                  <FiSmartphone />
+                </Input>
+                <Input
+                  {...register('landline')}
+                  value={professional?.landline}
+                  width="50"
+                  placeholder="Telefone fixo"
+                  disabled={!edit}
+                >
+                  <BsTelephone />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="CEP"
-                    disabled={!edit}
-                  >
-                    <TfiLocationPin />
-                  </Input>
+                <Input
+                  value={professional?.address?.zipcode}
+                  {...register('address.zipcode')}
+                  width="50"
+                  placeholder="CEP"
+                  disabled={!edit}
+                >
+                  <TfiLocationPin />
+                </Input>
 
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Logradouro"
-                    disabled={!edit}
-                  >
-                    <BiStreetView />
-                  </Input>
-                </span>
+                <Input
+                  value={professional?.address?.street}
+                  {...register('address.street')}
+                  width="50"
+                  placeholder="Logradouro"
+                  disabled={!edit}
+                >
+                  <BiStreetView />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Bairro"
-                    disabled={!edit}
-                  >
-                    <SiOpenstreetmap />
-                  </Input>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Número"
-                    disabled={!edit}
-                  >
-                    <BsHouse />
-                  </Input>
-                </span>
+                <Input
+                  value={professional?.address?.district}
+                  {...register('address.district')}
+                  width="50"
+                  placeholder="Bairro"
+                  disabled={!edit}
+                >
+                  <SiOpenstreetmap />
+                </Input>
+                <Input
+                  value={professional?.address?.number}
+                  {...register('address.number')}
+                  width="50"
+                  placeholder="Número"
+                  disabled={!edit}
+                >
+                  <BsHouse />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Complemento"
-                    disabled={!edit}
-                  >
-                    <MdOutlineOtherHouses />
-                  </Input>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Cidade"
-                    disabled={!edit}
-                  >
-                    <BiBuildingHouse />
-                  </Input>
-                </span>
+                <Input
+                  value={professional?.address?.complement}
+                  {...register('address.complement')}
+                  width="50"
+                  placeholder="Complemento"
+                  disabled={!edit}
+                >
+                  <MdOutlineOtherHouses />
+                </Input>
+                <Input
+                  value={professional?.address?.city}
+                  {...register('address.city')}
+                  width="50"
+                  placeholder="Cidade"
+                  disabled={!edit}
+                >
+                  <BiBuildingHouse />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="UF"
-                    disabled={!edit}
-                  >
-                    <TfiLocationArrow />
-                  </Input>
+                <Input
+                  value={professional?.address?.uf}
+                  {...register('address.uf')}
+                  width="50"
+                  placeholder="UF"
+                  disabled={!edit}
+                >
+                  <TfiLocationArrow />
+                </Input>
 
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Documento Profissional"
-                    disabled={!edit}
-                  >
-                    <FaRegAddressCard />
-                  </Input>
-                </span>
+                <Input
+                  value={professional?.identificacao}
+                  {...register('identificacao')}
+                  width="50"
+                  placeholder="Documento Profissional"
+                  disabled={!edit}
+                >
+                  <FaRegAddressCard />
+                </Input>
 
-                <span>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Especialidade"
-                    disabled={!edit}
-                  >
-                    <FaRegAddressBook />
-                  </Input>
-                  <FaRegAddressBook/>
-                  <Input
-                    defaultValue=""
-                    width="editProfile"
-                    placeholder="Graduação"
-                    disabled={!edit}
-                  >
-                    <FaGraduationCap />
-                  </Input>
-                </span>
+                <Input
+                  value={professional?.especialidade}
+                  {...register('especialidade')}
+                  width="50"
+                  placeholder="Especialidade"
+                  disabled={!edit}
+                >
+                  <FaRegAddressBook />
+                </Input>
+                <Input
+                  value={professional?.graduacao}
+                  {...register('graduacao')}
+                  width="50"
+                  placeholder="Graduação"
+                  disabled={!edit}
+                >
+                  <FaGraduationCap />
+                </Input>
 
               </S.ContainerInput>
             </S.RightArea>
           </S.ContentArea>
         </S.ContainerForm>
       </S.PageContainer>
+      {isSuccess ? <Toast type='success' title='Dados atualizados com sucesso' /> : null}
     </>
   )
 }

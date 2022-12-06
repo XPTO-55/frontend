@@ -3,6 +3,7 @@ import * as S from './styles'
 import Image from 'next/image'
 import logo from '../../../../public/assets/img/logoCPA.png'
 import Link from 'next/link'
+import { useAuth } from '../../../context/auth'
 import { TfiMenu, TfiClose } from 'react-icons/tfi'
 
 export function Header() {
@@ -10,19 +11,21 @@ export function Header() {
 
   const opening = () => {
     setOpen('100%')
-
-    console.log('teste')
   }
 
   const close = () => {
     setOpen('0%')
   }
 
+  const { signed, signOut } = useAuth()
+
   return (
     <>
       <S.Header>
         <S.Container>
-          <Image src={logo} width="130.43px" height="56px" alt="logo" />
+          <Link href={'/'}>
+            <Image src={logo} width="130.43px" height="56px" alt='logo' />
+          </Link>
           <S.Navbar>
             <S.Ul>
               <Link href="/">
@@ -37,16 +40,36 @@ export function Header() {
               <Link href="/places">
                 <S.Li>Lugares</S.Li>
               </Link>
+              {
+                signed
+                  ? (
+                    <Link href="/feed">
+                      <S.Li>
+                      Feed
+                      </S.Li>
+                    </Link>
+                  )
+                  : null
+              }
             </S.Ul>
-            <Link href="/auth">
-              <S.Button>Entrar</S.Button>
-            </Link>
+            {
+              signed
+                ? (
+                  <S.Button onClick={signOut}>Sair</S.Button>
+                )
+                : (
+                  <Link href="/auth">
+                    <S.Button>Entrar</S.Button>
+                  </Link>
+                )
+            }
             <S.Icon onClick={opening}>
               <TfiMenu />
             </S.Icon>
           </S.Navbar>
         </S.Container>
       </S.Header>
+
       <S.SecondMenu tamanho={open}>
         <div>
           <img src="/assets/img/logo.png" alt="" />

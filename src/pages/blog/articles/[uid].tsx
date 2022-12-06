@@ -2,14 +2,14 @@ import React from 'react'
 import Head from 'next/head'
 import { PrismicText, SliceZone } from '@prismicio/react'
 import * as prismicH from '@prismicio/helpers'
-import * as S from './styles'
+import * as S from './_styles'
 import { createClient, linkResolver } from '../../../../prismicio'
 import { components } from '../../../../slices'
 import { Bounded } from '../../../components/blog/Bounded'
 import { Heading } from '../../../components/blog/Heading'
 import { HorizontalDivider } from '../../../components/blog/HorizontalDivider'
 import { Header } from '../../../components/Layout/Header'
-import { ArticleProps, StaticProps, LatestArticleProps } from './types'
+import { ArticleProps, StaticProps, LatestArticleProps } from './_types'
 import { GetStaticProps } from 'next'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -20,6 +20,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 
 const LatestArticle = ({ article }: LatestArticleProps) => {
   const date = prismicH.asDate(
+    // @ts-expect-error
     article?.data?.publishDate || article?.first_publication_date
   )
 
@@ -37,6 +38,7 @@ const LatestArticle = ({ article }: LatestArticleProps) => {
 
 const Article = ({ article, latestArticles }: ArticleProps) => {
   const date = prismicH.asDate(
+    // @ts-expect-error
     article.data.publishDate || article.first_publication_date
   )
 
@@ -95,8 +97,9 @@ export default Article
 
 export const getStaticProps: GetStaticProps<StaticProps> = async ({ params, previewData }) => {
   const client = createClient({ previewData })
+  const id = params.uid as string
 
-  const article = await client.getByUID('article', params.uid)
+  const article = await client.getByUID('article', id)
   const latestArticles = await client.getAllByType('article', {
     limit: 3,
     orderings: [
@@ -119,6 +122,7 @@ export async function getStaticPaths () {
   const articles = await client.getAllByType('article')
 
   return {
+    // @ts-expect-error
     paths: articles.map((article) => prismicH.asLink(article, linkResolver)),
     fallback: false
   }

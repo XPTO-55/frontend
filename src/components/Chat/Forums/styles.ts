@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: start;
   align-items: flex-start;
   gap: 2rem;
-  width: 20vw;
+  width: 25vw;
   min-width: 275px;
 `
 

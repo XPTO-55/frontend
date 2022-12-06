@@ -22,6 +22,26 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+`
+
+export const InputContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px .5px 3px;
+  border-radius: 5px;
+
+  label {
+    position: absolute;
+  }
+
+  input[type='file']{
+    visibility: hidden;
+  }
 `
 
 export const ContainerLogin = styled.div`

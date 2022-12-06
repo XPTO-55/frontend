@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PrismicText, SliceZone } from '@prismicio/react'
 import PrismicDOM from 'prismic-dom'
 import { components } from '../../../../slices'
 import { Heading } from '../../blog/Heading'
 import { PostProps } from './types'
 import * as S from './styles'
+import { useQuery } from 'react-query'
+import { ICommentsResponse } from '../../../services/types'
+import { getComments } from '../../../services/comments.service'
 import Comment from './Comment'
 import { InputComment } from './InputComment'
+import { Loader } from '../../../@shared/Loader'
 
 export const Post = ({ post }: PostProps) => {
+  const [comments, setComments] = useState<ICommentsResponse[]>([])
+  const { data, isLoading } = useQuery<ICommentsResponse[]>(['messages', post?.id], async () => await getComments(post?.id), {
+    onSuccess: (data) => {
+      setComments(data)
+    }
+  })
+
   return (
     <>
       <S.listItemStyled>
@@ -36,11 +47,16 @@ export const Post = ({ post }: PostProps) => {
           Comentários
         </Heading>
         <S.ContainerComments>
-          {post.comments.length > 0
-            ? post.comments.map(comment => <Comment key={comment.id} comment={comment} />)
-            : null}
+          {isLoading
+            ? <Loader width={36} />
+            : (
+              comments.length > 0
+                ? comments.map(comment => <Comment key={comment.id} comment={comment} />)
+                : null
+            )}
+
         </S.ContainerComments>
-        <InputComment />
+        <InputComment postId={post?.id} setComments={setComments} />
       </S.listItemStyled>
     </>
   )

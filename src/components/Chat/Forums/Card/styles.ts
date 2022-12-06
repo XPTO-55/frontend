@@ -21,4 +21,5 @@ export const Join = styled.span`
   text-overflow: ellipsis;
   color: #A7A7A7;
   font-weight: 600;
+  padding: .25rem;
 `

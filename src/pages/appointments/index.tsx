@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query'
-import { BoxAppointments } from '../../@shared/BoxAppointments'
+import { BoxAppointment } from '../../@shared/BoxAppointment'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { ProfileBar } from '../../components/Layout/ProfileBar'
+import { useAuth } from '../../context/auth'
 import { getAppointments } from '../../services/appointments.service'
 import { IAppointments } from '../../services/types'
 import * as S from './styles'
@@ -15,9 +16,10 @@ import { useState } from 'react'
 export default function Appointments() {
   const [open, setOpen] = React.useState(false)
 
+  const { user } = useAuth()
   const { data: appointments = [], isLoading } = useQuery<IAppointments[]>(
-    ['appointments'],
-    getAppointments
+    ['appointments'], async () =>
+      await getAppointments(user?.id)
   )
 
   if (isLoading) {

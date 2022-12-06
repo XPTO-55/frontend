@@ -11,8 +11,8 @@ export const Container = styled.div`
 `
 
 export const ImageContainer = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
 `
 

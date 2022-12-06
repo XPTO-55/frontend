@@ -1,13 +1,14 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { ProfileBar } from '../../../components/Layout/ProfileBar'
 import { ProfessionalCard } from '../../../components/Professional-list/ProfessionalCard'
-import * as S from './styles'
+import * as S from './_styles'
 import { Input } from '../../../@shared/Input'
 import { BiSearch } from 'react-icons/bi'
 import { getProfessionals } from '../../../services/professional.service'
 import { useQuery } from 'react-query'
 import { IProfessional } from '../../../services/types'
 import { LoaderAllPage } from '../../../components/Layout/LoaderAllPage'
+import Head from 'next/head'
 
 interface ProfessionalProps {
   setSelectProfessional: Dispatch<SetStateAction<IProfessional>>
@@ -20,8 +21,6 @@ export default function ProfessionalList({
     ['professionals'],
     getProfessionals
   )
-
-  console.log('professionals', professionals)
 
   const [search, setSearch] = useState('')
 
@@ -41,7 +40,9 @@ export default function ProfessionalList({
   return (
     <>
       <ProfileBar />
-
+      <Head>
+        <title> Profissionais | CPA </title>
+      </Head>
       <div>
         <S.PageContainer>
           <S.Header>
@@ -64,7 +65,7 @@ export default function ProfessionalList({
                       name={professional.name}
                       graduacao={professional.graduacao}
                       especialidade={professional.especialidade}
-                      ratings={professional.ratings}
+                      // ratings={professional.ratings}
                     />
                   )
                 })

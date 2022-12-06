@@ -2,21 +2,33 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useAuth } from '../../../context/auth'
 import * as S from './styles'
+import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
 
 export function ProfileBar () {
   const [openMenu, setOpenMenu] = useState(false)
-  const { signOut } = useAuth()
+  const { signOut, user } = useAuth()
+  // const {} = useQuery<Blob>(['profileImage', user.id], getProfi)
 
   return (
     <S.Container>
-      <S.LogoContainer>
-        <S.Logo src={'/assets/img/logoSemTexto.png'} alt="" />
-      </S.LogoContainer>
+      <Link href={'/'}>
+        <S.LogoContainer>
+          <S.Logo src={'/assets/img/logoSemTexto.png'} alt="" />
+        </S.LogoContainer>
+      </Link>
       <S.UserInfo>
-        <S.Username>nazaré tedesco</S.Username>
-        <S.ImageProfileContainer>
-          <S.ImageProfile src="/assets/img/profile.png" alt="" />
-        </S.ImageProfileContainer>
+        <Link href={`/users/${user?.userType}/profile`}>
+          <S.Username>{user?.username}</S.Username>
+        </Link>
+        <Link href={`/users/${user?.userType}/profile`}>
+          <S.ImageProfileContainer>
+            <S.ImageProfile
+              src={makeProfileImageurlS3(user?.profileUrl)}
+              alt="user profile image"
+            />
+          </S.ImageProfileContainer>
+        </Link>
+
         <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
           <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
             <div onClick={() => setOpenMenu(prev => !prev)} className="one"></div>
@@ -29,10 +41,25 @@ export function ProfileBar () {
           >
             <ul>
               <li>
-                Configurações
+                <Link href={'/'}>
+                  <a href="">
+                    Inicio
+                  </a>
+                </Link>
               </li>
               <li>
-                Ajuda e suporte
+                <Link href={'/feed'}>
+                  <a href="">
+                    Feed
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href={'/chat'}>
+                  <a href="">
+                    Chat
+                  </a>
+                </Link>
               </li>
               <li>
                 <Link href={'/faq'}>

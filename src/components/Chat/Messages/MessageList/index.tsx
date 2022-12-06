@@ -1,17 +1,18 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import { Loader } from '../../../../@shared/Loader'
-import { getForumMessages } from '../../../../services/forum.service'
-import { IForum, IForumMessages } from '../../../../services/types'
+import { useAuth } from '../../../../context/auth'
+import { getMessages } from '../../../../services/messages.service'
+import { IForum, IMessage } from '../../../../services/types'
+import { LoaderAllPage } from '../../../Layout/LoaderAllPage'
 import { MessageCard } from './MessageCard'
 import * as S from './styles'
-
 interface InfoProps {
   data: IForum
 }
 
 export default function MessageList({ data }: InfoProps) {
-  const { data: forumsMessages, isLoading } = useQuery<IForumMessages>(['forums', data?.id], getForumMessages)
+  const { user, loading } = useAuth()
+  const { data: messages = [], isLoading } = useQuery<IMessage[]>(['messages', data?.id], async () => await getMessages(data?.id))
 
   if (!data?.id) {
     return (
@@ -21,15 +22,14 @@ export default function MessageList({ data }: InfoProps) {
     )
   }
 
-  if (isLoading) {
-    return <Loader width={32} />
+  if (isLoading || loading) {
+    return <LoaderAllPage />
   }
-
   return (
     <S.Container>
       {
-        forumsMessages
-          ? forumsMessages.messages.map(message => <MessageCard key={message.id} data={message} />)
+        messages.length
+          ? messages.map(message => <MessageCard className={String(message?.userId) === String(user?.id) ? 'my-message' : null} key={message.id} message={message} />)
           : null}
     </S.Container>
   )

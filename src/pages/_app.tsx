@@ -9,7 +9,18 @@ import { Heading } from '../components/blog/Heading'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import * as Toast from '@radix-ui/react-toast'
 import { AuthProvider } from '../context/auth'
-const queryClient = new QueryClient()
+import { ChatProvider } from '../context/chat'
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false
+    },
+    mutations: {
+      retry: false
+    }
+  }
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   const NextLinkShim = ({ href, children, locale, ...props }) => {
@@ -73,17 +84,22 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
   return (
     <QueryClientProvider client={queryClient}>
+      {/* <Hydrate state={pageProps?.dehydratedState}> */}
       <AuthProvider>
-        <Toast.Provider>
-          <PrismicProvider
-            linkResolver={linkResolver}
-            internalLinkComponent={NextLinkShim}
-            richTextComponents={richTextComponents}>
-            <Component {...pageProps} />
-            <GlobalStyles />
-          </PrismicProvider>
-        </Toast.Provider>
+        <ChatProvider>
+          <Toast.Provider>
+            <PrismicProvider
+              // @ts-expect-error
+              linkResolver={linkResolver}
+              internalLinkComponent={NextLinkShim}
+              richTextComponents={richTextComponents}>
+              <Component {...pageProps} />
+              <GlobalStyles />
+            </PrismicProvider>
+          </Toast.Provider>
+        </ChatProvider>
       </AuthProvider>
+      {/* </Hydrate> */}
     </QueryClientProvider>
   )
 }

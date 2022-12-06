@@ -8,11 +8,12 @@ export const Container = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  height: 50px;
 `
 
 export const ImageContainer = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
 `
 
@@ -25,11 +26,17 @@ export const ProfileImage = styled.img`
 
 export const TextContainer = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
   gap: 2px;
 `
 
 export const ForumName = styled.h6`
+  width: 80%;
   font-size: 1rem;
   font-weight: 600;
   line-height: 20px;

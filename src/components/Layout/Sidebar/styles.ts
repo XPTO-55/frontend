@@ -7,7 +7,7 @@ export const Container = styled.aside`
   justify-content: flex-start;
   padding-top: 1.75rem;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   width: 20vw;
   background-color: #2A8DD2;
 `
@@ -18,12 +18,14 @@ export const ProfileInfo = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 
   h3 {
-    font-size: 1.5rem;
-    line-height: 38.73px;
+    font-size: 1.25rem;
+    line-height: 2rem;
     color: #f6f6f6;
     font-weight: 400;
+    text-transform: capitalize;
   }
 `
 

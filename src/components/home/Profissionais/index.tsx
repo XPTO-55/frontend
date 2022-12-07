@@ -4,8 +4,10 @@ import { ButtonPrimary } from '../../../@shared/ButtonPrimary'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import Link from 'next/link'
+import { useAuth } from '../../../context/auth'
 
 export function Profissionais() {
+  const { signed } = useAuth()
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -60,7 +62,7 @@ export function Profissionais() {
                       Qualificação em TEA pela Associação Brasileira de Psiquiatria infantil.
 
                     </h3>
-                    <Link href={'/users/professionals'}>
+                    <Link href={signed ? '/users/professionals' : '/auth'}>
                       <ButtonPrimary className="azul">
                         Saiba mais!
                       </ButtonPrimary>
@@ -156,8 +158,7 @@ function Arrow(props: {
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'
-        } ${disabeld}`}
+      className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'} ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

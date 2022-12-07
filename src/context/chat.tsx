@@ -8,6 +8,7 @@ interface ChatContextData {
   sendMessage: (message: string) => void
   connected: boolean
   notifications: IMessageNotification[]
+  readNotification: (notificationId: number) => void
 }
 
 interface IMessageNotification extends IMessage {
@@ -24,8 +25,22 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
   const [socket] = useSocket()
   const { user, signed } = useAuth()
   const [connected, setConnected] = useState(false)
-  const [notifications, setNotifications] = useState<IMessageNotification[]>()
+  const [notifications, setNotifications] = useState<IMessageNotification[]>([])
   const [notification, setNotification] = useState<IMessageNotification>({} as IMessageNotification)
+
+  const readNotification = (notificationId: number) => {
+    setNotifications(prev => (
+      prev
+        ? prev.map(notif => {
+          if (notif.id === notificationId) {
+            notif.read = true
+            return notif
+          }
+          return notif
+        })
+        : prev
+    ))
+  }
 
   useEffect(() => {
     if (signed) {
@@ -61,7 +76,7 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
 
   const onMessageReceived = (payload) => {
     const payloadData = JSON.parse(payload.body)
-    setNotifications(prev => ([{ ...prev }, {
+    setNotifications(prev => ([...prev, {
       ...payloadData,
       read: false
     }]))
@@ -156,7 +171,7 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
   // se subreescrever nos chats daquele user
   // quando chegar uma mensagem, mostrar o toast na tela
   return (
-    <ChatContext.Provider value={{ sendMessage, connected, notifications }}>
+    <ChatContext.Provider value={{ sendMessage, connected, notifications, readNotification }}>
       {children}
       {Object.keys(notification).length > 0
         ? (

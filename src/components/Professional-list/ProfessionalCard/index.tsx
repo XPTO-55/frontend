@@ -12,11 +12,7 @@ export const ProfessionalCard = ({
   ratings,
   especialidade
 }: PrefessionalCardProps) => {
-  const contador = []
-
-  for (let index = 1; index < ratings; index++) {
-    contador.push(index)
-  }
+  const rating = Object.keys(ratings).length > 0 ? ratings.reduce((media, rating) => media + rating.rating, 0) / ratings.length : 0
 
   return (
     <S.ContainerCard>
@@ -26,7 +22,7 @@ export const ProfessionalCard = ({
       </S.ContainerInside>
       <S.ContainerInside className="edit">
         <span>
-          {contador.map((index) => {
+          {new Array(Math.floor(rating ?? 0)).fill(null).map((index) => {
             return <AiFillStar key={index} />
           })}
         </span>

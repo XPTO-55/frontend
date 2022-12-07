@@ -60,7 +60,9 @@ export default function RedefinePassword() {
       <S.Container>
         <S.BoxContent>
           <p>
-            <img src="/assets/img/logoCPA.png" alt="" />
+            <Link href={'/'}>
+              <img src="/assets/img/logoCPA.png" alt="" />
+            </Link>
             <h1>Redefinição de senha</h1>
           </p>
 

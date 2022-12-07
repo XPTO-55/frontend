@@ -3,6 +3,10 @@ export default interface PrefessionalCardProps {
   name: string
   graduacao?: string
   identificacao?: string
-  ratings?: number
+  ratings: [{
+    rating: number
+    comment: string
+    profissional: string
+  }]
   especialidade?: string
 }

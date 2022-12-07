@@ -16,123 +16,10 @@ import {
   Marker,
   StandaloneSearchBox
 } from '@react-google-maps/api'
+import Head from 'next/head'
 interface PlaceProps {
   setSelectPlace: Dispatch<SetStateAction<IPlaces>>
 }
-
-const mockListLocals = [
-  {
-    lat: -23.51115894898398,
-    lng: -46.41538542894575,
-    omg: 'teste'
-  },
-
-  {
-    lat: -23.510778318129447,
-    lng: -46.41410726098539,
-    omg: 'teste'
-  },
-  {
-    lat: -23.511132492206777,
-    lng: -46.416371045190814,
-    omg: 'teste'
-  },
-  {
-    lat: -23.509784657994743,
-    lng: -46.414922652452745,
-    omg: 'teste'
-  },
-  {
-    lat: -23.513532980292293,
-    lng: -46.41345280204449,
-    omg: 'teste'
-  },
-  {
-    lat: -23.554289602789368,
-    lng: -46.65756426053054,
-    omg: 'teste'
-  },
-  {
-    lat: -23.553207756153906,
-    lng: -46.65380916824667,
-    omg: 'teste'
-  },
-  {
-    lat: -23.553925709914953,
-    lng: -46.658787347731575,
-    omg: 'teste'
-  },
-  {
-    lat: -23.552086560244557,
-    lng: -46.655836918079956,
-    omg: 'teste'
-  },
-  {
-    lat: -23.554883574882936,
-    lng: -46.65495580586125,
-    omg: 'teste'
-  },
-  {
-    lat: -23.556800184527454,
-    lng: -46.6570750894563,
-    omg: 'teste'
-  },
-  {
-    lat: -23.55537902767396,
-    lng: -46.65211112989475,
-    omg: 'teste'
-  },
-  {
-    lat: -23.551298005598007,
-    lng: -46.655112263039406,
-    omg: 'teste'
-  },
-  {
-    lat: -23.55559315241306,
-    lng: -46.65497335584123,
-    omg: 'teste'
-  },
-  {
-    lat: -23.552115054243625,
-    lng: -46.663337871501966,
-    omg: 'teste'
-  },
-  {
-    lat: -23.552747442574866,
-    lng: -46.651897743553604,
-    omg: 'teste'
-  },
-  {
-    lat: -23.550534070104767,
-    lng: -46.65925621781184,
-    omg: 'teste'
-  },
-  {
-    lat: -23.556963287026203,
-    lng: -46.661900669498394,
-    omg: 'teste'
-  },
-  {
-    lat: -23.553722368624552,
-    lng: -46.645976471298916,
-    omg: 'teste'
-  },
-  {
-    lat: -23.555250616527825,
-    lng: -46.648735899145755,
-    omg: 'teste'
-  },
-  {
-    lat: -23.54950642021789,
-    lng: -46.64942575610747,
-    omg: 'teste'
-  },
-  {
-    lat: -23.551825208574986,
-    lng: -46.650661749830526,
-    omg: 'teste'
-  }
-]
 
 export default function Places({ setSelectPlace }: PlaceProps) {
   const [loaded, setLoaded] = useState<boolean>(false)
@@ -189,6 +76,9 @@ export default function Places({ setSelectPlace }: PlaceProps) {
 
   return (
     <>
+      <Head>
+        <title> Lugares | CPA </title>
+      </Head>
       <Header />
       <S.PageContainer>
         <S.MapsContainer>
@@ -215,16 +105,26 @@ export default function Places({ setSelectPlace }: PlaceProps) {
                 {loaded
                   ? (
                     <>
-                      <Marker position={position} />
-                      {mockListLocals.map((posicao, index) => {
-                        return (
-                          <Marker
-                            key={index}
-                            position={posicao}
-                            icon="/assets/img/pointer.png"
-                          />
-                        )
-                      })}
+                      <a target={'_blank'} href={`https://www.google.com/maps/?q=${position.lat ?? 0},${position.lng ?? 0}`} rel="noreferrer">
+                        <Marker position={position} />
+                      </a>
+
+                      {places.length
+                        ? places.map((place, index) => {
+                          return (
+                            <a target={'_blank'} key={index} href={`https://www.google.com/maps/?q=${place.address.latitude ?? 0},${place.address.longitude ?? 0}`} rel="noreferrer">
+                              <Marker
+                                key={index}
+                                position={{
+                                  lat: place.address.latitude ?? 0,
+                                  lng: place.address.latitude ?? 0
+                                }}
+                                icon="/assets/img/pointer.png"
+                              />
+                            </a>
+                          )
+                        })
+                        : null}
                     </>
                   )
                   : (

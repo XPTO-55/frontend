@@ -10,6 +10,8 @@ export interface IPlaces {
     zipcode: string
     city: string
     uf: string
+    latitude: number
+    longitude: number
   }
 }
 

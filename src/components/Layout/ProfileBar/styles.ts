@@ -54,11 +54,11 @@ export const ImageProfile = styled.img`
   border-radius: 50%;
 `
 
-interface HamburguerMenuContainerrops {
+interface MenuContainerProps {
   open: boolean
 }
 
-export const HamburguerMenuContainer = styled.div<HamburguerMenuContainerrops>`
+export const HamburguerMenuContainer = styled.div<MenuContainerProps>`
   height: 40px;
   justify-content: center;
   align-items: center;
@@ -66,7 +66,7 @@ export const HamburguerMenuContainer = styled.div<HamburguerMenuContainerrops>`
   cursor: pointer;
 `
 
-export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
+export const Hamburguer = styled.div<MenuContainerProps>`
   width: 40px;
   height: 4px;
 
@@ -95,7 +95,7 @@ export const Hamburguer = styled.div<HamburguerMenuContainerrops>`
   }
 `
 
-export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
+export const HamburguerMenu = styled.nav<MenuContainerProps>`
   display: ${(props) => (props.open ? 'block' : 'none')};
   z-index: 10;
   background-color: #2a8dd2;
@@ -127,4 +127,53 @@ export const HamburguerMenu = styled.nav<HamburguerMenuContainerrops>`
       }
     }
   }
+`
+
+export const NotificationsMenu = styled.nav<MenuContainerProps>`
+  display: ${(props) => (props.open ? 'block' : 'none')};
+  z-index: 10;
+  background-color: #2a8dd2;
+  position: ${(props) => (props.open ? 'absolute' : 'static')};
+  right: 2rem;
+  top: ${(props) => (props.open ? '12vh' : 0)};
+  border-radius: 0 0 7px 7px;
+
+  ul {
+    width: 250px;
+    overflow: hidden;
+    li {
+      padding:1rem;
+      display: flex;
+      justify-content: center;
+      word-wrap: break-word;
+      &:hover {
+        background-color: #0A6CB2;
+        &:last-child {
+          border-radius: 0 0 7px 7px;
+        }
+      }
+
+      a {
+        transition-duration:0.5s;
+        font-size:1rem;
+        display: block;
+        text-decoration: none;
+        color: #f6f6f6;
+      }
+    }
+  }
+`
+
+export const ButtonNotifications = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .25rem;
+  background-color: #f6f6f6;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: .25rem .5rem;
+  box-shadow: inside .5px .5px .5px #212121;
+  cursor: pointer;
 `

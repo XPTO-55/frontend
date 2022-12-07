@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { useAuth } from '../../../context/auth'
 import * as S from './styles'
 import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
+import { useChat } from '../../../context/chat'
+import { BiNotification } from 'react-icons/bi'
 
 export function ProfileBar () {
   const [openMenu, setOpenMenu] = useState(false)
   const [openNotifications, setOpenNotifications] = useState(false)
   const { signOut, user } = useAuth()
+  const { notifications, readNotification } = useChat()
   // const {} = useQuery<Blob>(['profileImage', user.id], getProfi)
 
   return (
@@ -30,7 +33,38 @@ export function ProfileBar () {
           </S.ImageProfileContainer>
         </Link>
 
-        <button>Notifications</button>
+        <S.ButtonNotifications onClick={(e) => {
+          e.stopPropagation()
+          setOpenNotifications((prev) => !prev)
+        }}>
+          <BiNotification size={24} />
+          Notificações
+        </S.ButtonNotifications>
+
+        <S.NotificationsMenu
+          open={openNotifications}
+          onClick={e => e.stopPropagation()}
+        >
+          <ul>
+            {notifications?.length
+              ? notifications.map(notification => {
+                if (!notification.read) {
+                  return (
+                    <li onClick={(e) => {
+                      e.stopPropagation()
+                      readNotification(notification.id)
+                    }} key={notification.id}>
+                      {notification.message}
+                    </li>
+                  )
+                }
+                return null
+              })
+              : (
+                <li>Não há novas mensagens</li>
+              )}
+          </ul>
+        </S.NotificationsMenu>
 
         <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
           <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
@@ -44,9 +78,16 @@ export function ProfileBar () {
           >
             <ul>
               <li>
-                <Link href={'/'}>
+                <Link href={'/users/professionals'}>
                   <a href="">
-                    Inicio
+                    Profissionais
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href={'/appointments'}>
+                  <a href="">
+                    Consultas
                   </a>
                 </Link>
               </li>

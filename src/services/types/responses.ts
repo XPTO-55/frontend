@@ -126,6 +126,7 @@ export interface ICommentsResponse {
 export interface IAppointments {
   date: string
   professional: string
+  professionalId: number
   patient: string
   especiality: string
 }

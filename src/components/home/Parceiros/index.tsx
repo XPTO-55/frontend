@@ -7,32 +7,32 @@ export const Parceiros = () => {
     {
       id: 1,
       nome: 'Apple',
-      url: 'assets/img/mcparceiro.png'
+      url: 'assets/img/mcparceiro.jpeg'
     },
     {
       id: 2,
       nome: 'Apple',
-      url: '/assets/img/raiaparceira.png'
+      url: '/assets/img/raiaparceira.jpeg'
     },
     {
       id: 3,
       nome: 'Apple',
-      url: 'assets/img/ondaparceiro.png'
+      url: 'assets/img/ondaparceiro.jpeg'
     },
     {
       id: 4,
       nome: 'Apple',
-      url: 'assets/img/aacdoarceiro.png'
+      url: 'assets/img/aacdoarceiro.jpeg'
     },
     {
       id: 5,
       nome: 'Apple',
-      url: 'assets/img/cinemarkparceiro.jpg'
+      url: 'assets/img/cinemarkparceiro.jpeg'
     },
     {
       id: 6,
       nome: 'Apple',
-      url: 'assets/img/masterparceira.jfif'
+      url: 'assets/img/masterparceira.jpeg'
     }
   ]
 

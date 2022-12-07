@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -16,14 +16,14 @@ export const PageContainer = styled.div`
   @media (max-width: 1000px) {
     height: 700px;
   }
-`
+`;
 
 export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
   height: 600px;
   color: white;
-`
+`;
 
 export const ContainerInfoProf = styled.div`
   width: 100%;
@@ -31,7 +31,7 @@ export const ContainerInfoProf = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const ContainerInfoProfContent = styled.div`
   width: 50%;
@@ -47,6 +47,7 @@ export const ContainerInfoProfContent = styled.div`
     justify-content: center;
     flex-direction: column;
     padding-left: 150px;
+    gap: 0.5rem;
 
     @media (max-width: 1000px) {
       padding-right: 180px;
@@ -57,7 +58,6 @@ export const ContainerInfoProfContent = styled.div`
     h1 {
       font-size: 36px;
       font-weight: bold;
-      width: 300px;
 
       @media (max-width: 1000px) {
         margin-bottom: 10px;
@@ -74,6 +74,7 @@ export const ContainerInfoProfContent = styled.div`
       font-size: 17px;
       width: 500px;
       margin-bottom: 10px;
+      line-height: 1.5rem;
 
       @media (max-width: 1000px) {
         width: 300px;
@@ -95,7 +96,7 @@ export const ContainerInfoProfContent = styled.div`
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
   }
-`
+`;
 
 export const bordaImgProf = styled.div`
   width: 354px;
@@ -110,7 +111,7 @@ export const bordaImgProf = styled.div`
   @media (max-width: 1000px) {
     display: none;
   }
-`
+`;
 
 export const Svg = styled.svg`
   margin-top: -280px;
@@ -119,4 +120,4 @@ export const Svg = styled.svg`
   @media (max-width: 1000px) {
     display: none;
   }
-`
+`;

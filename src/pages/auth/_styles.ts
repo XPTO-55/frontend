@@ -23,6 +23,26 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+
+  h1{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: 10px;
+    margin-top: 20px;
+    color: white;
+    font-size: 80px;
+    cursor: pointer;
+    transition: all .3s;
+
+    :hover{
+      color: #0A6CB2;
+    }
+  }
+
+
 `
 
 export const ContainerLogin = styled.div`

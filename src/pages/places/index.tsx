@@ -9,6 +9,7 @@ import { getPlaces, IPlaces } from '../../services/places.service'
 import { BiSearch } from 'react-icons/bi'
 import * as S from './_styles'
 import 'leaflet/dist/leaflet.css'
+import Link from 'next/link'
 import {
   GoogleMap,
   LoadScript,
@@ -149,13 +150,13 @@ export default function Places({ setSelectPlace }: PlaceProps) {
     React.useState<google.maps.places.SearchBox>()
   const [map, setMap] = React.useState<google.maps.Map>()
 
-  function handleClickPlace(place: IPlaces) {
-    setSelectPlace(place)
-  }
-
-  // if (isLoading) {
-  //   return <LoaderAllPage />
+  // function handleClickPlace(place: IPlaces) {
+  //   setSelectPlace(place)
   // }
+
+  if (isLoading) {
+    return <LoaderAllPage />
+  }
 
   const onPlacesChanged = () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -239,11 +240,10 @@ export default function Places({ setSelectPlace }: PlaceProps) {
             ? (
               places.map((place) => {
                 return (
-                  <CardPlace
-                    onClick={() => handleClickPlace(place)}
-                    key={place.idLugar}
-                    place={place}
-                  />
+                  // eslint-disable-next-line react/jsx-key
+                  <Link href="https://www.google.com.br/maps">
+                    <CardPlace key={place.idLugar} place={place} />
+                  </Link>
                 )
               })
             )

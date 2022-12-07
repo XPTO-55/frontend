@@ -14,6 +14,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { useAuth } from '../../context/auth'
 import { useMutation } from 'react-query'
 import { Loader } from '../../@shared/Loader'
+import { IoIosArrowBack } from 'react-icons/io'
 // import { Toast } from '../../@shared/Toast'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -46,6 +47,12 @@ export default function Auth() {
         <title> Login | CPA</title>
       </Head>
       <S.Container>
+        <Link href="/">
+          <h1>
+            <IoIosArrowBack/>
+          </h1>
+        </Link>
+
         <S.ContainerLogin>
           <Link href="/">
             <S.Img src="/assets/img/logoCPA.png" alt="" />

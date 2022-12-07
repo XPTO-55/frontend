@@ -92,6 +92,10 @@ export function Header() {
           <p>Lugares</p>
         </Link>
 
+        <Link href="/auth">
+          <p>Login</p>
+        </Link>
+
         <span onClick={close}>
           <TfiClose />
         </span>

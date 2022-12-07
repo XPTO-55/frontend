@@ -3,7 +3,7 @@ import { IAppointments } from './types/responses'
 
 export const getAppointments = async (userId: number) => {
   try {
-    const { data } = await api.get(`/appointments/${userId}`)
+    const { data } = await api.get('/appointments')
     return data as IAppointments[]
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {

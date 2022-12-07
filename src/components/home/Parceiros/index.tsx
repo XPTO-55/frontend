@@ -7,32 +7,32 @@ export const Parceiros = () => {
     {
       id: 1,
       nome: 'Apple',
-      url: '/assets/img/imgParceiro.png'
+      url: 'assets/img/mcparceiro.png'
     },
     {
       id: 2,
       nome: 'Apple',
-      url: '/assets/img/imgParceiro.png'
+      url: '/assets/img/raiaparceira.png'
     },
     {
       id: 3,
       nome: 'Apple',
-      url: '/assets/img/imgParceiro.png'
+      url: 'assets/img/ondaparceiro.png'
     },
     {
       id: 4,
       nome: 'Apple',
-      url: '/assets/img/imgParceiro.png'
+      url: 'assets/img/aacdoarceiro.png'
     },
     {
       id: 5,
       nome: 'Apple',
-      url: '/assets/img/imgParceiro.png'
+      url: 'assets/img/cinemarkparceiro.jpg'
     },
     {
       id: 6,
       nome: 'Apple',
-      url: '/assets/img/imgParceiro.png'
+      url: 'assets/img/masterparceira.jfif'
     }
   ]
 
@@ -115,7 +115,7 @@ function Arrow(props: {
     <svg
       onClick={props.onClick}
       className={`arrow2 ${props.left ? 'arrow--left' : 'arrow--right'
-      } ${disabeld}`}
+        } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

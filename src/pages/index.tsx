@@ -19,9 +19,7 @@ export default function Home() {
           <S.TextoMain>
             <h1>Comunidade de parceiros autistas</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
-              Vulputate sit amet, consectetur adipiscing elit.
+              Venha fazer parte da nossa comunidade e tenha acesso a informações e dicas sobre autismo :)
             </p>
             <Link href={'/auth'}>
               <ButtonPrimary>Cadastra-se</ButtonPrimary>
@@ -59,9 +57,7 @@ export default function Home() {
             </div>
             <h1>Missão</h1>
             <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
-              Vulputate sit amet, consectetur adipiscing elit.
+              Criar uma comunidade onde pais e responsáveis tenham acesso a informação de forma facilitada e com entendimento necessário sobre o assunto.
             </span>
           </S.CardMvv>
           <S.CardMvv className="visao">
@@ -79,9 +75,7 @@ export default function Home() {
             </div>
             <h1>Visão</h1>
             <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
-              Vulputate sit amet, consectetur adipiscing elit.
+              Ser um time obstinado em prever e atender as necessidades dos clientes e consumidores sempre agregando valor.
             </span>
           </S.CardMvv>
           <S.CardMvv className="valores">
@@ -99,9 +93,7 @@ export default function Home() {
             </div>
             <h1>Valores</h1>
             <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              blandit magna rhoncus neque. Enim, amet, risus aliquam sed lectus.
-              Vulputate sit amet, consectetur adipiscing elit.
+              Os valores da nossa comunidade se baseia em dedicação, resiliência e empatia.
             </span>
           </S.CardMvv>
         </S.ContainerMvv>
@@ -113,7 +105,7 @@ export default function Home() {
 
             <S.BorderImg>
 
-              <S.ImgSobre/>
+              <S.ImgSobre />
 
             </S.BorderImg>
 
@@ -121,19 +113,9 @@ export default function Home() {
               <h1>Sobre nós</h1>
               <h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam blandit magna rhoncus neque. Enim, amet, risus aliquam
-                  sed lectus. Vulputate ullamcorper augue praesent integer. Nunc
-                  volutpat laoreet curabitur lacinia. aliquam sed lectus.
-                  Vulputate ullamcorper augue praesent integer. Nunc volutpat
-                  laoreet curabitur lacinia
-                </p>
+                  Atualmente o autismo está em evidência na sociedade e a falta de informação dificulta o relacionamento de pessoas nessa situação, incluindo pais, profissionais e o indivíduo, por isso, nosso projeto nasceu da necessidade de ajudar esse grupo de pessoas, de que forma? </p>
+                <p> Criamos uma comunidade  que une estes interessados sobre o assunto em uma plataforma, onde eles podem interagir entre si, trocar informações e o mais importante de tudo, criar e fortalecer vínculos.
 
-                <p>
-                  Vulputate ullamcorper augue praesent integer. Nunc volutpat
-                  laoreet curabitur lacinia. aliquam sed lectus. Vulputate
-                  ullamcorper augue praesent integer. Nunc volutpat laoreet
-                  curabitur lacinia
                 </p>
               </h2>
               <Link href={'/auth'}>
@@ -203,7 +185,7 @@ export default function Home() {
           <h3>Email: grupocpasuporte@gmail.com</h3>
           <Link href={'/auth'}>
             <ButtonPrimary className="laranja">
-                Acesse sua conta
+              Acesse sua conta
             </ButtonPrimary>
           </Link>
         </S.ContainerContentFooter>

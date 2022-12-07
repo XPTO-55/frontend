@@ -7,7 +7,7 @@ export const CardPlace = ({ place, ...props }: CardPlaceProps) => {
     <S.CardContainer {...props}>
       <S.ContainerCardLeft>
         <img
-          src="https://aguiarbuenosaires.com/wp-content/uploads/2019/03/teatro-colon-1.jpg"
+          src={place.imageUrl}
           alt=""
         />
       </S.ContainerCardLeft>

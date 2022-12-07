@@ -2,6 +2,7 @@ import { api } from './api'
 
 export interface IPlaces {
   idLugar: number
+  imageUrl: string
   nomeLugar: string
   address: {
     street: string

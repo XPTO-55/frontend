@@ -11,6 +11,7 @@ export const PageContainer = styled.div`
 
 export const Container = styled.div`
   height: 100%;
+  max-width: 1200px;
   width: calc(100% - 4rem);
   display: flex;
   align-items: flex-start;

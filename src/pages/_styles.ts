@@ -202,7 +202,7 @@ export const ContainerContent = styled.div`
 
   div {
     width: 40%;
-    height: 10%;
+    height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -295,7 +295,6 @@ export const ContainerFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #f0f2f2;
   flex-direction: column;
 `;
 

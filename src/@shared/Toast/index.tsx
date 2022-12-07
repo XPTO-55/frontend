@@ -9,7 +9,7 @@ export function Toast({
 }: ToastProps) {
   return (
     <>
-      <S.ToastRoot data-type={type} duration={1000}>
+      <S.ToastRoot data-type={type} duration={1000} {...props}>
         <S.ToastTitle>
           {props.title}
         </S.ToastTitle>

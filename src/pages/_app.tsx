@@ -86,8 +86,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       {/* <Hydrate state={pageProps?.dehydratedState}> */}
       <AuthProvider>
-        <ChatProvider>
-          <Toast.Provider>
+        <Toast.Provider>
+          <ChatProvider>
             <PrismicProvider
               // @ts-expect-error
               linkResolver={linkResolver}
@@ -96,8 +96,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               <Component {...pageProps} />
               <GlobalStyles />
             </PrismicProvider>
-          </Toast.Provider>
-        </ChatProvider>
+          </ChatProvider>
+        </Toast.Provider>
       </AuthProvider>
       {/* </Hydrate> */}
     </QueryClientProvider>

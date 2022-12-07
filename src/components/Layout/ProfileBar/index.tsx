@@ -6,6 +6,7 @@ import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
 
 export function ProfileBar () {
   const [openMenu, setOpenMenu] = useState(false)
+  const [openNotifications, setOpenNotifications] = useState(false)
   const { signOut, user } = useAuth()
   // const {} = useQuery<Blob>(['profileImage', user.id], getProfi)
 
@@ -28,6 +29,8 @@ export function ProfileBar () {
             />
           </S.ImageProfileContainer>
         </Link>
+
+        <button>Notifications</button>
 
         <S.HamburguerMenuContainer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>
           <S.Hamburguer open={openMenu} onClick={() => setOpenMenu(prev => !prev)}>

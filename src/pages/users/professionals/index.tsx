@@ -65,7 +65,7 @@ export default function ProfessionalList({
                       name={professional.name}
                       graduacao={professional.graduacao}
                       especialidade={professional.especialidade}
-                      // ratings={professional.ratings}
+                      ratings={professional.ratings}
                     />
                   )
                 })

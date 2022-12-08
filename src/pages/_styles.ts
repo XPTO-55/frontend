@@ -107,6 +107,7 @@ export const ContainerMvv = styled.div`
 
 export const CardMvv = styled.div`
   width: 380px;
+  text-align: left;
   height: 400px;
   border-radius: 7px;
   background-color: #e6e9ea;
@@ -201,7 +202,7 @@ export const ContainerContent = styled.div`
 
   div {
     width: 40%;
-    height: 10%;
+    height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -214,6 +215,7 @@ export const ContainerContent = styled.div`
 
     h2 p {
       margin-bottom: 20px;
+      line-height: 1.5rem;
     }
   }
 
@@ -293,7 +295,6 @@ export const ContainerFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #f0f2f2;
   flex-direction: column;
 `
 

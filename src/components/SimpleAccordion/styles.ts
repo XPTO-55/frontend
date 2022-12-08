@@ -28,6 +28,7 @@ export const ContainerContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  line-height: 1.5rem;
 
   ::-webkit-scrollbar {
     width: 9px;

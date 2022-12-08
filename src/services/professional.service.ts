@@ -1,5 +1,5 @@
 import { api } from './api'
-import { ICreateProfessionalRequest, IProfessional, IUpdateProfessionalRequest, IUserResponse } from './types'
+import { ICreateProfessionalRatingRequest, ICreateProfessionalRequest, IProfessional, IUpdateProfessionalRequest, IUserResponse } from './types'
 
 export const getProfessionals = async () => {
   const { data } = await api.get('/professionals')
@@ -32,4 +32,8 @@ export const updateProfessionalProfileImage = async (id: number, data: FormData)
       'Content-Type': 'image/jpeg'
     }
   })
+}
+
+export const createRatingProfessional = async (professionalId: number, data: ICreateProfessionalRatingRequest) => {
+  await api.post(`/professional/${professionalId}/rating`, data)
 }

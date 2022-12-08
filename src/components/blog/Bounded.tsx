@@ -16,25 +16,25 @@ export const Bounded = ({
 }: BoundedProps) => {
   const Comp = asChild ? Slot : 'div'
   return (
-    <BoundedContainer>
-      <Comp {...props}>
-        <BoundedStyled size={size}>
-          {children}
-        </BoundedStyled>
-      </Comp>
-    </BoundedContainer>
+    <>
+      <BoundedContainer>
+        <Comp {...props}>
+          <BoundedStyled size={size}>{children}</BoundedStyled>
+        </Comp>
+      </BoundedContainer>
+    </>
   )
 }
 
 const BoundedContainer = styled.span`
   & > * {
-    padding:1rem; 
+    padding: 1rem;
 
-    @media (max-width: 768px) { 
-      padding: 1.5rem
+    @media (max-width: 768px) {
+      padding: 1.5rem;
     }
-    
-    @media (max-width: 1024px) { 
+
+    @media (max-width: 1024px) {
       padding: 3rem 0;
     }
   }
@@ -45,7 +45,7 @@ interface BoundedStyledProps {
 }
 
 const BoundedStyled = styled.div<BoundedStyledProps>`
-  width: 100%; 
+  width: 100%;
   margin: 0 auto;
   text-shadow: 1px #dcdcdc;
   max-width: ${({ size }) => {

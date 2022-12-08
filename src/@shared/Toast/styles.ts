@@ -62,7 +62,7 @@ export const ToastRoot = styled(Toast.Root)`
     }
   }
   &[data-type='info'] {
-    background-color: #0d6efd;
+    background-color: #50A9E8;
     & > * {
       color: #f6f6f6;
     }

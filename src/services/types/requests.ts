@@ -22,6 +22,11 @@ export interface IUpdateProfessionalRequest extends IUserBase {
   graduacao: string
 }
 
+export interface ICreateProfessionalRatingRequest {
+  rating: number
+  comment: string
+}
+
 export interface IUserLoginRequest {
   email: string
   password: string
@@ -32,8 +37,12 @@ export interface ICreateMessageRequest {
   senderName: string
   userId: number
 }
-
 export interface ICreateCommentRequest {
   comment: string
   patientId: number
+}
+
+export interface ICreateAppoinmentRequest {
+  patientId: number
+  profissionalId: number
 }

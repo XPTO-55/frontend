@@ -2,6 +2,7 @@ import { api } from './api'
 
 export interface IPlaces {
   idLugar: number
+  imageUrl: string
   nomeLugar: string
   address: {
     street: string
@@ -9,6 +10,8 @@ export interface IPlaces {
     zipcode: string
     city: string
     uf: string
+    latitude: number
+    longitude: number
   }
 }
 

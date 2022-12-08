@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { PrismicText, SliceZone } from '@prismicio/react'
 import * as prismicH from '@prismicio/helpers'
@@ -11,6 +11,8 @@ import { HorizontalDivider } from '../../../components/blog/HorizontalDivider'
 import { Header } from '../../../components/Layout/Header'
 import { ArticleProps, StaticProps, LatestArticleProps } from './_types'
 import { GetStaticProps } from 'next'
+import { useMutation } from 'react-query'
+import { createSearch } from '../../../services/blog.service'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -37,6 +39,18 @@ const LatestArticle = ({ article }: LatestArticleProps) => {
 }
 
 const Article = ({ article, latestArticles }: ArticleProps) => {
+  const { mutate } = useMutation<unknown, unknown, string>(async (data) => await createSearch(data))
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  useEffect(() => {
+    registerSearch()
+  }, [])
+
+  function registerSearch() {
+    console.log('t', article.data.title[0].text)
+    mutate(article.data.title[0].text ?? '')
+  }
+
   const date = prismicH.asDate(
     // @ts-expect-error
     article.data.publishDate || article.first_publication_date

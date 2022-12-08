@@ -8,31 +8,38 @@ import { FooterProps } from './types'
 import { ICreateMessageRequest, IMessage } from '../../../../services/types'
 import { useAuth } from '../../../../context/auth'
 import { Toast } from '../../../../@shared/Toast'
+import { useChat } from '../../../../context/chat'
 
 export function Footer({ forumId }: FooterProps) {
   const { user } = useAuth()
+  const { sendMessage } = useChat()
+  const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState<string>()
-  const {
-    mutate,
-    isLoading,
-    isError,
-    error
-  } = useMutation<IMessage, unknown, ICreateMessageRequest>(
-    async (messageData) => await createMessage(forumId, messageData),
-    {
-      onSuccess: () => {
-        setMessage('')
-      }
-    }
-  )
+  // const {
+  //   mutate,
+  //   isLoading,
+  //   isError,
+  //   error
+  // } = useMutation<IMessage, unknown, ICreateMessageRequest>(
+  //   async (messageData) => await createMessage(forumId, messageData),
+  //   {
+  //     onSuccess: () => {
+  //       sendMessage(message)
+  //       setMessage('')
+  //     }
+  //   }
+  // )
 
   const handleSubmitMessage = () => {
-    const payloadMessage = {
+    const payloadMessage: ICreateMessageRequest = {
       message,
       senderName: user?.username,
       userId: user?.id
     }
-    mutate(payloadMessage)
+    setIsLoading(true)
+    sendMessage(forumId, payloadMessage)
+    // mutate(payloadMessage)
+    setIsLoading(false)
   }
 
   return (
@@ -52,8 +59,6 @@ export function Footer({ forumId }: FooterProps) {
           </S.ActionContainer>
           : null}
       </S.Footer>
-      {/* @ts-expect-error */}
-      {isError ? <Toast type='error' title='Failed send message' description={error?.message?.message || error?.message} /> : null}
     </>
   )
 }

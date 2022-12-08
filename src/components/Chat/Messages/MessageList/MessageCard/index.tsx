@@ -31,7 +31,7 @@ export function MessageCard({ message, ...props }: IMessageCardProps) {
         </S.ButtonActionReplyes>
       </S.ContainerReplyes>
       <S.ContentReplyes>
-        {message.replyes.map(reply => <MessageReply key={reply.id} data={reply} />)}
+        {message?.replyes?.length ? message.replyes.map(reply => <MessageReply key={reply.id} data={reply} />) : null}
       </S.ContentReplyes>
     </S.Container >
   )

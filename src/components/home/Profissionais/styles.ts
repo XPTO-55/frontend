@@ -47,6 +47,7 @@ export const ContainerInfoProfContent = styled.div`
     justify-content: center;
     flex-direction: column;
     padding-left: 150px;
+    gap: 0.5rem;
 
     @media (max-width: 1000px) {
       padding-right: 180px;
@@ -57,7 +58,6 @@ export const ContainerInfoProfContent = styled.div`
     h1 {
       font-size: 36px;
       font-weight: bold;
-      width: 300px;
 
       @media (max-width: 1000px) {
         margin-bottom: 10px;
@@ -74,6 +74,7 @@ export const ContainerInfoProfContent = styled.div`
       font-size: 17px;
       width: 500px;
       margin-bottom: 10px;
+      line-height: 1.5rem;
 
       @media (max-width: 1000px) {
         width: 300px;

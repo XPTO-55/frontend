@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography'
 import { BsChevronDown } from 'react-icons/bs'
 import { Input } from '../../@shared/Input'
 import { BiSearch } from 'react-icons/bi'
-import { hasSubscribers } from 'diagnostics_channel'
 
 export default function SimpleAccordion() {
   const [faqList] = useState([

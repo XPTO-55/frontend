@@ -12,6 +12,10 @@ import { ArticleProps, BlogProps, StaticProps } from './_types'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useQuery } from 'react-query'
+import { getSearch } from '../../services/blog.service'
+import { ButtonPrimary } from '../../@shared/ButtonPrimary'
+import Link from 'next/link'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -87,6 +91,7 @@ const Article = ({ article }: ArticleProps) => {
 
 export default function Index({ articles }: BlogProps) {
   const router = useRouter()
+  const { data: search } = useQuery<string>(['search'], getSearch)
 
   if (router.isFallback) {
     return <p>Carregando...</p>
@@ -98,12 +103,32 @@ export default function Index({ articles }: BlogProps) {
         <title> Blog | CPA </title>
       </Head>
       <Header />
+      <S.Header>
+        <S.ContainerHeader>
+          <h1>Conheça nosso blog CPA</h1>
+          <h2>
+            Fique ligado em diversos assuntos relacionado ao mundo TEA.
+            Diariamente as postagens são atualizadas para que você também fique
+            atualizado! Para assuntos específicos, acesse nossa FAQ.
+          </h2>
+          <Link href={'/faq'}>
+            <ButtonPrimary className="laranja">FAQ</ButtonPrimary>
+          </Link>
+        </S.ContainerHeader>
+      </S.Header>
       <Bounded asChild size="widest">
-        <S.ListaNaoOrdenada>
-          {articles.map((article) => (
-            <Article key={article.id} article={article} />
-          ))}
-        </S.ListaNaoOrdenada>
+        <S.ArticleContainer>
+          <S.ListaNaoOrdenada>
+            {articles.map((article) => (
+              <Article key={article.id} article={article} />
+            ))}
+          </S.ListaNaoOrdenada>
+          {/* <span>
+            <h1>Últimos itens pesquisados</h1>
+            {search}
+          </span> */}
+        </S.ArticleContainer>
+
       </Bounded>
     </>
   )

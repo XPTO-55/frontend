@@ -1,8 +1,6 @@
 import React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import styled from 'styled-components'
-import * as S from './_styles'
-import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 
 interface BoundedProps extends React.HTMLAttributes<HTMLDivElement> {
   asChild: boolean
@@ -19,18 +17,6 @@ export const Bounded = ({
   const Comp = asChild ? Slot : 'div'
   return (
     <>
-      <S.Header>
-        <S.ContainerHeader>
-          <h1>Conheça nosso blog CPA</h1>
-          <h2>
-            Fique ligado em diversos assuntos relacionado ao mundo TEA.
-            Diariamente as postagens são atualizadas para que você também fique
-            atualizado! Para assuntos específicos, acesse nossa FAQ.
-          </h2>
-          <ButtonPrimary className="laranja">FAQ</ButtonPrimary>
-        </S.ContainerHeader>
-      </S.Header>
-
       <BoundedContainer>
         <Comp {...props}>
           <BoundedStyled size={size}>{children}</BoundedStyled>

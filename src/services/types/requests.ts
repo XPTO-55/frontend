@@ -37,7 +37,6 @@ export interface ICreateMessageRequest {
   senderName: string
   userId: number
 }
-
 export interface ICreateCommentRequest {
   comment: string
   patientId: number

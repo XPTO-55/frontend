@@ -2,11 +2,12 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { useAuth } from './auth'
 import { Frame } from 'stompjs'
 import useSocket from '../hooks/useSocket'
-import { IMessage } from '../services/types'
+import { ICreateMessageRequest, IMessage } from '../services/types'
 import { Toast } from '../@shared/Toast'
 interface ChatContextData {
-  sendMessage: (message: string) => void
+  sendMessage: (forumId: string, message: ICreateMessageRequest) => void
   connected: boolean
+  notification: IMessageNotification
   notifications: IMessageNotification[]
   readNotification: (notificationId: number) => void
 }
@@ -23,7 +24,7 @@ const ChatContext = createContext<ChatContextData>({} as ChatContextData)
 
 export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
   const [socket] = useSocket()
-  const { user, signed } = useAuth()
+  const { signed } = useAuth()
   const [connected, setConnected] = useState(false)
   const [notifications, setNotifications] = useState<IMessageNotification[]>([])
   const [notification, setNotification] = useState<IMessageNotification>({} as IMessageNotification)
@@ -127,16 +128,10 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
     const { value } = event.target
     // setUserData({ ...userData, message: value })
   }
-  const sendMessage = (message) => {
+  const sendMessage = (forumId: string, message: ICreateMessageRequest) => {
     if (socket) {
-      const chatMessage = {
-        senderName: user?.username,
-        message,
-        status: 'MESSAGE',
-        forum: 'public'
-      }
+      socket.send(`/app/message/${forumId}`, {}, JSON.stringify(message))
       // console.log(chatMessage)
-      // stompClient.send('/chat.sendMessage', {}, JSON.stringify(chatMessage))
     }
   }
 
@@ -171,7 +166,7 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
   // se subreescrever nos chats daquele user
   // quando chegar uma mensagem, mostrar o toast na tela
   return (
-    <ChatContext.Provider value={{ sendMessage, connected, notifications, readNotification }}>
+    <ChatContext.Provider value={{ sendMessage, connected, notifications, readNotification, notification }}>
       {children}
       {Object.keys(notification).length > 0
         ? (

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -16,14 +16,14 @@ export const PageContainer = styled.div`
   @media (max-width: 1000px) {
     height: 700px;
   }
-`;
+`
 
 export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
   height: 600px;
   color: white;
-`;
+`
 
 export const ContainerInfoProf = styled.div`
   width: 100%;
@@ -31,7 +31,7 @@ export const ContainerInfoProf = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const ContainerInfoProfContent = styled.div`
   width: 50%;
@@ -96,7 +96,7 @@ export const ContainerInfoProfContent = styled.div`
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
   }
-`;
+`
 
 export const bordaImgProf = styled.div`
   width: 354px;
@@ -111,7 +111,7 @@ export const bordaImgProf = styled.div`
   @media (max-width: 1000px) {
     display: none;
   }
-`;
+`
 
 export const Svg = styled.svg`
   margin-top: -280px;
@@ -120,4 +120,4 @@ export const Svg = styled.svg`
   @media (max-width: 1000px) {
     display: none;
   }
-`;
+`

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useAuth } from './auth'
-import { Frame } from 'stompjs'
+import { Client, Frame } from 'stompjs'
 import useSocket from '../hooks/useSocket'
 import { ICreateMessageRequest, IMessage } from '../services/types'
 import { Toast } from '../@shared/Toast'
@@ -23,7 +23,8 @@ interface ChatProviderProps {
 const ChatContext = createContext<ChatContextData>({} as ChatContextData)
 
 export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
-  const [socket] = useSocket()
+  // const [socket] = useSocket()
+  const [socket] = useState<Client>()
   const { signed } = useAuth()
   const [connected, setConnected] = useState(false)
   const [notifications, setNotifications] = useState<IMessageNotification[]>([])

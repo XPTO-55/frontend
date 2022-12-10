@@ -1,7 +1,4 @@
 import * as React from 'react'
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 import Modal from '@material-ui/core/Modal'
 import { BiSearch } from 'react-icons/bi'
 import * as S from './styles'
@@ -9,7 +6,6 @@ import { Input } from '../../../@shared/Input'
 import { useState } from 'react'
 import { ButtonPrimary } from '../../../@shared/ButtonPrimary'
 import { RiMailSendLine } from 'react-icons/ri'
-import Link from 'next/link'
 
 export default function ModalPassword() {
   const [open, setOpen] = React.useState(false)

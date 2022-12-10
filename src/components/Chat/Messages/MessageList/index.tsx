@@ -15,7 +15,7 @@ export default function MessageList({ data }: InfoProps) {
   const { user, loading } = useAuth()
   const { notification } = useChat()
   const [messages, setMessages] = useState<IMessage[]>([])
-  const { data: responseMessages = [], isLoading, refetch } = useQuery<IMessage[]>(['messages', data?.id], async () => await getMessages(data?.id), {
+  const { isLoading } = useQuery<IMessage[]>(['messages', data?.id], async () => await getMessages(data?.id), {
     onSuccess(data) {
       setMessages(data)
     }

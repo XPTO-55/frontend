@@ -14,7 +14,7 @@ import { Loader } from '../../../@shared/Loader'
 
 export const Post = ({ post }: PostProps) => {
   const [comments, setComments] = useState<ICommentsResponse[]>([])
-  const { data, isLoading } = useQuery<ICommentsResponse[]>(['messages', post?.id], async () => await getComments(post?.id), {
+  const { isLoading } = useQuery<ICommentsResponse[]>(['messages', post?.id], async () => await getComments(post?.id), {
     onSuccess: (data) => {
       setComments(data)
     }

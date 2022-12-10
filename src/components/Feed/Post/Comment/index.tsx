@@ -1,5 +1,4 @@
 import React from 'react'
-import PrismicDOM from 'prismic-dom'
 import { CommentProps } from './types'
 import * as S from './styles'
 import { makeProfileImageurlS3 } from '../../../../util/make-image-url-s3'

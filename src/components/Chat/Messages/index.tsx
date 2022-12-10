@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import * as S from './styles'
 import { IForum } from '../../../services/types'
 import { Header } from './Header'
 import MessageList from './MessageList'
 import { Footer } from './Footer'
-import useSocket from '../../../hooks/useSocket'
-import { useChat } from '../../../context/chat'
+// import useSocket from '../../../hooks/useSocket'
+// import { useChat } from '../../../context/chat'
 
 interface MessagesProps {
   forum: IForum

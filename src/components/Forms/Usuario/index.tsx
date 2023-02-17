@@ -3,26 +3,25 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as S from './styles'
 import { PacienteForm, ProfissionalForm } from './tabs/'
 import { UsuarioFormProps } from './types'
+import Image from 'next/image'
 
 export function UsuarioForm({ setOpen }: UsuarioFormProps) {
   const [tab, setTab] = useState('comum')
   return (
     <Dialog.Portal>
       <S.Overlay />
-      <S.Content onClick={event => event.stopPropagation()}>
+      <S.Content onClick={(event) => event.stopPropagation()}>
         <Dialog.Title>
-          <S.TopWave color={tab === 'profissional' ? '#ffa025' : null}>
+          <S.TopWave color={tab === 'profissional' ? '#ffa025' : undefined}>
             <div>
-              <img src="/assets/img/logoSemTexto.png" />
+              <Image width={36} height={36} src="/assets/img/logoSemTexto.png" alt="logo" />
               <p>Criar conta</p>
             </div>
           </S.TopWave>
         </Dialog.Title>
         <S.TabContainer onValueChange={setTab} defaultValue={tab}>
           <S.TabList aria-label="Manage your account">
-            <S.Tab value="comum">
-              Comum
-            </S.Tab>
+            <S.Tab value="comum">Comum</S.Tab>
             <S.Tab value="profissional" color={'#ffa025'}>
               Profissional
             </S.Tab>
@@ -35,7 +34,6 @@ export function UsuarioForm({ setOpen }: UsuarioFormProps) {
           </S.TabContent>
         </S.TabContainer>
       </S.Content>
-    </Dialog.Portal >
-
+    </Dialog.Portal>
   )
 }

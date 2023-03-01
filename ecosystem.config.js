@@ -1,11 +1,10 @@
 module.exports = {
 
   apps: [{
-    name: 'nextjs',
+    name: 'cpa',
     script: 'yarn',
     args: 'start',
-    cwd: '/var/www/myapp/',
-    instances: 2,
+    instances: 1,
     autorestart: true,
     watch: false,
     max_memory_restart: '1G',
@@ -15,7 +14,7 @@ module.exports = {
     env_production: {
       NODE_ENV: 'production',
       API_URL: 'http://localhost:7000',
-      PORT: 80
+      PORT: 3000
     }
   }],
   deploy : {

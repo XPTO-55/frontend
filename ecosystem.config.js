@@ -13,7 +13,7 @@ module.exports = {
     },
     env_production: {
       NODE_ENV: 'production',
-      API_URL: 'http://localhost:3000',
+      API_URL: 'http://localhost:7000',
       PORT: 80
     }
   }]

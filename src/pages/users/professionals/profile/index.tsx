@@ -29,19 +29,25 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Toast } from '../../../../@shared/Toast'
 import { Loader } from '../../../../@shared/Loader'
+import { AxiosError } from 'axios'
 
 export default function Profile() {
   const [edit, setEdit] = useState<boolean>(false)
   const { user } = useAuth()
 
-  const editing = (e) => {
-    e.preventDefault()
+  const editing = () => {
     setEdit(!edit)
   }
 
-  const { data: professional, isLoading } = useQuery<IProfessional>(['professional'], async () => await getProfessional(user?.id))
+  const { data: professional, isLoading } = useQuery<unknown, AxiosError, IProfessional>(['professional'], async () => {
+    if (!user) return
+    return await getProfessional(user?.id)
+  })
 
-  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IProfessional, unknown, IUpdateProfessionalRequest>(['patient'], async (userData) => await updateProfessional(user?.id, userData), {
+  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IProfessional, unknown, IUpdateProfessionalRequest>(['patient'], async (userData) => {
+    if (!user) throw new Error('user id not found')
+    return await updateProfessional(user?.id, userData)
+  }, {
     onError() {
       reset()
     },
@@ -55,8 +61,7 @@ export default function Profile() {
     resolver: yupResolver(updateProfessionalSchema)
   })
 
-  const onSubmit: SubmitHandler<IUpdateProfessionalRequest> = (data, event) => {
-    event.preventDefault()
+  const onSubmit: SubmitHandler<IUpdateProfessionalRequest> = (data) => {
     mutate(data)
   }
 
@@ -89,7 +94,7 @@ export default function Profile() {
         <S.ContainerForm onSubmit={handleSubmit(onSubmit)}>
           <S.ContentArea>
             <S.LeftArea>
-              <UploadImage profileUrl={professional?.profileUrl} edit={!edit} />
+              <UploadImage profileUrl={professional?.profileUrl ?? ''} edit={!edit} />
             </S.LeftArea>
             <S.RightArea>
               <Input

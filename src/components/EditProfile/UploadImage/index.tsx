@@ -10,19 +10,23 @@ import { updateProfessionalProfileImage } from '../../../services/professional.s
 import { Toast } from '../../../@shared/Toast'
 import { Button } from '../../Layout/Header/styles'
 
-export const UploadImage = (props: IUploadImageProps) => {
+export const UploadImage = ({ profileUrl = '', ...props }: IUploadImageProps) => {
   const { user } = useAuth()
-  const [file, setFile] = useState<File>(null)
+  const [file, setFile] = useState<File | null>(null)
 
   const updateProfileImageFunction =
-    user.userType === 'patients'
+    user?.userType === 'patients'
       ? updatePatientProfileImage
       : updateProfessionalProfileImage
 
-  const { mutate, isError, error, isSuccess } = useMutation<unknown, unknown, FormData>(async (data) => await updateProfileImageFunction(user?.id, data))
+  const { mutate, isError, error, isSuccess } = useMutation<unknown, unknown, FormData>(async (data) => {
+    if (!user?.id) return
+    await updateProfileImageFunction(user?.id, data)
+  })
 
   const handleChange = (event: MouseEvent) => {
     event.preventDefault()
+    if (!file) return
     const data = new FormData()
     data.append('file', file, file.name)
     mutate(data)
@@ -31,13 +35,17 @@ export const UploadImage = (props: IUploadImageProps) => {
     <>
       <S.Label htmlFor="arquivo">
         <img
-          src={makeProfileImageurlS3(props.profileUrl)}
+          src={makeProfileImageurlS3(profileUrl)}
+          alt="Profile image"
         />
         <TfiPencil size={36} />
       </S.Label>
       <S.Input
         type="file"
-        onChange={(e) => setFile(e?.currentTarget?.files[0])}
+        onChange={(e) => {
+          if (!e?.currentTarget?.files) return
+          setFile(e?.currentTarget?.files[0])
+        }}
         id="arquivo"
         disabled={props.edit}
       />

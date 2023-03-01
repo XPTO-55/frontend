@@ -36,7 +36,7 @@ interface TopWaveProps extends React.AllHTMLAttributes<HTMLDivElement> {
 export const TopWave = styled.div<TopWaveProps>`
   width: 100%;
   height: 40px;
-  background-color: ${({ color }) => color || '#2a8dd2'};
+  background-color: ${({ color }) => color ?? '#2a8dd2'};
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -165,7 +165,7 @@ export const Tab = styled<TabProps>(Tabs.TabsTrigger)`
     background-color: #cdcdcd 
   };
   &[data-state="active"] {
-    background-color: ${({ color }) => color || '#2a8dd2'};
+    background-color: ${({ color }) => color ?? '#2a8dd2'};
   };
   &:focus {
     position: relative;

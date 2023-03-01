@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useAuth } from '../../../context/auth'
 import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
@@ -6,6 +7,14 @@ import * as S from './styles'
 
 function Sidebar() {
   const { user, signOut } = useAuth()
+
+  const router = useRouter()
+
+  if (!user?.userType) {
+    void router.push('/')
+    return null
+  }
+
   return (
     <S.Container>
       <Link href={`/users/${user?.userType}/profile`}>

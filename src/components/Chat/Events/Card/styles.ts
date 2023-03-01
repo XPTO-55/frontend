@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { IStatus } from '../../../../services/types'
 
 interface ContainerProps {
-  status: IStatus
+  status: keyof typeof IStatus
 }
 
 export const Container = styled.div<ContainerProps>`

@@ -7,7 +7,7 @@ type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 }
 /** Content for Article documents */
-interface ArticleDocumentData {
+export interface ArticleDocumentData {
   /**
      * Title field in *Article*
      *
@@ -57,7 +57,7 @@ interface ArticleDocumentData {
  * Slice for *Article → Slice Zone*
  *
  */
-type ArticleDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice | ContactFormSlice
+type ArticleDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice
 /**
  * Article document from Prismic
  *
@@ -210,33 +210,6 @@ type PostDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice
  */
 export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PostDocumentData>, 'post', Lang>
 export type AllDocumentTypes = ArticleDocument | CommentsDocument | PostDocument
-/**
- * Default variation for ContactForm Slice
- *
- * - **API ID**: `default`
- * - **Description**: `ContactForm`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ContactFormSliceDefault = prismicT.SharedSliceVariation<'default', Record<string, never>, never>
-/**
- * Slice variation for *ContactForm*
- *
- */
-type ContactFormSliceVariation = ContactFormSliceDefault
-/**
- * ContactForm Shared Slice
- *
- * - **API ID**: `contact_form`
- * - **Description**: `ContactForm`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ContactFormSlice = prismicT.SharedSlice<'contact_form', ContactFormSliceVariation>
-/**
- * Primary content in Image → Primary
- *
- */
 interface ImageSliceDefaultPrimary {
   /**
      * Image field in *Image → Primary*
@@ -408,6 +381,6 @@ export type TextSlice = prismicT.SharedSlice<'text', TextSliceVariation>
 declare module '@prismicio/client' {
   type CreateClient = (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig) => prismic.Client<AllDocumentTypes>
   namespace Content {
-    export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, CommentsDocumentData, CommentsDocument, PostDocumentData, PostDocumentDataSlicesSlice, PostDocument, AllDocumentTypes, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice }
+    export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, CommentsDocumentData, CommentsDocument, PostDocumentData, PostDocumentDataSlicesSlice, PostDocument, AllDocumentTypes, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice }
   }
 }

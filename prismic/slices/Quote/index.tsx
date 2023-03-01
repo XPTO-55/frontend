@@ -1,9 +1,9 @@
 import React from 'react'
 import * as prismicH from '@prismicio/helpers'
 import { PrismicText } from '@prismicio/react'
-import { Bounded } from '../../src/components/blog/Bounded'
+import { Bounded } from '../../../src/components/blog/Bounded'
 import styled from 'styled-components'
-import { QuoteSliceDefault } from '../../src/@types/prismic'
+import { QuoteSliceDefault } from '../../../src/@types/prismic'
 
 interface QuoteProps {
   slice: QuoteSliceDefault

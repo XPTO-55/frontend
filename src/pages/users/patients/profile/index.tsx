@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { MouseEventHandler, useState } from 'react'
 import {
   TfiPencil,
   TfiEmail,
@@ -28,14 +28,21 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { updatePatientSchema } from '../../../../validations/user.validation'
 import Head from 'next/head'
 import { Toast } from '../../../../@shared/Toast'
+import { AxiosError } from 'axios'
 
 export default function Profile() {
   const [edit, setEdit] = useState<boolean>(false)
   const { user } = useAuth()
 
-  const { data: patient, isLoading } = useQuery<IPatient>(['patient'], async () => await getPatient(user?.id))
+  const { data: patient, isLoading } = useQuery<unknown, AxiosError, IPatient>(['patient'], async () => {
+    if (!user) return
+    await getPatient(user?.id)
+  })
 
-  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IPatient, unknown, IUpdatePatientRequest>(['patient'], async (userData) => await updatePatient(user?.id, userData), {
+  const { mutate, reset, isLoading: updateLoading, isSuccess } = useMutation<IPatient, AxiosError, IUpdatePatientRequest>(['patient'], async (userData) => {
+    if (!user) throw new Error('user id not found')
+    return await updatePatient(user?.id, userData)
+  }, {
     onError() {
       reset()
     },
@@ -49,8 +56,7 @@ export default function Profile() {
     resolver: yupResolver(updatePatientSchema)
   })
 
-  const onSubmit: SubmitHandler<IUpdatePatientRequest> = (data, event) => {
-    event.preventDefault()
+  const onSubmit: SubmitHandler<IUpdatePatientRequest> = (data) => {
     mutate(data)
   }
 
@@ -68,13 +74,11 @@ export default function Profile() {
     )
   }
 
-  const editing = (e) => {
-    e.preventDefault()
+  const editing = () => {
     setEdit(prev => !prev)
   }
 
-  const cancelEditing = (e) => {
-    e.preventDefault()
+  const cancelEditing = () => {
     setEdit(prev => !prev)
     reset()
   }
@@ -94,7 +98,7 @@ export default function Profile() {
         <S.ContainerForm onSubmit={handleSubmit(onSubmit)}>
           <S.ContentArea>
             <S.LeftArea>
-              <UploadImage profileUrl={patient?.profileUrl} edit={!edit} />
+              <UploadImage profileUrl={patient?.profileUrl ?? ''} edit={!edit} />
             </S.LeftArea>
             <S.RightArea>
               <Input

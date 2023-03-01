@@ -2,9 +2,9 @@ import React from 'react'
 import * as prismicH from '@prismicio/helpers'
 import { PrismicRichText } from '@prismicio/react'
 import { PrismicNextImage } from '@prismicio/next'
-import { Bounded } from '../../src/components/blog/Bounded'
+import { Bounded } from '../../../src/components/blog/Bounded'
 import * as S from './styles'
-import { ImageSliceDefault, ImageSliceWide } from '../../src/@types/prismic'
+import { ImageSliceDefault, ImageSliceWide } from '../../../src/@types/prismic'
 
 interface ImageProps {
   slice: ImageSliceDefault | ImageSliceWide

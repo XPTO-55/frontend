@@ -5,6 +5,7 @@ import * as S from './styles'
 import { makeProfileImageurlS3 } from '../../../util/make-image-url-s3'
 import { useChat } from '../../../context/chat'
 import { BiNotification } from 'react-icons/bi'
+import { useRouter } from 'next/router'
 
 export function ProfileBar () {
   const [openMenu, setOpenMenu] = useState(false)
@@ -12,6 +13,12 @@ export function ProfileBar () {
   const { signOut, user } = useAuth()
   const { notifications, readNotification } = useChat()
   // const {} = useQuery<Blob>(['profileImage', user.id], getProfi)
+  const router = useRouter()
+
+  if (!user?.userType) {
+    void router.push('/')
+    return null
+  }
 
   return (
     <S.Container>

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Head from 'next/head'
 import { PrismicText, SliceZone } from '@prismicio/react'
 import * as prismicH from '@prismicio/helpers'
 import * as S from './_styles'
 import { createClient, linkResolver } from '../../../../prismicio'
-import { components } from '../../../../slices'
+import { components } from '../../../../prismic/slices'
 import { Bounded } from '../../../components/blog/Bounded'
 import { Heading } from '../../../components/blog/Heading'
 import { HorizontalDivider } from '../../../components/blog/HorizontalDivider'
@@ -23,7 +23,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 const LatestArticle = ({ article }: LatestArticleProps) => {
   const date = prismicH.asDate(
     // @ts-expect-error
-    article?.data?.publishDate || article?.first_publication_date
+    article?.data?.publishDate ?? article?.first_publication_date
   )
 
   return (
@@ -33,7 +33,9 @@ const LatestArticle = ({ article }: LatestArticleProps) => {
           <PrismicText field={article.data.title} />
         </S.ArticleTitle>
       </S.PrismicLinkStyled>
-      <S.Paragrafo>{dateFormatter.format(date)}</S.Paragrafo>
+      <S.Paragrafo>
+        {date ? dateFormatter.format(date) : null}
+      </S.Paragrafo>
     </li>
   )
 }
@@ -41,19 +43,18 @@ const LatestArticle = ({ article }: LatestArticleProps) => {
 const Article = ({ article, latestArticles }: ArticleProps) => {
   const { mutate } = useMutation<unknown, unknown, string>(async (data) => await createSearch(data))
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  const registerSearch = useCallback(() => {
+    if (!article?.data?.title[0]) return
+    mutate(article.data.title[0].text ?? '')
+  }, [article?.data?.title, mutate])
+
   useEffect(() => {
     registerSearch()
-  }, [])
-
-  function registerSearch() {
-    console.log('t', article.data.title[0].text)
-    mutate(article.data.title[0].text ?? '')
-  }
+  }, [registerSearch])
 
   const date = prismicH.asDate(
     // @ts-expect-error
-    article.data.publishDate || article.first_publication_date
+    article.data.publishDate ?? article.first_publication_date
   )
 
   return (
@@ -80,7 +81,7 @@ const Article = ({ article, latestArticles }: ArticleProps) => {
             <PrismicText field={article.data.title} />
           </S.ArticleTitle>
           <S.Paragrafo>
-            {dateFormatter.format(date)}
+            {date ? dateFormatter.format(date) : null}
           </S.Paragrafo>
         </Bounded>
         <SliceZone slices={article.data.slices} components={components} />
@@ -108,10 +109,10 @@ const Article = ({ article, latestArticles }: ArticleProps) => {
 }
 
 export default Article
-
+// @ts-expect-error
 export const getStaticProps: GetStaticProps<StaticProps> = async ({ params, previewData }) => {
   const client = createClient({ previewData })
-  const id = params.uid as string
+  const { uid: id } = params as { uid: string }
 
   const article = await client.getByUID('article', id)
   const latestArticles = await client.getAllByType('article', {

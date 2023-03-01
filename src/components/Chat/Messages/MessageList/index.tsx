@@ -7,20 +7,24 @@ import { IForum, IMessage } from '../../../../services/types'
 import { LoaderAllPage } from '../../../Layout/LoaderAllPage'
 import { MessageCard } from './MessageCard'
 import * as S from './styles'
+import { AxiosError } from 'axios'
 interface InfoProps {
-  data: IForum
+  data: IForum | null
 }
 
 export default function MessageList({ data }: InfoProps) {
   const { user, loading } = useAuth()
   const { notification } = useChat()
-  const [messages, setMessages] = useState<IMessage[]>([])
-  const { isLoading } = useQuery<IMessage[]>(
+  const [messages = [], setMessages] = useState<IMessage[]>([])
+  const { isLoading } = useQuery<unknown, AxiosError, IMessage[]>(
     ['messages', data?.id],
-    async () => await getMessages(data?.id),
+    async () => {
+      if (!data) return
+      return await getMessages(data?.id)
+    },
     {
-      onSuccess(data) {
-        setMessages(data)
+      onSuccess(apiResponse) {
+        setMessages(apiResponse)
       }
     }
   )
@@ -46,7 +50,7 @@ export default function MessageList({ data }: InfoProps) {
             className={
               String(message?.userId) === String(user?.id)
                 ? 'my-message'
-                : null
+                : undefined
             }
             key={message.id}
             message={message}

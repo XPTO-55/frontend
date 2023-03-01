@@ -8,7 +8,7 @@ import { Footer } from './Footer'
 // import { useChat } from '../../../context/chat'
 
 interface MessagesProps {
-  forum: IForum
+  forum: IForum | null
 }
 
 function Messages (props: MessagesProps) {

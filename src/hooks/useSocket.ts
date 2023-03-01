@@ -8,7 +8,7 @@ export default function useSocket() {
 
   useEffect(() => {
     return () => {
-      if (socket?.ws) socket.disconnect(null)
+      if (socket?.ws) socket.disconnect(() => {})
     }
   }, [socket])
 
@@ -27,8 +27,8 @@ export default function useSocket() {
 
     const _socket = new SockJS(socketUrl)
     const stompClient = over(_socket)
-    stompClient.connect(null, (frame) => {
-      console.log('socket connected:', frame.toString())
+    stompClient.connect({}, (frame) => {
+      console.log('socket connected:', frame?.toString())
     })
 
     setSocket(stompClient)

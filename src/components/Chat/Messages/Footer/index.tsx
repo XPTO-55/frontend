@@ -31,6 +31,7 @@ export function Footer({ forumId }: FooterProps) {
   // )
 
   const handleSubmitMessage = () => {
+    if (!message || !user) return
     const payloadMessage: ICreateMessageRequest = {
       message,
       senderName: user?.username,

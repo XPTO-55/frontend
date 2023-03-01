@@ -5,7 +5,11 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  pageExtensions: ['tsx']
+  pageExtensions: ['tsx'],
+  output: 'standalone',
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 }
 
 module.exports = nextConfig

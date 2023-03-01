@@ -2,7 +2,7 @@
 
 cd ..
 
-who pm2 --version
+which pm2 --version
 
 if [$? -ne 0]; then
   npm i --global pm2

@@ -29,8 +29,7 @@ export function ProfissionalForm({ setOpen }: FormProps) {
     resolver: yupResolver(registerProfessionalSchema)
   })
 
-  const onSubmit: SubmitHandler<ICreateProfessionalRequest> = (data, event) => {
-    event.preventDefault()
+  const onSubmit: SubmitHandler<ICreateProfessionalRequest> = (data) => {
     mutate(data)
     setOpen(false)
   }

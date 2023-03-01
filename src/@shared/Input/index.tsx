@@ -7,7 +7,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> =
-  ({ children, placeholder, width, ...props }, ref) => {
+  ({ children, placeholder, width = '200px', ...props }, ref) => {
     return (
       <>
         <S.ContainerInput>

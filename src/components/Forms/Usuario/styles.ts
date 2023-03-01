@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Tabs from '@radix-ui/react-tabs'
-import { ForwardRefExoticComponent, RefAttributes } from 'react'
+import React, { ForwardRefExoticComponent, RefAttributes } from 'react'
 
 export const Container = styled.div`
   width: 550px;
@@ -29,14 +29,14 @@ export const Form = styled.form`
   gap: 16px;
 `
 
-// interface TopWaveProps extends {
+interface TopWaveProps extends React.AllHTMLAttributes<HTMLDivElement> {
+  color?: string | undefined
+}
 
-// }
-
-export const TopWave = styled.div`
+export const TopWave = styled.div<TopWaveProps>`
   width: 100%;
   height: 40px;
-  background-color: ${({ color }) => color || '#2a8dd2'};
+  background-color: ${({ color }) => color ?? '#2a8dd2'};
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -165,7 +165,7 @@ export const Tab = styled<TabProps>(Tabs.TabsTrigger)`
     background-color: #cdcdcd 
   };
   &[data-state="active"] {
-    background-color: ${({ color }) => color || '#2a8dd2'};
+    background-color: ${({ color }) => color ?? '#2a8dd2'};
   };
   &:focus {
     position: relative;

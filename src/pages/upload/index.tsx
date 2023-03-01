@@ -15,7 +15,7 @@ import { Toast } from '../../@shared/Toast'
 
 export default function Upload (): JSX.Element {
   const { signed, loading } = useAuth()
-  const [file, setFile] = useState<File>(null)
+  const [file, setFile] = useState<File | null>(null)
   const router = useRouter()
   useEffect(() => {
     if (!(signed) && !loading) {
@@ -39,6 +39,7 @@ export default function Upload (): JSX.Element {
   }
 
   const handleSubmit = () => {
+    if (!file) return
     const blob = new Blob([file], { type: 'text/plain' })
     const data = new FormData()
     data.append('arquivo', blob)
@@ -63,9 +64,12 @@ export default function Upload (): JSX.Element {
             {/* <form action=""> */}
             <S.InputContainer>
               <label htmlFor="arquivo">
-                {file?.name || 'Escolha o arquivo'}
+                {file?.name ?? 'Escolha o arquivo'}
               </label>
-              <Input type={'file'} multiple={false} onChange={(e) => setFile(e.currentTarget.files[0])} name={'arquivo'} id={'arquivo'} accept="text/plain">
+              <Input type={'file'} multiple={false} onChange={(e) => {
+                if (!e?.currentTarget?.files) return
+                setFile(e.currentTarget.files[0])
+              }} name={'arquivo'} id={'arquivo'} accept="text/plain">
 
               </Input>
             </S.InputContainer>

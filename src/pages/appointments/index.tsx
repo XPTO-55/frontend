@@ -15,15 +15,19 @@ import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import { formatDate } from '../../util/publish.date'
 import { createRatingProfessional } from '../../services/professional.service'
 import { Toast } from '../../@shared/Toast'
+import { AxiosError } from 'axios'
 
 export default function Appointments() {
   const [open, setOpen] = React.useState(false)
   const [rating, setRating] = useState('')
   const [comment, setComment] = useState('')
   const { user } = useAuth()
-  const { data: appointments = [], isLoading } = useQuery<IAppointments[]>(
+  const { data: appointments = [], isLoading } = useQuery<unknown, AxiosError, IAppointments[]>(
     ['appointments'],
-    async () => await getAppointments(user?.id)
+    async () => {
+      if (!user) return
+      return await getAppointments(user?.id)
+    }
   )
   const { mutate, isLoading: isLoadingRating, isError, isSuccess, error } = useMutation<unknown, unknown, ICreateProfessionalRatingRequest>(async (data) => await createRatingProfessional(appointment?.professionalId, data), {
     onSuccess: () => {
@@ -151,15 +155,17 @@ export default function Appointments() {
           </S.HeaderAppointments>
 
           <S.ContainerContent>
-            {appointments.map((appointment, index) => {
-              return (
-                <BoxAppointment
-                  onClick={() => handleOpen(appointment)}
-                  key={index}
-                  appointment={appointment}
-                />
-              )
-            })}
+            {appointments.length > 0
+              ? appointments.map((appointment, index) => {
+                return (
+                  <BoxAppointment
+                    onClick={() => handleOpen(appointment)}
+                    key={index}
+                    appointment={appointment}
+                  />
+                )
+              })
+              : null}
           </S.ContainerContent>
         </S.ContainerAppointments>
       </S.Container>

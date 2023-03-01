@@ -38,18 +38,20 @@ export interface IEvent {
   status: 'confirmed' | 'pending' | 'canceled'
 }
 
-export enum IStatus {
+enum Status {
   confirmed = '#80be80',
   pending = '#FF7900',
   canceled = '#C8372D',
 }
+
+export const IStatus = Status
 
 export interface IEventUsers {
   id: string
   name: string
   startDate: string
   endDate: string
-  status: IStatus
+  status: keyof typeof IStatus
   users: IUserResponse[]
 }
 

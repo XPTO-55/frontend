@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app'
 import { PrismicLink, PrismicProvider } from '@prismicio/react'
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import React from 'react'
 import { linkResolver } from '../../prismicio'
 import GlobalStyles from '../../styles/GlobalStyles'
@@ -22,8 +22,16 @@ const queryClient = new QueryClient({
   }
 })
 
+interface NextLinkShimProps extends LinkProps {
+  locale?: string
+  children?: React.ReactNode
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type richTextComponentsProps = Record<string, (...args: any[]) => JSX.Element>
+
 function MyApp({ Component, pageProps }: AppProps) {
-  const NextLinkShim = ({ href, children, locale, ...props }) => {
+  const NextLinkShim = ({ href, children, locale, ...props }: NextLinkShimProps) => {
     return (
       <Link href={href} locale={locale}>
         <a {...props}>{children}</a>
@@ -31,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     )
   }
 
-  const richTextComponents = {
+  const richTextComponents: richTextComponentsProps = {
     heading1: ({ children }) => (
       <Heading size="3xl">
         <h2>

@@ -11,7 +11,7 @@ import { IForum } from '../../services/types'
 import * as S from './_styles'
 
 export default function Chat () {
-  const [selectedForum, setSelectedForum] = useState<IForum>()
+  const [selectedForum, setSelectedForum] = useState<IForum | null>(null)
   const { signed, loading } = useAuth()
   const router = useRouter()
   useEffect(() => {

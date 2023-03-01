@@ -1,0 +1,26 @@
+version: '3.8'
+networks:
+  cpa-net:
+    name: cpa-net
+services:
+  nextjs:
+    tty: true
+    image: node
+    build:
+      context: ../
+      dockerfile: Dockerfile.next
+    ports:
+      - 3000:3000
+    networks:
+      - cpa-net
+  web:
+    tty: true
+    build:
+      context: ../
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 127.0.0.1:8080:8080
+    depends_on:
+      - nextjs
+    networks:
+      - cpa-net

@@ -2,7 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  pageExtensions: ['tsx']
+  compiler: {
+    styledComponents: true
+  },
+  pageExtensions: ['tsx'],
+  output: 'standalone',
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 }
 
 module.exports = nextConfig

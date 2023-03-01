@@ -29,8 +29,7 @@ export function PacienteForm({ setOpen }: FormProps) {
     resolver: yupResolver(registerPatientSchema)
   })
 
-  const onSubmit: SubmitHandler<ICreatePatientRequest> = (data, event) => {
-    event.preventDefault()
+  const onSubmit: SubmitHandler<ICreatePatientRequest> = (data) => {
     mutate(data)
   }
 

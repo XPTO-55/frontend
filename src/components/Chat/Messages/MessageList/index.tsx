@@ -7,32 +7,36 @@ import { IForum, IMessage } from '../../../../services/types'
 import { LoaderAllPage } from '../../../Layout/LoaderAllPage'
 import { MessageCard } from './MessageCard'
 import * as S from './styles'
+import { AxiosError } from 'axios'
 interface InfoProps {
-  data: IForum
+  data: IForum | null
 }
 
 export default function MessageList({ data }: InfoProps) {
   const { user, loading } = useAuth()
   const { notification } = useChat()
-  const [messages, setMessages] = useState<IMessage[]>([])
-  const { isLoading } = useQuery<IMessage[]>(['messages', data?.id], async () => await getMessages(data?.id), {
-    onSuccess(data) {
-      setMessages(data)
+  const [messages = [], setMessages] = useState<IMessage[]>([])
+  const { isLoading } = useQuery<unknown, AxiosError, IMessage[]>(
+    ['messages', data?.id],
+    async () => {
+      if (!data) return
+      return await getMessages(data?.id)
+    },
+    {
+      onSuccess(apiResponse) {
+        setMessages(apiResponse)
+      }
     }
-  })
+  )
 
   useEffect(() => {
     if (notification) {
-      setMessages(prev => [...prev, notification])
+      setMessages((prev) => [...prev, notification])
     }
   }, [notification])
 
   if (!data?.id) {
-    return (
-      <S.Container>
-
-      </S.Container>
-    )
+    return <S.Container></S.Container>
   }
 
   if (isLoading || loading) {
@@ -40,10 +44,19 @@ export default function MessageList({ data }: InfoProps) {
   }
   return (
     <S.Container>
-      {
-        messages.length
-          ? messages.map(message => <MessageCard className={String(message?.userId) === String(user?.id) ? 'my-message' : null} key={message.id} message={message} />)
-          : null}
+      {messages.length
+        ? messages.map((message) => (
+          <MessageCard
+            className={
+              String(message?.userId) === String(user?.id)
+                ? 'my-message'
+                : undefined
+            }
+            key={message.id}
+            message={message}
+          />
+        ))
+        : null}
     </S.Container>
   )
 }

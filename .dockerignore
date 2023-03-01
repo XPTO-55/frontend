@@ -1,0 +1,9 @@
+.DS_Store
+.next
+node_modules
+.git/
+.gitignore
+.dockerignore
+Dockerfile
+docker-compose.yml
+nginx/    

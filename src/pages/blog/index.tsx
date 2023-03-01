@@ -16,6 +16,7 @@ import { useQuery } from 'react-query'
 import { getSearch } from '../../services/blog.service'
 import { ButtonPrimary } from '../../@shared/ButtonPrimary'
 import Link from 'next/link'
+import { Slice } from '@prismicio/types'
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -23,18 +24,19 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric'
 })
 
-const findFirstImage = (slices) => {
+const findFirstImage = (slices: Slice[]) => {
   const imageSlice = slices.find((slice) => slice.slice_type === 'image')
-
+  // @ts-expect-error
   if (imageSlice && prismicH.isFilled.image(imageSlice.primary.image)) {
     return imageSlice.primary.image
   }
 }
 
-const getExcerpt = (slices) => {
+const getExcerpt = (slices: Slice[]) => {
   const text: string = slices
     .filter((slice) => slice.slice_type === 'text')
-    .map((slice) => prismicH.asText(slice.primary.text))
+    // @ts-expect-error
+    .map((slice) => prismicH.asText(slice?.primary?.text))
     .join(' ')
 
   const excerpt = text.substring(0, 300)
@@ -54,7 +56,7 @@ const Article = ({ article }: ArticleProps) => {
 
   const date = prismicH.asDate(
     // @ts-expect-error
-    article.data.publishDate || article.first_publication_date
+    article.data.publishDate ?? article.first_publication_date
   )
   const excerpt = getExcerpt(article.data.slices)
 
@@ -81,7 +83,9 @@ const Article = ({ article }: ArticleProps) => {
             </h2>
           </Heading>
 
-          <S.Paragrafo>{dateFormatter.format(date)}</S.Paragrafo>
+          <S.Paragrafo>
+            {date ? dateFormatter.format(date) : null}
+          </S.Paragrafo>
           {excerpt && <S.Paragrafo2>{excerpt}</S.Paragrafo2>}
         </S.Div1>
       </S.listItemStyled>
@@ -140,7 +144,7 @@ export default function Index({ articles }: BlogProps) {
 //     fallback: true
 //   }
 // }
-
+// @ts-expect-error
 export const getStaticProps: GetStaticProps<StaticProps> = async ({
   previewData,
   req,

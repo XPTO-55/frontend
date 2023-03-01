@@ -37,8 +37,7 @@ export default function Auth() {
     resolver: yupResolver(authenticationSchema)
   })
 
-  const onSubmit: SubmitHandler<IUserLoginRequest> = (data, event) => {
-    event.preventDefault()
+  const onSubmit: SubmitHandler<IUserLoginRequest> = (data) => {
     mutate(data)
   }
   return (
@@ -70,7 +69,7 @@ export default function Auth() {
               </Input>
               <p>{errors?.password?.message}</p>
             </S.InputContainer>
-            <span aria-disabled={isError}>
+            <span>
               {/* @ts-expect-error */}
               {isError ? (error?.message?.message || error?.message) : null}
 

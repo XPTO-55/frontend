@@ -40,6 +40,7 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/indent': ['error', 2]
+    '@typescript-eslint/indent': ['error', 2],
+    '@next/next/no-img-element': 'off'
   }
 }

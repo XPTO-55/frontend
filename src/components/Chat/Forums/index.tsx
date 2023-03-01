@@ -7,11 +7,11 @@ import { IForum } from '../../../services/types'
 import Skeleton from 'react-loading-skeleton'
 
 interface ForumProps {
-  setSelectForum: Dispatch<SetStateAction<IForum>>
+  setSelectForum: Dispatch<SetStateAction<IForum | null>>
 }
 
 function Forums({ setSelectForum }: ForumProps) {
-  const { data: forums, isLoading } = useQuery<IForum[]>(['forums'], getForums)
+  const { data: forums = [], isLoading } = useQuery<IForum[]>(['forums'], getForums)
 
   function handleClickForum(forum: IForum) {
     setSelectForum(forum)

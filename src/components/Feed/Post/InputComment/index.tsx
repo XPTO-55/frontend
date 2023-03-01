@@ -11,7 +11,7 @@ import * as S from './styles'
 import { InputCommentProps } from './types'
 
 export function InputComment({ postId, setComments }: InputCommentProps) {
-  const [comment, setComment] = useState<string>()
+  const [comment, setComment] = useState<string>('')
   const {
     mutate,
     isError,
@@ -28,6 +28,7 @@ export function InputComment({ postId, setComments }: InputCommentProps) {
   const { user } = useAuth()
 
   function handleSendMessage(e: FormEvent) {
+    if (!comment || !user) return
     e.preventDefault()
     const payload = {
       comment,

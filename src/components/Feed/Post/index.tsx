@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { PrismicText, SliceZone } from '@prismicio/react'
 import PrismicDOM from 'prismic-dom'
-import { components } from '../../../../slices'
+import { components } from '../../../../prismic/slices'
 import { Heading } from '../../blog/Heading'
 import { PostProps } from './types'
 import * as S from './styles'

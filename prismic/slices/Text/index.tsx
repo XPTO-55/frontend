@@ -2,9 +2,9 @@ import React from 'react'
 import * as prismicH from '@prismicio/helpers'
 import { PrismicRichText } from '@prismicio/react'
 
-import { Bounded } from '../../src/components/blog/Bounded'
+import { Bounded } from '../../../src/components/blog/Bounded'
 import styled from 'styled-components'
-import { TextSliceDefault } from '../../src/@types/prismic'
+import { TextSliceDefault } from '../../../src/@types/prismic'
 
 interface TextProps {
   slice: TextSliceDefault

@@ -17,6 +17,7 @@ import * as S from './_styles'
 export default function About() {
   const router = useRouter()
   const { user } = useAuth()
+
   const idProfissional = typeof router.query?.id === 'string' ? router.query.id : ''
   const { data: professional = {} as IProfessional, isLoading } = useQuery<IProfessional>(
     ['professionals', idProfissional],
@@ -27,6 +28,11 @@ export default function About() {
 
   if (isLoading || router.isFallback) {
     return <LoaderAllPage />
+  }
+
+  if (!user) {
+    void router.push('/')
+    return null
   }
 
   const handleSubmitAppointment = () => {

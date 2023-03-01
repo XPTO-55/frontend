@@ -48,14 +48,13 @@ export default function Places({ setSelectPlace }: PlaceProps) {
   const onPlacesChanged = () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const places = searchBox?.getPlaces()
-    console.log(places)
 
     if (places?.length) {
       const place = places[0]
 
       const location = {
-        lat: place?.geometry?.location?.lat() || 1,
-        lng: place?.geometry?.location?.lng() || 1
+        lat: place?.geometry?.location?.lat() ?? 1,
+        lng: place?.geometry?.location?.lng() ?? 1
       }
 
       map?.panTo(location)

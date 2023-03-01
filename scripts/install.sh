@@ -1,8 +1,14 @@
-#!/bin/bash
+#usr/bin/env bash
 
 cd ..
 
-npm i --global yarn
+yarn --version
+
+if [ $? -ne 0 ]
+  then
+    npm i --global yarn
+  fi
+
 
 echo "=== Install packages ==="
 yarn install

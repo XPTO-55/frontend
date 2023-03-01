@@ -2,11 +2,7 @@
 
 cd ..
 
-which pm2 --version
-
-if [$? -ne 0]; then
-  npm i --global pm2
-fi
+npm i --global pm2
 
 echo "=== Start Application ==="
-pm2 start "yarn start"
+pm2 start ecosystem.config.js --env production

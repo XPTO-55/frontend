@@ -2,11 +2,7 @@
 
 cd ..
 
-which yarn --version
-
-if [$? -ne 0]; then
-  npm i --global yarn
-fi
+npm i --global yarn
 
 echo "=== Install packages ==="
 yarn install

@@ -2,7 +2,7 @@
 
 cd ..
 
-yarn --version
+who yarn --version
 
 if [$? -ne 0]; then
   npm i --global yarn

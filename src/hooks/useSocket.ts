@@ -4,11 +4,11 @@ import { Client, over } from 'stompjs'
 const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL ?? 'http://localhost:7000/ws'
 
 export default function useSocket() {
-  const [socket, setSocket] = useState<Client>()
+  const [socket, setSocket] = useState<Client | null>(null)
 
   useEffect(() => {
     return () => {
-      if (socket?.ws) socket.disconnect(() => {})
+      if (socket?.ws) socket?.disconnect(() => {})
     }
   }, [socket])
 
@@ -20,17 +20,13 @@ export default function useSocket() {
 
   function socketRestart() {
     if (socket?.ws) {
-      socket.disconnect(() => {
+      socket?.disconnect(() => {
         console.log('socket disconnected')
       })
     }
 
     const _socket = new SockJS(socketUrl)
     const stompClient = over(_socket)
-    stompClient.connect({}, (frame) => {
-      console.log('socket connected:', frame?.toString())
-    })
-
     setSocket(stompClient)
   }
 

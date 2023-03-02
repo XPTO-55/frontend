@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { forwardRef, ForwardRefRenderFunction } from 'react'
 interface ButtonWithoutStylesProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
-export const ButtonWithoutStyles = (props: ButtonWithoutStylesProps) => {
-  return <button {...props} />
+const ButtonWithoutBase: ForwardRefRenderFunction<HTMLButtonElement, ButtonWithoutStylesProps> =
+(props: ButtonWithoutStylesProps, ref) => {
+  return <button ref={ref} {...props} />
 }
+
+export const ButtonWithoutStyles = forwardRef(ButtonWithoutBase)

@@ -19,6 +19,8 @@ export function ProfileBar () {
     void router.push('/')
     return null
   }
+  const notificationsNotRead = notifications.filter(not => !not.read)
+  const notificationsList = notificationsNotRead.length > 0 ? notificationsNotRead : []
 
   return (
     <S.Container>
@@ -53,19 +55,18 @@ export function ProfileBar () {
           onClick={e => e.stopPropagation()}
         >
           <ul>
-            {notifications?.length
-              ? notifications.map(notification => {
-                if (!notification.read) {
-                  return (
-                    <li onClick={(e) => {
+            {notificationsList.length > 0
+              ? notificationsList.map((notification, index) => {
+                return (
+                  <li
+                    onClick={(e) => {
                       e.stopPropagation()
                       readNotification(notification.id)
-                    }} key={notification.id}>
-                      {notification.message}
-                    </li>
-                  )
-                }
-                return null
+                    }}
+                    key={notification.id ?? index}>
+                    {notification.message}
+                  </li>
+                )
               })
               : (
                 <li>Não há novas mensagens</li>

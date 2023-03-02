@@ -14,12 +14,9 @@ export function MessageCard({ message, ...props }: IMessageCardProps) {
     <S.Container open={open} className={props.className} onOpenChange={setOpen}>
       <MessageInfo data={message} />
       <S.ContainerReplyes>
-        <S.ButtonActionReplyes asChild>
-          <button>
-            <BsArrowReturnRight />
-            {open ? 'Hide' : 'View'} Replyes
-          </button>
-
+        <S.ButtonActionReplyes>
+          <BsArrowReturnRight />
+          {open ? 'Hide' : 'View'} Replyes
         </S.ButtonActionReplyes>
         <S.ButtonActionReplyes asChild>
           <ButtonWithoutStyles >

@@ -137,6 +137,7 @@ export const NotificationsMenu = styled.nav<MenuContainerProps>`
   right: 2rem;
   top: ${(props) => (props.open ? '12vh' : 0)};
   border-radius: 0 0 7px 7px;
+  transition: all 1 ease-in;
 
   ul {
     width: 250px;

@@ -1,12 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useAuth } from './auth'
-import { client, Client, Frame } from 'stompjs'
+import { Frame } from 'stompjs'
 import useSocket from '../hooks/useSocket'
 import { ICreateMessageRequest, IMessage } from '../services/types'
 import { Toast } from '../@shared/Toast'
 interface ChatContextData {
   sendMessage: (forumId: string, message: ICreateMessageRequest) => void
-  connected: boolean
   notification: IMessageNotification | null
   notifications: IMessageNotification[]
   readNotification: (notificationId: number) => void
@@ -25,16 +24,8 @@ const ChatContext = createContext<ChatContextData>({} as ChatContextData)
 export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
   const [socket, socketRestart] = useSocket()
   const { signed, user } = useAuth()
-  const [connected, setConnected] = useState(false)
   const [notifications, setNotifications] = useState<IMessageNotification[]>([])
   const [notification, setNotification] = useState<IMessageNotification | null>(null)
-
-  // socket.subscribe('/topic/public', onMessageReceived)
-  //   socket.subscribe('/queue/test', onMessageReceived)
-  //   socket.subscribe(`/topic/user/${user.id}`, onMessageReceived)
-  //   socket.subscribe('/topic/javainuse', onMessageReceived)
-  //   socket.subscribe('/topic/forum/63ffd999375ffe5c2f7d73b3', onMessageReceived)
-  //   console.log('url', socket.ws.url)
 
   const readNotification = (notificationId: number) => {
     setNotifications(prev => (
@@ -50,24 +41,26 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
     ))
   }
 
-  const forumId = '63ffd999375ffe5c2f7d73b3'
-
   const onConnect = useCallback(() => {
     if (user) {
       socket.subscribe('/topic/public', onMessageReceived)
-      socket.subscribe(`/user/${forumId}/queue/messages`, onMessageReceived)
-      socket.subscribe(`/user/${user?.id}/queue/messages`, onMessageReceived)
+      socket.subscribe('/queue/chat.v1.messages.user_messages', onMessageReceived)
+      socket.subscribe('/queue/chat.v1.messages.forum_messages', onMessageReceived)
+      socket.subscribe(`/user/${user?.id}/queue/messages`)
     }
   }, [user, socket])
 
   const onError = useCallback((frame: string | Frame) => {
-    console.error(frame)
-  }, [])
+    console.log('Connection error', frame)
+    setTimeout(() => socketRestart(), 2500)
+  }, [socketRestart])
 
   useEffect(() => {
     if (signed) {
       if (socket) {
-        socket.connect({}, onConnect, onError)
+        socket.connect({
+          userId: user?.id
+        }, onConnect, onError)
       }
     }
   }, [socket, signed, onConnect, onError])
@@ -139,16 +132,11 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
     }
   }
 
-  // const handleUsername = (event) => {
-  //   const { value } = event.target
-  //   // setUserData({ ...userData, username: value })
-  // }
-
   // buscar chats daquele user
   // se subreescrever nos chats daquele user
   // quando chegar uma mensagem, mostrar o toast na tela
   return (
-    <ChatContext.Provider value={{ sendMessage, connected, notifications, readNotification, notification }}>
+    <ChatContext.Provider value={{ sendMessage, notifications, readNotification, notification }}>
       {children}
       {notification
         ? Object.keys(notification).length > 0

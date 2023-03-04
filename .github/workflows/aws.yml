@@ -54,12 +54,11 @@ jobs:
 
     steps:
       - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
+        uses: appleboy/ssh-action@v0.1.7
         with:
+          host: ${{ secrets.FE_SERVER_IP }}
+          username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: 'placeholder'
-          name: github_actions.pem
-      - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.FE_SERVER_IP }} >> ~/.ssh/known_hosts
-      - name: Run deploy script
-        run: ssh ubuntu@${{ secrets.FE_SERVER_IP }} bash deploy.sh
+          port: 22
+          script_stop: true
+          script: ls -all

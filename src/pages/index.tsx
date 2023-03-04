@@ -27,7 +27,7 @@ export default function Home() {
           </S.TextoMain>
         </S.ContainerTextoBanner>
 
-        <img src="/assets/img/imagemMain.webp" />
+        <img src="/assets/img/imagemMain.webp" alt='hero image' />
       </S.Main>
       <S.Svg
         className="wave"
@@ -190,7 +190,7 @@ export default function Home() {
           </Link>
         </S.ContainerContentFooter>
         <S.ContainerContentFooter className="imgCpa">
-          <img src="/assets/img/logoCPA.png" width={239.13} height={110} />
+          <img src="/assets/img/logoCPA.png" width={239.13} height={110} alt="logo" />
           <h2>Copyright © 2022 | CPA</h2>
         </S.ContainerContentFooter>
 

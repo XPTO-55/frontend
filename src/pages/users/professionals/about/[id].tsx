@@ -125,17 +125,7 @@ export default function About() {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string
-  // const queryClient = new QueryClient()
 
-  // await queryClient.prefetchQuery(['getProfessional', id],
-  //   async () => await getProfessional(id)
-  // )
-
-  // return {
-  //   props: {
-  //     idProfessional: dehydrate(queryClient)
-  //   }
-  // }
   return {
     props: {
       idProfessional: id

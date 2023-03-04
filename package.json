@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:static": "next build && next export",
     "start": "next start",
     "start server": "npx json-server -p 7000 -w server.json",
     "lint": "next lint --cache ",

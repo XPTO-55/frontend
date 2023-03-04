@@ -7,8 +7,11 @@ services:
     tty: true
     image: node
     build:
-      context: ../
-      dockerfile: Dockerfile.next
+      context: ..
+      dockerfile: ./docker/Dockerfile.next
+    volumes:
+      - "../node_modules:/app/node_modules"
+      - "../.next:/app/.next"
     ports:
       - 3000:3000
     networks:
@@ -16,8 +19,8 @@ services:
   web:
     tty: true
     build:
-      context: ../
-      dockerfile: Dockerfile.nginx
+      context: ..
+      dockerfile: ./docker/Dockerfile.nginx
     ports:
       - 127.0.0.1:8080:8080
     depends_on:

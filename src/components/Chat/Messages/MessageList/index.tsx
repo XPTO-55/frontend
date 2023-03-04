@@ -15,7 +15,7 @@ interface InfoProps {
 export default function MessageList({ data }: InfoProps) {
   const { user, loading } = useAuth()
   const { notification } = useChat()
-  const [messages = [], setMessages] = useState<IMessage[]>([])
+  const [messages, setMessages] = useState<IMessage[]>([])
   const { isLoading } = useQuery<unknown, AxiosError, IMessage[]>(
     ['messages', data?.id],
     async () => {
@@ -31,7 +31,17 @@ export default function MessageList({ data }: InfoProps) {
 
   useEffect(() => {
     if (notification) {
-      setMessages((prev) => [...prev, notification])
+      const message: IMessage = {
+        id: notification?.id,
+        message: notification?.message,
+        senderName: notification?.senderName,
+        userId: notification?.userId,
+        forum: notification?.forum,
+        replyes: notification?.replyes,
+        createdAt: notification?.createdAt,
+        updatedAt: notification?.updatedAt
+      }
+      setMessages((prev = []) => [...prev, message])
     }
   }, [notification])
 

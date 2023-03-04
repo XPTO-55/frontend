@@ -1,14 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useAuth } from './auth'
-import { Client, Frame } from 'stompjs'
+import { Frame } from 'stompjs'
 import useSocket from '../hooks/useSocket'
 import { ICreateMessageRequest, IMessage } from '../services/types'
 import { Toast } from '../@shared/Toast'
-import { AxiosResponse } from 'axios'
 interface ChatContextData {
   sendMessage: (forumId: string, message: ICreateMessageRequest) => void
-  connected: boolean
-  notification: IMessageNotification
+  notification: IMessageNotification | null
   notifications: IMessageNotification[]
   readNotification: (notificationId: number) => void
 }
@@ -24,28 +22,10 @@ interface ChatProviderProps {
 const ChatContext = createContext<ChatContextData>({} as ChatContextData)
 
 export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
-  // const [socket] = useSocket()
-  const [socket] = useState<Client | null>(null)
-  const { signed } = useAuth()
-  const [connected, setConnected] = useState(false)
+  const [socket, socketRestart] = useSocket()
+  const { signed, user } = useAuth()
   const [notifications, setNotifications] = useState<IMessageNotification[]>([])
-  const [notification, setNotification] = useState<IMessageNotification>({} as IMessageNotification)
-
-  const onError = useCallback((error: string | Frame) => {
-    setConnected(false)
-    console.error('chat context err', error)
-  }, [])
-
-  const onConnected = useCallback((ev: Frame | undefined) => {
-    setConnected(true)
-    // setUserData({ ...userData, connected: true })
-    if (!socket) return
-    socket.subscribe('/chatroom/public', onMessageReceived)
-    // socket.subscribe('/topic/public', onMessageReceived)
-    // socket.subscribe('/topic/javainuse', onMessageReceived)
-
-    // userJoin()
-  }, [socket])
+  const [notification, setNotification] = useState<IMessageNotification | null>(null)
 
   const readNotification = (notificationId: number) => {
     setNotifications(prev => (
@@ -61,47 +41,41 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
     ))
   }
 
-  const connect = useCallback(() => {
-    if (!socket) return
-    socket.connect({}, onConnected, onError)
-  }, [socket, onConnected, onError])
+  const onConnect = useCallback(() => {
+    if (user) {
+      socket.subscribe('/topic/public', onMessageReceived)
+      socket.subscribe('/queue/chat.v1.messages.user_messages', onMessageReceived)
+      socket.subscribe('/queue/chat.v1.messages.forum_messages', onMessageReceived)
+      socket.subscribe(`/user/${user?.id}/queue/messages`)
+    }
+  }, [user, socket])
 
-  const registerUser = useCallback(() => {
-    connect()
-  }, [connect])
+  const onError = useCallback((frame: string | Frame) => {
+    console.log('Connection error', frame)
+    setTimeout(() => socketRestart(), 2500)
+  }, [socketRestart])
 
   useEffect(() => {
     if (signed) {
       if (socket) {
-        registerUser()
+        socket.connect({
+          userId: user?.id
+        }, onConnect, onError)
       }
     }
-  }, [socket, signed, registerUser])
-
-  const userJoin = () => {
-    const chatMessage = {
-      // senderName: userData.username,
-      status: 'JOIN'
-    }
-    if (!socket) return
-    socket.send('/app/message', {}, JSON.stringify(chatMessage))
-  }
+  }, [socket, signed, onConnect, onError])
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onMessageReceived = (payload: any) => {
     const payloadData = JSON.parse(payload.body)
-    setNotifications(prev => ([...prev, {
+    if (!payloadData) return
+    const newNotification = {
       ...payloadData,
       read: false
-    }]))
-    setNotification({
-      ...payloadData,
-      read: false
-    })
-
-    setTimeout(() => {
-      setNotification({} as IMessageNotification)
-    }, 1000)
+    }
+    console.log('message received', payloadData)
+    setNotifications(prev => ([...prev, newNotification]))
+    setNotification(newNotification)
     switch (payloadData.status) {
       case 'JOIN':
         // if (!privateChats.get(payloadData.senderName)) {
@@ -131,14 +105,11 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
   //   // }
   // }
 
-  // const handleMessage = (event) => {
-  //   const { value } = event.target
-  //   // setUserData({ ...userData, message: value })
-  // }
   const sendMessage = (forumId: string, message: ICreateMessageRequest) => {
+    console.log('message before socket', message)
     if (socket) {
+      console.log('message', message)
       socket.send(`/app/message/${forumId}`, {}, JSON.stringify(message))
-      // console.log(chatMessage)
     }
   }
 
@@ -161,25 +132,22 @@ export const ChatProvider: React.FC<ChatProviderProps> = ({ children }) => {
     }
   }
 
-  // const handleUsername = (event) => {
-  //   const { value } = event.target
-  //   // setUserData({ ...userData, username: value })
-  // }
-
   // buscar chats daquele user
   // se subreescrever nos chats daquele user
   // quando chegar uma mensagem, mostrar o toast na tela
   return (
-    <ChatContext.Provider value={{ sendMessage, connected, notifications, readNotification, notification }}>
+    <ChatContext.Provider value={{ sendMessage, notifications, readNotification, notification }}>
       {children}
-      {Object.keys(notification).length > 0
-        ? (
-          <Toast
-            type={'info'}
-            title={`Nova mensagem de ${notification?.senderName}`}
-            description={notification?.message}
-          />
-        )
+      {notification
+        ? Object.keys(notification).length > 0
+          ? (
+            <Toast
+              type={'info'}
+              title={`Nova mensagem de ${notification?.senderName}`}
+              description={notification?.message}
+            />
+          )
+          : null
         : null}
     </ChatContext.Provider>
   )

@@ -8,9 +8,9 @@ const ButtonPrimaryBase: ForwardRefRenderFunction<HTMLButtonElement, ButtonPrima
   tamanho,
   onClick,
   ...props
-}: ButtonPrimaryProps) => {
+}: ButtonPrimaryProps, ref) => {
   return (
-    <Button {...props} className={className} width={tamanho} onClick={onClick}>
+    <Button {...props} className={className} ref={ref} width={tamanho} onClick={onClick}>
       {children}
     </Button>
   )

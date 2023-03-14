@@ -35,7 +35,7 @@ export interface IUserLoginRequest {
 export interface ICreateMessageRequest {
   message: string
   senderName: string
-  userId: number
+  senderId: number
 }
 export interface ICreateCommentRequest {
   comment: string

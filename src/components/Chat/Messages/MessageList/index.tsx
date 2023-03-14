@@ -35,7 +35,7 @@ export default function MessageList({ data }: InfoProps) {
         id: notification?.id,
         message: notification?.message,
         senderName: notification?.senderName,
-        userId: notification?.userId,
+        senderId: notification?.senderId,
         forum: notification?.forum,
         replyes: notification?.replyes,
         createdAt: notification?.createdAt,
@@ -58,7 +58,7 @@ export default function MessageList({ data }: InfoProps) {
         ? messages.map((message) => (
           <MessageCard
             className={
-              String(message?.userId) === String(user?.id)
+              String(message?.senderId) === String(user?.id)
                 ? 'my-message'
                 : undefined
             }

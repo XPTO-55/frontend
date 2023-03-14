@@ -147,6 +147,9 @@ export const NotificationsMenu = styled.nav<MenuContainerProps>`
       display: flex;
       justify-content: center;
       word-wrap: break-word;
+      font-size: 1rem;
+      text-transform: capitalize;
+
       &:hover {
         background-color: #0A6CB2;
         &:last-child {

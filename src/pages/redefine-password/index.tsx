@@ -18,6 +18,9 @@ export default function RedefinePassword() {
     return (
       <>
         <form>
+          <Input type="text" placeholder="Informe o token recebido no email">
+            <TfiUnlock />
+          </Input>
           <Input type="password" placeholder="Digite uma nova senha...">
             <TfiUnlock />
           </Input>

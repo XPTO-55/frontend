@@ -55,7 +55,7 @@ form{
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  height: 110px;
+  height: max-content;
 }
 
 

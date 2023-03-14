@@ -59,7 +59,7 @@ export interface IMessage {
   id: number
   message: string
   senderName: string
-  userId: number
+  senderId: number
   forum: IForum
   replyes: IMessage[]
   createdAt: Date

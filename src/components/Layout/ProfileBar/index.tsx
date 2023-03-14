@@ -64,7 +64,7 @@ export function ProfileBar () {
                       readNotification(notification.id)
                     }}
                     key={notification.id ?? index}>
-                    {notification.message}
+                    {notification.senderName?.split(' ')[0]?.toLowerCase()}: {notification?.message}
                   </li>
                 )
               })

@@ -2,46 +2,39 @@ import React, { useState } from 'react'
 import * as S from './styles'
 import { AiOutlineSend } from 'react-icons/ai'
 import { ImAttachment } from 'react-icons/im'
-// import { useMutation } from 'react-query'
-// import { createMessage } from '../../../../services/messages.service'
+import { useMutation } from 'react-query'
+import { createMessage } from '../../../../services/messages.service'
 import { FooterProps } from './types'
-import { ICreateMessageRequest } from '../../../../services/types'
+import { ICreateMessageRequest, IMessage } from '../../../../services/types'
 import { useAuth } from '../../../../context/auth'
-// import { Toast } from '../../../../@shared/Toast'
-import { useChat } from '../../../../context/chat'
+import { Toast } from '../../../../@shared/Toast'
+// import { useChat } from '../../../../context/chat'
 
 export function Footer({ forumId }: FooterProps) {
   const { user } = useAuth()
-  const { sendMessage } = useChat()
-  const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState<string>()
-  // const {
-  //   mutate,
-  //   isLoading,
-  //   isError,
-  //   error
-  // } = useMutation<IMessage, unknown, ICreateMessageRequest>(
-  //   async (messageData) => await createMessage(forumId, messageData),
-  //   {
-  //     onSuccess: () => {
-  //       sendMessage(message)
-  //       setMessage('')
-  //     }
-  //   }
-  // )
+  const {
+    mutate,
+    isLoading,
+    isError,
+    error
+  } = useMutation<IMessage, unknown, ICreateMessageRequest>(
+    async (messageData) => await createMessage(forumId, messageData),
+    {
+      onSuccess: () => {
+        setMessage('')
+      }
+    }
+  )
 
   const handleSubmitMessage = () => {
-    console.log('message', message, 'user', user)
     if (!message || !user) return
     const payloadMessage: ICreateMessageRequest = {
       message,
       senderName: user?.username,
-      userId: user?.id
+      senderId: user?.id
     }
-    setIsLoading(true)
-    sendMessage(forumId, payloadMessage)
-    // mutate(payloadMessage)
-    setIsLoading(false)
+    mutate(payloadMessage)
   }
 
   return (
@@ -59,6 +52,10 @@ export function Footer({ forumId }: FooterProps) {
               <AiOutlineSend size={16} />
             </S.ActionButton>
           </S.ActionContainer>
+          : null}
+        { isError
+        // @ts-expect-error
+          ? <Toast type='error' title='Error' description={error?.message?.message ?? error?.message} />
           : null}
       </S.Footer>
     </>

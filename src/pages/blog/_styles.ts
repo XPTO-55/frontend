@@ -1,7 +1,7 @@
-import { PrismicLink } from '@prismicio/react'
+import Link from 'next/link'
 import styled from 'styled-components'
 
-export const PrismicLinkStyled = styled(PrismicLink)`
+export const LinkStyled = styled(Link)`
   font-weight: 600;
   letter-spacing: -0.025em;
   text-decoration: inherit;
@@ -68,43 +68,38 @@ export const Div1 = styled.div`
 
 export const ListaNaoOrdenada = styled.ul`
   display: grid;
+  gap: 4rem;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 4rem; /* 64px */
   width: 100%;
+  margin-top: 3rem;
 `
 export const Div2 = styled.div`
   position: relative;
   background-color: #f3f4f6;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 4;
 `
 
 export const Header = styled.div`
-width: 100%;
-height: 65vh;
-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/assets/img/fundoblog.webp");
-    background-repeat: no-repeat, repeat-x;
+  width: 100%;
+  height: 65vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/assets/img/fundoblog.webp");
+      background-repeat: no-repeat, repeat-x;
   background-position: top right, center;
   background-size: cover;
   color: white;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-  
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const ContainerHeader = styled.div`
-width: 1200px;
-height: 100%;
-box-sizing: border-box;
-padding-top: 8%;
+  width: 1200px;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 8%;
 
-
-
-h1{
+  h1{
     font-size: 32px;
     width: 300px;
     margin-bottom: 20px;
@@ -115,6 +110,5 @@ h1{
     font-size: 18px;
     font-weight: lighter;
     margin-bottom: 20px;
-
   }
 `

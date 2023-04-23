@@ -10,20 +10,12 @@
     "start": "next start",
     "start server": "npx json-server -p 7000 -w server.json",
     "lint": "next lint --cache ",
-    "lint:fix": "next lint --cache --fix",
-    "slicemachine": "start-slicemachine",
-    "prismic:types": "prismic-ts-codegen",
-    "prismic:sync": "@slicemachine/init"
+    "lint:fix": "next lint --cache --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@material-ui/core": "^4.12.4",
     "@next/font": "^13.0.4",
-    "@prismicio/client": "^6.7.1",
-    "@prismicio/helpers": "^2.3.6",
-    "@prismicio/next": "^0.1.7",
-    "@prismicio/react": "^2.5.0",
-    "@prismicio/slice-simulator-react": "^0.2.2",
     "@radix-ui/react-collapsible": "^1.0.1",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-popover": "1.0.2",
@@ -35,13 +27,13 @@
     "@types/googlemaps": "^3.43.3",
     "@types/react-leaflet": "^2.8.2",
     "@types/sockjs-client": "^1.5.1",
+    "axios": "^1.3.6",
     "keen-slider": "^6.8.2",
     "leaflet": "^1.9.3",
+    "moment": "^2.29.4",
     "net": "^1.0.2",
     "next": "12.3.1",
-    "prismic-dom": "^2.2.7",
-    "prismic-javascript": "^3.0.2",
-    "prismic-reactjs": "^1.3.4",
+    "qs": "^6.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-google-autocomplete": "^2.7.0",
@@ -49,6 +41,8 @@
     "react-icons": "^4.6.0",
     "react-leaflet": "^4.1.0",
     "react-loading-skeleton": "^3.1.0",
+    "react-markdown": "^8.0.7",
+    "react-moment": "^1.1.3",
     "react-query": "^3.39.2",
     "sockjs-client": "^1.5.2",
     "stompjs": "^2.3.3",
@@ -56,10 +50,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@prismicio/types": "^0.2.4",
     "@types/google-map-react": "^2.1.7",
     "@types/node": "^18.8.3",
     "@types/prismic-dom": "^2.1.1",
+    "@types/qs": "^6.9.7",
     "@types/react": "^18.0.25",
     "@types/stompjs": "^2.3.5",
     "@types/styled-components": "^5.1.26",
@@ -79,8 +73,6 @@
     "json-server": "^0.17.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "prismic-ts-codegen": "^0.1.5",
-    "slice-machine-ui": "^0.5.2",
     "typescript": "^4.1.2"
   }
 }

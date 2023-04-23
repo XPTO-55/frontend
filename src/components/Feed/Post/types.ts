@@ -1,5 +1,4 @@
-import { PrismicDocument } from '@prismicio/types'
-
+import { Post, StrapiData } from "../../../lib/types";
 export interface PostProps {
-  post: PrismicDocument
+  post: StrapiData<Post>
 }

@@ -30,10 +30,11 @@ const nextConfig = {
   output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true
-  }
-  // images: {
-  //   unoptimized: true
-  // }
+  },
+  images: {
+    loader: "default",
+    domains: ["localhost"],
+  },
 }
 
 module.exports = nextConfig

@@ -1,7 +1,7 @@
-import { PrismicLink } from '@prismicio/react'
+import Link from 'next/link'
 import styled from 'styled-components'
 
-export const PrismicLinkStyled = styled(PrismicLink)`
+export const LinkStyled = styled(Link)`
   font-weight: 600;
   letter-spacing: -0.025em;
   text-decoration: inherit;
@@ -21,9 +21,8 @@ export const ArticleTitle = styled.h1`
 `
 
 export const Paragrafo = styled.p`
-  font-family: serif;
-  font-style: italic;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.05em;
+  font-size: 1rem;
   color: rgb(100 116 139);
 `
 

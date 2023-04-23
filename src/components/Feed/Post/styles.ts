@@ -1,4 +1,4 @@
-import { PrismicNextImage } from '@prismicio/next'
+import Image from 'next/image'
 import styled from 'styled-components'
 
 export const listItemStyled = styled.li`
@@ -79,7 +79,7 @@ export const Especiality = styled.p`
   color: #A7A7A7;
 `
 
-export const Image = styled(PrismicNextImage)`
+export const ImageStyled = styled(Image)`
   object-fit: cover;
 `
 

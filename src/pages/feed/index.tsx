@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { FeedProps, StaticProps } from './_types'
 import { GetStaticProps } from 'next'
-import * as prismicNext from '@prismicio/next'
 import * as S from './_styles'
-import { createClient } from '../../../prismicio'
 import { Bounded } from '../../components/blog/Bounded'
 import Sidebar from '../../components/Layout/Sidebar'
 import { Post } from '../../components/Feed/Post'
@@ -13,6 +11,8 @@ import { Heading } from '../../components/blog/Heading'
 import { LoaderAllPage } from '../../components/Layout/LoaderAllPage'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/auth'
+import { Post as PostType } from '../../lib/types'
+import { fetchAPI } from '../../lib/api'
 
 export default function Feed({ posts }: FeedProps) {
   const { signed, loading } = useAuth()
@@ -59,41 +59,13 @@ export default function Feed({ posts }: FeedProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps<StaticProps> = async ({
-  previewData,
-  req,
-  ...config
-}: prismicNext.CreateClientConfig) => {
-  const client = createClient({
-    previewData,
-    req,
-    ...config
-  })
-
-  const posts = await client.getAllByType('post', {
-    orderings: [
-      { field: 'my.post.publishDate', direction: 'desc' },
-      { field: 'document.first_publication_date', direction: 'desc' }
-    ],
-    fetchLinks: 'comments',
-    pageSize: 5
-  })
-
-  // const postsComments = await Promise.all(posts.map(async (post) => {
-  //   const comments = await client.query(
-  //     Prismic.Predicates.at('my.comments.post', post.id)
-  //   )
-
-  //   // @ts-expect-error
-  //   post.comments = comments.results
-
-  //   return post
-  // }))
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  const postRes = await fetchAPI<PostType>("/posts", { populate: ["banner", "user"] })
 
   return {
     props: {
-      posts
+      posts: postRes.data,
     },
-    revalidate: 5
-  }
+    revalidate: 5,
+  };
 }
